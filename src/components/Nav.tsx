@@ -47,6 +47,9 @@ export default function Nav() {
           <a href="/#how-it-works" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             How It Works
           </a>
+          <Link to="/contractor-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#FF7A4A' }}>
+            Contractor Spanish
+          </Link>
           <Link to="/about" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             About
           </Link>
@@ -91,6 +94,9 @@ export default function Nav() {
           <a href="/#how-it-works" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             How It Works
           </a>
+          <Link to="/contractor-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#FF7A4A', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Contractor Spanish
+          </Link>
           <Link to="/about" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             About
           </Link>
