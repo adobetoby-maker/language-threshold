@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://languagethreshold.com/sitemap.xml
