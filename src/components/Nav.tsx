@@ -8,7 +8,7 @@ export default function Nav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -47,6 +47,9 @@ export default function Nav() {
           <a href="/#how-it-works" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             How It Works
           </a>
+          <Link to="/medical-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4A9EFF' }}>
+            Medical Spanish
+          </Link>
           <Link to="/contractor-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#FF7A4A' }}>
             Contractor Spanish
           </Link>
@@ -94,6 +97,9 @@ export default function Nav() {
           <a href="/#how-it-works" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             How It Works
           </a>
+          <Link to="/medical-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4A9EFF', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Medical Spanish
+          </Link>
           <Link to="/contractor-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#FF7A4A', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             Contractor Spanish
           </Link>
