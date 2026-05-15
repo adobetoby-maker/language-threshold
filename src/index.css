@@ -57,3 +57,7 @@ body::before {
     transition: none;
   }
 }
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
