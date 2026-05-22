@@ -47,11 +47,17 @@ export default function Nav() {
           <a href="/#how-it-works" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             How It Works
           </a>
+          <Link to="/language-lens" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00D4B8' }}>
+            Language Lens
+          </Link>
           <Link to="/medical-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4A9EFF' }}>
             Medical Spanish
           </Link>
           <Link to="/contractor-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#FF7A4A' }}>
             Contractor Spanish
+          </Link>
+          <Link to="/climbing-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4CAF7D' }}>
+            Climbing Spanish
           </Link>
           <Link to="/about" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             About
@@ -97,11 +103,17 @@ export default function Nav() {
           <a href="/#how-it-works" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             How It Works
           </a>
+          <Link to="/language-lens" className="py-3.5 text-base" style={{ ...sansFont, color: '#00D4B8', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Language Lens
+          </Link>
           <Link to="/medical-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4A9EFF', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             Medical Spanish
           </Link>
           <Link to="/contractor-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#FF7A4A', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             Contractor Spanish
+          </Link>
+          <Link to="/climbing-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4CAF7D', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Climbing Spanish
           </Link>
           <Link to="/about" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             About

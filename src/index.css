@@ -52,3 +52,19 @@ body {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scaleX(1); }
+  15% { transform: scaleX(1.1); }
+  30% { transform: scaleX(0.95); }
+  45% { transform: scaleX(1.08); }
+  60% { transform: scaleX(0.98); }
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heartbeat { animation: none; }
+}

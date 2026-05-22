@@ -9,7 +9,9 @@ const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Founder = lazy(() => import('./pages/Founder'))
 const ContractorSpanish = lazy(() => import('./pages/ContractorSpanish'))
+const ClimbingSpanish = lazy(() => import('./pages/ClimbingSpanish'))
 const MedicalSpanish = lazy(() => import('./pages/MedicalSpanish'))
+const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 
 function PageLoader() {
   return (
@@ -39,7 +41,9 @@ export default function App() {
             <Route path="/about" element={<ErrorBoundary><About /></ErrorBoundary>} />
             <Route path="/founder" element={<ErrorBoundary><Founder /></ErrorBoundary>} />
             <Route path="/contractor-spanish" element={<ErrorBoundary><ContractorSpanish /></ErrorBoundary>} />
+            <Route path="/climbing-spanish" element={<ErrorBoundary><ClimbingSpanish /></ErrorBoundary>} />
             <Route path="/medical-spanish" element={<ErrorBoundary><MedicalSpanish /></ErrorBoundary>} />
+            <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>

@@ -18,19 +18,25 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-sm" style={{ ...sansFont }}>
+          <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm" style={{ ...sansFont }}>
+            <Link to="/language-lens" className="transition-opacity hover:opacity-80" style={{ color: '#00D4B8' }}>
+              Language Lens
+            </Link>
             <a href="https://medicalspanish.app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               Medical Spanish
             </a>
             <a href="https://constructionspanish.app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               Construction Spanish
             </a>
-            <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
-              Start Learning
-            </a>
             <Link to="/about" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               About
             </Link>
+            <Link to="/founder" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
+              Founder
+            </Link>
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ ...sansFont, color: '#C9A84C', fontWeight: 600 }}>
+              Start Learning →
+            </a>
           </div>
         </div>
 

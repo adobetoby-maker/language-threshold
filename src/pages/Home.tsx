@@ -420,12 +420,19 @@ function AreasSection() {
             ))}
           </div>
 
-          {/* All other areas */}
+          {/* All other areas — last card centered if it would be orphaned */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((area) => (
+            {rest.slice(0, rest.length % 3 === 1 ? -1 : rest.length).map((area) => (
               <AreaCard key={area.title} area={area} />
             ))}
           </div>
+          {rest.length % 3 === 1 && (
+            <div className="flex justify-center mt-6">
+              <div className="w-full sm:w-1/2 lg:w-1/3">
+                <AreaCard area={rest[rest.length - 1]} />
+              </div>
+            </div>
+          )}
 
           <div className="text-center mt-12">
             <a
@@ -483,7 +490,7 @@ function HowItWorksSection() {
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute right-0 top-8 bottom-8 w-px" style={{ backgroundColor: 'rgba(201,168,76,0.15)' }} />
                 )}
-                <div className="text-8xl font-black leading-none mb-6 select-none" style={{ ...displayFont, color: 'rgba(201,168,76,0.12)' }}>
+                <div className="text-8xl font-black leading-none mb-6 select-none" style={{ ...displayFont, color: 'rgba(201,168,76,0.22)' }}>
                   {step.number}
                 </div>
                 <h3 className="text-xl font-bold mb-3" style={{ ...serifFont, color: '#F7F3EC' }}>
@@ -522,22 +529,22 @@ function DifferentiatorsSection() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {comparisons.map((item) => (
-              <div key={item.positive} className="rounded-2xl p-6" style={{ backgroundColor: '#161616', border: '1px solid rgba(201,168,76,0.15)' }}>
-                <div className="flex items-start gap-4 mb-3">
+              <div key={item.positive} className="rounded-2xl p-7" style={{ backgroundColor: '#191919', border: '1px solid rgba(201,168,76,0.28)' }}>
+                <div className="flex items-start gap-4 mb-4">
                   <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ backgroundColor: 'rgba(201,168,76,0.15)', border: '1px solid rgba(201,168,76,0.4)' }}
+                    className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ backgroundColor: 'rgba(201,168,76,0.2)', border: '1px solid rgba(201,168,76,0.6)' }}
                   >
                     <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
-                      <path d="M1 5l3.5 3.5L11 1" stroke="#C9A84C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M1 5l3.5 3.5L11 1" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                   <div>
                     <span className="text-lg font-bold" style={{ ...serifFont, color: '#F7F3EC' }}>{item.positive}</span>
-                    <span className="text-sm ml-2" style={{ ...sansFont, color: '#A89F94' }}>vs {item.negative}</span>
+                    <span className="text-sm ml-2" style={{ ...sansFont, color: '#8A8278' }}>vs {item.negative}</span>
                   </div>
                 </div>
-                <p className="text-sm leading-relaxed pl-10" style={{ ...sansFont, color: '#A89F94' }}>{item.description}</p>
+                <p className="text-base leading-relaxed pl-11" style={{ ...sansFont, color: '#C5BDB5' }}>{item.description}</p>
               </div>
             ))}
           </div>
