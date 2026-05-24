@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
+import { GoogleAnalytics } from './components/GoogleAnalytics'
 import { sansFont } from './constants'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -11,6 +12,11 @@ const Founder = lazy(() => import('./pages/Founder'))
 const ContractorSpanish = lazy(() => import('./pages/ContractorSpanish'))
 const ClimbingSpanish = lazy(() => import('./pages/ClimbingSpanish'))
 const MedicalSpanish = lazy(() => import('./pages/MedicalSpanish'))
+const MedicalSwahili = lazy(() => import('./pages/MedicalSwahili'))
+const ContractorSwahili = lazy(() => import('./pages/ContractorSwahili'))
+const ClimbingSwahili = lazy(() => import('./pages/ClimbingSwahili'))
+const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
+const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 
 function PageLoader() {
@@ -24,6 +30,7 @@ function PageLoader() {
 export default function App() {
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: '#0D0D0D', color: '#F7F3EC' }}>
+      <GoogleAnalytics />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm"
@@ -43,6 +50,11 @@ export default function App() {
             <Route path="/contractor-spanish" element={<ErrorBoundary><ContractorSpanish /></ErrorBoundary>} />
             <Route path="/climbing-spanish" element={<ErrorBoundary><ClimbingSpanish /></ErrorBoundary>} />
             <Route path="/medical-spanish" element={<ErrorBoundary><MedicalSpanish /></ErrorBoundary>} />
+            <Route path="/medical-swahili" element={<ErrorBoundary><MedicalSwahili /></ErrorBoundary>} />
+            <Route path="/contractor-swahili" element={<ErrorBoundary><ContractorSwahili /></ErrorBoundary>} />
+            <Route path="/climbing-swahili" element={<ErrorBoundary><ClimbingSwahili /></ErrorBoundary>} />
+            <Route path="/missionary-spanish" element={<ErrorBoundary><MissionarySpanish /></ErrorBoundary>} />
+            <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

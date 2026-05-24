@@ -59,6 +59,21 @@ export default function Nav() {
           <Link to="/climbing-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4CAF7D' }}>
             Climbing Spanish
           </Link>
+          <Link to="/medical-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
+            Medical Swahili
+          </Link>
+          <Link to="/contractor-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
+            Contractor Swahili
+          </Link>
+          <Link to="/climbing-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
+            Climbing Swahili
+          </Link>
+          <Link to="/missionary-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#7C3AED' }}>
+            Missionary Spanish
+          </Link>
+          <Link to="/missionary-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
+            Missionary Swahili
+          </Link>
           <Link to="/about" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
             About
           </Link>
@@ -114,6 +129,21 @@ export default function Nav() {
           </Link>
           <Link to="/climbing-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4CAF7D', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             Climbing Spanish
+          </Link>
+          <Link to="/medical-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Medical Swahili
+          </Link>
+          <Link to="/contractor-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Contractor Swahili
+          </Link>
+          <Link to="/climbing-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Climbing Swahili
+          </Link>
+          <Link to="/missionary-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#7C3AED', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Missionary Spanish
+          </Link>
+          <Link to="/missionary-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+            Missionary Swahili
           </Link>
           <Link to="/about" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
             About
