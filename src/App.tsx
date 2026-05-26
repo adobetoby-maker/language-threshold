@@ -4,7 +4,12 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
 import { GoogleAnalytics } from './components/GoogleAnalytics'
+import { MetaPixel } from './components/MetaPixel'
 import { sansFont } from './constants'
+import { warmWordCache } from './data/wordCache'
+
+// Start fetching the word cache immediately — before any route renders or word is tapped
+warmWordCache()
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -31,6 +36,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: '#0D0D0D', color: '#F7F3EC' }}>
       <GoogleAnalytics />
+      <MetaPixel />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm"
