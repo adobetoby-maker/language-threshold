@@ -13,6 +13,10 @@ const MODULES = [
   { slug: 'education',    label: 'Education',     color: '#c084fc' },
   { slug: 'hospitality',  label: 'Hospitality',   color: '#fb7185' },
   { slug: 'kids',         label: 'Kids',          color: '#f472b6' },
+  { slug: 'fishing',      label: 'Fishing',       color: '#0ea5e9' },
+  { slug: 'climbing',     label: 'Climbing',      color: '#a3e635' },
+  { slug: 'hunting',      label: 'Hunting',       color: '#d97706' },
+  { slug: 'business',     label: 'Business',      color: '#e2e8f0' },
 ]
 
 export default function Nav() {
@@ -78,6 +82,15 @@ export default function Nav() {
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
           >
             About
+          </Link>
+          <Link
+            to="/founder"
+            className="hidden lg:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            style={{ color: pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
+          >
+            Founder
           </Link>
           <a
             href={APP_URL}

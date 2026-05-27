@@ -171,7 +171,7 @@ export default function LanguageLens() {
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90"
-              style={{ ...sansFont, backgroundColor: TEAL, color: '#0A1628' }}
+              style={{ ...sansFont, backgroundColor: '#C9A84C', color: '#0D0D0D' }}
             >
               Start Learning — It's Free →
             </a>
@@ -368,7 +368,7 @@ export default function LanguageLens() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-10 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90 mb-4"
-              style={{ ...sansFont, backgroundColor: TEAL, color: '#0A1628' }}
+              style={{ ...sansFont, backgroundColor: '#C9A84C', color: '#0D0D0D' }}
             >
               Open Language Lens — Free →
             </a>

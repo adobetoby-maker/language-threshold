@@ -27,13 +27,13 @@ const STARTERS: Record<string, StarterData> = {
     emoji: '🏥',
     title: 'Medical Language',
     tagline: 'Speak the language your patients need — when every word matters.',
-    persona: 'For nurses, ER docs, surgical techs, and clinic staff whose patients speak Spanish or Swahili.',
+    persona: 'For nurses, ER docs, surgical techs, and clinic staff whose patients speak Spanish, Swahili, or French.',
     roles: ['ER Nurses', 'Surgeons', 'Clinic Staff', 'Paramedics', 'Surgical Techs'],
     color: '#34d399',
     borderColor: 'rgba(52,211,153,0.25)',
     tint: 'rgba(52,211,153,0.05)',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', 'Pediatrics', 'OB / GYN', 'ICU / Critical Care', 'Surgery & Pre-Op', 'Radiology', 'Pharmacy', 'Behavioral Health', 'Dental', 'Lab & Pathology', 'Home Health'],
-    languages: ['Spanish', 'Swahili'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese'],
     bullets: ['13 specialties — ER, OR, OB, ICU, and more', 'Bedside manner: pain scales, consent, discharge', 'SBAR handoff and charting abbreviations', 'AI partner trained on real clinical dialogue'],
     steps: [
       { label: 'Choose your specialty', detail: 'Start in your unit — ER, OR, OB, ICU, or outpatient. Each module maps to real clinical workflows.' },
@@ -52,8 +52,8 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(251,146,60,0.25)',
     tint: 'rgba(251,146,60,0.05)',
     modules: ['Framing & Carpentry', 'Electrical', 'Plumbing', 'Concrete & Masonry', 'HVAC', 'Roofing', 'Drywall & Finishing', 'Landscaping', 'Safety & OSHA Compliance'],
-    languages: ['Spanish', 'Portuguese'],
-    bullets: ['9 trades — framing, electrical, plumbing, and more', 'Safety briefings, PPE instructions, hazard calls', 'Blueprint reading and measurements — both languages', 'OSHA-compliant vocabulary built in'],
+    languages: ['Spanish', 'Swahili', 'Portuguese'],
+    bullets: ['9 trades — framing, electrical, plumbing, and more', 'Safety briefings, PPE instructions, hazard calls', 'Blueprint reading and measurements — all languages', 'OSHA-compliant vocabulary built in'],
     steps: [
       { label: 'Pick your trade', detail: 'Framing, electrical, plumbing — start where your crew works. Each module mirrors your actual workflow.' },
       { label: 'Learn the safety calls first', detail: 'OSHA vocabulary, hazard alerts, and PPE instructions are front-loaded. Safety before productivity.' },
@@ -70,8 +70,8 @@ const STARTERS: Record<string, StarterData> = {
     color: '#60a5fa',
     borderColor: 'rgba(96,165,250,0.25)',
     tint: 'rgba(96,165,250,0.05)',
-    modules: ['LDS Missionary Spanish — all 6 discussions', 'LDS Missionary Swahili'],
-    languages: ['Spanish', 'Swahili'],
+    modules: ['LDS Missionary Spanish — all 6 discussions', 'LDS Missionary Swahili', 'LDS Missionary French', 'Faith Volunteer Foundations'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese'],
     bullets: ['All six missionary discussions — word for word', 'Tracting openers, door approaches, follow-ups', 'Testimony vocabulary at every fluency level', 'Missionary Spanish is always free — no account required'],
     steps: [
       { label: 'Start with discussion one', detail: 'The Restoration — every phrase, every question, every testimony expression. In order.' },
@@ -108,9 +108,9 @@ const STARTERS: Record<string, StarterData> = {
     color: '#facc15',
     borderColor: 'rgba(250,204,21,0.25)',
     tint: 'rgba(250,204,21,0.05)',
-    modules: ['Dairy Farmer', 'Ranch Cowboy', 'Meatpacking'],
-    languages: ['Spanish', 'Portuguese'],
-    bullets: ['3 modules — dairy, ranch, meatpacking', 'Equipment operation and maintenance vocabulary', 'Safety and hazard communication', 'Daily scheduling and shift coordination'],
+    modules: ['Dairy & Cattle', 'Ranch & Cowboy', 'Meatpacking & Processing', 'Crop & Field Operations', 'Irrigation & Equipment'],
+    languages: ['Spanish', 'Swahili', 'Portuguese'],
+    bullets: ['5 modules — dairy, ranch, meatpacking, crops, and irrigation', 'Equipment operation and maintenance vocabulary', 'Safety and hazard communication in all languages', 'Daily scheduling, shift coordination, and task instructions'],
     steps: [
       { label: 'Choose your operation', detail: 'Dairy, ranch, or meatpacking — each module is built around the specific environment and workflow.' },
       { label: 'Equipment and safety first', detail: 'Operating machinery, hazard alerts, and safety protocols in both languages before anything else.' },
@@ -154,6 +154,32 @@ const STARTERS: Record<string, StarterData> = {
       { label: 'Back-of-house coordination', detail: 'Kitchen calls, prep instructions, safety, and timing — communication that keeps service running.' },
       { label: 'Hotel and guest services', detail: 'Check-in, housekeeping requests, concierge, and amenities — for hotel and resort staff.' },
       { label: 'Complaints and recovery', detail: 'De-escalate, apologize, and resolve. The hardest conversations, practiced before they happen.' },
+    ],
+  },
+  fishing: {
+    emoji: '🎣',
+    title: 'Baja Fishing Spanish',
+    tagline: 'Talk to your panguero, name the fish, land the charter.',
+    persona: 'For sport fishermen, charter captains, and tournament anglers fishing the waters of Baja California.',
+    roles: ['Sport Anglers', 'Charter Captains', 'Tournament Fishermen', 'Fishing Guides', 'Panga Crews'],
+    color: '#0ea5e9',
+    borderColor: 'rgba(14,165,233,0.25)',
+    tint: 'rgba(14,165,233,0.05)',
+    modules: ['Deep Sea & Big Game', 'Offshore & Panga Fishing', 'Shore & Surf Fishing'],
+    languages: ['Spanish'],
+    bullets: [
+      '100+ fish species in Spanish — marlin, dorado, tuna, roosterfish',
+      'Charter & panga communication — directions, timing, gear',
+      'Weather, tides, and navigation phrases',
+      'Tackle, bait, and rigging vocabulary',
+      'Fish handling, regulations, and catch-and-release',
+      'Tournaments, weigh-ins, and sportfishing culture',
+    ],
+    steps: [
+      { label: 'Start with the species', detail: 'Every fish you\'ll encounter in Baja — marlin, dorado, yellowfin, wahoo, roosterfish — with pronunciation and local nicknames.' },
+      { label: 'Learn charter communication', detail: 'Talk to your panguero: where to go, how deep, change direction, come back in. The 30 phrases that run every trip.' },
+      { label: 'Navigate conditions', detail: 'Weather windows, swells, tide schedules, and hot-spot directions. Coordinate with local captains before you even leave the dock.' },
+      { label: 'Handle the catch', detail: 'Regulations, measurements, live release, weigh-in procedures — and the tournament vocab for competitive anglers.' },
     ],
   },
   kids: {
@@ -203,19 +229,30 @@ export default function ModuleStarter() {
     <>
       {/* Fixed globe background */}
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_40%,_#0d1b3e_0%,_#02040f_70%)]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: slug === 'kids'
+              ? 'radial-gradient(ellipse 80% 80% at 50% 40%, #1a0d1e 0%, #02040f 70%)'
+              : 'radial-gradient(ellipse 80% 80% at 50% 40%, #0d1b3e 0%, #02040f 70%)'
+          }}
+        />
         <div
           className="absolute inset-0 opacity-30"
           style={{ backgroundImage: 'radial-gradient(circle,rgba(255,255,255,0.12) 1px,transparent 1px)', backgroundSize: '80px 80px' }}
         />
-        <div className="absolute inset-0 flex items-center justify-center opacity-40">
+        <div className={`absolute inset-0 flex items-center justify-center ${slug === 'kids' ? 'opacity-15' : 'opacity-40'}`}>
           <Suspense fallback={null}>
             <EarthGlobe size={800} />
           </Suspense>
         </div>
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 70% 50% at 50% 30%, ${d.tint} 0%, transparent 70%)` }}
+          style={{
+            background: slug === 'kids'
+              ? 'radial-gradient(ellipse 80% 60% at 50% 30%, rgba(244,114,182,0.20) 0%, transparent 70%)'
+              : `radial-gradient(ellipse 70% 50% at 50% 30%, ${d.tint} 0%, transparent 70%)`
+          }}
         />
       </div>
 
@@ -264,7 +301,7 @@ export default function ModuleStarter() {
             transition={{ delay: 0.55, duration: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <SlideButton href={APP_URL} label="Start 7-Day Free Trial →" />
+            <SlideButton href={APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : 'Start 7-Day Free Trial →'} />
             <a
               href="#how-it-works"
               className="rounded-full border border-white/[0.15] px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/55 hover:border-white/30 hover:text-white/80 transition-all duration-300"
@@ -273,7 +310,9 @@ export default function ModuleStarter() {
             </a>
           </motion.div>
           <p className="mt-4 font-mono text-[9px] uppercase tracking-widest text-white/25">
-            No credit card required · Cancel anytime
+            {slug === 'missionary'
+              ? 'Missionary Spanish is always free — no trial, no card, no expiration'
+              : 'No credit card required · Cancel anytime'}
           </p>
         </section>
 

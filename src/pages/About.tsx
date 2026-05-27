@@ -115,15 +115,14 @@ function MissionSection() {
 
 function AreasWeServeSection() {
   const areas = [
-    { emoji: '🏥', title: 'Medical Spanish', link: 'https://medicalspanish.app', linkLabel: 'medicalspanish.app' },
-    { emoji: '🔨', title: 'Construction Spanish', link: 'https://constructionspanish.app', linkLabel: 'constructionspanish.app' },
-    { emoji: '🧭', title: 'Faith & Missions', link: '/module/missionary', linkLabel: 'Start Learning' },
-    { emoji: '⚽', title: 'Sports Coaching', link: '/module/sports', linkLabel: 'Start Learning' },
-    { emoji: '🌾', title: 'Agriculture', link: '/module/agriculture', linkLabel: 'Start Learning' },
-    { emoji: '🍽️', title: 'Hospitality & Service', link: '/module/hospitality', linkLabel: 'Start Learning' },
-    { emoji: '⚖️', title: 'Legal & Immigration', link: '/module/education', linkLabel: 'Start Learning' },
-    { emoji: '🎓', title: 'K–12 Education', link: '/module/kids', linkLabel: 'Start Learning' },
-    { emoji: '🗣️', title: 'English for Work', link: '/module/education', linkLabel: 'Start Learning' },
+    { emoji: '🏥', title: 'Medical Spanish',        link: 'https://medicalspanish.app',      linkLabel: 'medicalspanish.app',      external: true  },
+    { emoji: '🔨', title: 'Construction Spanish',   link: 'https://constructionspanish.app', linkLabel: 'constructionspanish.app', external: true  },
+    { emoji: '🧭', title: 'Faith & Missions',       link: '/module/missionary',              linkLabel: 'Start Learning',          external: false },
+    { emoji: '⚽', title: 'Sports Coaching',         link: '/module/sports',                  linkLabel: 'Start Learning',          external: false },
+    { emoji: '🌾', title: 'Agriculture',             link: '/module/agriculture',             linkLabel: 'Start Learning',          external: false },
+    { emoji: '🍽️', title: 'Hospitality & Service', link: '/module/hospitality',             linkLabel: 'Start Learning',          external: false },
+    { emoji: '⚖️', title: 'Legal & Immigration',    link: '/module/education',               linkLabel: 'Education Module →',      external: false },
+    { emoji: '🎓', title: 'K–12 Education',          link: '/module/education',               linkLabel: 'Start Learning',          external: false },
   ]
 
   return (
@@ -143,28 +142,48 @@ function AreasWeServeSection() {
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {areas.map((area) => (
-              <a
-                key={area.title}
-                href={area.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl p-4 transition-all no-underline"
-                style={{ backgroundColor: '#161616', border: '1px solid rgba(201,168,76,0.12)' }}
-                onMouseEnter={(e) => { (e.currentTarget).style.borderColor = 'rgba(201,168,76,0.35)' }}
-                onMouseLeave={(e) => { (e.currentTarget).style.borderColor = 'rgba(201,168,76,0.12)' }}
-                onFocus={(e) => { (e.currentTarget).style.borderColor = 'rgba(201,168,76,0.5)' }}
-                onBlur={(e) => { (e.currentTarget).style.borderColor = 'rgba(201,168,76,0.12)' }}
-              >
-                <span className="text-2xl">{area.emoji}</span>
-                <div>
-                  <div className="text-sm font-semibold" style={{ ...serifFont, color: '#F7F3EC' }}>{area.title}</div>
-                  <div className="text-xs mt-0.5 transition-colors" style={{ ...sansFont, color: '#C9A84C' }}>
-                    {area.linkLabel} →
+            {areas.map((area) => {
+              const cardClass = "group flex items-center gap-4 rounded-xl p-4 transition-all no-underline"
+              const cardStyle = { backgroundColor: '#161616', border: '1px solid rgba(201,168,76,0.12)' }
+              const onEnter = (e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,168,76,0.35)' }
+              const onLeave = (e: React.MouseEvent<HTMLElement>) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(201,168,76,0.12)' }
+              const inner = (
+                <>
+                  <span className="text-2xl">{area.emoji}</span>
+                  <div>
+                    <div className="text-sm font-semibold" style={{ ...serifFont, color: '#F7F3EC' }}>{area.title}</div>
+                    <div className="text-xs mt-0.5 transition-colors" style={{ ...sansFont, color: '#C9A84C' }}>
+                      {area.linkLabel} →
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </>
+              )
+              return area.external ? (
+                <a
+                  key={area.title}
+                  href={area.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                  style={cardStyle}
+                  onMouseEnter={onEnter}
+                  onMouseLeave={onLeave}
+                >
+                  {inner}
+                </a>
+              ) : (
+                <Link
+                  key={area.title}
+                  to={area.link}
+                  className={cardClass}
+                  style={cardStyle}
+                  onMouseEnter={onEnter}
+                  onMouseLeave={onLeave}
+                >
+                  {inner}
+                </Link>
+              )
+            })}
           </div>
         </div>
       </FadeIn>

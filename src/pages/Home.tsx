@@ -95,7 +95,7 @@ const STATS = [
   { n: '7',    label: 'Languages',                   icon: '🌐' },
   { n: '26+',  label: 'Modules',                     icon: '📦' },
   { n: '660+', label: 'Pro Lessons',                 icon: '📚' },
-  { n: 'MD',   label: 'Built by an Orthopedic Surgeon', icon: '🩺' },
+  { n: 'MD',   label: 'Surgeon-Built', icon: '🩺' },
 ]
 
 // ── Language ticker ───────────────────────────────────────────────────────────
@@ -366,8 +366,13 @@ export default function Home() {
               viewport={{ once: true }} transition={{ delay: 0.5, duration: 0.8 }}
               className="mt-8 text-center"
             >
-              <a href={APP_URL} className="font-mono text-[11px] uppercase tracking-[0.25em] hover:text-amber-300 transition-colors" style={{ color: GOLD }}>
-                Try All Three Modes Free →
+              <a
+                href={APP_URL}
+                className="group relative overflow-hidden inline-block rounded-full px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-black font-semibold hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] transition-all duration-300"
+                style={{ backgroundColor: GOLD }}
+              >
+                <span className="relative z-10">Try All Three Modes Free →</span>
+                <span className="absolute inset-0 bg-amber-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </a>
             </motion.div>
           </div>
@@ -464,7 +469,7 @@ export default function Home() {
               >
                 <div className="text-2xl mb-1">{s.icon}</div>
                 <div className="font-serif text-3xl sm:text-4xl font-bold" style={{ color: GOLD }}>{s.n}</div>
-                <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/40 mt-1 leading-tight">{s.label}</div>
+                <div className="font-mono text-[11px] uppercase tracking-[0.15em] text-white/60 mt-1 leading-tight">{s.label}</div>
               </motion.div>
             ))}
           </div>
