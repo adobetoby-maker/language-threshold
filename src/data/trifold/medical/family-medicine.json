@@ -1,0 +1,53 @@
+{
+  "id": "family-medicine",
+  "dialogues": [
+    {
+      "they_es": "¿Cuándo debo tomar la medicina para la presión?",
+      "they_en": "When should I take my blood pressure medication?",
+      "you_es": "Todas las mañanas con el desayuno.",
+      "you_en": "Every morning with breakfast."
+    },
+    {
+      "they_es": "Mi azúcar está muy alta. ¿Qué hago?",
+      "they_en": "My blood sugar is very high. What do I do?",
+      "you_es": "Reduzca los dulces y carbohidratos. Camine treinta minutos.",
+      "you_en": "Reduce sweets and carbs. Walk thirty minutes."
+    },
+    {
+      "they_es": "¿Puedo dejar de tomar mi medicina?",
+      "they_en": "Can I stop taking my medication?",
+      "you_es": "No, es peligroso. Hablemos primero.",
+      "you_en": "No, it's dangerous. Let's talk first."
+    },
+    {
+      "they_es": "Mis análisis de sangre están normales, ¿verdad?",
+      "they_en": "My blood tests are normal, right?",
+      "you_es": "Sí, todo está bien. Vuelva en seis meses.",
+      "you_en": "Yes, everything is fine. Come back in six months."
+    },
+    {
+      "they_es": "¿Necesito la vacuna de la gripe?",
+      "they_en": "Do I need the flu shot?",
+      "you_es": "Sí, especialmente a su edad.",
+      "you_en": "Yes, especially at your age."
+    },
+    {
+      "they_es": "Estoy ganando peso sin razón.",
+      "they_en": "I'm gaining weight for no reason.",
+      "you_es": "Quizás es la medicina. Vamos a revisar su tiroides.",
+      "you_en": "Maybe it's the medication. Let's check your thyroid."
+    },
+    {
+      "they_es": "¿Necesito hacer ejercicio?",
+      "they_en": "Do I need to exercise?",
+      "you_es": "Sí, treinta minutos diarios. Caminar es suficiente.",
+      "you_en": "Yes, thirty minutes daily. Walking is enough."
+    },
+    {
+      "they_es": "¿Cuándo debo regresar para otra cita?",
+      "they_en": "When should I come back for another visit?",
+      "you_es": "En tres meses. Voy a enviar recordatorio.",
+      "you_en": "In three months. I'll send a reminder."
+    }
+  ]
+}

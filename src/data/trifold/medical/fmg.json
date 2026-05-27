@@ -1,0 +1,54 @@
+{
+  "id": "fmg",
+  "title": "Foreign Medical Graduate Communication",
+  "dialogues": [
+    {
+      "they_es": "¿Puedo presentar al paciente, Doctor?",
+      "they_en": "May I present the patient, Doctor?",
+      "you_es": "Adelante, pero sea breve y conciso.",
+      "you_en": "Go ahead, but be brief and concise."
+    },
+    {
+      "they_es": "El paciente tiene los signos vitales estables.",
+      "they_en": "The patient has stable vital signs.",
+      "you_es": "¿Cuál es la presión sistólica?",
+      "you_en": "What's the systolic pressure?"
+    },
+    {
+      "they_es": "¿Debería ordenar un ECG?",
+      "they_en": "Should I order an EKG?",
+      "you_es": "Sí, y después tráigame los resultados.",
+      "you_en": "Yes, and bring me the results afterward."
+    },
+    {
+      "they_es": "¿Cómo lleno la evaluación del paciente?",
+      "they_en": "How do I fill out the patient assessment?",
+      "you_es": "Use la plantilla en el sistema electrónico.",
+      "you_en": "Use the template in the electronic system."
+    },
+    {
+      "they_es": "¿Puedo documentar el diagnóstico diferencial?",
+      "they_en": "Can I document the differential diagnosis?",
+      "you_es": "Sí, pero primero confirme conmigo.",
+      "you_en": "Yes, but confirm with me first."
+    },
+    {
+      "they_es": "¿Qué antibiótico empírico debo usar?",
+      "they_en": "What empirical antibiotic should I use?",
+      "you_es": "Siga el protocolo de cefexina más cuidado.",
+      "you_en": "Follow the cephalexin protocol with monitoring."
+    },
+    {
+      "they_es": "¿Necesito escribir una nota de progreso?",
+      "they_en": "Do I need to write a progress note?",
+      "you_es": "Sí, use el formato SOAP y sea detallado.",
+      "you_en": "Yes, use SOAP format and be detailed."
+    },
+    {
+      "they_es": "¿Cómo presento esto al comité de pares?",
+      "they_en": "How do I present this to the peer review committee?",
+      "you_es": "Prepare datos clínicos claros y justifique sus decisiones.",
+      "you_en": "Prepare clear clinical data and justify your decisions."
+    }
+  ]
+}

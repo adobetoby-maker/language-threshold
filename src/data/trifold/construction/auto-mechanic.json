@@ -1,0 +1,53 @@
+{
+  "id": "auto-mechanic",
+  "dialogues": [
+    {
+      "they_es": "¿Cuál es el problema del coche?",
+      "they_en": "What's the problem with the car?",
+      "you_es": "El motor hace ruido. Revisa los cilindros.",
+      "you_en": "The engine is noisy. Check the cylinders."
+    },
+    {
+      "they_es": "¿Autorizó el cliente la reparación?",
+      "they_en": "Did the customer authorize the repair?",
+      "you_es": "Sí, firma aquí. Costo total mil dólares.",
+      "you_en": "Yes, sign here. Total cost one thousand dollars."
+    },
+    {
+      "they_es": "¿Tenemos la pieza en la tienda?",
+      "they_en": "Do we have the part in the shop?",
+      "you_es": "No, la pido hoy. Llega mañana por la mañana.",
+      "you_en": "No, I'll order it today. Arrives tomorrow morning."
+    },
+    {
+      "they_es": "¿Cuándo recoge el cliente su coche?",
+      "they_en": "When does the customer pick up the car?",
+      "you_es": "A las tres de la tarde. Todo debe estar listo.",
+      "you_en": "At three PM. Everything must be ready."
+    },
+    {
+      "they_es": "¿Cuál es el costo total de la reparación?",
+      "they_en": "What's the total cost of the repair?",
+      "you_es": "Mano de obra cien, piezas novecientos. Total mil.",
+      "you_en": "Labor one hundred, parts nine hundred. Total one thousand."
+    },
+    {
+      "they_es": "¿Ya probamos el coche?",
+      "they_en": "Did we already test the car?",
+      "you_es": "Sí, funciona bien. Sin problemas ahora.",
+      "you_en": "Yes, it works fine. No problems now."
+    },
+    {
+      "they_es": "¿El cliente pagó el depósito?",
+      "they_en": "Did the customer pay the deposit?",
+      "you_es": "No, pagó todo al recoger el coche.",
+      "you_en": "No, he'll pay everything when picking up."
+    },
+    {
+      "they_es": "¿Qué garantía le damos?",
+      "they_en": "What warranty do we give?",
+      "you_es": "Tres meses en las piezas nuevas. Por escrito.",
+      "you_en": "Three months on new parts. In writing."
+    }
+  ]
+}

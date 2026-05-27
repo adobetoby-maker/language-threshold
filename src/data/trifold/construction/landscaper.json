@@ -1,0 +1,53 @@
+{
+  "id": "landscaper",
+  "dialogues": [
+    {
+      "they_es": "¿Dónde plantamos los árboles?",
+      "they_en": "Where do we plant the trees?",
+      "you_es": "Aquí, según el plano. Espaciados tres metros.",
+      "you_en": "Here, per the plan. Three meters apart."
+    },
+    {
+      "they_es": "¿Qué tipo de plantas usamos?",
+      "they_en": "What type of plants do we use?",
+      "you_es": "Palmas y arbustos. El cliente lo pidió.",
+      "you_en": "Palms and shrubs. The customer requested them."
+    },
+    {
+      "they_es": "¿Cuándo regaremos el riego?",
+      "they_en": "When do we water the irrigation?",
+      "you_es": "Temprano, antes de las ocho de la mañana.",
+      "you_en": "Early, before eight in the morning."
+    },
+    {
+      "they_es": "¿Cuál es el horario para cortar el pasto?",
+      "they_en": "What's the schedule for mowing?",
+      "you_es": "Martes y viernes. El pasto debe estar corto.",
+      "you_en": "Tuesday and Friday. The grass must be short."
+    },
+    {
+      "they_es": "¿El cliente tiene más pedidos?",
+      "they_en": "Does the customer have more requests?",
+      "you_es": "Sí, quiere flores en el frente. Amarillas.",
+      "you_en": "Yes, wants flowers in front. Yellow ones."
+    },
+    {
+      "they_es": "¿Dónde ponemos el abono?",
+      "they_en": "Where do we put the mulch?",
+      "you_es": "Alrededor de los árboles. Cinco centímetros.",
+      "you_en": "Around the trees. Five centimeters."
+    },
+    {
+      "they_es": "¿Tenemos los materiales suficientes?",
+      "they_en": "Do we have enough materials?",
+      "you_es": "Casi, pero falta tierra. Compra más bolsas.",
+      "you_en": "Almost, but we need soil. Buy more bags."
+    },
+    {
+      "they_es": "¿Necesitamos el tractor hoy?",
+      "they_en": "Do we need the tractor today?",
+      "you_es": "Sí, para nivelar el terreno primero.",
+      "you_en": "Yes, to level the ground first."
+    }
+  ]
+}

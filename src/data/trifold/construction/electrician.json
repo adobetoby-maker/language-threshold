@@ -1,0 +1,53 @@
+{
+  "id": "electrician",
+  "dialogues": [
+    {
+      "they_es": "¿Cuántos amperios necesita el panel?",
+      "they_en": "How many amps does the panel need?",
+      "you_es": "Doscientos amperios, revisa los planos.",
+      "you_en": "Two hundred amps, check the plans."
+    },
+    {
+      "they_es": "¿Qué calibre de cable usamos aquí?",
+      "they_en": "What gauge wire do we use here?",
+      "you_es": "Número diez para este circuito.",
+      "you_en": "Number ten for this circuit."
+    },
+    {
+      "they_es": "¿Por dónde pasa el conducto?",
+      "they_en": "Where does the conduit run?",
+      "you_es": "Junto a la pared norte, bajo tierra.",
+      "you_en": "Along the north wall, underground."
+    },
+    {
+      "they_es": "¿Pasó la inspección del inspector?",
+      "they_en": "Did the inspector pass it?",
+      "you_es": "Sí, pero revisa las conexiones del neutro.",
+      "you_en": "Yes, but check the neutral connections."
+    },
+    {
+      "they_es": "¿Apagamos todo antes de empezar?",
+      "they_en": "Do we shut everything off first?",
+      "you_es": "Sí, lockout-tagout en la caja principal.",
+      "you_en": "Yes, lockout-tagout at the main box."
+    },
+    {
+      "they_es": "¿Tenemos los conectores en stock?",
+      "they_en": "Do we have the connectors in stock?",
+      "you_es": "Sí, están en la camioneta. Tráelos aquí.",
+      "you_en": "Yes, they're in the truck. Bring them here."
+    },
+    {
+      "they_es": "¿Cuál es el voltaje de esta línea?",
+      "they_en": "What's the voltage on this line?",
+      "you_es": "Ciento diez y ocho voltios. Espera antes de tocar.",
+      "you_en": "One-eighteen volts. Wait before touching."
+    },
+    {
+      "they_es": "¿Dónde pongo las tomas de corriente?",
+      "they_en": "Where do I put the outlets?",
+      "you_es": "Cada dos metros en la cocina. Sigue el plano.",
+      "you_en": "Every two meters in the kitchen. Follow the plan."
+    }
+  ]
+}

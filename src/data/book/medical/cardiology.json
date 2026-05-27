@@ -1,0 +1,273 @@
+{
+  "id": "cardiology",
+  "title": "Cardiology",
+  "emoji": "❤️",
+  "color": "#EF4444",
+  "chapterIntro": {
+    "en": "In cardiology, clear communication about heart health is critical. This chapter covers EKG interpretation, heart failure management, medication adherence, and lifestyle counseling. You will learn how to discuss symptoms, explain test results, and guide patients through treatment plans with confidence and cultural sensitivity.",
+    "es": "En cardiología, la comunicación clara sobre la salud del corazón es crítica. Este capítulo cubre la interpretación del EKG, el manejo de la insuficiencia cardíaca, la adherencia a los medicamentos y el asesoramiento sobre el estilo de vida. Aprenderá a discutir síntomas, explicar resultados de pruebas y guiar a los pacientes a través de planes de tratamiento con confianza y sensibilidad cultural."
+  },
+  "grammarFocus": [
+    {
+      "topic": "Conditional commands with \"if\" clauses for treatment scenarios",
+      "en": "If your heart rate stays above 100, we will need to increase your medication.",
+      "es": "Si su frecuencia cardíaca se mantiene por encima de 100, necesitaremos aumentar su medicamento.",
+      "explanation": "Present conditional (will need) paired with present tense condition to explain cause-and-effect in treatment."
+    },
+    {
+      "topic": "Imperative form for lifestyle instructions",
+      "en": "Reduce your salt intake, avoid caffeine, and exercise for 30 minutes daily.",
+      "es": "Reduzca su ingesta de sal, evite la cafeína y haga ejercicio 30 minutos diarios.",
+      "explanation": "Formal imperative commands (reduce, avoid, exercise) direct patients on behavior change."
+    },
+    {
+      "topic": "Present perfect to report recent symptoms",
+      "en": "Have you experienced shortness of breath or chest pain in the past week?",
+      "es": "¿Ha experimentado falta de aire o dolor en el pecho en la última semana?",
+      "explanation": "Present perfect (ha experimentado) asks about recent ongoing experiences."
+    },
+    {
+      "topic": "Passive voice to explain medical procedures",
+      "en": "A stent was placed in your left coronary artery to improve blood flow.",
+      "es": "Se colocó un stent en su arteria coronaria izquierda para mejorar el flujo de sangre.",
+      "explanation": "Passive construction (se colocó) commonly used in medical explanations to focus on the action and outcome."
+    }
+  ],
+  "extendedVocab": [
+    {
+      "en": "EKG / ECG",
+      "es": "electrocardiograma / EKG",
+      "pronunciation": "eh-lek-troh-kahr-dee-oh-GRAH-mah",
+      "context": "Your EKG shows normal sinus rhythm."
+    },
+    {
+      "en": "heart failure",
+      "es": "insuficiencia cardíaca",
+      "pronunciation": "in-soo-fee-see-EN-see-ah kahr-dee-AH-kah",
+      "context": "This patient has chronic heart failure."
+    },
+    {
+      "en": "arrhythmia",
+      "es": "arritmia",
+      "pronunciation": "ah-REET-mee-ah",
+      "context": "The arrhythmia is causing irregular heartbeats."
+    },
+    {
+      "en": "stent",
+      "es": "stent / endoprótesis vascular",
+      "pronunciation": "STENT / en-doh-PROH-teh-sis vahs-koo-LAHR",
+      "context": "We will place a stent during the catheterization."
+    },
+    {
+      "en": "cholesterol",
+      "es": "colesterol",
+      "pronunciation": "koh-les-teh-ROHL",
+      "context": "Your cholesterol levels are elevated."
+    },
+    {
+      "en": "pacemaker",
+      "es": "marcapasos",
+      "pronunciation": "mahr-kah-PAH-sos",
+      "context": "Some patients need a pacemaker to regulate heartbeat."
+    },
+    {
+      "en": "angina",
+      "es": "angina de pecho",
+      "pronunciation": "ahn-HEE-nah deh PEH-choh",
+      "context": "Angina is chest pain due to reduced blood flow."
+    },
+    {
+      "en": "edema",
+      "es": "edema / hinchazón",
+      "pronunciation": "eh-DEH-mah / een-chah-SOHN",
+      "context": "I notice swelling (edema) in both your ankles."
+    },
+    {
+      "en": "blood thinner",
+      "es": "anticoagulante / adelgazador de sangre",
+      "pronunciation": "ahn-tee-koh-ah-goo-LAHN-teh / ah-del-gah-sah-DOR deh SAHN-greh",
+      "context": "This blood thinner helps prevent clots."
+    },
+    {
+      "en": "cardiac catheterization",
+      "es": "cateterismo cardíaco",
+      "pronunciation": "kah-teh-teh-REES-moh kahr-dee-AH-koh",
+      "context": "We may recommend cardiac catheterization to assess blockages."
+    },
+    {
+      "en": "coronary artery",
+      "es": "arteria coronaria",
+      "pronunciation": "ahr-teh-REE-ah koh-roh-NAH-ree-ah",
+      "context": "Blockage in the left coronary artery is common."
+    },
+    {
+      "en": "blood pressure",
+      "es": "presión arterial / tensión arterial",
+      "pronunciation": "preh-see-OHN ahr-teh-ree-AHL / ten-see-OHN ahr-teh-ree-AHL",
+      "context": "Your blood pressure is well controlled on medication."
+    },
+    {
+      "en": "heart murmur",
+      "es": "soplo cardíaco",
+      "pronunciation": "SOH-ploh kahr-dee-AH-koh",
+      "context": "I detected a heart murmur during the exam."
+    },
+    {
+      "en": "myocardial infarction (MI)",
+      "es": "infarto de miocardio / infarto",
+      "pronunciation": "een-FAHR-toh deh mee-oh-KAHR-dee-oh",
+      "context": "A previous MI increases the risk of another event."
+    },
+    {
+      "en": "ejection fraction",
+      "es": "fracción de eyección",
+      "pronunciation": "frahk-see-OHN deh eh-yek-see-OHN",
+      "context": "The ejection fraction measures how well the heart pumps."
+    },
+    {
+      "en": "atrial fibrillation",
+      "es": "fibrilación auricular",
+      "pronunciation": "fee-bree-lah-see-OHN ow-ree-koo-LAHR",
+      "context": "Atrial fibrillation increases stroke risk."
+    },
+    {
+      "en": "hypertension",
+      "es": "hipertensión / presión alta",
+      "pronunciation": "ee-per-ten-see-OHN / preh-see-OHN AHL-tah",
+      "context": "Chronic hypertension damages the heart over time."
+    },
+    {
+      "en": "medication adherence",
+      "es": "adherencia a los medicamentos",
+      "pronunciation": "ah-deh-REN-see-ah ah lohs meh-dee-kah-MEN-tohs",
+      "context": "Good medication adherence improves outcomes."
+    },
+    {
+      "en": "lifestyle modification",
+      "es": "cambios de estilo de vida",
+      "pronunciation": "KAHM-bee-ohs deh es-TEE-loh deh VEE-dah",
+      "context": "Lifestyle modifications are key to managing heart disease."
+    },
+    {
+      "en": "cardiac ultrasound / echocardiogram",
+      "es": "ecocardiograma",
+      "pronunciation": "eh-koh-kahr-dee-oh-GRAH-mah",
+      "context": "The echocardiogram shows the heart structure clearly."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Your EKG shows an irregular heartbeat. I want to put you on a blood thinner and have you back here in two weeks.",
+      "es": "Su electrocardiograma muestra un latido irregular. Quiero recetarle un anticoagulante y verle de nuevo en dos semanas."
+    },
+    {
+      "en": "Have you been experiencing any chest pain, shortness of breath, or palpitations?",
+      "es": "¿Ha experimentado algún dolor en el pecho, falta de aire o palpitaciones?"
+    },
+    {
+      "en": "I need you to take this medication every day without missing a dose.",
+      "es": "Necesito que tome este medicamento todos los días sin faltar una dosis."
+    },
+    {
+      "en": "The blockage in your artery is significant. We recommend a stent placement to restore blood flow.",
+      "es": "El bloqueo en su arteria es significativo. Recomendamos la colocación de un stent para restaurar el flujo de sangre."
+    },
+    {
+      "en": "Please reduce your salt intake and avoid processed foods.",
+      "es": "Por favor, reduzca su ingesta de sal y evite los alimentos procesados."
+    },
+    {
+      "en": "Exercise for at least 30 minutes, five days a week. Walking is excellent.",
+      "es": "Haga ejercicio al menos 30 minutos, cinco días a la semana. Caminar es excelente."
+    },
+    {
+      "en": "Your blood pressure needs to be monitored closely. Check it at home daily.",
+      "es": "Su presión arterial necesita ser monitoreada de cerca. Revísela en casa diariamente."
+    },
+    {
+      "en": "Do not stop taking your medications without talking to me first.",
+      "es": "No deje de tomar sus medicamentos sin hablar conmigo primero."
+    },
+    {
+      "en": "The echocardiogram shows that your heart is pumping at 35% capacity. This is heart failure.",
+      "es": "El ecocardiograma muestra que su corazón bombea al 35% de capacidad. Esto es insuficiencia cardíaca."
+    },
+    {
+      "en": "If you experience chest pain or shortness of breath, call 911 immediately.",
+      "es": "Si experimenta dolor en el pecho o falta de aire, llame al 911 inmediatamente."
+    },
+    {
+      "en": "Your cholesterol is too high. We will start you on a statin medication.",
+      "es": "Su colesterol es demasiado alto. Le iniciaremos un medicamento estatina."
+    },
+    {
+      "en": "I detected a heart murmur. I want to order an ultrasound to evaluate it further.",
+      "es": "Detecté un soplo cardíaco. Quiero ordenar una ecografía para evaluarlo más."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "prompt": "Your EKG shows __________ (arrhythmia). We will need to adjust your medication.",
+        "en_answer": "an arrhythmia / irregular rhythm",
+        "es_answer": "una arritmia / un ritmo irregular",
+        "context": "Completing the diagnosis statement in the examination context."
+      },
+      {
+        "prompt": "Please reduce your __________ (salt) intake to help control your blood pressure.",
+        "en_answer": "salt",
+        "es_answer": "sal",
+        "context": "Lifestyle counseling for hypertension management."
+      },
+      {
+        "prompt": "This __________ (blood thinner) will help prevent blood clots and reduce your stroke risk.",
+        "en_answer": "blood thinner",
+        "es_answer": "anticoagulante",
+        "context": "Explaining medication purpose to a patient with atrial fibrillation."
+      },
+      {
+        "prompt": "The __________ (echocardiogram) shows that your heart is pumping at only 30% capacity.",
+        "en_answer": "echocardiogram",
+        "es_answer": "ecocardiograma",
+        "context": "Explaining test results to a patient with heart failure."
+      },
+      {
+        "prompt": "We will place a __________ (stent) during the cardiac catheterization to open the blockage.",
+        "en_answer": "stent",
+        "es_answer": "stent / endoprótesis vascular",
+        "context": "Describing an interventional cardiology procedure."
+      }
+    ],
+    "translation": [
+      {
+        "prompt_en": "Have you experienced any chest pain or shortness of breath in the past week?",
+        "prompt_es": "¿Ha experimentado algún dolor en el pecho o falta de aire en la última semana?",
+        "model_answer_es": "¿Ha experimentado algún dolor en el pecho o falta de aire en la última semana?",
+        "model_answer_en": "Have you experienced any chest pain or shortness of breath in the past week?"
+      },
+      {
+        "prompt_en": "Your blood pressure is too high. I want you to take this medication every day.",
+        "prompt_es": "Su presión arterial es demasiado alta. Quiero que tome este medicamento todos los días.",
+        "model_answer_es": "Su presión arterial es demasiado alta. Quiero que tome este medicamento todos los días.",
+        "model_answer_en": "Your blood pressure is too high. I want you to take this medication every day."
+      },
+      {
+        "prompt_en": "Please exercise for 30 minutes and reduce your salt intake. This will help your heart.",
+        "prompt_es": "Por favor, haga ejercicio 30 minutos y reduzca su ingesta de sal. Esto ayudará a su corazón.",
+        "model_answer_es": "Por favor, haga ejercicio 30 minutos y reduzca su ingesta de sal. Esto ayudará a su corazón.",
+        "model_answer_en": "Please exercise for 30 minutes and reduce your salt intake. This will help your heart."
+      },
+      {
+        "prompt_en": "If you experience chest pain or palpitations, call 911 immediately. Do not wait.",
+        "prompt_es": "Si experimenta dolor en el pecho o palpitaciones, llame al 911 inmediatamente. No espere.",
+        "model_answer_es": "Si experimenta dolor en el pecho o palpitaciones, llame al 911 inmediatamente. No espere.",
+        "model_answer_en": "If you experience chest pain or palpitations, call 911 immediately. Do not wait."
+      }
+    ]
+  },
+  "culturalNote": {
+    "title": "Cultural Perspectives on Heart Health and Family Involvement",
+    "en": "In many Latino cultures, family plays a central role in health decision-making and treatment adherence. When discussing cardiology treatment, involve family members in conversations about medication adherence, dietary changes, and lifestyle modifications. Additionally, some patients may attribute heart problems to emotional stress (susto, espanto—fright or shock) or spiritual imbalance. Acknowledging these beliefs while providing evidence-based medical guidance builds trust and improves outcomes. Be aware that concepts like 'heart disease' may carry shame in some families; frame conversations around prevention, management, and control rather than blame or lifestyle judgment.",
+    "es": "En muchas culturas latinas, la familia juega un papel central en la toma de decisiones de salud y la adherencia al tratamiento. Al discutir el tratamiento de cardiología, involucre a los miembros de la familia en conversaciones sobre adherencia a medicamentos, cambios dietéticos y modificaciones del estilo de vida. Además, algunos pacientes pueden atribuir problemas del corazón al estrés emocional (susto, espanto) o desequilibrio espiritual. Reconocer estas creencias mientras se proporciona orientación médica basada en evidencia construye confianza y mejora los resultados. Tenga en cuenta que conceptos como 'enfermedad del corazón' pueden llevar vergüenza en algunas familias; enmarque conversaciones alrededor de la prevención, el manejo y el control en lugar de culpa o juicio del estilo de vida."
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "id": "framer",
+  "title": "Framer",
+  "tagline": "Wall layout, blueprint reading, crew communication on the deck.",
+  "emoji": "🔨",
+  "color": "#FF7A4A",
+  "chapterIntro": {
+    "en": "Framing is the backbone of construction—and on a real jobsite, the framer's crew is the heartbeat of the project. This chapter is built on the reality of bilingual crews: English-speaking supervisors, Spanish-dominant framers, and the critical need to communicate measurements, directions, and safety instantly. You'll learn the command language that keeps a frame crew synchronized, how to read blueprints together, and the subtle cultural difference between barking orders and building trust. On some jobsites, you'll use informal 'tú' commands with crew you know; on others, 'usted' maintains professionalism. Both work—but only if you know the difference.",
+    "es": "El encofrado es la columna vertebral de la construcción—y en un sitio de trabajo real, la cuadrilla del encofrador es el corazón del proyecto. Este capítulo se construye sobre la realidad de cuadrillas bilingües: supervisores de habla inglesa, encofradores de habla hispana, y la necesidad crítica de comunicar medidas, direcciones, y seguridad al instante. Aprenderás el lenguaje de comando que mantiene sincronizada una cuadrilla de encofrado, cómo leer planos juntos, y la diferencia cultural sutil entre dar órdenes y construir confianza. En algunos sitios de trabajo, usarás comandos informales de 'tú' con la cuadrilla que conoces; en otros, 'usted' mantiene la profesionalidad. Ambos funcionan—pero solo si conoces la diferencia."
+  },
+  "grammarFocus": {
+    "title": "Imperative Commands: The Language of Work",
+    "description": "Framing demands speed and precision. Imperative verbs—commands—are the backbone of jobsite communication. Learn the tú (informal) and usted (formal) forms, and understand when each one builds crew cohesion versus when it signals disrespect.",
+    "patterns": [
+      {
+        "pattern": "Tú command (regular -ar verb): HABLA + tú = speak → Habla con el supervisor.",
+        "en": "Speak with the supervisor.",
+        "es": "Habla con el supervisor.",
+        "context": "Used with crew members you work with daily; signals familiarity and trust."
+      },
+      {
+        "pattern": "Usted command (formal): habla + usted = speak → Hable con el supervisor.",
+        "en": "Please speak with the supervisor.",
+        "es": "Hable con el supervisor.",
+        "context": "Used on new jobsites or when hierarchy matters; signals respect."
+      },
+      {
+        "pattern": "Irregular -ir verb (venir = come): Ven (tú) vs. Venga (usted)",
+        "en": "Come here (informal) / Come here (formal)",
+        "es": "Ven acá (tú) / Venga acá (usted)",
+        "context": "Critical distinction in real jobsites; same action, different tone."
+      },
+      {
+        "pattern": "Negative command: No + conjugated form → No cuelgues eso mal. / No cuelgue eso mal.",
+        "en": "Don't hang that wrong (informal/formal).",
+        "es": "No cuelgues eso mal. / No cuelgue eso mal.",
+        "context": "Safety corrections; familiarity determines which form maintains respect."
+      },
+      {
+        "pattern": "Plural command (ustedes = all): Claven esos postes. (Nail those studs.)",
+        "en": "You all nail those studs.",
+        "es": "Claven esos postes. (ustedes)",
+        "context": "Directing the whole crew; singular tú/usted is too narrow."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "stud",
+      "es": "poste / pieza vertical",
+      "category": "Lumber",
+      "context": "The vertical framing members; typically 2×4 or 2×6."
+    },
+    {
+      "en": "joist",
+      "es": "vigueta",
+      "category": "Lumber",
+      "context": "Horizontal framing members in floors or ceilings."
+    },
+    {
+      "en": "header",
+      "es": "dintel",
+      "category": "Lumber",
+      "context": "Horizontal member above doors and windows to carry load."
+    },
+    {
+      "en": "plumb",
+      "es": "a plomo",
+      "category": "Measurement / Alignment",
+      "context": "Perfectly vertical; critical for walls and posts."
+    },
+    {
+      "en": "level",
+      "es": "nivel / a nivel",
+      "category": "Measurement / Alignment",
+      "context": "Perfectly horizontal; checked with a bubble level."
+    },
+    {
+      "en": "blueprint",
+      "es": "planos de construcción / planos",
+      "category": "Documentation",
+      "context": "Set of architectural drawings showing framing layout."
+    },
+    {
+      "en": "layout",
+      "es": "trazo / distribución",
+      "category": "Work Process",
+      "context": "The process of marking wall positions before cutting."
+    },
+    {
+      "en": "snap a line",
+      "es": "tirar una línea de tiza",
+      "category": "Work Process",
+      "context": "Use a chalk line to mark a long, straight line on the deck."
+    },
+    {
+      "en": "sixteen on center (16\" OC)",
+      "es": "dieciséis pulgadas de centro a centro",
+      "category": "Measurement",
+      "context": "Standard stud spacing; critical for framing layout."
+    },
+    {
+      "en": "blocking",
+      "es": "bloque de relleno",
+      "category": "Lumber",
+      "context": "Short pieces of lumber used to brace or fill spaces."
+    },
+    {
+      "en": "sheathing",
+      "es": "forro / tablero estructural",
+      "category": "Materials",
+      "context": "Plywood or OSB fastened to studs to brace the frame."
+    },
+    {
+      "en": "nail gun",
+      "es": "clavadora neumática",
+      "category": "Tools",
+      "context": "Pneumatic tool powered by compressed air; standard on framing crews."
+    },
+    {
+      "en": "reciprocating saw",
+      "es": "sierra alternativa",
+      "category": "Tools",
+      "context": "Handheld saw used for rough cuts and openings."
+    },
+    {
+      "en": "circular saw",
+      "es": "sierra circular",
+      "category": "Tools",
+      "context": "Portable saw for cutting lumber to length and width."
+    },
+    {
+      "en": "framing square",
+      "es": "escuadra de carpintero",
+      "category": "Tools",
+      "context": "Large metal square used for marking and checking angles."
+    },
+    {
+      "en": "chalk line",
+      "es": "cuerda de tiza / línea de tiza",
+      "category": "Tools",
+      "context": "Tool that snaps a straight chalk mark on the deck."
+    },
+    {
+      "en": "top plate",
+      "es": "solera superior",
+      "category": "Lumber",
+      "context": "Horizontal member at the top of a wall."
+    },
+    {
+      "en": "bottom plate",
+      "es": "solera inferior",
+      "category": "Lumber",
+      "context": "Horizontal member at the base of a wall, secured to the foundation."
+    },
+    {
+      "en": "corner post",
+      "es": "poste de esquina",
+      "category": "Lumber",
+      "context": "Reinforced vertical member at a wall corner."
+    },
+    {
+      "en": "cripple",
+      "es": "pequeño poste / pieza corta",
+      "category": "Lumber",
+      "context": "Short studs above a header or below a sill."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Mark the layout at sixteen inches on center from that corner and snap a chalk line.",
+      "es": "Marca el trazo a dieciséis pulgadas de centro a centro desde esa esquina y tira una línea de tiza.",
+      "category": "Wall Layout",
+      "context": "Directing crew to mark stud positions before assembly."
+    },
+    {
+      "en": "Bring all the studs over to the layout—we need to frame this wall today.",
+      "es": "Trae todos los postes al trazo—necesitamos encofrar esta pared hoy.",
+      "category": "Crew Direction",
+      "context": "Assigning task and setting timeline expectations."
+    },
+    {
+      "en": "Read the blueprint: the header goes above the window opening.",
+      "es": "Lee los planos: el dintel va encima de la abertura de la ventana.",
+      "category": "Blueprint Reading",
+      "context": "Teaching crew member to interpret drawings independently."
+    },
+    {
+      "en": "Check that corner with the framing square—is it plumb and level?",
+      "es": "Revisa esa esquina con la escuadra—¿está a plomo y a nivel?",
+      "category": "Quality Control",
+      "context": "Verifying structural alignment before proceeding."
+    },
+    {
+      "en": "Nail that header, but leave the sheathing for the crew behind us.",
+      "es": "Clava ese dintel, pero deja el forro para la cuadrilla detrás de nosotros.",
+      "category": "Sequencing",
+      "context": "Coordinating work across multiple crews on the frame."
+    },
+    {
+      "en": "That wall is leaning—shoot the blocking and straighten it now.",
+      "es": "Esa pared está inclinada—clava los bloques de relleno y enderézala ahora.",
+      "category": "Problem Solving",
+      "context": "Immediate correction of structural issue."
+    },
+    {
+      "en": "Measure twice, cut once. Double-check that dimension on the blueprint.",
+      "es": "Mide dos veces, corta una. Verifica esa medida en los planos dos veces.",
+      "category": "Precision",
+      "context": "Enforcing accuracy to avoid waste and rework."
+    },
+    {
+      "en": "Does anyone see the corner of the garage on the blueprint? That's where the patio frame starts.",
+      "es": "¿Alguien ve la esquina del garaje en los planos? Ahí es donde comienza el encofrado del patio.",
+      "category": "Blueprint Reading",
+      "context": "Orienting crew to reference points on drawing."
+    },
+    {
+      "en": "The nail gun is empty—load a new magazine and then keep going on that wall.",
+      "es": "La clavadora está vacía—carga un cartucho nuevo y luego sigue con esa pared.",
+      "category": "Tool Management",
+      "context": "Maintaining workflow and equipment readiness."
+    },
+    {
+      "en": "Careful with that saw—watch your hands and keep your feet clear.",
+      "es": "Cuidado con esa sierra—mira tus manos y mantén los pies alejados.",
+      "category": "Safety",
+      "context": "Preventing injury on high-risk tasks."
+    },
+    {
+      "en": "We're behind schedule. Faster on the layout—I need that wall up by lunch.",
+      "es": "Vamos atrasados. Más rápido en el trazo—necesito esa pared levantada antes del almuerzo.",
+      "category": "Urgency",
+      "context": "Communicating time pressure without diminishing crew respect."
+    },
+    {
+      "en": "Once you frame this wall, we'll sheath it tomorrow. The blueprint shows plywood everywhere.",
+      "es": "Una vez que encofres esta pared, la forraremos mañana. Los planos muestran contrachapado por todas partes.",
+      "category": "Sequencing",
+      "context": "Explaining next steps based on building sequence and drawings."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "en": "Tú command: _______ (traer = bring) the studs to the corner.",
+      "es": "Comando informal: _______ (traer) los postes a la esquina.",
+      "answer": "Trae",
+      "explanation": "Regular -ar verb tú command: drop -ar and add -a. Traer → Trae."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Usted command: _______ (colocar = place) the header above the window.",
+      "es": "Comando formal: _______ (colocar) el dintel encima de la ventana.",
+      "answer": "Coloque",
+      "explanation": "Regular -ar verb usted command: use subjunctive form. Colocar → Coloque."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Plural command: _______ (clavar = nail) those blocking pieces into the studs.",
+      "es": "Comando plural: _______ (clavar) esos bloques de relleno en los postes.",
+      "answer": "Claven",
+      "explanation": "Regular -ar verb ustedes command: conjugate to ustedes form. Clavar → Claven."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Negative command: No _______ (cortar = cut) the header without checking the blueprint first.",
+      "es": "Comando negativo: No _______ (cortar) el dintel sin revisar los planos primero.",
+      "answer": "cortes",
+      "explanation": "Negative tú command uses subjunctive: cut → cortes. Full phrase: No cortes..."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Imperative -ir verb: _______ (venir = come) here and help me measure this wall.",
+      "es": "Verbo imperativo -ir: _______ (venir) acá y ayúdame a medir esta pared.",
+      "answer": "Ven",
+      "explanation": "Irregular tú command: Venir → Ven (stem change). Formal would be: Venga."
+    },
+    {
+      "type": "translate",
+      "en": "Translate to Spanish: 'Check the plumb on that corner stud before you nail the top plate.'",
+      "es": "[Student translates to Spanish]",
+      "answer": "Revisa la verticalidad en ese poste de esquina antes de clavar la solera superior.",
+      "explanation": "Tú command (revisa), vocabulary (verticalidad = plumb, poste = stud, solera superior = top plate)."
+    },
+    {
+      "type": "translate",
+      "en": "Translate to Spanish: 'The blueprint shows sixteen inches on center—mark the layout carefully.'",
+      "es": "[Student translates to Spanish]",
+      "answer": "Los planos muestran dieciséis pulgadas de centro a centro—marca el trazo con cuidado.",
+      "explanation": "Blueprint vocabulary, spacing standard, imperative command (marca)."
+    },
+    {
+      "type": "translate",
+      "en": "Translate to Spanish: 'We need to snap a chalk line and then frame two walls before lunch.'",
+      "es": "[Student translates to Spanish]",
+      "answer": "Necesitamos tirar una línea de tiza y luego encofrar dos paredes antes del almuerzo.",
+      "explanation": "Plural need (necesitamos), chalk line idiom (tirar una línea de tiza), timeline pressure."
+    },
+    {
+      "type": "translate",
+      "en": "Translate to Spanish: 'Is that corner level? Use the level and straighten it now.'",
+      "es": "[Student translates to Spanish]",
+      "answer": "¿Está a nivel esa esquina? Usa el nivel y enderézala ahora.",
+      "explanation": "Estar a nivel idiom, tool name (nivel), urgent imperative (enderézala)."
+    }
+  ],
+  "culturalNote": {
+    "title": "Directness, Respect, and Jobsite Spanish",
+    "content": "Framing crews operate on precision and speed. You might think this demands blunt, rapid-fire orders—and sometimes it does. But here's the cultural reality: the difference between 'Habla con el supervisor' (speak with the supervisor, tú form) and 'Hable con el supervisor' (formal, usted) signals far more than grammar. On a crew you've worked with for months, tú commands create camaraderie and signal trust. A crew member hears 'Ven acá' (Come here, tú) as 'I'm talking to you as part of my team.' On a new jobsite or with a formal contractor, usted maintains hierarchy and shows respect for the crew's autonomy. The worst mistake is inconsistency: using tú with some crew and usted with others, or switching mid-day—it reads as favoritism or disrespect. Pick a form based on your relationship, and stick with it. The framing deck rewards directness, but directness built on trust—not bark-and-order command structures—is what keeps crews safe and productive. Spanish-speaking framers often prefer working for supervisors who use their language, not because it makes them happier (though it does), but because it reduces ambiguity. A measurement miscommunication can cost the whole project time and money. Speak clearly, command with respect, and your crew will frame faster and better."
+  },
+  "metadata": {
+    "difficulty": "intermediate",
+    "estimatedTime": "45-60 minutes",
+    "prerequisites": ["basic-vocabulary", "present-tense-conjugation"],
+    "nextModule": "roofing",
+    "vocabularyCount": 30,
+    "phraseCount": 12,
+    "exerciseCount": 9
+  }
+}

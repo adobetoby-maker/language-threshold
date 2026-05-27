@@ -1,10 +1,24 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { APP_URL, sansFont } from '../constants'
+import { Link, useLocation } from 'react-router-dom'
+import { APP_URL } from '../constants'
+
+const GOLD = '#C9A84C'
+
+const MODULES = [
+  { slug: 'medical',      label: 'Medical',      color: '#34d399' },
+  { slug: 'construction', label: 'Construction',  color: '#fb923c' },
+  { slug: 'missionary',   label: 'Missionary',    color: '#60a5fa' },
+  { slug: 'sports',       label: 'Sports',        color: '#818cf8' },
+  { slug: 'agriculture',  label: 'Agriculture',   color: '#facc15' },
+  { slug: 'education',    label: 'Education',     color: '#c084fc' },
+  { slug: 'hospitality',  label: 'Hospitality',   color: '#fb7185' },
+  { slug: 'kids',         label: 'Kids',          color: '#f472b6' },
+]
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -12,154 +26,124 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const closeMobile = () => setMobileOpen(false)
+  useEffect(() => { setMenuOpen(false) }, [pathname])
+
+  const active = scrolled || menuOpen
 
   return (
     <nav
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled || mobileOpen ? 'rgba(13,13,13,0.97)' : 'transparent',
-        backdropFilter: scrolled || mobileOpen ? 'blur(8px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(201,168,76,0.1)' : 'none',
+        backgroundColor: active ? 'rgba(2,4,15,0.96)' : 'transparent',
+        backdropFilter: active ? 'blur(14px)' : 'none',
+        borderBottom: active ? '1px solid rgba(201,168,76,0.07)' : 'none',
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 no-underline" onClick={closeMobile}>
-          <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M2 32V14C2 7.373 7.373 2 14 2C20.627 2 26 7.373 26 14V32" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
-            <path d="M2 32H26" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
-            <line x1="14" y1="14" x2="14" y2="32" stroke="#C9A84C" strokeWidth="1.5" strokeDasharray="2 3" strokeLinecap="round" />
-          </svg>
-          <span
-            className="font-bold text-lg tracking-tight"
-            style={{ fontFamily: '"Playfair Display", serif', color: '#F7F3EC' }}
-          >
+        <Link to="/" className="flex items-center gap-2 no-underline shrink-0">
+          <span style={{ color: GOLD, fontSize: '0.9rem' }}>✦</span>
+          <span className="font-serif text-[15px] font-semibold tracking-tight text-white/90">
             Language Threshold
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
-          <a href="/#areas" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
-            Areas
-          </a>
-          <a href="/#how-it-works" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
-            How It Works
-          </a>
-          <Link to="/language-lens" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00D4B8' }}>
-            Language Lens
-          </Link>
-          <Link to="/medical-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4A9EFF' }}>
-            Medical Spanish
-          </Link>
-          <Link to="/contractor-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#FF7A4A' }}>
-            Contractor Spanish
-          </Link>
-          <Link to="/climbing-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#4CAF7D' }}>
-            Climbing Spanish
-          </Link>
-          <Link to="/medical-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
-            Medical Swahili
-          </Link>
-          <Link to="/contractor-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
-            Contractor Swahili
-          </Link>
-          <Link to="/climbing-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
-            Climbing Swahili
-          </Link>
-          <Link to="/missionary-spanish" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#7C3AED' }}>
-            Missionary Spanish
-          </Link>
-          <Link to="/missionary-swahili" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#00BFA5' }}>
-            Missionary Swahili
-          </Link>
-          <Link to="/about" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
+        {/* Module links — desktop */}
+        <div className="hidden lg:flex items-center gap-5 flex-1 justify-center">
+          {MODULES.map(m => {
+            const isActive = pathname === `/module/${m.slug}`
+            return (
+              <Link
+                key={m.slug}
+                to={`/module/${m.slug}`}
+                className="font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-200"
+                style={{ color: isActive ? m.color : 'rgba(255,255,255,0.32)' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = m.color }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = isActive ? m.color : 'rgba(255,255,255,0.32)' }}
+              >
+                {m.label}
+              </Link>
+            )
+          })}
+        </div>
+
+        {/* Right side */}
+        <div className="flex items-center gap-3 shrink-0">
+          <Link
+            to="/about"
+            className="hidden lg:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            style={{ color: pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
+          >
             About
-          </Link>
-          <Link to="/founder" className="text-sm transition-opacity hover:opacity-100" style={{ ...sansFont, color: '#A89F94' }}>
-            Founder
           </Link>
           <a
             href={APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 rounded-full font-semibold text-sm transition-opacity hover:opacity-90"
-            style={{ ...sansFont, backgroundColor: '#C9A84C', color: '#0D0D0D' }}
+            className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 hover:text-white/70 transition-colors"
           >
-            Start Learning →
+            Sign In
           </a>
-        </div>
+          <a
+            href={APP_URL}
+            className="rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
+            style={{ backgroundColor: GOLD }}
+          >
+            Start Free
+          </a>
 
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10"
-          onClick={() => setMobileOpen(o => !o)}
-          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
-        >
-          <span style={{ width: 22, height: 2, backgroundColor: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'transform 0.2s', transform: mobileOpen ? 'rotate(45deg) translate(2px, 6px)' : 'none' }} />
-          <span style={{ width: 22, height: 2, backgroundColor: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'opacity 0.2s', opacity: mobileOpen ? 0 : 1 }} />
-          <span style={{ width: 22, height: 2, backgroundColor: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'transform 0.2s', transform: mobileOpen ? 'rotate(-45deg) translate(2px, -6px)' : 'none' }} />
-        </button>
+          {/* Mobile menu toggle */}
+          <button
+            className="lg:hidden ml-2 flex flex-col justify-center items-center gap-1.5 w-9 h-9"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <span style={{ width: 20, height: 2, background: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'transform 0.2s', transform: menuOpen ? 'rotate(45deg) translate(2px,5px)' : 'none' }} />
+            <span style={{ width: 20, height: 2, background: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'opacity 0.2s', opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ width: 20, height: 2, background: '#F7F3EC', display: 'block', borderRadius: 2, transition: 'transform 0.2s', transform: menuOpen ? 'rotate(-45deg) translate(2px,-5px)' : 'none' }} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile dropdown */}
-      {mobileOpen && (
+      {menuOpen && (
         <div
-          id="mobile-menu"
-          className="md:hidden flex flex-col gap-0 px-6 pb-6"
-          style={{ borderTop: '1px solid rgba(201,168,76,0.1)' }}
+          className="lg:hidden px-6 pb-6 grid grid-cols-2 gap-2"
+          style={{ borderTop: '1px solid rgba(201,168,76,0.08)' }}
         >
-          <a href="/#areas" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Areas
-          </a>
-          <a href="/#how-it-works" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            How It Works
-          </a>
-          <Link to="/language-lens" className="py-3.5 text-base" style={{ ...sansFont, color: '#00D4B8', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Language Lens
-          </Link>
-          <Link to="/medical-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4A9EFF', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Medical Spanish
-          </Link>
-          <Link to="/contractor-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#FF7A4A', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Contractor Spanish
-          </Link>
-          <Link to="/climbing-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#4CAF7D', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Climbing Spanish
-          </Link>
-          <Link to="/medical-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Medical Swahili
-          </Link>
-          <Link to="/contractor-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Contractor Swahili
-          </Link>
-          <Link to="/climbing-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Climbing Swahili
-          </Link>
-          <Link to="/missionary-spanish" className="py-3.5 text-base" style={{ ...sansFont, color: '#7C3AED', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Missionary Spanish
-          </Link>
-          <Link to="/missionary-swahili" className="py-3.5 text-base" style={{ ...sansFont, color: '#00BFA5', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
-            Missionary Swahili
-          </Link>
-          <Link to="/about" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+          {MODULES.map(m => (
+            <Link
+              key={m.slug}
+              to={`/module/${m.slug}`}
+              className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+              style={{ color: 'rgba(255,255,255,0.45)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = m.color }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)' }}
+            >
+              {m.label}
+            </Link>
+          ))}
+          <Link
+            to="/about"
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+            style={{ color: 'rgba(255,255,255,0.45)' }}
+          >
             About
           </Link>
-          <Link to="/founder" className="py-3.5 text-base" style={{ ...sansFont, color: '#A89F94', borderBottom: '1px solid rgba(255,255,255,0.05)' }} onClick={closeMobile}>
+          <Link
+            to="/founder"
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+            style={{ color: 'rgba(255,255,255,0.45)' }}
+          >
             Founder
           </Link>
           <a
             href={APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 py-3.5 rounded-full font-semibold text-base text-center"
-            style={{ ...sansFont, backgroundColor: '#C9A84C', color: '#0D0D0D' }}
-            onClick={closeMobile}
+            className="col-span-2 mt-3 text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black"
+            style={{ backgroundColor: GOLD }}
           >
-            Start Learning →
+            Start Learning Free →
           </a>
         </div>
       )}

@@ -1,0 +1,53 @@
+{
+  "id": "safety",
+  "dialogues": [
+    {
+      "they_es": "¿Necesito cinturón de seguridad en las alturas?",
+      "they_en": "Do I need a safety harness up high?",
+      "you_es": "Sí. No subes sin el arnés. Regla de la compañía.",
+      "you_en": "Yes. Don't go up without it. Company rule."
+    },
+    {
+      "they_es": "¿Se me olvidó el casco. ¿Qué hago?",
+      "they_en": "I forgot my hard hat. What do I do?",
+      "you_es": "Consigue uno. No entras al sitio sin casco.",
+      "you_en": "Get one. You don't enter the site without a hard hat."
+    },
+    {
+      "they_es": "Vi una tubería con agujero. ¿Le digo a alguien?",
+      "they_en": "I saw a pipe with a hole. Do I report it?",
+      "you_es": "Sí. Dile a mí inmediatamente. Es peligro.",
+      "you_en": "Yes. Tell me right away. It's a hazard."
+    },
+    {
+      "they_es": "¿Pueden trabajar dos personas en esa escalera?",
+      "they_en": "Can two people work on that ladder?",
+      "you_es": "No. Uno a la vez. Es la norma.",
+      "you_en": "No. One at a time. That's the rule."
+    },
+    {
+      "they_es": "Tengo los ojos irritados por el polvo.",
+      "they_en": "My eyes are irritated from dust.",
+      "you_es": "Ponte lentes de seguridad. Ahora.",
+      "you_en": "Put on safety glasses. Now."
+    },
+    {
+      "they_es": "¿Hay un botiquín de primeros auxilios aquí?",
+      "they_en": "Is there a first aid kit here?",
+      "you_es": "Sí. En la caseta. Pregunta por él si lo necesitas.",
+      "you_en": "Yes. In the trailer. Ask for it if you need it."
+    },
+    {
+      "they_es": "¿Qué hago si alguien se lastima?",
+      "they_en": "What do I do if someone gets hurt?",
+      "you_es": "Llama al 911. Avísame ahora. No muevas a la persona.",
+      "you_en": "Call 911. Tell me now. Don't move the person."
+    },
+    {
+      "they_es": "¿Debo usar guantes cuando corto?",
+      "they_en": "Should I wear gloves when cutting?",
+      "you_es": "Sí. Guantes pesados. Protege tus manos.",
+      "you_en": "Yes. Heavy gloves. Protect your hands."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "nursing",
+  "dialogues": [
+    {
+      "they_es": "¿Cuándo es mi próxima medicina?",
+      "they_en": "When is my next medication?",
+      "you_es": "En una hora. Le daré la medicina con agua.",
+      "you_en": "In one hour. I'll give you the medication with water."
+    },
+    {
+      "they_es": "Me duele donde está la inyección.",
+      "they_en": "It hurts where the IV is.",
+      "you_es": "Voy a revisar. No se preocupe.",
+      "you_en": "I'm going to check. Don't worry."
+    },
+    {
+      "they_es": "¿Puedo comer ahora?",
+      "they_en": "Can I eat now?",
+      "you_es": "No, debe esperar dos horas más.",
+      "you_en": "No, you need to wait two more hours."
+    },
+    {
+      "they_es": "Tengo náuseas después de la medicina.",
+      "they_en": "I feel nauseous after the medication.",
+      "you_es": "Voy a traerle algo para los náuseas.",
+      "you_en": "I'm going to bring you something for nausea."
+    },
+    {
+      "they_es": "Mi herida está mojada y roja.",
+      "they_en": "My wound is wet and red.",
+      "you_es": "Voy a limpiarla y ponerle un vendaje nuevo.",
+      "you_en": "I'm going to clean it and put a fresh bandage."
+    },
+    {
+      "they_es": "¿Cuál es mi presión arterial?",
+      "they_en": "What is my blood pressure?",
+      "you_es": "Es 140 sobre 90. Normal para usted.",
+      "you_en": "It's 140 over 90. Normal for you."
+    },
+    {
+      "they_es": "No puedo dormir por el ruido.",
+      "they_en": "I can't sleep because of the noise.",
+      "you_es": "Voy a cerrar la puerta y bajar la luz.",
+      "you_en": "I'm going to close the door and dim the light."
+    },
+    {
+      "they_es": "¿Puedo levantarme de la cama?",
+      "they_en": "Can I get out of bed?",
+      "you_es": "Sí, pero use el timbre primero. Yo la ayudo.",
+      "you_en": "Yes, but ring first. I'll help you."
+    }
+  ]
+}

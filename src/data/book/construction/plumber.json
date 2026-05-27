@@ -1,0 +1,296 @@
+{
+  "id": "plumber",
+  "title": "Plumber",
+  "tagline": "Pipe runs, leak diagnosis, service calls with Spanish-speaking crews.",
+  "emoji": "🔧",
+  "color": "#60A5FA",
+  "chapterIntro": "Plumbing work moves fast. When water is spraying from a wall or the inspector is arriving in thirty minutes, language clarity prevents costly mistakes. This chapter teaches you to diagnose problems, give urgent instructions, and coordinate with Spanish-speaking crews on site. You'll learn the anatomy of water systems, the vocabulary of pressure and flow, and how to describe what you see to a plumber who speaks only Spanish.",
+  "grammarFocus": {
+    "title": "Urgent Commands with Time Pressure: Before/After Constructions",
+    "explanation": "In plumbing emergencies, you must give rapid instructions and describe what must happen before an inspection or before more damage occurs. Spanish uses 'antes de' (before) and 'después de' (after) + infinitive to show sequence and urgency.",
+    "structure": [
+      {
+        "name": "Antes de + infinitive (Before doing X)",
+        "rule": "antes de + INFINITIVE. Use to state what must happen first.",
+        "examples": [
+          {
+            "en": "Before you cut that line, shut off the main valve.",
+            "es": "Antes de cortar esa línea, cierra la válvula principal.",
+            "breakdown": "Antes de (before) + cortar (cut-INF) = before cutting"
+          },
+          {
+            "en": "Before the inspector arrives, we need to finish the rough-in.",
+            "es": "Antes de que llegue el inspector, necesitamos terminar el rough-in.",
+            "breakdown": "Antes de que (before that) + llegue (arrives-SUBJ) + infinitive mood for future condition"
+          }
+        ]
+      },
+      {
+        "name": "Después de + infinitive (After doing X)",
+        "rule": "después de + INFINITIVE. Use to state what comes next.",
+        "examples": [
+          {
+            "en": "After you solder that joint, let it cool for five minutes.",
+            "es": "Después de soldar esa unión, déjala enfriar cinco minutos.",
+            "breakdown": "Después de (after) + soldar (solder-INF) = after soldering"
+          },
+          {
+            "en": "After we test the pressure, we can cap off the line.",
+            "es": "Después de probar la presión, podemos tapar la línea.",
+            "breakdown": "Después de (after) + probar (test-INF)"
+          }
+        ]
+      },
+      {
+        "name": "Tener que + infinitive (Have to / Must)",
+        "rule": "tener que + INFINITIVE. Standard way to express obligation under pressure.",
+        "examples": [
+          {
+            "en": "We have to find that leak before the drywall goes up.",
+            "es": "Tenemos que encontrar esa fuga antes de que suban el drywall.",
+            "breakdown": "Tenemos que (we have to) + encontrar (find-INF)"
+          },
+          {
+            "en": "You have to pressure-test every connection before signing off.",
+            "es": "Tienes que probar la presión en cada conexión antes de firmar.",
+            "breakdown": "Tienes que (you have to) + probar (test-INF)"
+          }
+        ]
+      }
+    ],
+    "practicePrompt": "Construct three urgent plumbing instructions using 'antes de', 'después de', and 'tener que'."
+  },
+  "extendedVocab": [
+    {
+      "en": "pipe",
+      "es": "tubería / tubo",
+      "context": "General term; tubería often used for larger runs, tubo for fittings"
+    },
+    {
+      "en": "fitting",
+      "es": "conexión / accesorio",
+      "context": "Elbow, tee, coupling—any connector"
+    },
+    {
+      "en": "shut-off valve",
+      "es": "válvula de cierre",
+      "context": "Main water shut-off; also llave de paso"
+    },
+    {
+      "en": "drain",
+      "es": "desagüe / drenaje",
+      "context": "Waste water exit"
+    },
+    {
+      "en": "leak",
+      "es": "fuga / goteo",
+      "context": "Fuga: major leak; goteo: slow drip"
+    },
+    {
+      "en": "pressure",
+      "es": "presión",
+      "context": "Water pressure in PSI (libras por pulgada cuadrada)"
+    },
+    {
+      "en": "soldering",
+      "es": "soldadura",
+      "context": "Joining copper with solder (estaño)"
+    },
+    {
+      "en": "water heater",
+      "es": "calentador de agua / calefón",
+      "context": "Calefón more common in Latin America"
+    },
+    {
+      "en": "rough-in",
+      "es": "instalación provisional / rough-in",
+      "context": "First-phase pipe layout before walls close"
+    },
+    {
+      "en": "inspection",
+      "es": "inspección",
+      "context": "Official check before concealment"
+    },
+    {
+      "en": "copper pipe",
+      "es": "tubo de cobre",
+      "context": "Most common in residential"
+    },
+    {
+      "en": "PVC pipe",
+      "es": "tubo de PVC / plástico",
+      "context": "Drain, waste, vent lines"
+    },
+    {
+      "en": "CPVC pipe",
+      "es": "tubo de CPVC",
+      "context": "Hot water safe plastic"
+    },
+    {
+      "en": "galvanized steel",
+      "es": "acero galvanizado",
+      "context": "Older homes; prone to mineral buildup"
+    },
+    {
+      "en": "elbow",
+      "es": "codo",
+      "context": "90-degree or 45-degree bend"
+    },
+    {
+      "en": "tee",
+      "es": "te / conexión en T",
+      "context": "Three-way branch fitting"
+    },
+    {
+      "en": "coupling",
+      "es": "acoplamiento / unión",
+      "context": "Joins two pipes of same diameter"
+    },
+    {
+      "en": "trap",
+      "es": "trampa / sifón",
+      "context": "U-bend under sink that holds water to prevent sewer gas"
+    },
+    {
+      "en": "vent stack",
+      "es": "tubo de ventilación / stack",
+      "context": "Allows sewer gas to escape"
+    },
+    {
+      "en": "pitch / slope",
+      "es": "inclinación / pendiente",
+      "context": "Drainage pipes must have 1/4-inch drop per foot"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "There's a leak under the kitchen sink. Can you find the source?",
+      "es": "Hay una fuga bajo el lavaplatos. ¿Puedes encontrar la fuente?",
+      "situation": "Leak diagnosis - customer call",
+      "urgency": "medium"
+    },
+    {
+      "en": "The water pressure is too low in the master bath. What could cause that?",
+      "es": "La presión del agua es demasiado baja en el baño principal. ¿Qué podría causar eso?",
+      "situation": "Pressure complaint",
+      "urgency": "low"
+    },
+    {
+      "en": "We have to pressure-test all the rough-in before the wall inspection.",
+      "es": "Tenemos que probar la presión en todo el rough-in antes de la inspección de pared.",
+      "situation": "Pre-inspection work directive",
+      "urgency": "high"
+    },
+    {
+      "en": "Shut off the main valve before you start cutting into that wall.",
+      "es": "Cierra la válvula principal antes de empezar a cortar esa pared.",
+      "situation": "Safety instruction - emergency",
+      "urgency": "critical"
+    },
+    {
+      "en": "After you solder that joint, let it cool completely before we test it.",
+      "es": "Después de soldar esa unión, déjala enfriar completamente antes de probarla.",
+      "situation": "Soldering work sequence",
+      "urgency": "medium"
+    },
+    {
+      "en": "The inspector is coming in two hours. We need to finish the rough-in now.",
+      "es": "El inspector viene en dos horas. Necesitamos terminar el rough-in ahora.",
+      "situation": "Time-critical work coordination",
+      "urgency": "critical"
+    },
+    {
+      "en": "Is this copper or galvanized steel? We treat them differently.",
+      "es": "¿Es cobre o acero galvanizado? Los tratamos diferente.",
+      "situation": "Pipe material identification",
+      "urgency": "low"
+    },
+    {
+      "en": "The water heater is leaking from the drain valve. It needs to be replaced.",
+      "es": "El calentador de agua está goteando por la válvula de drenaje. Necesita ser reemplazado.",
+      "situation": "Equipment failure diagnosis",
+      "urgency": "medium"
+    },
+    {
+      "en": "Run the supply line to that outlet before you close up the wall.",
+      "es": "Corre la línea de suministro a esa salida antes de cerrar la pared.",
+      "situation": "Rough-in instruction",
+      "urgency": "high"
+    },
+    {
+      "en": "Check the trap under the sink—I think it's blocked.",
+      "es": "Revisa el sifón bajo el lavaplatos. Creo que está bloqueado.",
+      "situation": "Drain diagnosis",
+      "urgency": "medium"
+    },
+    {
+      "en": "Before we cover the wall, the inspector has to sign off on the rough-in.",
+      "es": "Antes de cubrir la pared, el inspector tiene que firmar el rough-in.",
+      "situation": "Inspection requirement",
+      "urgency": "high"
+    },
+    {
+      "en": "That pitch is wrong. The drain line needs to slope down toward the main stack.",
+      "es": "Esa inclinación es incorrecta. La línea de desagüe necesita inclinarse hacia el tubo principal.",
+      "situation": "Code correction",
+      "urgency": "medium"
+    }
+  ],
+  "exercises": {
+    "fillInBlanks": [
+      {
+        "prompt": "Complete the sentence with the correct form of the verb.",
+        "sentence": "Antes de ________ (cortar) esa tubería, tenemos que cerrar la válvula principal.",
+        "answer": "cortar",
+        "english": "Before cutting that pipe, we have to close the main valve."
+      },
+      {
+        "prompt": "Fill in the time expression.",
+        "sentence": "________ de soldar, espera cinco minutos antes de probar la presión.",
+        "answer": "Después",
+        "english": "After soldering, wait five minutes before testing the pressure."
+      },
+      {
+        "prompt": "Choose the correct obligation phrase.",
+        "sentence": "El inspector llega en una hora. ________ terminar el rough-in ahora.",
+        "answer": "Tenemos que",
+        "english": "The inspector arrives in one hour. We have to finish the rough-in now."
+      },
+      {
+        "prompt": "Translate 'before the wall closes.'",
+        "sentence": "Necesitamos probar la presión ________ la pared se cierre.",
+        "answer": "antes de que",
+        "english": "We need to test the pressure before the wall closes."
+      },
+      {
+        "prompt": "Fill in the phrase meaning 'after we find.'",
+        "sentence": "________ encontrar la fuga, podemos reparar la tubería.",
+        "answer": "Después de",
+        "english": "After we find the leak, we can repair the pipe."
+      }
+    ],
+    "translateTasks": [
+      {
+        "prompt": "Translate to Spanish: 'Shut off the main valve before you cut the line.'",
+        "answer": "Cierra la válvula principal antes de cortar la línea.",
+        "alternates": ["Cierra la válvula de cierre antes de que cortes la línea."]
+      },
+      {
+        "prompt": "Translate to Spanish: 'After you solder the joint, we have to test the pressure.'",
+        "answer": "Después de soldar la unión, tenemos que probar la presión.",
+        "alternates": ["Después de que sueldes la unión, tenemos que probar la presión."]
+      },
+      {
+        "prompt": "Translate to Spanish: 'The inspector is coming before the wall is closed.'",
+        "answer": "El inspector viene antes de que la pared se cierre.",
+        "alternates": ["El inspector llega antes de cerrar la pared."]
+      },
+      {
+        "prompt": "Translate to Spanish: 'We need to finish the rough-in after the pressure test passes.'",
+        "answer": "Necesitamos terminar el rough-in después de que la prueba de presión pase.",
+        "alternates": ["Tenemos que terminar el rough-in después de la prueba de presión."]
+      }
+    ]
+  },
+  "culturalNote": "In Spanish-speaking countries, plumbing terminology varies by region. In Mexico and Central America, 'tubo' is standard; in Argentina and parts of South America, 'caño' is common. Spain uses 'tubería' more formally. On job sites, crews often code-switch rapidly—Spanish for safety instructions, English for technical product names (PVC, CPVC, trap). Learning your crew's regional preference and matching it builds trust quickly. Also note: in many Latin American countries, inspectors ('inspectores') have different authority levels than in the U.S. system; clarify what 'inspection' means before work—it may require prior scheduling or specific certifications your crew must present."
+}

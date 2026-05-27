@@ -1,0 +1,288 @@
+{
+  "id": "social-work",
+  "title": "Medical Social Work",
+  "emoji": "🤝",
+  "color": "#F59E0B",
+  "chapterIntro": "Medical social workers are the bridge between patient care and community support. This chapter equips you with the language and skills to navigate sensitive conversations about housing, food security, financial barriers, and crisis situations. You'll learn how to ask empathetically about social determinants of health, explain benefits programs, and connect patients with resources that support their recovery and wellbeing.",
+  "grammarFocus": {
+    "title": "The Conditional Tense for Sensitive Questions",
+    "description": "When discussing sensitive topics like domestic violence, financial hardship, or crisis, the conditional tense (podría, sería, etc.) softens questions and reduces defensiveness. It creates psychological distance and shows respect.",
+    "examples": [
+      {
+        "insensitive": "¿Tiene violencia en su casa? (Do you have violence in your home?) — direct, accusatory",
+        "empathetic": "¿Podría estar pasando algo en su casa que le preocupa? (Could there be something happening at home that worries you?) — indirect, open-ended",
+        "explanation": "Conditional 'podría' invites reflection rather than confession; removes shame."
+      },
+      {
+        "insensitive": "¿No tiene dinero para comida? (Don't you have money for food?) — judgmental",
+        "empathetic": "¿Sería difícil conseguir comida para toda la familia este mes? (Would it be difficult to get food for your whole family this month?) — normalizes the challenge",
+        "explanation": "Conditional 'sería' frames the question as universal rather than personal blame."
+      },
+      {
+        "insensitive": "¿Quién la cuida? (Who takes care of you?) — assumes someone does",
+        "empathetic": "¿Contaría con alguien que pudiera apoyarle en casa? (Could you count on someone who might support you at home?) — respects independence while opening door to help",
+        "explanation": "'Contaría con' (would count on) is softer than direct 'tiene' (have)."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "discharge plan",
+      "es": "plan de alta"
+    },
+    {
+      "en": "skilled nursing facility",
+      "es": "residencia de cuidados especializados"
+    },
+    {
+      "en": "Medicaid",
+      "es": "Medicaid (seguro para personas de bajos ingresos)"
+    },
+    {
+      "en": "housing",
+      "es": "vivienda"
+    },
+    {
+      "en": "domestic violence",
+      "es": "violencia doméstica"
+    },
+    {
+      "en": "transportation",
+      "es": "transporte"
+    },
+    {
+      "en": "food insecurity",
+      "es": "inseguridad alimentaria / falta de comida"
+    },
+    {
+      "en": "caregiver",
+      "es": "cuidador / cuidadora"
+    },
+    {
+      "en": "crisis",
+      "es": "crisis"
+    },
+    {
+      "en": "community resources",
+      "es": "recursos comunitarios"
+    },
+    {
+      "en": "social determinants of health",
+      "es": "determinantes sociales de la salud"
+    },
+    {
+      "en": "benefits counseling",
+      "es": "asesoría sobre beneficios"
+    },
+    {
+      "en": "referral",
+      "es": "derivación / referencia"
+    },
+    {
+      "en": "case management",
+      "es": "gestión de casos"
+    },
+    {
+      "en": "vulnerable population",
+      "es": "población vulnerable"
+    },
+    {
+      "en": "home health aide",
+      "es": "asistente de salud en el hogar"
+    },
+    {
+      "en": "insurance coverage",
+      "es": "cobertura de seguros"
+    },
+    {
+      "en": "mental health support",
+      "es": "apoyo de salud mental"
+    },
+    {
+      "en": "substance abuse treatment",
+      "es": "tratamiento del abuso de sustancias"
+    },
+    {
+      "en": "emergency assistance",
+      "es": "asistencia de emergencia"
+    }
+  ],
+  "phrases": [
+    {
+      "category": "Discharge Planning",
+      "english": "I want to make sure you have what you need at home before we discharge you. Do you have food, transportation, and someone to help you?",
+      "spanish": "Quiero asegurarme de que tenga lo que necesita en casa antes de darle de alta. ¿Tiene comida, transporte y alguien que le ayude?"
+    },
+    {
+      "category": "Discharge Planning",
+      "english": "Let's talk about what happens after you leave the hospital.",
+      "spanish": "Hablemos sobre qué pasa después de que salga del hospital."
+    },
+    {
+      "category": "Discharge Planning",
+      "english": "Do you think you can manage these medications at home?",
+      "spanish": "¿Cree que puede manejar estos medicamentos en casa?"
+    },
+    {
+      "category": "Social Determinants Assessment",
+      "english": "Could there be challenges at home that make it hard to take care of yourself?",
+      "spanish": "¿Podrían existir desafíos en casa que dificulten el cuidado de su salud?"
+    },
+    {
+      "category": "Social Determinants Assessment",
+      "english": "Would it be difficult for you to pay for your medicines?",
+      "spanish": "¿Sería difícil para usted pagar sus medicinas?"
+    },
+    {
+      "category": "Social Determinants Assessment",
+      "english": "Is there someone safe at home, or are you worried about your safety?",
+      "spanish": "¿Hay alguien seguro en casa, o le preocupa su seguridad?"
+    },
+    {
+      "category": "Benefits & Resources",
+      "english": "You may qualify for Medicaid to help pay for your care.",
+      "spanish": "Es posible que califique para Medicaid para ayudar a pagar su atención."
+    },
+    {
+      "category": "Benefits & Resources",
+      "english": "I'm going to connect you with a social worker who can explain your options.",
+      "spanish": "Voy a conectarlo con un trabajador social que pueda explicarle sus opciones."
+    },
+    {
+      "category": "Crisis Intervention",
+      "english": "If you feel unsafe or need help immediately, please call this number.",
+      "spanish": "Si se siente inseguro o necesita ayuda de inmediato, llame a este número."
+    },
+    {
+      "category": "Crisis Intervention",
+      "english": "We have resources and support available to help you through this.",
+      "spanish": "Tenemos recursos y apoyo disponibles para ayudarle a través de esto."
+    },
+    {
+      "category": "Caregiver Support",
+      "english": "Are you the main person helping with care, or do you have family support?",
+      "spanish": "¿Es usted la persona principal que ayuda con el cuidado, o cuenta con apoyo familiar?"
+    },
+    {
+      "category": "Caregiver Support",
+      "english": "Caring for someone else can be stressful. How are you doing with all of this?",
+      "spanish": "Cuidar a otra persona puede ser estresante. ¿Cómo está usted con todo esto?"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "english": "Before discharge, I need to know if you have a safe __________ to go home to.",
+      "spanish": "Antes del alta, necesito saber si tiene un __________ seguro para volver a casa.",
+      "answer": {
+        "en": "place",
+        "es": "lugar"
+      }
+    },
+    {
+      "type": "fill-in-blank",
+      "english": "Do you need help applying for __________? It can help pay for your medicines.",
+      "spanish": "¿Necesita ayuda para solicitar __________? Puede ayudar a pagar sus medicinas.",
+      "answer": {
+        "en": "Medicaid",
+        "es": "Medicaid"
+      }
+    },
+    {
+      "type": "fill-in-blank",
+      "english": "I'm concerned about your safety. Would it be okay if we __________ about what's happening at home?",
+      "spanish": "Me preocupa su seguridad. ¿Estaría bien si __________ sobre lo que pasa en casa?",
+      "answer": {
+        "en": "talked",
+        "es": "habláramos"
+      }
+    },
+    {
+      "type": "fill-in-blank",
+      "english": "A __________ can help coordinate your care after you leave the hospital.",
+      "spanish": "Un __________ puede ayudar a coordinar su atención después de que salga del hospital.",
+      "answer": {
+        "en": "case manager / social worker",
+        "es": "gestor de casos / trabajador social"
+      }
+    },
+    {
+      "type": "fill-in-blank",
+      "english": "Is there someone in your __________ who can help you at home?",
+      "spanish": "¿Hay alguien en su __________ que pueda ayudarle en casa?",
+      "answer": {
+        "en": "family",
+        "es": "familia"
+      }
+    },
+    {
+      "type": "translate",
+      "english": "We have resources to help with housing, food, and transportation.",
+      "spanish": "Tenemos recursos para ayudar con vivienda, comida y transporte.",
+      "difficulty": "intermediate"
+    },
+    {
+      "type": "translate",
+      "english": "If you feel in crisis or need immediate help, please tell me now.",
+      "spanish": "Si se siente en crisis o necesita ayuda inmediata, por favor dígamelo ahora.",
+      "difficulty": "intermediate"
+    },
+    {
+      "type": "translate",
+      "english": "I want to make sure your recovery plan is realistic for your life situation.",
+      "spanish": "Quiero asegurarme de que su plan de recuperación sea realista para su situación de vida.",
+      "difficulty": "advanced"
+    },
+    {
+      "type": "translate",
+      "english": "You are not alone in this. Let us help you find the support you need.",
+      "spanish": "No está solo en esto. Déjenos ayudarle a encontrar el apoyo que necesita.",
+      "difficulty": "intermediate"
+    }
+  ],
+  "culturalNote": {
+    "title": "Building Trust When Discussing Sensitive Topics",
+    "content": "Conversations about domestic violence, food insecurity, financial hardship, and substance abuse require trust, cultural humility, and understanding of communication styles that differ from direct English discourse. Many Spanish-speaking patients, especially those from Latin America, may use indirect communication to preserve dignity and avoid shame.",
+    "keyPrinciples": [
+      {
+        "principle": "Indirect Phrasing",
+        "explanation": "Instead of 'Do you have domestic violence at home?' (direct), ask 'Would you feel safe talking about what happens at home?' (indirect). This respects autonomy and doesn't assume or shame."
+      },
+      {
+        "principle": "Normalize the Challenge",
+        "explanation": "Frame social barriers as common: 'Many families struggle with food costs' or 'It's common to worry about paying for medicines.' This reduces defensiveness and opens dialogue."
+      },
+      {
+        "principle": "Use Conditional & Subjunctive Mood",
+        "explanation": "Soften questions with conditional and subjunctive: 'Podría ser difícil...?' (Could it be difficult?) instead of imperative or accusatory tones. This invites, not interrogates."
+      },
+      {
+        "principle": "Family Context Matters",
+        "explanation": "Many Spanish-speaking patients prioritize family welfare over personal needs. Ask about family food security, not just individual hunger. Understand that decisions about housing or caregiving are often collective, not individual."
+      },
+      {
+        "principle": "Respect for Dignity",
+        "explanation": "Avoid language that implies judgment: 'falta de comida' (lack of food) is neutral; 'no puede alimentarse' (can't feed themselves) is patronizing. Let patients frame their own situation."
+      },
+      {
+        "principle": "Cultural & Immigration Context",
+        "explanation": "Undocumented immigrants may fear discussing resource access or living conditions due to immigration concerns. Make clear that social work is confidential and separate from immigration authorities."
+      },
+      {
+        "principle": "Religious & Spiritual Resources",
+        "explanation": "In many Spanish-speaking communities, faith and church are primary sources of support. Ask about spiritual resources and validate them as part of the care plan."
+      },
+      {
+        "principle": "Time for Processing",
+        "explanation": "Don't rush sensitive conversations. Pauses and silence are normal—they indicate processing, not refusal. Give space for emotional response."
+      }
+    ],
+    "phrasesThatBuildTrust": [
+      "Entiendo que estas cosas son difíciles de hablar. Estoy aquí para ayudar, no para juzgar.",
+      "Lo que comparte conmigo es confidencial. Solo yo y el equipo médico lo sabemos.",
+      "He ayudado a muchas personas en su situación. No está solo.",
+      "Su seguridad y bienestar son mi prioridad. ¿Cómo puedo apoyarle?"
+    ]
+  },
+  "scenario": "Discharge planning, benefits counseling, crisis intervention, social determinants assessment"
+}

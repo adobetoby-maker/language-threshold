@@ -1,112 +1,66 @@
 import { useState } from 'react'
 import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
-import { CONSTRUCTION_MODULES, type ConstructionModule } from '../data/constructionModules'
+import { CONSTRUCTION_SUBSECTIONS, type ConstructionSubsection } from '../data/constructionLessons'
+import { CONSTRUCTION_MODULES } from '../data/constructionModules'
 import FadeIn from '../components/FadeIn'
-import WordCard from '../components/WordCard'
+import LessonGrid from '../components/LessonGrid'
+import EmailSignupBanner from '../components/EmailSignupBanner'
+import VocabReader from '../components/VocabReader'
+import PDFGuideSection from '../components/PDFGuideSection'
+import BookRecommendation from '../components/BookRecommendation'
 
-const CONTRACTOR_APP_URL = `${APP_URL}?module=framer`
-
-interface TappedWord { word: string; sentence: string; x: number; y: number }
-
-function ModuleCard({ mod }: { mod: ConstructionModule }) {
+function SubsectionCard({ sub }: { sub: ConstructionSubsection }) {
   const [open, setOpen] = useState(false)
-  const [tapped, setTapped] = useState<TappedWord | null>(null)
   return (
     <div
-      className="rounded-2xl transition-all duration-300 cursor-pointer"
       style={{
         backgroundColor: '#161616',
-        border: open ? `1px solid ${mod.color}40` : '1px solid rgba(201,168,76,0.12)',
-        boxShadow: open ? `0 0 32px -8px ${mod.color}22` : 'none',
+        border: `1px solid ${open ? sub.color + '40' : 'rgba(201,168,76,0.12)'}`,
+        borderRadius: 16,
+        overflow: 'hidden',
+        transition: 'border-color 0.2s',
       }}
-      onClick={() => setOpen(o => !o)}
     >
-      {/* Card header */}
-      <div className="p-6">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <span className="text-3xl">{mod.emoji}</span>
-          <span
-            className="text-xs font-semibold px-2.5 py-1 rounded-full"
-            style={{ ...sansFont, backgroundColor: `${mod.color}18`, color: mod.color }}
-          >
-            {open ? 'Close ↑' : 'Expand ↓'}
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%',
+          textAlign: 'left',
+          padding: '20px 20px 16px',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
+          <span style={{ fontSize: 28 }}>{sub.emoji}</span>
+          <span style={{
+            ...sansFont, fontSize: 10, fontWeight: 700, color: sub.color,
+            backgroundColor: sub.color + '18', borderRadius: 20, padding: '3px 10px',
+            textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap',
+          }}>
+            30 lessons
           </span>
         </div>
-        <h3 className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>
-          {mod.title}
+        <h3 style={{ ...displayFont, fontSize: 17, fontWeight: 700, color: '#F7F3EC', margin: '0 0 4px' }}>
+          {sub.title}
         </h3>
-        <p className="text-sm leading-relaxed" style={{ ...sansFont, color: '#A89F94' }}>
-          {mod.tagline}
+        <p style={{ ...sansFont, fontSize: 12, color: '#A89F94', margin: '0 0 10px', lineHeight: 1.5 }}>
+          {sub.tagline}
         </p>
+        <span style={{
+          ...sansFont, fontSize: 11, fontWeight: 600,
+          color: open ? sub.color : '#71717A',
+        }}>
+          {open ? 'Close ↑' : 'See lessons ↓'}
+        </span>
+      </button>
 
-        {/* Vocab preview — always visible */}
-        <div className="flex flex-wrap gap-1.5 mt-4">
-          {mod.vocab.slice(0, 4).map(v => (
-            <span
-              key={v.en}
-              className="text-xs px-2 py-0.5 rounded-full"
-              style={{ ...sansFont, backgroundColor: 'rgba(201,168,76,0.08)', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.2)' }}
-            >
-              {v.en}
-            </span>
-          ))}
-          {!open && (
-            <span className="text-xs px-2 py-0.5 rounded-full" style={{ ...sansFont, color: '#A89F94' }}>
-              +{mod.vocab.length - 4} more
-            </span>
-          )}
-        </div>
-      </div>
-
-      {/* Expanded content */}
       {open && (
-        <div className="px-6 pb-6 border-t" style={{ borderColor: 'rgba(201,168,76,0.08)' }} onClick={e => e.stopPropagation()}>
-          <p className="text-xs uppercase tracking-widest mt-5 mb-3" style={{ ...sansFont, color: '#A89F94' }}>
-            Full vocabulary
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-5">
-            {mod.vocab.map(v => (
-              <div key={v.en} className="flex items-baseline justify-between gap-2">
-                <span className="text-sm font-semibold" style={{ ...sansFont, color: '#F7F3EC' }}>{v.en}</span>
-                <button
-                  onClick={e => {
-                    const rect = (e.target as HTMLElement).getBoundingClientRect()
-                    setTapped({ word: v.es.split(/[\s/,]/)[0], sentence: `${v.en}: ${v.es}`, x: rect.left + rect.width / 2, y: rect.bottom })
-                  }}
-                  style={{ ...sansFont, background: 'none', border: 'none', padding: '0 4px 0 0', cursor: 'pointer', color: mod.color, fontSize: 14, textAlign: 'right', textDecoration: 'underline dotted', textUnderlineOffset: 3 }}
-                >
-                  {v.es}
-                </button>
-              </div>
-            ))}
+        <div style={{ padding: '0 16px 20px', borderTop: `1px solid ${sub.color}18` }}>
+          <div style={{ paddingTop: 16 }}>
+            <LessonGrid lessons={sub.lessons} color={sub.color} />
           </div>
-          {tapped && <WordCard {...tapped} color={mod.color} onClose={() => setTapped(null)} />}
-
-          <div className="rounded-xl p-4 mb-5" style={{ backgroundColor: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.15)' }}>
-            <p className="text-xs uppercase tracking-widest mb-2" style={{ ...sansFont, color: '#C9A84C' }}>
-              Sample phrase
-            </p>
-            <p className="text-sm italic leading-relaxed mb-2" style={{ ...serifFont, color: '#F7F3EC' }}>
-              "{mod.samplePhrase.en}"
-            </p>
-            <p className="text-sm leading-relaxed" style={{ ...serifFont, color: '#A89F94' }}>
-              "{mod.samplePhrase.es}"
-            </p>
-          </div>
-
-          <p className="text-xs mb-4" style={{ ...sansFont, color: '#A89F94' }}>
-            Practice scenarios: {mod.scenario}
-          </p>
-
-          <a
-            href={CONTRACTOR_APP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block w-full text-center py-3 rounded-full font-semibold text-sm transition-opacity hover:opacity-90"
-            style={{ ...sansFont, backgroundColor: mod.color, color: '#0D0D0D' }}
-          >
-            Practice {mod.title} Spanish →
-          </a>
         </div>
       )}
     </div>
@@ -222,7 +176,7 @@ export default function ContractorSpanish() {
           <FadeIn>
             <div className="mb-4">
               <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: '#FF7A4A' }}>
-                Nine trade modules
+                Nine trades · 30 lessons each
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ ...displayFont, color: '#F7F3EC' }}>
@@ -230,16 +184,16 @@ export default function ContractorSpanish() {
               <em style={{ color: '#C9A84C' }}>Its own language.</em>
             </h2>
             <p className="max-w-2xl text-base leading-relaxed mb-16" style={{ ...sansFont, color: '#A89F94' }}>
-              Click any trade to see the vocabulary, hear sample phrases, and jump straight into an
-              AI-powered practice session. No generic "construction Spanish" — just the words your
-              specific role needs on a real jobsite.
+              270 lessons built from the actual vocabulary of each trade. Pick a trade, pick any
+              lesson — work through them in order or jump to whatever you need for tomorrow's shift.
+              Track your progress as you go.
             </p>
           </FadeIn>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CONSTRUCTION_MODULES.map(mod => (
-              <FadeIn key={mod.id}>
-                <ModuleCard mod={mod} />
+            {CONSTRUCTION_SUBSECTIONS.map(sub => (
+              <FadeIn key={sub.id}>
+                <SubsectionCard sub={sub} />
               </FadeIn>
             ))}
           </div>
@@ -295,7 +249,7 @@ export default function ContractorSpanish() {
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { step: '01', title: 'Pick your trade', body: 'Choose from framer, foreman, plumber, electrician, drywall, safety, truck driver, landscaper, or mechanic. Each module is built from the actual vocabulary of that role.' },
+              { step: '01', title: 'Pick your trade', body: 'Choose from framer, foreman, plumber, electrician, drywall, safety, truck driver, landscaper, or mechanic. Each trade has 30 scenario-based lessons built from its actual vocabulary.' },
               { step: '02', title: 'Practice with AI', body: 'Your AI partner plays the role of a bilingual crew member, supervisor, or inspector. Every session is a real scenario — not a vocabulary list.' },
               { step: '03', title: 'Use it Monday', body: 'Weeks of daily practice, not years of classroom study. Language Threshold is built for working professionals who need results before the next shift.' },
             ].map(item => (
@@ -365,6 +319,46 @@ export default function ContractorSpanish() {
                 Practice all of these in the app →
               </a>
             </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Email signup — 10% off for 6 months */}
+      <FadeIn>
+        <section id="email-signup" className="py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <EmailSignupBanner accentColor="#FF7A4A" specialty="construction" />
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Rotating vocabulary reader */}
+      <FadeIn>
+        <section className="py-16" style={{ backgroundColor: '#111111' }}>
+          <div className="max-w-6xl mx-auto px-6">
+            <VocabReader modules={CONSTRUCTION_MODULES} accentColor="#FF7A4A" specialty="construction" />
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* PDF Study Guides */}
+      <FadeIn>
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <PDFGuideSection
+              specialty="construction"
+              accentColor="#FF7A4A"
+              modules={CONSTRUCTION_MODULES.map(m => ({ id: m.id, emoji: m.emoji, title: m.title, tagline: m.tagline, color: m.color }))}
+            />
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* Book recommendation */}
+      <FadeIn>
+        <section className="py-12" style={{ backgroundColor: '#111111' }}>
+          <div className="max-w-6xl mx-auto px-6">
+            <BookRecommendation specialty="construction" />
           </div>
         </section>
       </FadeIn>

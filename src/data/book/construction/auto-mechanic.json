@@ -1,0 +1,191 @@
+{
+  "id": "auto-mechanic",
+  "title": "Auto Mechanic",
+  "tagline": "Diagnose, estimate, and repair — with Spanish-speaking customers and crews.",
+  "emoji": "🚗",
+  "color": "#FF7A4A",
+  "chapterIntro": "As an auto mechanic, clear communication with Spanish-speaking customers is essential for safety, trust, and business. This chapter teaches you how to explain vehicle problems, present estimates, describe repairs, and authorize work—all in practical, customer-focused Spanish.",
+  "grammarFocus": {
+    "title": "Explaining Problems & Giving Estimates (Present Tense)",
+    "explanation": "When diagnosing vehicle issues and presenting estimates, use the present indicative tense to state facts and observations. Use 'necesita' (you need) + object to recommend repairs, and 'está + adjective/condition' to describe current vehicle state. Present tense creates authority and clarity in technical explanations.",
+    "examples": [
+      {
+        "english": "The engine is running rough because the spark plugs are worn.",
+        "spanish": "El motor funciona mal porque las bujías están gastadas.",
+        "breakdown": "está (is) + adjective (running rough) = present state; son (are) = present fact"
+      },
+      {
+        "english": "Your brakes need new pads—they are at 15% thickness.",
+        "spanish": "Sus frenos necesitan pastillas nuevas—están al 15% de espesor.",
+        "breakdown": "necesitan (need) = present obligation; están (are) = present measurement"
+      },
+      {
+        "english": "The transmission is leaking fluid. You need a seal replacement.",
+        "spanish": "La transmisión pierde líquido. Necesita un reemplazo de sello.",
+        "breakdown": "pierde (leaks) = present action; necesita (need) = present requirement"
+      }
+    ]
+  },
+  "extendedVocab": [
+    {"en": "engine", "es": "motor", "context": "general automotive"},
+    {"en": "transmission", "es": "transmisión", "context": "drivetrain"},
+    {"en": "brake", "es": "freno", "context": "safety system"},
+    {"en": "oil change", "es": "cambio de aceite", "context": "maintenance"},
+    {"en": "estimate", "es": "presupuesto / cotización", "context": "billing"},
+    {"en": "warranty", "es": "garantía", "context": "after-sales"},
+    {"en": "diagnostic", "es": "diagnóstico", "context": "inspection"},
+    {"en": "part", "es": "pieza / refacción", "context": "components"},
+    {"en": "alignment", "es": "alineación", "context": "wheel service"},
+    {"en": "coolant", "es": "refrigerante / anticongelante", "context": "fluids"},
+    {"en": "spark plug", "es": "bujía", "context": "ignition system"},
+    {"en": "battery", "es": "batería", "context": "electrical"},
+    {"en": "tire", "es": "llanta / neumático", "context": "wheels"},
+    {"en": "suspension", "es": "suspensión", "context": "chassis"},
+    {"en": "brake pad", "es": "pastilla de freno / balata", "context": "braking"},
+    {"en": "rotor", "es": "rotor / disco de freno", "context": "braking"},
+    {"en": "seal", "es": "sello / junta", "context": "leak prevention"},
+    {"en": "labor", "es": "mano de obra", "context": "billing"},
+    {"en": "authorized", "es": "autorizado", "context": "approval"},
+    {"en": "pickup time", "es": "hora de recogida / retiro", "context": "service"}
+  ],
+  "phrases": [
+    {
+      "en": "I ran a diagnostic and found three issues with your vehicle.",
+      "es": "Hice un diagnóstico y encontré tres problemas con su vehículo.",
+      "context": "opening a diagnostic explanation",
+      "practice": "I ran a diagnostic and found _____ with your vehicle."
+    },
+    {
+      "en": "Your front brakes are worn—you need new pads and rotors on both sides.",
+      "es": "Sus frenos delanteros están gastados—necesita pastillas y rotores nuevos en ambos lados.",
+      "context": "describing brake wear and recommending repair",
+      "practice": "Your front brakes are _____—you need _____ on both sides."
+    },
+    {
+      "en": "The transmission is leaking fluid. The repair will cost around $800 in parts and labor.",
+      "es": "La transmisión pierde líquido. La reparación costará aproximadamente $800 en refacciones y mano de obra.",
+      "context": "presenting a major repair estimate",
+      "practice": "The transmission is _____. The repair will cost around $_____ in parts and labor."
+    },
+    {
+      "en": "Do you authorize me to replace the spark plugs and air filter today?",
+      "es": "¿Me autoriza a reemplazar las bujías y el filtro de aire hoy?",
+      "context": "requesting work authorization",
+      "practice": "Do you authorize me to _____ today?"
+    },
+    {
+      "en": "Your vehicle will be ready at 3 p.m. We will send you a text when it is finished.",
+      "es": "Su vehículo estará listo a las 3 p.m. Le enviaremos un mensaje de texto cuando esté terminado.",
+      "context": "confirming pickup time",
+      "practice": "Your vehicle will be ready at _____. We will send you a text when it is _____."
+    },
+    {
+      "en": "The alignment is off by half an inch—this is why your car pulls to the left.",
+      "es": "La alineación está desviada por media pulgada—por eso su coche tira hacia la izquierda.",
+      "context": "explaining alignment issues",
+      "practice": "The alignment is off by _____—this is why your car pulls _____."
+    },
+    {
+      "en": "This warranty covers parts and labor for two years or 24,000 miles.",
+      "es": "Esta garantía cubre refacciones y mano de obra por dos años o 24,000 millas.",
+      "context": "presenting warranty terms",
+      "practice": "This warranty covers _____ and _____ for two years or 24,000 miles."
+    },
+    {
+      "en": "Your coolant is low and dirty—I recommend a complete flush and refill.",
+      "es": "Su refrigerante está bajo y sucio—le recomiendo un lavado y recarga completos.",
+      "context": "cooling system maintenance recommendation",
+      "practice": "Your coolant is _____ and _____—I recommend a complete flush and _____."
+    },
+    {
+      "en": "The battery is weak. At 8 years old, it is time to replace it.",
+      "es": "La batería está débil. Con 8 años de edad, es hora de reemplazarla.",
+      "context": "battery replacement recommendation",
+      "practice": "The battery is _____. At _____ years old, it is time to _____."
+    },
+    {
+      "en": "I can order the part today. It will arrive in two business days.",
+      "es": "Puedo pedir la pieza hoy. Llegará en dos días hábiles.",
+      "context": "managing customer expectations on parts availability",
+      "practice": "I can order the part today. It will arrive in _____ days."
+    },
+    {
+      "en": "Your suspension needs work—the struts are leaking fluid and must be replaced.",
+      "es": "Su suspensión necesita trabajo—los amortiguadores están perdiendo líquido y deben ser reemplazados.",
+      "context": "suspension repair explanation",
+      "practice": "Your suspension needs work—the struts are _____ and must be _____."
+    },
+    {
+      "en": "We offer a 30-day labor warranty on all repairs we perform.",
+      "es": "Ofrecemos una garantía de 30 días en la mano de obra para todas las reparaciones que realizamos.",
+      "context": "warranty policy statement",
+      "practice": "We offer a _____ warranty on all repairs we _____."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "english": "The engine is _____ because the oil is dirty.",
+        "spanish": "El motor _____ mal porque el aceite está sucio.",
+        "answer": "running rough / funciona",
+        "hint": "Use present tense to describe current engine condition."
+      },
+      {
+        "english": "Your brakes need _____ and _____.",
+        "spanish": "Sus frenos necesitan _____ y _____.",
+        "answer": "new pads and rotors / pastillas nuevas y rotores",
+        "hint": "Think of the two main components of a modern brake system."
+      },
+      {
+        "english": "The transmission is _____. You need a _____ replacement.",
+        "spanish": "La transmisión _____. Necesita un reemplazo de _____.",
+        "answer": "leaking fluid / pierde líquido / sello",
+        "hint": "What prevents transmission fluid from escaping?"
+      },
+      {
+        "english": "Your vehicle will be ready at _____. We will send you a _____.",
+        "spanish": "Su vehículo estará listo a las _____. Le enviaremos un _____.",
+        "answer": "3 p.m. / text message / las 3 p.m. / mensaje de texto",
+        "hint": "How do shops communicate completion time with modern customers?"
+      },
+      {
+        "english": "This _____ covers parts and labor for two years.",
+        "spanish": "Esta _____ cubre refacciones y mano de obra por dos años.",
+        "answer": "warranty / garantía",
+        "hint": "What do shops offer to protect the customer after repair?"
+      }
+    ],
+    "translate": [
+      {
+        "spanish": "Sus neumáticos están gastados. Necesita reemplazarlos.",
+        "english": "Your _____ are worn. You need to _____.",
+        "answer": "tires / replace them"
+      },
+      {
+        "spanish": "La alineación está desviada. Por eso el coche tira hacia la izquierda.",
+        "english": "The _____ is off. That is why the car pulls to the _____.",
+        "answer": "alignment / left"
+      },
+      {
+        "spanish": "El diagnóstico reveló problemas con el motor y la transmisión.",
+        "english": "The _____ revealed problems with the _____ and the _____.",
+        "answer": "diagnostic / engine / transmission"
+      },
+      {
+        "spanish": "¿Me autoriza a hacer esta reparación hoy?",
+        "english": "Do you _____ me to _____ this repair today?",
+        "answer": "authorize / perform"
+      }
+    ]
+  },
+  "culturalNote": {
+    "title": "Building Trust in Bilingual Auto Shops",
+    "content": "In Spanish-speaking communities, a mechanic who speaks Spanish is not just convenient—it is a trust marker. Customers appreciate clear, honest explanations in their primary language because auto repair is expensive and often involves complex technical decisions. Regional terminology varies significantly: in Mexico and Central America, 'refacciones' is standard; in Spain and Argentina, 'repuestos' is preferred. For tires, 'llantas' is common in Latin America, while 'neumáticos' is standard in Spain. Using a customer's preferred regional term (when you know it) signals respect and familiarity. Many Spanish-speaking mechanics build loyal customer bases by offering multi-language service bulletins, translating warranty documents, and explaining estimates in person—not just on paper. This chapter emphasizes present-tense diagnosis because authoritative, clear explanations ('Su coche necesita...') build confidence in technical expertise. Always ask customers their preferred terminology and adjust accordingly.",
+    "regionalVariations": [
+      {"term": "car parts", "mexico_central_america": "refacciones", "spain_argentina": "repuestos", "usage": "Your vehicle needs new parts"},
+      {"term": "tire", "mexico_central_america": "llanta", "spain_argentina": "neumático", "usage": "Your tires are worn"},
+      {"term": "brake pad", "mexico_central_america": "balata", "spain_argentina": "pastilla de freno", "usage": "You need new brake pads"},
+      {"term": "windshield", "mexico_central_america": "parabrisas", "spain_argentina": "cristal delantero", "usage": "Your windshield has a crack"}
+    ]
+  }
+}

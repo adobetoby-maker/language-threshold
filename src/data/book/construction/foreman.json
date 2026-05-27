@@ -1,0 +1,194 @@
+{
+  "id": "foreman",
+  "title": "Construction Foreman",
+  "tagline": "Lead bilingual crews, run inspections, coordinate subcontractors.",
+  "emoji": "🏗️",
+  "color": "#FF7A4A",
+  "chapterIntro": "As a construction foreman, you're the bridge between ownership, contractors, and crews. This chapter prepares you for daily leadership in Spanish: delegating tasks, managing timelines, conducting inspections, and coordinating with subcontractors. Expect direct communication, clear expectations, and bilingual problem-solving under pressure.",
+  "grammarFocus": {
+    "title": "Expressing Obligation and Deadlines: Tener Que + Infinitive",
+    "explanation": "The structure 'tener que + infinitive' is the backbone of foreman communication. It expresses what must be done, by whom, and by when. Master this to assign tasks with clarity and enforce deadlines with respect.",
+    "structure": "Subject + tener que + infinitive",
+    "examples": [
+      {
+        "en": "You have to finish framing by Friday.",
+        "es": "Tienes que terminar el enmarcado para el viernes.",
+        "context": "Task assignment to crew member"
+      },
+      {
+        "en": "They have to pass the inspection.",
+        "es": "Tienen que pasar la inspección.",
+        "context": "Crew accountability"
+      },
+      {
+        "en": "We have to coordinate with the electrician today.",
+        "es": "Tenemos que coordinar con el electricista hoy.",
+        "context": "Subcontractor sync"
+      },
+      {
+        "en": "The punch list has to be done before the client walkthrough.",
+        "es": "La lista de pendientes tiene que estar lista antes de la inspección del cliente.",
+        "context": "Pre-final inspection"
+      },
+      {
+        "en": "I have to approve all overtime requests.",
+        "es": "Tengo que aprobar todas las solicitudes de tiempo extra.",
+        "context": "Management responsibility"
+      }
+    ],
+    "practiceNotes": "Use with clear timelines. Pair with 'para' (by) or 'antes de' (before) to anchor urgency. Tone matters—soften with 'necesitas' (you need to) when collaborating with subcontractors, use 'tienes que' when delegating to crew."
+  },
+  "extendedVocab": [
+    {"en": "crew", "es": "cuadrilla / equipo"},
+    {"en": "schedule", "es": "cronograma / itinerario"},
+    {"en": "inspection", "es": "inspección"},
+    {"en": "subcontractor", "es": "subcontratista"},
+    {"en": "deadline", "es": "fecha límite / plazo"},
+    {"en": "progress", "es": "avance / progreso"},
+    {"en": "overtime", "es": "tiempo extra / horas extras"},
+    {"en": "punch list", "es": "lista de pendientes / lista de remates"},
+    {"en": "blueprint", "es": "planos"},
+    {"en": "site safety", "es": "seguridad en la obra"},
+    {"en": "framing", "es": "enmarcado / estructura"},
+    {"en": "electrical rough-in", "es": "paso eléctrico bruto"},
+    {"en": "plumbing inspection", "es": "inspección de plomería"},
+    {"en": "drywall", "es": "yeso / cartón yeso"},
+    {"en": "foundation", "es": "cimentación / losa"},
+    {"en": "excavation", "es": "excavación"},
+    {"en": "change order", "es": "orden de cambio"},
+    {"en": "safety violation", "es": "violación de seguridad"},
+    {"en": "weather delay", "es": "retraso por clima"},
+    {"en": "materials delivery", "es": "entrega de materiales"}
+  ],
+  "phrases": [
+    {
+      "category": "Morning Crew Brief",
+      "en": "Good morning, everyone. Here's the plan for today.",
+      "es": "Buenos días a todos. Aquí está el plan para hoy.",
+      "usage": "Opening statement to set expectations"
+    },
+    {
+      "category": "Morning Crew Brief",
+      "en": "We have to finish the framing before noon so the electrician can start tomorrow.",
+      "es": "Tenemos que terminar el enmarcado antes del mediodía para que el electricista pueda comenzar mañana.",
+      "usage": "Linking task to downstream work; creating urgency"
+    },
+    {
+      "category": "Task Delegation",
+      "en": "Carlos, you have to make sure the site is clean at the end of the day.",
+      "es": "Carlos, tienes que asegurar que la obra esté limpia al final del día.",
+      "usage": "Direct crew assignment with accountability"
+    },
+    {
+      "category": "Task Delegation",
+      "en": "The foundation has to be checked for cracks before we pour concrete.",
+      "es": "La cimentación tiene que ser revisada en busca de grietas antes de verter concreto.",
+      "usage": "Quality gate before proceeding"
+    },
+    {
+      "category": "Inspection Prep",
+      "en": "The inspector arrives at seven AM. Everything has to be ready.",
+      "es": "El inspector llega a las siete de la mañana. Todo tiene que estar listo.",
+      "usage": "Pre-inspection pressure and clarity"
+    },
+    {
+      "category": "Inspection Prep",
+      "en": "Remove any safety hazards from the site before the walkthrough.",
+      "es": "Retira cualquier peligro de seguridad de la obra antes de la inspección.",
+      "usage": "Specific pre-inspection instruction"
+    },
+    {
+      "category": "Subcontractor Coordination",
+      "en": "We need to confirm the electrical rough-in schedule with your supervisor.",
+      "es": "Necesitamos confirmar el cronograma del paso eléctrico con tu supervisor.",
+      "usage": "Diplomatic subcontractor sync; uses 'necesitar' (to need) vs. stronger 'tener que'"
+    },
+    {
+      "category": "Subcontractor Coordination",
+      "en": "Your team has to finish the plumbing by Friday or we'll fall behind.",
+      "es": "Tu equipo tiene que terminar la plomería para el viernes o nos atrasaremos.",
+      "usage": "Subcontractor accountability with consequence"
+    },
+    {
+      "category": "Deadline Management",
+      "en": "The punch list has to be complete before the final walkthrough.",
+      "es": "La lista de pendientes tiene que estar completa antes de la inspección final.",
+      "usage": "Quality gate before client sign-off"
+    },
+    {
+      "category": "Deadline Management",
+      "en": "We have a change order to review. It has to be approved by tomorrow morning.",
+      "es": "Tenemos una orden de cambio que revisar. Tiene que ser aprobada mañana por la mañana.",
+      "usage": "Management approval loop under time pressure"
+    },
+    {
+      "category": "Safety & Compliance",
+      "en": "Everyone has to wear a hard hat on this site. No exceptions.",
+      "es": "Todos tienen que usar un casco en esta obra. Sin excepciones.",
+      "usage": "Non-negotiable safety rule"
+    },
+    {
+      "category": "Safety & Compliance",
+      "en": "If there's a safety violation, we have to stop work immediately and report it.",
+      "es": "Si hay una violación de seguridad, tenemos que detener el trabajo inmediatamente e informar.",
+      "usage": "Protocol for safety incidents"
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "prompt": "The crew ________ (have to) finish the drywall before the plumber arrives on Wednesday.",
+        "spanish": "La cuadrilla ________ terminar el yeso antes de que llegue el plomero el miércoles.",
+        "correctAnswer": "tiene que",
+        "explanation": "Third person singular: 'tiene que' + infinitive (terminar)"
+      },
+      {
+        "prompt": "You ________ (have to) approve the overtime before the workers leave today.",
+        "spanish": "________ aprobar el tiempo extra antes de que los trabajadores se vayan hoy.",
+        "correctAnswer": "Tienes que",
+        "explanation": "Second person informal: 'Tienes que' + infinitive (aprobar). In formal context, use 'Tiene que usted'."
+      },
+      {
+        "prompt": "We ________ (have to) coordinate with the electrician about the schedule change.",
+        "spanish": "________ coordinar con el electricista sobre el cambio de cronograma.",
+        "correctAnswer": "Tenemos que",
+        "explanation": "First person plural: 'Tenemos que' + infinitive (coordinar)"
+      },
+      {
+        "prompt": "The inspector ________ (will have to) see the foundation before we pour concrete.",
+        "spanish": "El inspector ________ ver la cimentación antes de que vertamos concreto.",
+        "correctAnswer": "tiene que",
+        "explanation": "Future obligation: 'tiene que' + infinitive (ver). Spanish uses present 'tiene que' for near-future, not future tense."
+      },
+      {
+        "prompt": "They ________ (have to) remove all safety hazards from the site by end of day.",
+        "spanish": "________ quitar todos los peligros de seguridad de la obra antes del final del día.",
+        "correctAnswer": "Tienen que",
+        "explanation": "Third person plural: 'Tienen que' + infinitive (quitar)"
+      }
+    ],
+    "translate": [
+      {
+        "en": "The punch list has to be done before the client inspection.",
+        "es": "La lista de pendientes tiene que estar lista antes de la inspección del cliente.",
+        "notes": "Use 'estar + adjective' (estar lista) for completed state, or 'tener que + verb' (tiene que hacerse) for the action."
+      },
+      {
+        "en": "We have a weather delay. The schedule has to be updated today.",
+        "es": "Tenemos un retraso por clima. El cronograma tiene que ser actualizado hoy.",
+        "notes": "'Retraso por clima' (weather delay) is common; 'tiene que ser actualizado' (has to be updated) uses passive voice."
+      },
+      {
+        "en": "You have to coordinate with the subcontractors about the electrical rough-in deadline.",
+        "es": "Tienes que coordinar con los subcontratistas sobre la fecha límite del paso eléctrico.",
+        "notes": "'Paso eléctrico' (electrical rough-in) is technical; 'fecha límite' (deadline) is formal."
+      },
+      {
+        "en": "The foundation inspection has to be passed before we continue with framing.",
+        "es": "La inspección de cimentación tiene que ser aprobada antes de que continuemos con el enmarcado.",
+        "notes": "Use 'ser aprobada' (to be approved) in passive voice for inspection context; 'continuar' (to continue) is formal."
+      }
+    ]
+  },
+  "culturalNote": "In Latin American construction, the foreman (maestro or capataz) holds high respect. Leadership is direct but personal—crews respond better to a foreman who shares their challenges and shows genuine concern for safety and fairness. Using 'tener que' with clarity and respect (not harshness) builds trust. Always translate safety rules word-for-word; never assume comprehension. Many crews appreciate a brief 'muchas gracias por su trabajo' (thank you for your work) at day's end, which costs nothing and reinforces loyalty. Inspections are taken seriously—prepare crews beforehand and celebrate passes together."
+}

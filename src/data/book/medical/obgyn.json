@@ -1,0 +1,219 @@
+{
+  "id": "obgyn",
+  "title": "OB/GYN",
+  "emoji": "🤱",
+  "color": "#EC4899",
+  "chapterIntro": "Navigate prenatal care, labor and delivery, and postpartum instructions in Spanish. This chapter equips you with essential vocabulary and phrases for communicating with pregnant patients, their partners, and families during critical moments of pregnancy, birth, and early motherhood.",
+  "grammarFocus": {
+    "title": "Imperative (Command) Forms for Patient Instructions",
+    "explanation": "OB/GYN providers frequently give instructions—timing contractions, when to come to the hospital, how to care for postpartum wounds, and breastfeeding techniques. The formal imperative (usted form) is standard: 'Venga' (come), 'Descanse' (rest), 'Hidratese' (hydrate). Present tense with 'debe' (must/should) is also common: 'Debe venir al hospital.' Understanding both forms ensures clear, safe communication.",
+    "examples": [
+      {
+        "en": "Come to the hospital when contractions are every 5 minutes.",
+        "es": "Venga al hospital cuando las contracciones sean cada cinco minutos."
+      },
+      {
+        "en": "You must rest during the postpartum period.",
+        "es": "Debe descansar durante el período posparto."
+      },
+      {
+        "en": "Hydrate yourself frequently while breastfeeding.",
+        "es": "Hidratese frecuentemente mientras amamanta."
+      },
+      {
+        "en": "Do not lift anything heavier than the baby for six weeks.",
+        "es": "No levante nada más pesado que el bebé durante seis semanas."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "pregnancy",
+      "es": "embarazo / gestación"
+    },
+    {
+      "en": "first trimester",
+      "es": "primer trimestre"
+    },
+    {
+      "en": "second trimester",
+      "es": "segundo trimestre"
+    },
+    {
+      "en": "third trimester",
+      "es": "tercer trimestre"
+    },
+    {
+      "en": "due date",
+      "es": "fecha de parto / fecha esperada"
+    },
+    {
+      "en": "morning sickness",
+      "es": "náuseas matutinas / mareos"
+    },
+    {
+      "en": "swelling",
+      "es": "hinchazón / edema"
+    },
+    {
+      "en": "bleeding",
+      "es": "sangrado / hemorragia"
+    },
+    {
+      "en": "labor pain",
+      "es": "dolor de parto"
+    },
+    {
+      "en": "amniotic fluid",
+      "es": "líquido amniótico"
+    },
+    {
+      "en": "umbilical cord",
+      "es": "cordón umbilical"
+    },
+    {
+      "en": "placenta",
+      "es": "placenta"
+    },
+    {
+      "en": "episiotomy",
+      "es": "episiotomía / desgarro"
+    },
+    {
+      "en": "epidural",
+      "es": "epidural / anestesia epidural"
+    },
+    {
+      "en": "labor induction",
+      "es": "inducción del parto"
+    },
+    {
+      "en": "vaginal delivery",
+      "es": "parto vaginal"
+    },
+    {
+      "en": "cesarean section",
+      "es": "cesárea / operación cesárea"
+    },
+    {
+      "en": "newborn",
+      "es": "recién nacido / bebé"
+    },
+    {
+      "en": "postpartum hemorrhage",
+      "es": "hemorragia posparto"
+    },
+    {
+      "en": "lochia",
+      "es": "loquios / sangrado posparto"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "When did your last period start?",
+      "es": "¿Cuándo comenzó su último período?"
+    },
+    {
+      "en": "You are four centimeters dilated.",
+      "es": "Tiene cuatro centímetros de dilatación."
+    },
+    {
+      "en": "The baby's heartbeat is normal.",
+      "es": "Los latidos del corazón del bebé son normales."
+    },
+    {
+      "en": "You will need a cesarean section.",
+      "es": "Necesitará una cesárea."
+    },
+    {
+      "en": "Push with the next contraction.",
+      "es": "Puje con la próxima contracción."
+    },
+    {
+      "en": "Your baby is here. Congratulations!",
+      "es": "¡Su bebé ha llegado! ¡Felicitaciones!"
+    },
+    {
+      "en": "Breastfeed every two to three hours.",
+      "es": "Amamante cada dos o tres horas."
+    },
+    {
+      "en": "Watch for signs of infection: fever, redness, or discharge.",
+      "es": "Esté atento a signos de infección: fiebre, enrojecimiento o flujo."
+    },
+    {
+      "en": "Your bleeding should decrease over the next two weeks.",
+      "es": "Su sangrado debe disminuir durante las próximas dos semanas."
+    },
+    {
+      "en": "Rest as much as possible and avoid strenuous activity.",
+      "es": "Descanse lo más posible y evite actividad extenuante."
+    },
+    {
+      "en": "Call if you experience severe pain or heavy bleeding.",
+      "es": "Llame si experimenta dolor severo o sangrado abundante."
+    },
+    {
+      "en": "See your pediatrician within 24 hours of discharge.",
+      "es": "Vea a su pediatra dentro de 24 horas del alta."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "en": "Your baby is developing normally. The baby is in the _____ position.",
+      "es": "Su bebé se está desarrollando normalmente. El bebé está en posición _____.",
+      "blank": "head-down / cephalic / vertex",
+      "spanish_blank": "cefalica / vértice"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Stop eating and drinking. You may need a _____.",
+      "es": "Deje de comer y beber. Puede que necesite una _____.",
+      "blank": "cesarean section",
+      "spanish_blank": "cesárea"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "The _____ is delivering oxygen and nutrients to your baby.",
+      "es": "La _____ está entregando oxígeno y nutrientes a su bebé.",
+      "blank": "placenta",
+      "spanish_blank": "placenta"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "After birth, you will experience _____, which is normal vaginal bleeding.",
+      "es": "Después del parto, experimentará _____, que es sangrado vaginal normal.",
+      "blank": "lochia",
+      "spanish_blank": "loquios"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "If your baby is not latching, talk to the _____.",
+      "es": "Si su bebé no se está enganchando, hable con la _____.",
+      "blank": "lactation consultant",
+      "spanish_blank": "consultora de lactancia"
+    },
+    {
+      "type": "translation",
+      "en": "You should not douche or use tampons for six weeks.",
+      "es": "No debe usar irrigación vaginal ni tampones durante seis semanas."
+    },
+    {
+      "type": "translation",
+      "en": "Your stitches will dissolve on their own.",
+      "es": "Sus puntos se disolverán por sí solos."
+    },
+    {
+      "type": "translation",
+      "en": "Pelvic floor exercises will help you recover faster.",
+      "es": "Los ejercicios del piso pélvico la ayudarán a recuperarse más rápido."
+    },
+    {
+      "type": "translation",
+      "en": "You may return to light activity in two weeks.",
+      "es": "Puede volver a la actividad leve en dos semanas."
+    }
+  ],
+  "culturalNote": "In many Latin American cultures, family involvement during pregnancy, labor, and delivery is deeply valued and expected. Partners, mothers, and other family members often play active roles—from attending prenatal appointments to being present during labor. Some cultures prefer female birth attendants or may request specific postpartum practices (such as extended bed rest, herbal remedies, or restricted diets). Understanding and respecting these preferences, when medically safe, builds trust and improves patient compliance. Additionally, in some communities, discussing reproductive health topics with male providers can be uncomfortable, and having female staff available may increase comfort and honesty during sensitive discussions."
+}

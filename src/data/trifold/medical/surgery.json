@@ -1,0 +1,53 @@
+{
+  "id": "surgery",
+  "dialogues": [
+    {
+      "they_es": "¿Qué va a hacer exactamente en la cirugía?",
+      "they_en": "What exactly will you do in surgery?",
+      "you_es": "Voy a extirpar la vesícula biliar por laparoscopia.",
+      "you_en": "I will remove the gallbladder with laparoscopy."
+    },
+    {
+      "they_es": "No puedo comer ni beber nada antes, ¿verdad?",
+      "they_en": "I can't eat or drink anything before, right?",
+      "you_es": "Correcto. NPO desde las doce de la noche.",
+      "you_en": "Correct. NPO from midnight."
+    },
+    {
+      "they_es": "¿Habrá anestesia general? Tengo miedo.",
+      "they_en": "Will it be general anesthesia? I'm scared.",
+      "you_es": "Sí, dormirá. El anestesista estará con usted.",
+      "you_en": "Yes, you'll sleep. The anesthesiologist will be with you."
+    },
+    {
+      "they_es": "¿Cuándo podré irme a casa después?",
+      "they_en": "When can I go home after?",
+      "you_es": "La mayoría va el mismo día o al siguiente.",
+      "you_en": "Most patients go home the same or next day."
+    },
+    {
+      "they_es": "Tengo mucho dolor en la herida. ¿Es normal?",
+      "they_en": "I have a lot of pain at the incision. Is that normal?",
+      "you_es": "Algo es normal. Tome el analgésico cada seis horas.",
+      "you_en": "Some pain is normal. Take pain medication every six hours."
+    },
+    {
+      "they_es": "¿Puedo mojar las heridas cuando me duche?",
+      "they_en": "Can I get the wounds wet when I shower?",
+      "you_es": "Sí, pero séquelas bien después.",
+      "you_en": "Yes, but dry them well afterward."
+    },
+    {
+      "they_es": "¿Cuándo puedo volver al trabajo?",
+      "they_en": "When can I return to work?",
+      "you_es": "Espere dos a tres semanas para trabajo ligero.",
+      "you_en": "Wait two to three weeks for light work."
+    },
+    {
+      "they_es": "Estoy sangrando de la incisión. ¿Qué hago?",
+      "they_en": "The incision is bleeding. What do I do?",
+      "you_es": "Presione con gasa limpia durante diez minutos. Llame si continúa.",
+      "you_en": "Press with clean gauze for ten minutes. Call if it continues."
+    }
+  ]
+}

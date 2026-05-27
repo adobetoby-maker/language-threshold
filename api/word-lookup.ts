@@ -6,7 +6,21 @@ interface AnthropicMessage {
   error?: { type: string; message: string }
 }
 
+const ALLOWED_ORIGINS = new Set([
+  'https://constructionspanish.app',
+  'https://medicalspanish.app',
+  'https://languagethreshold.com',
+])
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const origin = req.headers.origin ?? ''
+  if (ALLOWED_ORIGINS.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+    res.setHeader('Vary', 'Origin')
+  }
+  if (req.method === 'OPTIONS') return res.status(204).end()
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
   if (await checkRateLimit(req, res)) return
 
@@ -56,12 +70,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
+      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-beta': 'prompt-caching-2024-07-31' },
       body: JSON.stringify({
         model: 'claude-haiku-4-5',
         max_tokens: 700,
-        system: 'You are a bilingual Spanish dictionary for working professionals. Keep definitions concise. Always populate morphStem, morphEnding, morphConjugations, and commonPhrases to show how words change on the job.',
-        tools: [tool],
+        system: [{ type: 'text', text: 'You are a bilingual Spanish dictionary for working professionals. Keep definitions concise. Always populate morphStem, morphEnding, morphConjugations, and commonPhrases to show how words change on the job.', cache_control: { type: 'ephemeral' } }],
+        tools: [{ ...tool, cache_control: { type: 'ephemeral' } }],
         tool_choice: { type: 'tool', name: 'return_word_card' },
         messages: [{ role: 'user', content: `Spanish word: "${word}"\nContext: "${sentence}"` }],
       }),

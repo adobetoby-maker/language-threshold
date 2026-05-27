@@ -1,0 +1,214 @@
+{
+  "id": "family-medicine",
+  "title": "Family Medicine",
+  "emoji": "🏥",
+  "color": "#10B981",
+  "chapterIntro": "Family medicine forms the backbone of primary care. In this chapter, you'll master the language of wellness visits, chronic disease management, and preventive care counseling. Whether discussing blood pressure, diabetes control, or lifestyle changes, these conversations happen daily in clinical practice.",
+  "grammarFocus": {
+    "title": "Conditional & Imperative Structures for Health Counseling",
+    "explanation": "Family medicine requires giving advice and setting expectations. Master the conditional mood ('would,' 'should') combined with imperatives ('come back,' 'reduce salt') to deliver clear, actionable health guidance. Spanish imperatives are more direct in healthcare contexts than in English.",
+    "examples": [
+      {
+        "en": "You should reduce your salt intake.",
+        "es": "Debe reducir su consumo de sal."
+      },
+      {
+        "en": "If you don't take your medication, your condition could worsen.",
+        "es": "Si no toma su medicamento, su condición podría empeorar."
+      },
+      {
+        "en": "I want you to come back in three months.",
+        "es": "Quiero que vuelva en tres meses."
+      },
+      {
+        "en": "You would benefit from losing weight.",
+        "es": "Se beneficiaría de perder peso."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "blood pressure",
+      "es": "presión arterial / tensión"
+    },
+    {
+      "en": "cholesterol",
+      "es": "colesterol"
+    },
+    {
+      "en": "triglycerides",
+      "es": "triglicéridos"
+    },
+    {
+      "en": "glucose level",
+      "es": "nivel de glucosa / azúcar en sangre"
+    },
+    {
+      "en": "weight management",
+      "es": "control del peso"
+    },
+    {
+      "en": "exercise routine",
+      "es": "rutina de ejercicio"
+    },
+    {
+      "en": "diet modification",
+      "es": "modificación de la dieta"
+    },
+    {
+      "en": "medication adherence",
+      "es": "cumplimiento de medicamentos / adherencia al tratamiento"
+    },
+    {
+      "en": "lifestyle counseling",
+      "es": "consejería de estilo de vida"
+    },
+    {
+      "en": "preventive care",
+      "es": "cuidado preventivo"
+    },
+    {
+      "en": "screening test",
+      "es": "prueba de detección / prueba de tamizaje"
+    },
+    {
+      "en": "lab work",
+      "es": "análisis de laboratorio / pruebas de laboratorio"
+    },
+    {
+      "en": "specialist referral",
+      "es": "referencia al especialista / derivación"
+    },
+    {
+      "en": "comorbidity",
+      "es": "comorbilidad / enfermedad concomitante"
+    },
+    {
+      "en": "compliance",
+      "es": "cumplimiento / obediencia del tratamiento"
+    },
+    {
+      "en": "side effect",
+      "es": "efecto secundario"
+    },
+    {
+      "en": "dosage",
+      "es": "dosis"
+    },
+    {
+      "en": "vaccination schedule",
+      "es": "calendario de vacunación"
+    },
+    {
+      "en": "family history",
+      "es": "antecedentes familiares"
+    },
+    {
+      "en": "social history",
+      "es": "antecedentes sociales"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Your blood sugar is too high. I want you to come back in three months for a follow-up.",
+      "es": "Su azúcar en sangre está muy alta. Quiero que vuelva en tres meses para una cita de seguimiento."
+    },
+    {
+      "en": "We need to talk about your diet and exercise habits.",
+      "es": "Necesitamos hablar sobre su dieta y hábitos de ejercicio."
+    },
+    {
+      "en": "You have high blood pressure, which increases your risk of heart disease and stroke.",
+      "es": "Tiene la presión arterial alta, lo que aumenta su riesgo de enfermedad cardíaca y accidente cerebrovascular."
+    },
+    {
+      "en": "Take this medication twice a day with food.",
+      "es": "Tome este medicamento dos veces al día con comida."
+    },
+    {
+      "en": "I'm going to refer you to a cardiologist for further evaluation.",
+      "es": "Voy a referirlo a un cardiólogo para una evaluación más profunda."
+    },
+    {
+      "en": "How many glasses of water do you drink per day?",
+      "es": "¿Cuántos vasos de agua bebe al día?"
+    },
+    {
+      "en": "Do you have any side effects from your medications?",
+      "es": "¿Tiene algún efecto secundario de sus medicamentos?"
+    },
+    {
+      "en": "You need to get your cholesterol checked every year.",
+      "es": "Necesita hacerse revisar el colesterol cada año."
+    },
+    {
+      "en": "It's important to take your medication even if you feel fine.",
+      "es": "Es importante tomar su medicamento aunque se sienta bien."
+    },
+    {
+      "en": "Your diabetes is controlled well. Keep doing what you're doing.",
+      "es": "Su diabetes está bien controlada. Siga haciendo lo que está haciendo."
+    },
+    {
+      "en": "You should try to reduce your salt intake to help lower your blood pressure.",
+      "es": "Debería tratar de reducir su consumo de sal para ayudar a bajar su presión arterial."
+    },
+    {
+      "en": "Let's schedule a follow-up appointment for six weeks to see how you're doing.",
+      "es": "Programemos una cita de seguimiento en seis semanas para ver cómo está."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "en": "Your blood pressure today is 150 over 90. This is ___.",
+        "es": "Su presión arterial hoy es 150 sobre 90. Esto es ___.",
+        "answer": "too high / elevated / high",
+        "answerEs": "demasiado alta / elevada / alta"
+      },
+      {
+        "en": "I want you to ___ your medications exactly as prescribed.",
+        "es": "Quiero que ___ sus medicamentos exactamente como se prescribieron.",
+        "answer": "take",
+        "answerEs": "tome"
+      },
+      {
+        "en": "If you don't exercise regularly, your weight could ___.",
+        "es": "Si no hace ejercicio regularmente, su peso podría ___.",
+        "answer": "increase",
+        "answerEs": "aumentar"
+      },
+      {
+        "en": "You should avoid ___ foods because of your high blood pressure.",
+        "es": "Debería evitar los alimentos ___ por su presión arterial alta.",
+        "answer": "salty",
+        "answerEs": "salados"
+      },
+      {
+        "en": "Come back for a follow-up ___ in three months.",
+        "es": "Vuelva para una cita de seguimiento ___ en tres meses.",
+        "answer": "appointment",
+        "answerEs": "cita"
+      }
+    ],
+    "translation": [
+      {
+        "en": "Your cholesterol level is high. You need to eat less fatty food.",
+        "es": "Su nivel de colesterol es alto. Necesita comer menos comida grasosa."
+      },
+      {
+        "en": "Take this blood pressure medication every morning before breakfast.",
+        "es": "Tome este medicamento para la presión arterial cada mañana antes del desayuno."
+      },
+      {
+        "en": "Do you have any questions about your diabetes medications?",
+        "es": "¿Tiene alguna pregunta sobre sus medicamentos para la diabetes?"
+      },
+      {
+        "en": "I recommend that you get vaccinated against the flu this year.",
+        "es": "Le recomiendo que se vacune contra la gripe este año."
+      }
+    ]
+  },
+  "culturalNote": "In Spanish-speaking healthcare settings, family medicine is deeply respected as the first line of care. Many patients from Latin America have strong family medical traditions where the 'médico de cabecera' (primary care physician) serves as a trusted advisor for multiple generations. Building trust through clear communication, acknowledging family health history, and respecting patient autonomy are culturally important. Formal 'usted' is standard with patients unless they explicitly invite informal 'tú.' Always inquire about cultural health beliefs—many Latino patients may use traditional remedies alongside pharmaceutical treatments, and this should be explored non-judgmentally."
+}

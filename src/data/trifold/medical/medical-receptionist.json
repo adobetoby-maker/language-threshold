@@ -1,0 +1,54 @@
+{
+  "id": "medical-receptionist",
+  "title": "Medical Receptionist",
+  "dialogues": [
+    {
+      "they_es": "¿Puedo hacer una cita con el doctor?",
+      "they_en": "Can I make an appointment with the doctor?",
+      "you_es": "¿Cuál es su nombre y número de teléfono?",
+      "you_en": "What's your name and phone number?"
+    },
+    {
+      "they_es": "Necesito una cita lo antes posible.",
+      "they_en": "I need an appointment as soon as possible.",
+      "you_es": "¿Le viene bien el próximo lunes a las dos?",
+      "you_en": "Does next Monday at two work for you?"
+    },
+    {
+      "they_es": "¿Cuánto cuesta la visita sin seguro?",
+      "they_en": "How much is the visit without insurance?",
+      "you_es": "La consulta cuesta ciento cincuenta dólares.",
+      "you_en": "The consultation costs one hundred fifty dollars."
+    },
+    {
+      "they_es": "¿Tengo que pagar el copago hoy?",
+      "they_en": "Do I have to pay the copay today?",
+      "you_es": "Sí, el copago es treinta dólares.",
+      "you_en": "Yes, the copay is thirty dollars."
+    },
+    {
+      "they_es": "¿Dónde lleno los formularios?",
+      "they_en": "Where do I fill out the forms?",
+      "you_es": "Por favor, llene este formulario aquí.",
+      "you_en": "Please fill out this form here."
+    },
+    {
+      "they_es": "¿Cuánto tiempo voy a esperar?",
+      "they_en": "How long am I going to wait?",
+      "you_es": "El doctor está ocupado. Unos treinta minutos.",
+      "you_en": "The doctor is busy. About thirty minutes."
+    },
+    {
+      "they_es": "¿Cómo llego a la sala de espera?",
+      "they_en": "How do I get to the waiting room?",
+      "you_es": "Está a la derecha, pasando la puerta.",
+      "you_en": "It's to the right, past that door."
+    },
+    {
+      "they_es": "¿Aceptan mi seguro médico?",
+      "they_en": "Do you accept my insurance?",
+      "you_es": "Sí, aceptamos ese seguro. ¿Tiene la tarjeta?",
+      "you_en": "Yes, we accept that insurance. Do you have your card?"
+    }
+  ]
+}

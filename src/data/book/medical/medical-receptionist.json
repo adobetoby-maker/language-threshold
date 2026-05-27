@@ -1,0 +1,222 @@
+{
+  "id": "medical-receptionist",
+  "title": "Medical Receptionist",
+  "emoji": "📋",
+  "color": "#4A9EFF",
+  "chapterIntro": "In this chapter, you will master the essential Spanish language skills needed to work as a medical receptionist. From greeting patients to navigating insurance questions and scheduling appointments, these dialogues and vocabulary will prepare you for real-world interactions in a healthcare setting. As a receptionist, you are often the first point of contact—your clear, professional Spanish sets the tone for the entire patient experience.",
+  "grammarFocus": {
+    "title": "Polite Phone and Desk Communication",
+    "register": "Formal (usted/ustedes)",
+    "keyPoints": [
+      "Using conditional tense (condicional) for polite requests: '¿Podría...?' (Could you...?)",
+      "Passive constructions for procedural information: 'Es necesario...' (It is necessary...)",
+      "Time expressions with 'antes de', 'después de', 'a las' for scheduling",
+      "Reflexive verbs for patient actions: 'registrarse', 'presentarse', 'asegurarse'",
+      "Imperative mood (usted form) for instructions while maintaining politeness"
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "appointment",
+      "es": "cita",
+      "context": "scheduling"
+    },
+    {
+      "en": "insurance",
+      "es": "seguro médico",
+      "context": "billing"
+    },
+    {
+      "en": "copay",
+      "es": "copago",
+      "context": "billing"
+    },
+    {
+      "en": "referral",
+      "es": "referencia / derivación",
+      "context": "procedures"
+    },
+    {
+      "en": "date of birth",
+      "es": "fecha de nacimiento",
+      "context": "registration"
+    },
+    {
+      "en": "primary care physician",
+      "es": "médico de cabecera / médico primario",
+      "context": "insurance"
+    },
+    {
+      "en": "prior authorization",
+      "es": "autorización previa",
+      "context": "insurance"
+    },
+    {
+      "en": "deductible",
+      "es": "deducible",
+      "context": "billing"
+    },
+    {
+      "en": "out-of-pocket",
+      "es": "pago de bolsillo",
+      "context": "billing"
+    },
+    {
+      "en": "waiting room",
+      "es": "sala de espera",
+      "context": "facility"
+    },
+    {
+      "en": "patient",
+      "es": "paciente",
+      "context": "general"
+    },
+    {
+      "en": "address",
+      "es": "dirección",
+      "context": "registration"
+    },
+    {
+      "en": "phone number",
+      "es": "número de teléfono",
+      "context": "registration"
+    },
+    {
+      "en": "new patient form",
+      "es": "formulario de paciente nuevo",
+      "context": "registration"
+    },
+    {
+      "en": "insurance card",
+      "es": "tarjeta de seguro",
+      "context": "billing"
+    },
+    {
+      "en": "authorization",
+      "es": "autorización",
+      "context": "procedures"
+    },
+    {
+      "en": "prescription",
+      "es": "receta / prescripción",
+      "context": "medical"
+    },
+    {
+      "en": "billing department",
+      "es": "departamento de facturación",
+      "context": "facility"
+    },
+    {
+      "en": "claim",
+      "es": "reclamo",
+      "context": "billing"
+    },
+    {
+      "en": "to check in",
+      "es": "registrarse",
+      "context": "procedures"
+    }
+  ],
+  "samplePhrase": {
+    "en": "Your insurance requires a prior authorization for this procedure. I will call them today and let you know by end of week.",
+    "es": "Su seguro requiere una autorización previa para este procedimiento. Voy a llamarles hoy y le aviso antes del viernes."
+  },
+  "scenario": "Patient registration, insurance calls, scheduling, billing questions",
+  "phrases": [
+    {
+      "en": "Good morning. Welcome to Central Medical Clinic. How can I help you today?",
+      "es": "Buenos días. Bienvenido a la Clínica Médica Central. ¿Cómo puedo ayudarle hoy?"
+    },
+    {
+      "en": "Are you a new patient or a returning patient?",
+      "es": "¿Es usted paciente nuevo o paciente establecido?"
+    },
+    {
+      "en": "Could you please provide your insurance card? I need to make a copy.",
+      "es": "¿Podría proporcionarme su tarjeta de seguro? Necesito hacer una copia."
+    },
+    {
+      "en": "Do you have a copay today? Your copay is twenty-five dollars.",
+      "es": "¿Tiene copago hoy? Su copago es veinticinco dólares."
+    },
+    {
+      "en": "When was your last appointment with Dr. García?",
+      "es": "¿Cuándo fue su última cita con la doctora García?"
+    },
+    {
+      "en": "I need to verify your information. Could you spell your last name for me, please?",
+      "es": "Necesito verificar su información. ¿Podría deletrearme su apellido, por favor?"
+    },
+    {
+      "en": "Your insurance requires a prior authorization. I will contact them today.",
+      "es": "Su seguro requiere una autorización previa. Voy a contactarles hoy."
+    },
+    {
+      "en": "The doctor is running about fifteen minutes late. Please have a seat in the waiting room.",
+      "es": "El doctor está corriendo unos quince minutos de atraso. Por favor, tome asiento en la sala de espera."
+    },
+    {
+      "en": "Do you have a referral from your primary care physician?",
+      "es": "¿Tiene una referencia de su médico de cabecera?"
+    },
+    {
+      "en": "We will send this prescription to your pharmacy. It should be ready in one hour.",
+      "es": "Vamos a enviar esta receta a su farmacia. Debe estar lista en una hora."
+    },
+    {
+      "en": "If you have any questions about your bill, please contact our billing department.",
+      "es": "Si tiene preguntas sobre su factura, por favor contacte a nuestro departamento de facturación."
+    },
+    {
+      "en": "Thank you for choosing our clinic. We look forward to seeing you again soon.",
+      "es": "Gracias por elegir nuestra clínica. Esperamos verlo nuevamente pronto."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "prompt": "Patient asks: '¿Cuál es mi ______?' (What is my copay?)",
+        "answer": "copago"
+      },
+      {
+        "prompt": "Receptionist says: 'Voy a verificar si su seguro necesita una ______ previa.' (I will verify if your insurance needs a prior authorization.)",
+        "answer": "autorización"
+      },
+      {
+        "prompt": "Patient says: 'No tengo mi ______ de seguro conmigo.' (I don't have my insurance card with me.)",
+        "answer": "tarjeta"
+      },
+      {
+        "prompt": "Receptionist says: 'Por favor, ______ este formulario de paciente nuevo.' (Please fill out this new patient form.)",
+        "answer": "llene"
+      },
+      {
+        "prompt": "Patient asks: '¿A qué ______ es mi cita mañana?' (What time is my appointment tomorrow?)",
+        "answer": "hora"
+      }
+    ],
+    "translation": [
+      {
+        "english": "I will need your date of birth and your phone number.",
+        "spanish": "Voy a necesitar su fecha de nacimiento y su número de teléfono."
+      },
+      {
+        "english": "Your deductible has not been met yet this year.",
+        "spanish": "Su deducible aún no ha sido alcanzado este año."
+      },
+      {
+        "english": "The doctor can see you next Tuesday at 2:00 PM.",
+        "spanish": "El doctor puede verlo el próximo martes a las 2:00 PM."
+      },
+      {
+        "english": "I am calling your insurance company to request a referral.",
+        "spanish": "Estoy llamando a su compañía de seguros para solicitar una referencia."
+      }
+    ]
+  },
+  "culturalNote": {
+    "title": "Health Insurance Navigation for Spanish-Speaking Patients",
+    "content": "Many Spanish-speaking patients may be unfamiliar with the U.S. health insurance system, which differs significantly from healthcare systems in Spanish-speaking countries. Concepts like deductibles, copays, prior authorizations, and out-of-pocket expenses may be confusing or entirely new. As a medical receptionist, you play a crucial role in demystifying these processes. Take time to explain insurance terminology clearly, avoid jargon, and be patient with questions—even if they seem basic to you. Many patients are experiencing financial stress or anxiety about healthcare costs. Your empathy, clear communication, and willingness to explain procedures in accessible language can significantly reduce patient anxiety and improve their experience. Always offer to connect patients with the billing department or a financial counselor if questions arise. Remember: clear communication in the patient's language builds trust and ensures they understand their financial responsibilities before receiving care.",
+    "keyTakeaway": "Compassion + clarity = patient trust and better outcomes"
+  }
+}

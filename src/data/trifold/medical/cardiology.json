@@ -1,0 +1,53 @@
+{
+  "id": "cardiology",
+  "dialogues": [
+    {
+      "they_es": "¿Por qué tengo dolor en el pecho?",
+      "they_en": "Why do I have chest pain?",
+      "you_es": "Vamos a hacer un EKG y análisis de sangre.",
+      "you_en": "We'll do an EKG and blood tests."
+    },
+    {
+      "they_es": "¿Necesito tomar aspirina todos los días?",
+      "they_en": "Do I need to take aspirin every day?",
+      "you_es": "Sí, una aspirin de ochenta y un miligramos diarios.",
+      "you_en": "Yes, one eighty-one milligram aspirin daily."
+    },
+    {
+      "they_es": "Estoy tomando anticoagulantes. ¿Puedo operarme?",
+      "they_en": "I take blood thinners. Can I have surgery?",
+      "you_es": "Depende. Hable con su cirujano primero.",
+      "you_en": "It depends. Talk to your surgeon first."
+    },
+    {
+      "they_es": "¿Qué es un marcapasos y para qué sirve?",
+      "they_en": "What is a pacemaker and what does it do?",
+      "you_es": "Regula los latidos del corazón eléctricamente.",
+      "you_en": "It regulates heartbeats electrically."
+    },
+    {
+      "they_es": "Me falta el aliento al caminar. ¿Es grave?",
+      "they_en": "I get short of breath walking. Is it serious?",
+      "you_es": "Puede ser insuficiencia cardíaca. Necesita más pruebas.",
+      "you_en": "It could be heart failure. You need more tests."
+    },
+    {
+      "they_es": "¿Puedo comer sal si tengo presión alta?",
+      "they_en": "Can I eat salt if I have high blood pressure?",
+      "you_es": "Debe limitar la sal a menos de dos mil miligramos diarios.",
+      "you_en": "Limit salt to less than two thousand milligrams daily."
+    },
+    {
+      "they_es": "¿Qué medicinas debo tomar todos los días?",
+      "they_en": "What medicines should I take every day?",
+      "you_es": "Atorvastatina, lisinopril, y aspirina. Sin falta.",
+      "you_en": "Atorvastatin, lisinopril, and aspirin. Without fail."
+    },
+    {
+      "they_es": "¿Puedo hacer ejercicio con mi corazón débil?",
+      "they_en": "Can I exercise with my weak heart?",
+      "you_es": "Sí, pero camine treinta minutos cinco días por semana.",
+      "you_en": "Yes, but walk thirty minutes five days weekly."
+    }
+  ]
+}

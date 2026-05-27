@@ -1,0 +1,53 @@
+{
+  "id": "truck-driver",
+  "dialogues": [
+    {
+      "they_es": "¿Cuál es la dirección de entrega?",
+      "they_en": "What's the delivery address?",
+      "you_es": "Avenida Principal número treinta y cinco, San Pedro.",
+      "you_en": "Main Avenue number thirty-five, San Pedro."
+    },
+    {
+      "they_es": "¿Cuántas toneladas pesa la carga?",
+      "they_en": "How many tons does the load weigh?",
+      "you_es": "Quince toneladas. Revisa el peso en la báscula.",
+      "you_en": "Fifteen tons. Check the weight at the scale."
+    },
+    {
+      "they_es": "¿Cuándo necesitan la mercancía?",
+      "they_en": "When do they need the merchandise?",
+      "you_es": "Antes de las seis de la tarde. No llegues tarde.",
+      "you_en": "Before six PM. Don't be late."
+    },
+    {
+      "they_es": "¿Cuáles son mis horas de servicio hoy?",
+      "they_en": "What are my hours of service today?",
+      "you_es": "Tienes ocho horas. Para después, descansa dos horas.",
+      "you_en": "You have eight hours. Rest two hours after."
+    },
+    {
+      "they_es": "¿Dónde cargo gasolina?",
+      "they_en": "Where do I fill up with fuel?",
+      "you_es": "En la gasolinera de la carretera. Guarda el recibo.",
+      "you_en": "At the highway gas station. Keep the receipt."
+    },
+    {
+      "they_es": "¿Necesito una orden de trabajo?",
+      "they_en": "Do I need a work order?",
+      "you_es": "Sí, aquí está. Firmado por el cliente.",
+      "you_en": "Yes, here it is. Signed by the customer."
+    },
+    {
+      "they_es": "¿Está asegurada la carga?",
+      "they_en": "Is the load insured?",
+      "you_es": "Sí, póliza número cinco mil dos. En tu carpeta.",
+      "you_en": "Yes, policy number five thousand two. In your folder."
+    },
+    {
+      "they_es": "¿Qué hago si hay un problema en la carretera?",
+      "they_en": "What do I do if there's a problem on the road?",
+      "you_es": "Llámame inmediatamente. Espera instrucciones.",
+      "you_en": "Call me immediately. Wait for instructions."
+    }
+  ]
+}

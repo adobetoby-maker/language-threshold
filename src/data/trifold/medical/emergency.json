@@ -1,0 +1,53 @@
+{
+  "id": "emergency",
+  "dialogues": [
+    {
+      "they_es": "Me duele mucho el pecho.",
+      "they_en": "My chest hurts a lot.",
+      "you_es": "¿Desde cuándo tiene el dolor?",
+      "you_en": "How long have you had this pain?"
+    },
+    {
+      "they_es": "No puedo respirar bien.",
+      "they_en": "I can't breathe well.",
+      "you_es": "¿Cuando empezó la dificultad para respirar?",
+      "you_en": "When did the difficulty breathing start?"
+    },
+    {
+      "they_es": "Soy alérgico a la penicilina.",
+      "they_en": "I'm allergic to penicillin.",
+      "you_es": "¿Qué tipo de reacción tuvo?",
+      "you_en": "What type of reaction did you have?"
+    },
+    {
+      "they_es": "Me caí y no puedo mover el brazo.",
+      "they_en": "I fell and can't move my arm.",
+      "you_es": "¿Dónde siente el dolor exactamente?",
+      "you_en": "Where exactly do you feel the pain?"
+    },
+    {
+      "they_es": "Tengo mareos y me siento mal.",
+      "they_en": "I'm dizzy and feel sick.",
+      "you_es": "¿Ha vomitado o ha perdido la conciencia?",
+      "you_en": "Have you vomited or lost consciousness?"
+    },
+    {
+      "they_es": "Tengo fiebre muy alta.",
+      "they_en": "I have a very high fever.",
+      "you_es": "¿Cuál es su temperatura ahora?",
+      "you_en": "What is your temperature now?"
+    },
+    {
+      "they_es": "Estoy sangrando mucho.",
+      "they_en": "I'm bleeding a lot.",
+      "you_es": "Presione aquí con firmeza. No se preocupe.",
+      "you_en": "Press here firmly. Don't worry."
+    },
+    {
+      "they_es": "¿Necesito ir al hospital?",
+      "they_en": "Do I need to go to the hospital?",
+      "you_es": "Sí, vamos a llevarlo ahora mismo.",
+      "you_en": "Yes, we're going to take you right now."
+    }
+  ]
+}

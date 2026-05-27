@@ -1,0 +1,309 @@
+{
+  "id": "truck-driver",
+  "title": "Truck Driver",
+  "tagline": "Dispatch, delivery, DOT compliance, and cross-border logistics.",
+  "emoji": "🚚",
+  "color": "#34D399",
+  "chapterIntro": "This chapter covers essential Spanish for truck drivers in construction and logistics. You'll learn how to communicate with dispatch, confirm deliveries, navigate DOT inspections, and handle cross-border logistics. From loading documentation to weigh station procedures, these conversations are critical for safety, compliance, and efficient operations.",
+  "grammarFocus": {
+    "title": "Numbers, Quantities, and Confirmation",
+    "description": "Truck drivers constantly work with numbers: load counts, weights, hours, delivery confirmations. Master Spanish number agreement, unit measurements, and the patterns for confirming quantities accurately.",
+    "patterns": [
+      {
+        "pattern": "Tengo [number] tarimas de [material].",
+        "translation": "I have [number] pallets of [material].",
+        "example": "Tengo 24 tarimas de cemento.",
+        "note": "Number agreement: 24 tarimas (plural). Always verify pallet count on manifest."
+      },
+      {
+        "pattern": "[Number] toneladas / kilos / libras",
+        "translation": "[Number] metric tons / kilograms / pounds",
+        "example": "Este camión pesa 18 toneladas. Esta carga es 5,000 kilos.",
+        "note": "Use metric (toneladas, kilos) in Mexico/Latin America. Know both systems for cross-border work."
+      },
+      {
+        "pattern": "¿Cuántas [item] hay? Hay [number] [item].",
+        "translation": "How many [item] are there? There are [number] [item].",
+        "example": "¿Cuántas cajas hay? Hay 150 cajas.",
+        "note": "Common in delivery confirmations. Always plural noun agreement."
+      },
+      {
+        "pattern": "[Number] horas de servicio / [Number] millas",
+        "translation": "[Number] hours of service / [Number] miles",
+        "example": "Ya he manejado 8 horas de servicio hoy. Faltan 4 millas para llegar.",
+        "note": "DOT hours of service (HOS) regulations. Critical for compliance."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "load",
+      "es": "carga",
+      "context": "Dispatch: 'La carga está lista para salir.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "manifest",
+      "es": "manifiesto / lista de carga",
+      "context": "Documentation: 'Revisa el manifiesto antes de partir.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "weigh station",
+      "es": "básculas / estación de pesaje",
+      "context": "DOT: 'Parar en las básculas para inspección.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "DOT inspection",
+      "es": "inspección del DOT",
+      "context": "Compliance: 'Pasé la inspección del DOT sin problemas.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "log book",
+      "es": "bitácora / libro de registro / AOBRD (dispositivo)",
+      "context": "Documentation: 'Apunta tus horas en la bitácora.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "hours of service",
+      "es": "horas de servicio / jornada laboral",
+      "context": "Regulation: 'He alcanzado mis horas de servicio. Necesito descanso.'",
+      "partOfSpeech": "noun phrase"
+    },
+    {
+      "en": "delivery",
+      "es": "entrega",
+      "context": "Operations: 'La entrega está confirmada para las 2 PM.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "dock",
+      "es": "muelle / plataforma de carga",
+      "context": "Site: 'Estaciona el camión en el muelle número 3.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "pallet",
+      "es": "tarima / palé",
+      "context": "Loading: 'Carga 30 tarimas en el camión.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "hazmat",
+      "es": "materiales peligrosos / hazmat",
+      "context": "Safety: 'Esta carga contiene hazmat. Necesitas permiso especial.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "dispatch",
+      "es": "despacho / centro de despacho",
+      "context": "Communication: 'Llamé al despacho para confirmar la ruta.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "delivery receipt",
+      "es": "comprobante de entrega / recibo de entrega",
+      "context": "Documentation: 'El cliente debe firmar el comprobante de entrega.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "route",
+      "es": "ruta / recorrido",
+      "context": "Planning: 'La ruta a Monterrey toma 12 horas.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "trailer",
+      "es": "remolque / acoplado",
+      "context": "Equipment: 'Necesito revisar los frenos del remolque.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "axle",
+      "es": "eje",
+      "context": "Maintenance: 'El eje trasero tiene un problema.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "brake",
+      "es": "freno",
+      "context": "Safety: 'Los frenos no están funcionando correctamente.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "tire",
+      "es": "llanta / neumático",
+      "context": "Maintenance: 'Pinché una llanta en la carretera.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "fuel",
+      "es": "combustible / gasolina / diésel",
+      "context": "Operations: 'Necesito parar para cargar combustible.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "border crossing",
+      "es": "paso fronterizo / cruce fronterizo",
+      "context": "International: 'El paso fronterizo está congestionado hoy.'",
+      "partOfSpeech": "noun"
+    },
+    {
+      "en": "customs",
+      "es": "aduana",
+      "context": "International: 'La aduana está revisando todos los documentos.'",
+      "partOfSpeech": "noun"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Sign the delivery receipt and make sure the pallet count matches the manifest before I pull out.",
+      "es": "Firma el comprobante de entrega y verifica que el número de tarimas coincida con el manifiesto antes de que salga.",
+      "context": "Delivery confirmation",
+      "scenario": "At loading dock"
+    },
+    {
+      "en": "I have loaded 48 pallets of concrete blocks. All items are secured and ready for transport.",
+      "es": "He cargado 48 tarimas de bloques de concreto. Todos los artículos están asegurados y listos para transportar.",
+      "context": "Load confirmation",
+      "scenario": "Before departure"
+    },
+    {
+      "en": "The weigh station shows I am over the legal limit by 2,000 pounds. I need to offload some cargo.",
+      "es": "Las básculas muestran que estoy 2,000 libras por encima del límite legal. Necesito descargar parte de la carga.",
+      "context": "Weight compliance",
+      "scenario": "At weigh station"
+    },
+    {
+      "en": "I have completed my DOT inspection. The officer said everything is in order.",
+      "es": "Completé la inspección del DOT. El oficial dijo que todo está en orden.",
+      "context": "DOT compliance",
+      "scenario": "After inspection"
+    },
+    {
+      "en": "I have reached my hours of service limit. I need to rest for 10 hours before continuing.",
+      "es": "He alcanzado el límite de horas de servicio. Necesito descansar 10 horas antes de continuar.",
+      "context": "Regulatory requirement",
+      "scenario": "Dispatch communication"
+    },
+    {
+      "en": "The delivery is delayed because there is heavy traffic on the highway.",
+      "es": "La entrega se retrasa porque hay mucho tráfico en la carretera.",
+      "context": "Status update",
+      "scenario": "Calling dispatch"
+    },
+    {
+      "en": "I am approaching the border. Do I have all the paperwork for this shipment?",
+      "es": "Me acerco a la frontera. ¿Tengo toda la documentación para este envío?",
+      "context": "Cross-border logistics",
+      "scenario": "Before border crossing"
+    },
+    {
+      "en": "The manifest shows 150 boxes, but I only count 140. There are 10 boxes missing.",
+      "es": "El manifiesto muestra 150 cajas, pero solo cuento 140. Faltan 10 cajas.",
+      "context": "Discrepancy report",
+      "scenario": "During loading or unloading"
+    },
+    {
+      "en": "I have a flat tire. I am waiting for roadside assistance. My location is mile marker 45 on Highway 57.",
+      "es": "Tengo una llanta pinchada. Estoy esperando asistencia en carretera. Mi ubicación es el marcador de milla 45 en la carretera 57.",
+      "context": "Emergency communication",
+      "scenario": "Roadside incident"
+    },
+    {
+      "en": "This shipment contains hazmat materials. I have the proper permits and training certification.",
+      "es": "Este envío contiene materiales peligrosos. Tengo los permisos apropiados y certificación de capacitación.",
+      "context": "Hazmat compliance",
+      "scenario": "Dispatch verification"
+    },
+    {
+      "en": "I need to refuel before the border crossing. Where is the nearest truck stop?",
+      "es": "Necesito cargar combustible antes del cruce fronterizo. ¿Dónde está la estación de servicio para camiones más cercana?",
+      "context": "Route planning",
+      "scenario": "GPS/dispatch coordination"
+    },
+    {
+      "en": "The customer refused delivery because the goods arrived damaged. I am returning the shipment to the warehouse.",
+      "es": "El cliente rechazó la entrega porque los artículos llegaron dañados. Estoy devolviendo el envío al almacén.",
+      "context": "Problem resolution",
+      "scenario": "Reporting back to dispatch"
+    }
+  ],
+  "exercises": {
+    "fillInBlank": [
+      {
+        "prompt": "He cargado ____ tarimas de acero en el camión.",
+        "options": ["45", "150", "200"],
+        "correctAnswer": 0,
+        "translation": "I have loaded ____ pallets of steel in the truck.",
+        "explanation": "Practice number agreement with plural noun (tarimas). All three are plausible quantities; 45 is typical for a mixed load."
+      },
+      {
+        "prompt": "La inspección del DOT duró ____ horas.",
+        "options": ["dos", "dos horas", "dos hora"],
+        "correctAnswer": 1,
+        "translation": "The DOT inspection lasted ____ hours.",
+        "explanation": "Use 'dos horas' (plural). 'Dos' alone is incomplete; 'dos hora' is incorrect agreement."
+      },
+      {
+        "prompt": "Faltan ____ cajas en el manifiesto.",
+        "options": ["25 cajas", "25", "veinticinco"],
+        "correctAnswer": 0,
+        "translation": "There are ____ boxes missing from the manifest.",
+        "explanation": "'25 cajas' is complete. Number + noun agreement is required in formal reporting."
+      },
+      {
+        "prompt": "He manejado ____ millas hoy y me quedan ____ millas para llegar.",
+        "options": ["450, 50", "450 millas, 50 millas", "cuatrocientos cincuenta, cincuenta"],
+        "correctAnswer": 0,
+        "translation": "I have driven ____ miles today and I have ____ miles left to arrive.",
+        "explanation": "In casual speech, number alone suffices. Context makes unit clear."
+      },
+      {
+        "prompt": "Este camión pesa 18 ____ cuando está completamente cargado.",
+        "options": ["toneladas", "ton", "tonelada"],
+        "correctAnswer": 0,
+        "translation": "This truck weighs 18 ____ when fully loaded.",
+        "explanation": "'Toneladas' (plural) agrees with 18. Use metric system in Mexico/Latin America."
+      }
+    ],
+    "translate": [
+      {
+        "en": "I have 72 pallets of drywall ready to load.",
+        "es": "Tengo 72 tarimas de yeso listo para cargar.",
+        "difficulty": "intermediate",
+        "note": "Number + plural noun + adjective agreement (listo → masculine singular for yeso)"
+      },
+      {
+        "en": "The shipment contains 5,000 kilograms of rebar steel.",
+        "es": "El envío contiene 5,000 kilos de acero de refuerzo.",
+        "difficulty": "intermediate",
+        "note": "Use 'kilos' in casual speech; 'kilogramos' is more formal. Metric standard in Spanish-speaking countries."
+      },
+      {
+        "en": "I need to confirm that all 156 boxes match the delivery receipt.",
+        "es": "Necesito confirmar que las 156 cajas coincidan con el comprobante de entrega.",
+        "difficulty": "advanced",
+        "note": "Subjunctive 'coincidan' (purpose clause). Number precedes noun in Spanish."
+      },
+      {
+        "en": "At the border, the customs officer asked how many kilos of goods I had.",
+        "es": "En la aduana, el oficial preguntó cuántos kilos de mercancía tenía.",
+        "difficulty": "advanced",
+        "note": "Indirect question: 'cuántos kilos' (no inverted question marks in reported speech). 'Mercancía' is feminine."
+      }
+    ]
+  },
+  "culturalNote": {
+    "title": "Logistics and Respect Across Borders",
+    "content": "In Mexico and Central America, truck drivers (choferes de carga or transportistas) are respected professionals responsible for moving the construction industry. Compliance with local regulations—from weigh stations (básculas) to customs (aduana)—is not just about avoiding fines; it reflects professionalism and responsibility. When crossing international borders, clear communication in Spanish with dispatch, customs officials, and warehouse staff is essential. Terms like 'hazmat' (materiales peligrosos) are serious legal matters. Always confirm quantities in writing using Spanish terminology: 'tarimas' (pallets), 'toneladas' (metric tons), and 'kilos' (not 'libras'). Building trust with your dispatch center and customers through accurate Spanish communication—especially regarding pallet counts, delivery times, and DOT compliance—is key to career stability. In border regions, bilingual fluency in logistics terminology can set you apart and open doors to higher-paying routes and companies.",
+    "relatedSkills": [
+      "GPS and route planning Spanish",
+      "Emergency communication and roadside assistance",
+      "Negotiation with warehouse staff and dispatch",
+      "Documentation and form-filling in Spanish"
+    ]
+  }
+}

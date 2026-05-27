@@ -1,0 +1,291 @@
+{
+  "id": "safety",
+  "title": "Construction Safety",
+  "tagline": "OSHA commands, hazard communication, incident reporting — in both languages.",
+  "emoji": "⚠️",
+  "color": "#FBBF24",
+  "chapterIntro": "Safety on a construction site is non-negotiable. Lives depend on clear communication, immediate compliance, and honest reporting. In this chapter, you'll learn the Spanish language of safety — from understanding OSHA regulations to reporting incidents that could prevent the next accident. Whether you're the foreman giving a safety briefing or the worker who needs to understand a hazard warning, these commands and phrases will keep you and your crew alive.",
+  "grammarFocus": {
+    "title": "Strong Negative Commands for Safety",
+    "description": "Construction safety relies on immediate, unambiguous negative commands. In Spanish, these take two forms depending on who you're addressing and how you emphasize urgency.",
+    "rules": [
+      {
+        "label": "Formal/Direct Negative Command (tú)",
+        "structure": "No + [verb conjugated]",
+        "examples": [
+          {
+            "en": "Don't touch that wire.",
+            "es": "No toques ese cable.",
+            "break": "No [don't] + toques [you touch] + ese cable [that wire]"
+          },
+          {
+            "en": "Don't go up on that scaffold.",
+            "es": "No subas al andamio.",
+            "break": "No [don't] + subas [you go up] + al andamio [on the scaffold]"
+          },
+          {
+            "en": "Don't remove your hard hat.",
+            "es": "No te quites el casco de seguridad.",
+            "break": "No [don't] + te quites [you remove for yourself] + el casco [the hard hat]"
+          }
+        ]
+      },
+      {
+        "label": "Formal/Group Negative Command (ustedes)",
+        "structure": "No + [verb conjugated for ustedes]",
+        "examples": [
+          {
+            "en": "Don't move that equipment without authorization.",
+            "es": "No muevan ese equipo sin autorización.",
+            "break": "No [don't] + muevan [you all move] + ese equipo [that equipment]"
+          },
+          {
+            "en": "Don't leave the site without clocking out.",
+            "es": "No se vayan del sitio sin marcar la salida.",
+            "break": "No [don't] + se vayan [you all leave]"
+          }
+        ]
+      },
+      {
+        "label": "Strongest Imperative (Stop Work)",
+        "structure": "¡PAREN! / ¡ALTO! [+ reason]",
+        "examples": [
+          {
+            "en": "Stop! That's unstable.",
+            "es": "¡PAREN! Eso es inestable.",
+            "break": "¡PAREN! [STOP everyone!] + Eso es inestable [That is unstable]"
+          }
+        ]
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "hard hat / safety helmet",
+      "es": "casco de seguridad / casco",
+      "context": "Required on all job sites; remove only in designated areas."
+    },
+    {
+      "en": "fall protection / anti-fall system",
+      "es": "protección contra caídas / sistema anticaídas",
+      "context": "OSHA-mandated above 6 feet (1.8 m)."
+    },
+    {
+      "en": "harness",
+      "es": "arnés / cinturón de seguridad",
+      "context": "Full-body harness for fall protection work."
+    },
+    {
+      "en": "lanyard",
+      "es": "cable de seguridad / eslabón de anclaje",
+      "context": "Connects harness to anchor point; max 6-foot (1.8 m) free fall."
+    },
+    {
+      "en": "scaffold / staging",
+      "es": "andamio / andamiaje",
+      "context": "Temporary structure for elevated work; must be inspected daily."
+    },
+    {
+      "en": "hazard / risk / danger",
+      "es": "peligro / riesgo",
+      "context": "Any condition that could cause injury or death."
+    },
+    {
+      "en": "hazard communication / right-to-know",
+      "es": "comunicación de peligros / derecho a saber",
+      "context": "OSHA requirement to label and educate workers about chemical hazards."
+    },
+    {
+      "en": "safety data sheet (SDS)",
+      "es": "hoja de datos de seguridad / ficha de seguridad",
+      "context": "Chemical information accessible to all workers; must be on site."
+    },
+    {
+      "en": "emergency exit",
+      "es": "salida de emergencia / salida de escape",
+      "context": "Must be marked, unobstructed, accessible at all times."
+    },
+    {
+      "en": "fire extinguisher",
+      "es": "extintor / extinguidor de incendios",
+      "context": "Type depends on fire class (A, B, C, D, K); must be inspected annually."
+    },
+    {
+      "en": "first aid / emergency response",
+      "es": "primeros auxilios / respuesta de emergencia",
+      "context": "Every site must have trained first aid responder and stocked kit."
+    },
+    {
+      "en": "incident report / accident report",
+      "es": "reporte de incidentes / informe de accidente",
+      "context": "Must be filed for all injuries, near-misses, and unsafe conditions."
+    },
+    {
+      "en": "lockout / tagout (LOTO)",
+      "es": "bloqueo y etiquetado / candado de seguridad",
+      "context": "Procedure to disable machinery during maintenance; prevents unexpected startup."
+    },
+    {
+      "en": "PPE / personal protective equipment",
+      "es": "EPI / equipo de protección personal",
+      "context": "Includes hard hats, gloves, goggles, respirators, steel-toe boots."
+    },
+    {
+      "en": "steel-toe boots / safety shoes",
+      "es": "botas de seguridad / botas de acero",
+      "context": "Required footwear on most construction sites."
+    },
+    {
+      "en": "safety glasses / protective eyewear",
+      "es": "gafas de seguridad / lentes de protección",
+      "context": "Protects against flying debris, welding flash, chemical splash."
+    },
+    {
+      "en": "respirator / dust mask",
+      "es": "respirador / mascarilla",
+      "context": "Fitted respirators (not N95s) required for asbestos, lead, silica."
+    },
+    {
+      "en": "work permit",
+      "es": "permiso de trabajo / autorización de trabajo",
+      "context": "Required for hot work, confined spaces, high-risk activities."
+    },
+    {
+      "en": "near-miss / close call",
+      "es": "casi accidente / incidente por poco",
+      "context": "Report these too — they reveal hazards before someone is hurt."
+    },
+    {
+      "en": "OSHA / occupational safety authority",
+      "es": "OSHA / autoridad de seguridad ocupacional",
+      "context": "U.S. federal agency that enforces workplace safety; inspects sites and issues citations."
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Everyone gather for the safety briefing.",
+      "es": "Todos reúnanse para la charla de seguridad.",
+      "context": "Morning toolbox talk; non-negotiable attendance.",
+      "useWhen": "Start of shift or before beginning a new task."
+    },
+    {
+      "en": "Today we're working at height. Make sure your harness is properly fitted.",
+      "es": "Hoy trabajamos en altura. Asegúrense de que su arnés esté bien ajustado.",
+      "context": "Fall protection briefing; inspect equipment visually.",
+      "useWhen": "Before any work above 6 feet."
+    },
+    {
+      "en": "Stop work immediately. Nobody goes back on that scaffold until the safety officer inspects it.",
+      "es": "Paren el trabajo de inmediato. Nadie sube al andamio hasta que el inspector de seguridad lo revise.",
+      "context": "Stop-work authority; foreman can halt operations for safety.",
+      "useWhen": "Unsafe condition discovered; unambiguous and final."
+    },
+    {
+      "en": "If you see something unsafe, report it right now. Don't assume someone else will.",
+      "es": "Si ven algo inseguro, repórtenlo ahora mismo. No supongan que otro lo hará.",
+      "context": "Culture of safety; everyone is responsible.",
+      "useWhen": "During safety briefings and incident discussions."
+    },
+    {
+      "en": "Attach your lanyard before you climb.",
+      "es": "Abrochen el cable de seguridad antes de subir.",
+      "context": "Non-negotiable pre-climb check.",
+      "useWhen": "Before any work requiring fall protection."
+    },
+    {
+      "en": "This chemical is hazardous. Read the safety data sheet before handling it.",
+      "es": "Este químico es peligroso. Lean la hoja de datos de seguridad antes de manejarlo.",
+      "context": "Hazard communication; right-to-know law.",
+      "useWhen": "Introducing new chemicals on site."
+    },
+    {
+      "en": "Where is the nearest emergency exit?",
+      "es": "¿Dónde está la salida de emergencia más cercana?",
+      "context": "Evacuation planning; every worker must know.",
+      "useWhen": "First day on site or new work area."
+    },
+    {
+      "en": "Anyone injured, no matter how minor, must report it immediately.",
+      "es": "Cualquiera que se lesione, sin importar cuán leve sea, debe reportarlo de inmediato.",
+      "context": "Incident reporting; creates liability trail and prevents cover-ups.",
+      "useWhen": "After an injury or near-miss."
+    },
+    {
+      "en": "We've had a near-miss. Let's discuss what happened so we can prevent the real accident.",
+      "es": "Tuvimos un casi accidente. Hablemos de qué pasó para prevenir el accidente real.",
+      "context": "Learning from close calls; psychological safety required.",
+      "useWhen": "Debriefing after a close call."
+    },
+    {
+      "en": "Do not enter. This area is under lockout for maintenance.",
+      "es": "No entren. Esta área está bajo bloqueo por mantenimiento.",
+      "context": "LOTO procedure; machinery disabled; safety-critical.",
+      "useWhen": "Securing equipment during maintenance."
+    },
+    {
+      "en": "You're not allowed on the roof without a harness and certified training.",
+      "es": "No puedes estar en el techo sin un arnés y capacitación certificada.",
+      "context": "High-risk work requires documentation.",
+      "useWhen": "Enforcing training requirements."
+    },
+    {
+      "en": "Silence. I need to understand you. Can you repeat what I just said about fall protection?",
+      "es": "Silencio. Necesito que entiendas. ¿Puedes repetir lo que acabo de decir sobre la protección contra caídas?",
+      "context": "Verification of understanding; no assumption of comprehension.",
+      "useWhen": "Critical safety instruction; confirm understanding in worker's first language if needed."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "en": "Everyone must wear a _______ on this job site.",
+        "es": "Todos deben usar un _______ en este sitio de trabajo.",
+        "answer_en": "hard hat / safety helmet",
+        "answer_es": "casco de seguridad"
+      },
+      {
+        "en": "If you see something unsafe, _______ it immediately.",
+        "es": "Si ves algo inseguro, _______ lo de inmediato.",
+        "answer_en": "report",
+        "answer_es": "repórtalo"
+      },
+      {
+        "en": "Never _______ your harness or lanyard while working at height.",
+        "es": "Nunca _______ tu arnés o cable de seguridad mientras trabajas en altura.",
+        "answer_en": "remove",
+        "answer_es": "quites"
+      },
+      {
+        "en": "Before handling this chemical, read the _______.",
+        "es": "Antes de manejar este químico, lee la _______.",
+        "answer_en": "safety data sheet",
+        "answer_es": "hoja de datos de seguridad"
+      },
+      {
+        "en": "If someone is injured, we must file an _______ within 24 hours.",
+        "es": "Si alguien se lesiona, debemos presentar un _______ dentro de 24 horas.",
+        "answer_en": "incident report",
+        "answer_es": "reporte de incidentes"
+      }
+    ],
+    "translateToSpanish": [
+      {
+        "en": "Don't touch that exposed wire.",
+        "answer_es": "No toques ese cable expuesto."
+      },
+      {
+        "en": "Stop work. That scaffold is unstable.",
+        "answer_es": "¡Paren! El andamio es inestable."
+      },
+      {
+        "en": "Is your fall protection equipment properly inspected?",
+        "answer_es": "¿Tu equipo de protección contra caídas está debidamente inspeccionado?"
+      },
+      {
+        "en": "Report any injury, no matter how small.",
+        "answer_es": "Reporta cualquier lesión, sin importar cuán pequeña sea."
+      }
+    ]
+  },
+  "culturalNote": "Safety culture in the U.S. is deeply shaped by OSHA regulations and litigation risk; American employers are legally liable for worker injuries. This creates a 'safety first' mindset that may feel rigorous or even excessive to workers from countries with looser enforcement. However, construction in the U.S. is statistically safer than in many Latin American countries, where informal construction dominates and safety enforcement is nearly absent. Spanish-speaking workers sometimes interpret mandatory safety protocols as insulting or paternalistic (¿Me toman por tonto? — 'Do they think I'm stupid?'), but this reflects cultural differences, not actual competence. Incident reporting in particular faces reluctance: workers fear losing work hours, facing retaliation, or being blamed. Foremen and supervisors must explicitly promise that reporting is protected (no wage loss, no termination) and frame near-miss reporting as a collective responsibility to keep the whole crew alive. OSHA rights for Spanish-speaking workers include: the right to information and training in their primary language, the right to a representative during OSHA inspections, and the right to file a complaint without retaliation. Many undocumented workers avoid reporting due to immigration fears; ensure your site has a complaint mechanism that doesn't require citizenship verification."
+}

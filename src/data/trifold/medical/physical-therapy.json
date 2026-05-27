@@ -1,0 +1,53 @@
+{
+  "id": "physical-therapy",
+  "dialogues": [
+    {
+      "they_es": "¿Por qué me duele cuando hago el ejercicio?",
+      "they_en": "Why does it hurt when I do the exercise?",
+      "you_es": "Algo de dolor es normal. Pero dígame si es agudo.",
+      "you_en": "Some pain is normal. But tell me if it's sharp."
+    },
+    {
+      "they_es": "¿Cómo hago los ejercicios en casa correctamente?",
+      "they_en": "How do I do the exercises at home correctly?",
+      "you_es": "Vea el video. Haga tres series de diez repeticiones.",
+      "you_en": "Watch the video. Do three sets of ten repetitions."
+    },
+    {
+      "they_es": "¿Cuándo puedo empezar deportes de nuevo?",
+      "they_en": "When can I start sports again?",
+      "you_es": "Espere cuatro semanas. Vamos a revisar su progreso.",
+      "you_en": "Wait four weeks. We'll review your progress."
+    },
+    {
+      "they_es": "La rodilla aún está hinchada. ¿Debo preocuparme?",
+      "they_en": "The knee is still swollen. Should I worry?",
+      "you_es": "Use hielo veinte minutos tres veces diarios.",
+      "you_en": "Use ice twenty minutes three times daily."
+    },
+    {
+      "they_es": "¿Puedo nadar para la terapia física?",
+      "they_en": "Can I swim for physical therapy?",
+      "you_es": "Sí. Es muy bueno para fortalecer sin presión.",
+      "you_en": "Yes. It's great for strengthening without pressure."
+    },
+    {
+      "they_es": "¿Cuánto tiempo hasta que me sienta normal?",
+      "they_en": "How long until I feel normal?",
+      "you_es": "Usualmente ocho a doce semanas con buena adherencia.",
+      "you_en": "Usually eight to twelve weeks with good compliance."
+    },
+    {
+      "they_es": "No puedo hacer este movimiento. Es imposible.",
+      "they_en": "I can't do this movement. It's impossible.",
+      "you_es": "Modifiquemos el ejercicio. Hay variaciones más fáciles.",
+      "you_en": "Let's modify it. There are easier variations."
+    },
+    {
+      "they_es": "¿Tengo que venir a todas las citas?",
+      "they_en": "Do I have to come to all appointments?",
+      "you_es": "Sí. La consistencia es clave para recuperarse rápido.",
+      "you_en": "Yes. Consistency is key to recover quickly."
+    }
+  ]
+}

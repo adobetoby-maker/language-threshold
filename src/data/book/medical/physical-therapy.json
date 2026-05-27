@@ -1,0 +1,279 @@
+{
+  "id": "physical-therapy",
+  "title": "Physical Therapy",
+  "tagline": "Rehabilitation exercises, mobility assessment, home exercise programs.",
+  "emoji": "🏃",
+  "color": "#34D399",
+  "chapterIntro": "Physical therapy is essential for patient recovery after surgery, injury, or illness. Healthcare providers must communicate exercise instructions clearly and monitor patient progress. This chapter equips you with Spanish vocabulary and imperative forms to guide patients through rehabilitation safely and effectively.",
+  "grammarFocus": {
+    "title": "Imperative (Command) Forms for Exercise Instructions",
+    "description": "The imperative mood is critical in physical therapy education. Patients need clear, direct instructions on how to perform exercises safely.",
+    "rules": [
+      {
+        "form": "Tú (informal singular)",
+        "example": "Estira el brazo hacia adelante. / Bend your arm forward.",
+        "structure": "Stem-changing: keep the stem change in the imperative (duele → duele, no te duela). Regular verbs drop -r and add nothing: hablar → habla."
+      },
+      {
+        "form": "Usted (formal singular)",
+        "example": "Estire el brazo hacia adelante. / Bend your arm forward (formal).",
+        "structure": "Use the present subjunctive form: -ar → -e, -er/-ir → -a. Regular: hablar → hable, comer → coma."
+      },
+      {
+        "form": "Nosotros (we/let's do)",
+        "example": "Hagamos este ejercicio juntos. / Let's do this exercise together.",
+        "structure": "Use present subjunctive: hablar → hablemos, comer → comamos."
+      },
+      {
+        "form": "Ustedes (formal/plural)",
+        "example": "Estiren los brazos hacia adelante. / Bend your arms forward (to group).",
+        "structure": "Remove final -n from third-person plural: hablan → hablen, comen → coman."
+      },
+      {
+        "form": "Negative commands",
+        "example": "No doble la rodilla más de 90 grados. / Don't bend your knee more than 90 degrees.",
+        "structure": "Use subjunctive: no + present subjunctive. No + hable, coma, estire, etc."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "exercise",
+      "es": "ejercicio"
+    },
+    {
+      "en": "stretch",
+      "es": "estiramiento / estirarse"
+    },
+    {
+      "en": "repetitions",
+      "es": "repeticiones"
+    },
+    {
+      "en": "strengthen",
+      "es": "fortalecer"
+    },
+    {
+      "en": "balance",
+      "es": "equilibrio / balance"
+    },
+    {
+      "en": "gait",
+      "es": "marcha / forma de caminar"
+    },
+    {
+      "en": "crutches",
+      "es": "muletas"
+    },
+    {
+      "en": "walker",
+      "es": "andadera / caminador"
+    },
+    {
+      "en": "resistance band",
+      "es": "banda de resistencia"
+    },
+    {
+      "en": "home exercise program",
+      "es": "programa de ejercicios en casa"
+    },
+    {
+      "en": "shoulder blade",
+      "es": "escápula / omóplato"
+    },
+    {
+      "en": "spine",
+      "es": "columna vertebral / espina dorsal"
+    },
+    {
+      "en": "posture",
+      "es": "postura"
+    },
+    {
+      "en": "flexibility",
+      "es": "flexibilidad"
+    },
+    {
+      "en": "range of motion",
+      "es": "amplitud de movimiento / rango de movimiento"
+    },
+    {
+      "en": "swelling",
+      "es": "hinchazón / inflamación"
+    },
+    {
+      "en": "stiffness",
+      "es": "rigidez"
+    },
+    {
+      "en": "weight-bearing",
+      "es": "soportar peso"
+    },
+    {
+      "en": "non-weight-bearing",
+      "es": "sin soportar peso"
+    },
+    {
+      "en": "physical therapist",
+      "es": "fisioterapeuta / terapeuta físico"
+    }
+  ],
+  "samplePhrase": {
+    "en": "Do this stretch three times a day, ten repetitions each time. If you feel sharp pain, stop immediately.",
+    "es": "Haga este estiramiento tres veces al día, diez repeticiones cada vez. Si siente un dolor agudo, pare de inmediato."
+  },
+  "scenario": "Post-op rehab, home exercise instruction, mobility training",
+  "phrases": [
+    {
+      "en": "Perform this exercise for 15 minutes, twice daily.",
+      "es": "Realice este ejercicio durante 15 minutos, dos veces al día."
+    },
+    {
+      "en": "Hold this position for 30 seconds. Do not bounce.",
+      "es": "Mantenga esta posición durante 30 segundos. No rebote."
+    },
+    {
+      "en": "Strengthen your leg muscles by walking slowly.",
+      "es": "Fortalezca los músculos de la pierna caminando lentamente."
+    },
+    {
+      "en": "Use the crutches when moving around the house.",
+      "es": "Use las muletas cuando se mueva por la casa."
+    },
+    {
+      "en": "Your balance will improve with consistent practice.",
+      "es": "Su equilibrio mejorará con la práctica consistente."
+    },
+    {
+      "en": "Elevate your leg to reduce swelling.",
+      "es": "Eleve la pierna para reducir la hinchazón."
+    },
+    {
+      "en": "Apply ice for 15 minutes after exercise.",
+      "es": "Aplique hielo durante 15 minutos después del ejercicio."
+    },
+    {
+      "en": "Do not skip any of the prescribed exercises.",
+      "es": "No omita ninguno de los ejercicios prescritos."
+    },
+    {
+      "en": "Your range of motion will increase gradually.",
+      "es": "Su amplitud de movimiento aumentará gradualmente."
+    },
+    {
+      "en": "Contact me if you experience severe pain.",
+      "es": "Póngase en contacto conmigo si experimenta dolor grave."
+    },
+    {
+      "en": "Maintain good posture during all exercises.",
+      "es": "Mantenga una buena postura durante todos los ejercicios."
+    },
+    {
+      "en": "Your home exercise program is critical to your recovery.",
+      "es": "Su programa de ejercicios en casa es crítico para su recuperación."
+    }
+  ],
+  "exercises": {
+    "fillInTheBlanks": [
+      {
+        "id": "fib-1",
+        "text": "_____ (Stretch) el brazo hacia el lado durante 30 segundos.",
+        "answer": "Estire / Estira",
+        "explanation": "The imperative form of 'estirar' (to stretch). Use 'estire' for formal (usted) or 'estira' for informal (tú)."
+      },
+      {
+        "id": "fib-2",
+        "text": "No _____ (bend) la rodilla más de 90 grados.",
+        "answer": "doble",
+        "explanation": "Negative command with subjunctive: 'no doble' (don't bend). Regular -ar verb in subjunctive form."
+      },
+      {
+        "id": "fib-3",
+        "text": "_____ (Do) este ejercicio 10 repeticiones, tres veces al día.",
+        "answer": "Haga / Haz",
+        "explanation": "Imperative of 'hacer' (to do). 'Haga' is formal (usted), 'haz' is informal (tú)."
+      },
+      {
+        "id": "fib-4",
+        "text": "_____ (Hold) la posición durante 20 segundos sin moverse.",
+        "answer": "Mantenga / Mantén",
+        "explanation": "Imperative of 'mantener' (to hold/maintain). 'Mantenga' is formal, 'mantén' is informal."
+      },
+      {
+        "id": "fib-5",
+        "text": "_____ (Elevate) la pierna para reducir la hinchazón.",
+        "answer": "Eleve / Eleva",
+        "explanation": "Imperative of 'elevar' (to elevate). 'Eleve' is formal, 'eleva' is informal."
+      }
+    ],
+    "translation": [
+      {
+        "id": "trans-1",
+        "en": "Use the walker to improve your balance.",
+        "es": "Use la andadera para mejorar su equilibrio.",
+        "explanation": "Key vocabulary: 'andadera' (walker), 'equilibrio' (balance). Imperative: 'use' (from 'usar')."
+      },
+      {
+        "id": "trans-2",
+        "en": "Perform this resistance band exercise slowly.",
+        "es": "Realice este ejercicio con banda de resistencia lentamente.",
+        "explanation": "Key vocabulary: 'banda de resistencia' (resistance band), 'lentamente' (slowly). Imperative: 'realice' (perform)."
+      },
+      {
+        "id": "trans-3",
+        "en": "Do not bear weight on your left leg for two weeks.",
+        "es": "No soporte peso en la pierna izquierda durante dos semanas.",
+        "explanation": "Key vocabulary: 'soportar peso' (bear weight), 'pierna izquierda' (left leg). Negative command: 'no soporte'."
+      },
+      {
+        "id": "trans-4",
+        "en": "Your gait and posture will improve with practice.",
+        "es": "Su marcha y postura mejorarán con la práctica.",
+        "explanation": "Key vocabulary: 'marcha' (gait), 'postura' (posture). Future tense: 'mejorarán' (will improve)."
+      }
+    ]
+  },
+  "culturalNote": "In many Latin American healthcare contexts, family members often participate in physical therapy sessions, taking notes on home exercise programs to support the patient's recovery. It is common for patients to show respect by using formal 'usted' even with younger therapists, so adapt your language register accordingly. Some patients may interpret certain stretches or movements through a traditional medicine lens—be open to discussing these perspectives while reinforcing evidence-based practice. Physical therapy in resource-limited settings may rely on minimal equipment, so be prepared to teach effective exercises using body weight and household items.",
+  "vocab": [
+    {
+      "en": "exercise",
+      "es": "ejercicio"
+    },
+    {
+      "en": "stretch",
+      "es": "estiramiento / estirarse"
+    },
+    {
+      "en": "repetitions",
+      "es": "repeticiones"
+    },
+    {
+      "en": "strengthen",
+      "es": "fortalecer"
+    },
+    {
+      "en": "balance",
+      "es": "equilibrio / balance"
+    },
+    {
+      "en": "gait",
+      "es": "marcha / forma de caminar"
+    },
+    {
+      "en": "crutches",
+      "es": "muletas"
+    },
+    {
+      "en": "walker",
+      "es": "andadera / caminador"
+    },
+    {
+      "en": "resistance band",
+      "es": "banda de resistencia"
+    },
+    {
+      "en": "home exercise program",
+      "es": "programa de ejercicios en casa"
+    }
+  ]
+}

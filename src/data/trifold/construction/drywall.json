@@ -1,0 +1,53 @@
+{
+  "id": "drywall",
+  "dialogues": [
+    {
+      "they_es": "¿En qué dirección coloco la placa?",
+      "they_en": "Which way do I hang the drywall sheet?",
+      "you_es": "Horizontal. Menos juntas verticales. Más fuerte.",
+      "you_en": "Horizontal. Fewer vertical joints. Stronger."
+    },
+    {
+      "they_es": "¿Cuántos tornillos por hoja?",
+      "they_en": "How many screws per sheet?",
+      "you_es": "Dieciséis pulgadas entre tornillos. Cada lado.",
+      "you_en": "Sixteen inches between screws. Each side."
+    },
+    {
+      "they_es": "Necesito cinta para la junta. ¿Dónde está?",
+      "they_en": "I need joint tape. Where is it?",
+      "you_es": "En la camioneta. Trae el rollo entero. Vamos a tapar muchas.",
+      "you_en": "In the truck. Bring the whole roll. We're taping many."
+    },
+    {
+      "they_es": "¿Cómo dejo las esquinas internas?",
+      "they_en": "How do I leave the inside corners?",
+      "you_es": "Planas. Sin bultos. Lija después.",
+      "you_en": "Flat. No bumps. Sand after."
+    },
+    {
+      "they_es": "¿Esta placa tiene daño?",
+      "they_en": "Is this sheet damaged?",
+      "you_es": "Sí. Tírala. Trae otra del patio.",
+      "you_en": "Yes. Throw it out. Get another from the yard."
+    },
+    {
+      "they_es": "¿Pongo masilla en la primera capa?",
+      "they_en": "Do I put mud on the first coat?",
+      "you_es": "Sólo la cinta. Masilla en segunda y tercera.",
+      "you_en": "Just the tape. Mud on second and third coats."
+    },
+    {
+      "they_es": "¿Debo usar texturas en estas paredes?",
+      "they_en": "Should I use texture on these walls?",
+      "you_es": "Pregunta al cliente. Algunos quieren liso. Otros con textura.",
+      "you_en": "Ask the client. Some want smooth. Others want texture."
+    },
+    {
+      "they_es": "¿Cuándo viene el inspector de drywall?",
+      "they_en": "When does the drywall inspector come?",
+      "you_es": "Viernes. Asegúrate que todo está listo para entonces.",
+      "you_en": "Friday. Make sure everything is ready by then."
+    }
+  ]
+}

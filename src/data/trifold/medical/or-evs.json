@@ -1,0 +1,54 @@
+{
+  "id": "or-evs",
+  "title": "Operating Room & EVS",
+  "dialogues": [
+    {
+      "they_es": "¿Cuándo voy a ir al quirófano?",
+      "they_en": "When am I going to the operating room?",
+      "you_es": "En unos treinta minutos vamos a llevarle.",
+      "you_en": "We'll take you in about thirty minutes."
+    },
+    {
+      "they_es": "¿Va a doler el traslado?",
+      "they_en": "Will the transfer hurt?",
+      "you_es": "Vamos a moverle con cuidado. Avíseme si duele.",
+      "you_en": "We'll move you carefully. Tell me if it hurts."
+    },
+    {
+      "they_es": "¿Puedo traer mis medicinas?",
+      "they_en": "Can I bring my medications?",
+      "you_es": "No, guarde las medicinas en casa.",
+      "you_en": "No, keep your medications at home."
+    },
+    {
+      "they_es": "Tengo una infección. ¿Es peligroso?",
+      "they_en": "I have an infection. Is it dangerous?",
+      "you_es": "Vamos a poner precauciones especiales.",
+      "you_en": "We'll use special precautions."
+    },
+    {
+      "they_es": "¿Debo usar una bata especial?",
+      "they_en": "Should I wear a special gown?",
+      "you_es": "Sí, vamos a ponerle esta bata quirúrgica.",
+      "you_en": "Yes, we'll put on this surgical gown."
+    },
+    {
+      "they_es": "¿Necesito una gota para los ojos?",
+      "they_en": "Do I need eye drops?",
+      "you_es": "Sí, para proteger sus ojos durante la cirugía.",
+      "you_en": "Yes, to protect your eyes during surgery."
+    },
+    {
+      "they_es": "¿Limpien mi habitación después?",
+      "they_en": "Will you clean my room after?",
+      "you_es": "Sí, los EVS limpian todo con desinfectante.",
+      "you_en": "Yes, housekeeping cleans everything with disinfectant."
+    },
+    {
+      "they_es": "¿Necesito gafas especiales?",
+      "they_en": "Do I need special glasses?",
+      "you_es": "Guarde sus gafas. Nosotros guardamos todo.",
+      "you_en": "Keep your glasses safe. We'll store everything."
+    }
+  ]
+}

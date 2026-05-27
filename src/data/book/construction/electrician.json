@@ -1,0 +1,187 @@
+{
+  "id": "electrician",
+  "title": "Electrician",
+  "tagline": "Panel work, wiring, code compliance with bilingual crews.",
+  "emoji": "⚡",
+  "color": "#FBBF24",
+  "chapterIntro": "Electrical work demands precision, safety, and clear communication. This chapter equips you with Spanish terminology for panel work, wiring, code compliance, and the critical safety protocols that protect crews in high-voltage environments. Every command is a life-safety instruction.",
+  "grammarFocus": {
+    "title": "Safety Commands Before Electrical Work — Always Verify Before Touching",
+    "explanation": "In electrical work, imperative commands (orders) dominate safety communication. Master the tú command form for direct, urgent instructions. Verification phrases prevent accidents.",
+    "patterns": [
+      {
+        "pattern": "Apaga / Cierra [el breaker / la caja]",
+        "translation": "Kill / Shut off [the breaker / the box]",
+        "usage": "Urgent shutdown command",
+        "example": "Apaga el breaker antes de entrar a la caja. (Kill the breaker before entering the panel.)"
+      },
+      {
+        "pattern": "Prueba con [el medidor / el voltímetro]",
+        "translation": "Test with [the meter / the voltmeter]",
+        "usage": "Verification before touching",
+        "example": "Prueba con el medidor. Debe estar en cero. (Test with the meter. It should read zero.)"
+      },
+      {
+        "pattern": "[No toques / No agarre] sin [verificar / permiso]",
+        "translation": "[Don't touch / Don't grab] without [verifying / permission]",
+        "usage": "Prohibition + condition",
+        "example": "No agarre ese cable sin verificar. (Don't grab that wire without checking.)"
+      },
+      {
+        "pattern": "Asegúrate de + infinitive",
+        "translation": "Make sure you [verb]",
+        "usage": "Responsibility instruction",
+        "example": "Asegúrate de probar el voltaje antes de cortar. (Make sure you test the voltage before cutting.)"
+      }
+    ]
+  },
+  "extendedVocab": [
+    {"en": "panel", "es": "tablero eléctrico / caja de breakers"},
+    {"en": "breaker", "es": "interruptor / breaker"},
+    {"en": "conduit", "es": "conduit / tubo conduit"},
+    {"en": "ground", "es": "tierra / conexión a tierra"},
+    {"en": "neutral", "es": "neutro"},
+    {"en": "junction box", "es": "caja de conexiones"},
+    {"en": "outlet", "es": "tomacorriente / contacto"},
+    {"en": "wire", "es": "cable / alambre"},
+    {"en": "voltage", "es": "voltaje / tensión"},
+    {"en": "permit", "es": "permiso / licencia"},
+    {"en": "amperage", "es": "amperaje / amperios"},
+    {"en": "circuit", "es": "circuito"},
+    {"en": "grounding rod", "es": "varilla de tierra"},
+    {"en": "lockout/tagout", "es": "bloqueo/etiquetado (LOTO)"},
+    {"en": "inspection", "es": "inspección"},
+    {"en": "code violation", "es": "violación del código"},
+    {"en": "rough-in", "es": "primera etapa de instalación"},
+    {"en": "finish", "es": "acabado / instalación final"},
+    {"en": "receptacle", "es": "receptáculo / tomacorriente"},
+    {"en": "service entrance", "es": "entrada de servicio"}
+  ],
+  "phrases": [
+    {
+      "en": "Kill the main breaker. Do not proceed until it's off.",
+      "es": "Apaga el breaker principal. No avances hasta que esté apagado.",
+      "context": "Panel shutdown before work"
+    },
+    {
+      "en": "Test the panel with the meter before you touch anything.",
+      "es": "Prueba el tablero con el medidor antes de tocar nada.",
+      "context": "Verification protocol"
+    },
+    {
+      "en": "This wire is hot. Do not grab it without gloves and confirmation.",
+      "es": "Este cable está vivo. No lo agarre sin guantes y confirmación.",
+      "context": "Identifying energized conductors"
+    },
+    {
+      "en": "Ground this conduit according to code. The inspector will check it.",
+      "es": "Aterriza este conduit según el código. El inspector lo revisará.",
+      "context": "Code compliance instruction"
+    },
+    {
+      "en": "Rough-in is complete. Now we wait for the city inspector.",
+      "es": "La primera etapa está completa. Ahora esperamos al inspector de la ciudad.",
+      "context": "Inspection scheduling"
+    },
+    {
+      "en": "Run the wire through the conduit, not outside. That's a code violation.",
+      "es": "Pasa el cable por el conduit, no por afuera. Eso es una violación del código.",
+      "context": "Code correction"
+    },
+    {
+      "en": "Lockout the breaker and tag it. No one else touches this panel today.",
+      "es": "Bloquea el breaker y etiquétalo. Nadie más toca este tablero hoy.",
+      "context": "Lockout/tagout safety protocol"
+    },
+    {
+      "en": "The amperage on this circuit is maxed out. We need a new circuit.",
+      "es": "El amperaje en este circuito está al máximo. Necesitamos un circuito nuevo.",
+      "context": "Capacity assessment"
+    },
+    {
+      "en": "Install the junction box here, centered on the wall studs.",
+      "es": "Instala la caja de conexiones aquí, centrada en los postes.",
+      "context": "Box placement during rough-in"
+    },
+    {
+      "en": "This outlet failed inspection. The ground connection is bad.",
+      "es": "Este tomacorriente falló la inspección. La conexión a tierra está mal.",
+      "context": "Inspection failure communication"
+    },
+    {
+      "en": "Do not energize this circuit until the grounding rod is installed.",
+      "es": "No energices este circuito hasta que se instale la varilla de tierra.",
+      "context": "Pre-energization safety"
+    },
+    {
+      "en": "Strip three-quarter inch of insulation. Then twist and cap the neutral.",
+      "es": "Pela tres cuartos de pulgada de aislante. Luego tuerce y cubre el neutro.",
+      "context": "Wire preparation instruction"
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "instruction": "Fill in the correct electrical term.",
+      "questions": [
+        {
+          "sentence": "Apaga el __________ principal antes de entrar a la caja.",
+          "answer": "breaker",
+          "answerEs": "breaker / interruptor",
+          "hint": "Main power shutoff device"
+        },
+        {
+          "sentence": "Prueba el __________ con el medidor antes de tocar cualquier cable.",
+          "answer": "tablero eléctrico / panel",
+          "answerEs": "tablero eléctrico / panel",
+          "hint": "Electrical distribution box"
+        },
+        {
+          "sentence": "Este cable está vivo. Necesitas una __________ a tierra.",
+          "answer": "conexión / tierra",
+          "answerEs": "conexión a tierra",
+          "hint": "Safety path for electricity"
+        },
+        {
+          "sentence": "Corre el cable por el __________, no por afuera.",
+          "answer": "conduit",
+          "answerEs": "conduit / tubo",
+          "hint": "Protective tubing for wiring"
+        },
+        {
+          "sentence": "El __________ de este circuito está al máximo. Necesitamos uno nuevo.",
+          "answer": "amperaje / amperios",
+          "answerEs": "amperaje",
+          "hint": "Electrical current measurement"
+        }
+      ]
+    },
+    {
+      "type": "translate",
+      "instruction": "Translate these safety commands to Spanish.",
+      "questions": [
+        {
+          "english": "Kill the breaker before you work on the panel.",
+          "spanish": "Apaga el breaker antes de trabajar en el tablero.",
+          "hint": "Urgent command form"
+        },
+        {
+          "english": "Make sure you test the voltage with the meter.",
+          "spanish": "Asegúrate de probar el voltaje con el medidor.",
+          "hint": "Use 'Asegúrate de' for responsibility"
+        },
+        {
+          "english": "This outlet failed the inspection. The ground is bad.",
+          "spanish": "Este tomacorriente falló la inspección. La tierra está mal.",
+          "hint": "Past tense for inspection result"
+        },
+        {
+          "english": "Lock out the breaker. No one else touches this circuit today.",
+          "spanish": "Bloquea el breaker. Nadie más toca este circuito hoy.",
+          "hint": "LOTO protocol, negation"
+        }
+      ]
+    }
+  ],
+  "culturalNote": "In bilingual construction crews, electricians often work with inspectors from city/county offices. Spanish-speaking inspectors may communicate code violations or approval in Spanish. Knowing electrical terminology in both languages is essential for safety certifications (like NEC — National Electrical Code compliance) and preventing misunderstandings that could delay projects or create liability. Electrical work is high-risk; precision in language saves lives."
+}

@@ -117,13 +117,13 @@ function AreasWeServeSection() {
   const areas = [
     { emoji: '🏥', title: 'Medical Spanish', link: 'https://medicalspanish.app', linkLabel: 'medicalspanish.app' },
     { emoji: '🔨', title: 'Construction Spanish', link: 'https://constructionspanish.app', linkLabel: 'constructionspanish.app' },
-    { emoji: '🧭', title: 'Faith & Missions', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '⚽', title: 'Sports Coaching', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '🌾', title: 'Agriculture', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '🍽️', title: 'Hospitality & Service', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '⚖️', title: 'Legal & Immigration', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '🎓', title: 'K–12 Education', link: APP_URL, linkLabel: 'Start Learning' },
-    { emoji: '🗣️', title: 'English for Work', link: APP_URL, linkLabel: 'Start Learning' },
+    { emoji: '🧭', title: 'Faith & Missions', link: '/module/missionary', linkLabel: 'Start Learning' },
+    { emoji: '⚽', title: 'Sports Coaching', link: '/module/sports', linkLabel: 'Start Learning' },
+    { emoji: '🌾', title: 'Agriculture', link: '/module/agriculture', linkLabel: 'Start Learning' },
+    { emoji: '🍽️', title: 'Hospitality & Service', link: '/module/hospitality', linkLabel: 'Start Learning' },
+    { emoji: '⚖️', title: 'Legal & Immigration', link: '/module/education', linkLabel: 'Start Learning' },
+    { emoji: '🎓', title: 'K–12 Education', link: '/module/kids', linkLabel: 'Start Learning' },
+    { emoji: '🗣️', title: 'English for Work', link: '/module/education', linkLabel: 'Start Learning' },
   ]
 
   return (

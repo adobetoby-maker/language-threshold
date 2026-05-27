@@ -1,0 +1,53 @@
+{
+  "id": "framer",
+  "dialogues": [
+    {
+      "they_es": "¿Cuántas pulgadas entre los postes?",
+      "they_en": "How many inches between the studs?",
+      "you_es": "Dieciséis pulgadas, de centro a centro.",
+      "you_en": "Sixteen inches, center to center."
+    },
+    {
+      "they_es": "¿Dónde va la viga maestra?",
+      "they_en": "Where does the header go?",
+      "you_es": "Encima del vano de la puerta, aquí.",
+      "you_en": "Above the door opening, right here."
+    },
+    {
+      "they_es": "Este poste no está plomo. ¿Qué hago?",
+      "they_en": "This stud isn't plumb. What do I do?",
+      "you_es": "Saca la cuña. Ajusta hasta que esté recto.",
+      "you_en": "Remove the shim. Adjust until it's straight."
+    },
+    {
+      "they_es": "¿Necesitamos refuerzo en la esquina?",
+      "they_en": "Do we need blocking at the corner?",
+      "you_es": "Sí, corta bloques de dos por cuatro.",
+      "you_en": "Yes, cut two-by-four blocks."
+    },
+    {
+      "they_es": "¿Qué dice el plano sobre esta pared?",
+      "they_en": "What does the blueprint say about this wall?",
+      "you_es": "Carga. Pasa la viga a través de toda.",
+      "you_en": "Load-bearing. Run the beam through the whole thing."
+    },
+    {
+      "they_es": "Se acabó la madera. ¿Qué hago?",
+      "they_en": "We're out of lumber. What now?",
+      "you_es": "Para. Espera a que llegue el envío.",
+      "you_en": "Stop. Wait for the delivery to arrive."
+    },
+    {
+      "they_es": "¿Está nivel el segundo piso?",
+      "they_en": "Is the second floor level?",
+      "you_es": "Déjame revisar con el nivel láser.",
+      "you_en": "Let me check with the laser level."
+    },
+    {
+      "they_es": "¿Dónde clavo las placas suela?",
+      "they_en": "Where do I nail the sole plates?",
+      "you_es": "Al concreto, cada dieciséis pulgadas con clavos especiales.",
+      "you_en": "To the concrete, every sixteen inches with special nails."
+    }
+  ]
+}

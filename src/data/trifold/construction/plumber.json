@@ -1,0 +1,53 @@
+{
+  "id": "plumber",
+  "dialogues": [
+    {
+      "they_es": "¿Cuál es la profundidad del desagüe?",
+      "they_en": "What's the depth of the drain?",
+      "you_es": "Cuatro pulgadas bajo el piso. Después cubierto.",
+      "you_en": "Four inches below the floor. Then covered."
+    },
+    {
+      "they_es": "¿Puedo usar PVC para el agua caliente?",
+      "they_en": "Can I use PVC for the hot water?",
+      "you_es": "No. Usa cobre o CPVC. PVC se quema.",
+      "you_en": "No. Use copper or CPVC. PVC melts."
+    },
+    {
+      "they_es": "¿Cuándo hacemos la prueba de presión?",
+      "they_en": "When do we do the pressure test?",
+      "you_es": "Mañana a las nueve. Todo debe estar terminado hoy.",
+      "you_en": "Tomorrow at nine. Everything must be done today."
+    },
+    {
+      "they_es": "¿Qué presión necesita el sistema?",
+      "they_en": "What pressure does the system need?",
+      "you_es": "Cincuenta a sesenta libras. Ni más, ni menos.",
+      "you_en": "Fifty to sixty pounds. No more, no less."
+    },
+    {
+      "they_es": "¿Dónde va la válvula de cierre?",
+      "they_en": "Where does the shutoff valve go?",
+      "you_es": "Entrada de la casa. Fácil de alcanzar.",
+      "you_en": "House entrance. Easy to reach."
+    },
+    {
+      "they_es": "Se rompió una conexión. ¿Tengo que empezar de nuevo?",
+      "they_en": "A connection broke. Do I start over?",
+      "you_es": "No. Corta y cambia ese tramo nada más.",
+      "you_en": "No. Cut and replace just that section."
+    },
+    {
+      "they_es": "¿Necesito cinta de teflón en cada rosca?",
+      "they_en": "Do I need Teflon tape on every fitting?",
+      "you_es": "Sí. Tres vueltas. Evita fugas.",
+      "you_en": "Yes. Three wraps. Prevents leaks."
+    },
+    {
+      "they_es": "¿En qué medida van las tuberías del baño?",
+      "they_en": "What size pipes go for the bathroom?",
+      "you_es": "Media pulgada para el agua. Una y cuarto para desagüe.",
+      "you_en": "Half inch for water. One and quarter for drain."
+    }
+  ]
+}

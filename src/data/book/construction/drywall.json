@@ -1,0 +1,171 @@
+{
+  "id": "drywall",
+  "title": "Drywall Finisher",
+  "tagline": "Hanging, taping, mudding — and finishing inspection-ready walls.",
+  "emoji": "🪣",
+  "color": "#A78BFA",
+  "chapterIntro": "Drywall finishing is the art of transforming rough sheetrock into smooth, inspection-ready walls. It demands precision, patience, and an understanding of how materials behave under different conditions. This chapter covers the language of finishing work, from the first coat of joint compound to the final inspection pass. You'll learn to communicate about coverage areas, drying times, and quality standards—the vocabulary that separates a rough patch from a professional finish.",
+  "grammarFocus": {
+    "topic": "Dimensions, Measurements & Coverage Areas",
+    "description": "Drywall finishing requires constant communication about distances, widths, and coverage. This section teaches the Spanish needed to describe how far a coat should spread, how much material to apply, and how to specify the quality of your work.",
+    "patterns": [
+      {
+        "en": "The tape runs along the seam for forty feet.",
+        "es": "La cinta corre a lo largo de la junta cuarenta pies.",
+        "focus": "Directional language + distance measurement"
+      },
+      {
+        "en": "Apply the first coat to a width of six inches.",
+        "es": "Aplica la primera mano a un ancho de seis pulgadas.",
+        "focus": "Width specification + imperative mood"
+      },
+      {
+        "en": "Feather the edge out fifteen inches on each side.",
+        "es": "Adelgaza el borde quince pulgadas a cada lado.",
+        "focus": "Bilateral measurement + technical verb"
+      },
+      {
+        "en": "The corner bead should extend the full height of the wall.",
+        "es": "El esquinero debe extenderse la altura completa de la pared.",
+        "focus": "Vertical measurement + must/should construction"
+      },
+      {
+        "en": "Sand in circular motions, covering about two square feet at a time.",
+        "es": "Lija en movimientos circulares, cubriendo aproximadamente dos pies cuadrados a la vez.",
+        "focus": "Area measurement + method description"
+      }
+    ]
+  },
+  "extendedVocab": [
+    {"en": "drywall / sheetrock", "es": "tablaroca / drywall"},
+    {"en": "joint compound / mud", "es": "pasta para juntas / masilla"},
+    {"en": "tape", "es": "cinta / tape"},
+    {"en": "corner bead", "es": "esquinero"},
+    {"en": "sanding", "es": "lijado / lijar"},
+    {"en": "texture", "es": "textura"},
+    {"en": "feathering", "es": "adelgazado / feathering"},
+    {"en": "screw gun", "es": "atornilladora"},
+    {"en": "lift", "es": "elevador de tablaroca"},
+    {"en": "inspection", "es": "inspección / revisión"},
+    {"en": "seam", "es": "junta / costura"},
+    {"en": "butt joint", "es": "junta de tope"},
+    {"en": "tapered edge", "es": "borde cónico"},
+    {"en": "primer", "es": "imprimador / base"},
+    {"en": "sanding sponge", "es": "esponja de lija"},
+    {"en": "joint knife / putty knife", "es": "espátula / cuchillo de juntas"},
+    {"en": "mud pan", "es": "bandeja para masilla"},
+    {"en": "taping knife", "es": "espátula para cintas"},
+    {"en": "drywall anchor", "es": "taco de tablaroca"},
+    {"en": "compound consistency", "es": "consistencia de la pasta"}
+  ],
+  "phrases": [
+    {
+      "en": "Apply the first coat with the tape centered on the seam.",
+      "es": "Aplica la primera mano con la cinta centrada en la junta.",
+      "context": "Application instruction"
+    },
+    {
+      "en": "The compound should be smooth and lump-free before you apply it.",
+      "es": "La pasta debe ser suave y sin grumos antes de aplicarla.",
+      "context": "Quality control"
+    },
+    {
+      "en": "Let each coat dry completely before you sand.",
+      "es": "Deja que cada mano se seque completamente antes de lijar.",
+      "context": "Drying instruction"
+    },
+    {
+      "en": "Sand lightly to avoid breaking through the tape.",
+      "es": "Lija ligeramente para evitar romper la cinta.",
+      "context": "Safety warning"
+    },
+    {
+      "en": "The second coat should feather out twelve inches on each side.",
+      "es": "La segunda mano debe adelgazarse doce pulgadas a cada lado.",
+      "context": "Technical specification"
+    },
+    {
+      "en": "Check for ridges and fill them in with another coat.",
+      "es": "Busca las aristas y llena con otra mano.",
+      "context": "Inspection & correction"
+    },
+    {
+      "en": "The final inspection requires zero visible seams.",
+      "es": "La inspección final requiere cero juntas visibles.",
+      "context": "Quality standard"
+    },
+    {
+      "en": "Use a corner trowel for clean, sharp corners.",
+      "es": "Usa una llana de esquina para esquinas limpias y afiladas.",
+      "context": "Tool selection"
+    },
+    {
+      "en": "The texture should match the rest of the wall.",
+      "es": "La textura debe coincidir con el resto de la pared.",
+      "context": "Consistency requirement"
+    },
+    {
+      "en": "Wet the sanding sponge slightly to keep dust down.",
+      "es": "Humedece ligeramente la esponja de lija para reducir el polvo.",
+      "context": "Dust control technique"
+    },
+    {
+      "en": "Prime all finished seams before you paint.",
+      "es": "Aplica imprimador a todas las juntas terminadas antes de pintar.",
+      "context": "Pre-paint preparation"
+    },
+    {
+      "en": "Report any cracks or separation to the foreman immediately.",
+      "es": "Reporta cualquier grieta o separación al capataz de inmediato.",
+      "context": "Defect reporting"
+    }
+  ],
+  "exercises": {
+    "fillInTheBlanks": [
+      {
+        "en": "The first coat of ________ should be applied directly over the tape.",
+        "es": "La primera mano de ________ debe aplicarse directamente sobre la cinta.",
+        "answer": "joint compound / pasta para juntas"
+      },
+      {
+        "en": "Sand the surface in ________ motions to avoid creating uneven areas.",
+        "es": "Lija la superficie en movimientos ________ para evitar crear áreas desiguales.",
+        "answer": "circular / circulares"
+      },
+      {
+        "en": "The ________ should run continuously along the entire corner.",
+        "es": "El ________ debe correr continuamente a lo largo de toda la esquina.",
+        "answer": "corner bead / esquinero"
+      },
+      {
+        "en": "Always ________ the seams before beginning the final coat.",
+        "es": "Siempre ________ las juntas antes de empezar la mano final.",
+        "answer": "sand / lija"
+      },
+      {
+        "en": "The final inspection will show ________ visible joints or ridges.",
+        "es": "La inspección final mostrará ________ juntas o aristas visibles.",
+        "answer": "no / ninguna"
+      }
+    ],
+    "translateToSpanish": [
+      {
+        "en": "Feather the edge out to fifteen inches.",
+        "es": "Adelgaza el borde a quince pulgadas."
+      },
+      {
+        "en": "The corner bead must be straight and level.",
+        "es": "El esquinero debe estar recto y nivelado."
+      },
+      {
+        "en": "Let the compound dry overnight before sanding.",
+        "es": "Deja que la pasta se seque de noche antes de lijar."
+      },
+      {
+        "en": "Check for any imperfections in the tape or joints.",
+        "es": "Verifica cualquier imperfección en la cinta o las juntas."
+      }
+    ]
+  },
+  "culturalNote": "In Spanish-speaking construction crews, drywall finishing is often called 'trabajo de acabado' (finishing work) and demands a high level of craftsmanship. The precision required—feathering edges perfectly, achieving seamless joints, and meeting inspection standards—reflects the same attention to detail valued in traditional Spanish masonry and plastering trades. Respect for the work and clear communication about quality standards are essential. On many job sites, the drywall finisher is considered the 'artisan' of the framing crew, and the terminology reflects this status. Understanding the technical Spanish vocabulary not only communicates the work clearly but also demonstrates respect for the skilled trade itself."
+}

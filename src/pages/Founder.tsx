@@ -91,7 +91,7 @@ export default function Founder() {
             className="text-2xl md:text-3xl leading-relaxed mb-8"
             style={{ ...serifFont, color: '#F7F3EC' }}
           >
-            "Medicine and language are more alike than most people realize. Both are fundamentally about communication. And communication is fundamentally about&nbsp;
+            "Medicine and language are more alike than most people realize. Both are fundamentally about communication. And communication is fundamentally about{' '}
             <span style={{ color: '#C9A84C' }}>pattern recognition.</span>
             "
           </blockquote>

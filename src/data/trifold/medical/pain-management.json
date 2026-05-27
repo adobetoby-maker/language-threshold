@@ -1,0 +1,54 @@
+{
+  "id": "pain-management",
+  "title": "Pain Management",
+  "dialogues": [
+    {
+      "they_es": "El dolor es un diez de diez.",
+      "they_en": "The pain is a ten out of ten.",
+      "you_es": "¿Dónde exactamente le duele más?",
+      "you_en": "Where exactly does it hurt most?"
+    },
+    {
+      "they_es": "He tomado ibuprofeno pero no funciona.",
+      "they_en": "I took ibuprofen but it doesn't work.",
+      "you_es": "¿Cuánto ibuprofeno tomó y cuándo?",
+      "you_en": "How much ibuprofen did you take and when?"
+    },
+    {
+      "they_es": "¿Puedo tomar algo más fuerte para el dolor?",
+      "they_en": "Can I take something stronger for the pain?",
+      "you_es": "Voy a examinarle primero.",
+      "you_en": "I'm going to examine you first."
+    },
+    {
+      "they_es": "Tengo alergia a la morfina.",
+      "they_en": "I'm allergic to morphine.",
+      "you_es": "¿Qué síntomas tuvo con la morfina?",
+      "you_en": "What symptoms did you have with morphine?"
+    },
+    {
+      "they_es": "El dolor empeora cuando me muevo.",
+      "they_en": "The pain gets worse when I move.",
+      "you_es": "Intente no mover esa parte ahora.",
+      "you_en": "Try not to move that area right now."
+    },
+    {
+      "they_es": "¿Voy a necesitar cirugía para esto?",
+      "they_en": "Will I need surgery for this?",
+      "you_es": "Primero debemos descartar otras causas.",
+      "you_en": "First we need to rule out other causes."
+    },
+    {
+      "they_es": "He estado usando opioides durante un año.",
+      "they_en": "I've been using opioids for a year.",
+      "you_es": "Necesitamos discutir un plan de manejo.",
+      "you_en": "We need to discuss a management plan."
+    },
+    {
+      "they_es": "¿Me puede dar una referencia al especialista?",
+      "they_en": "Can you give me a referral to a specialist?",
+      "you_es": "Sí, voy a ordenar esa referencia hoy.",
+      "you_en": "Yes, I'll order that referral today."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
@@ -8,7 +8,6 @@ import { MetaPixel } from './components/MetaPixel'
 import { sansFont } from './constants'
 import { warmWordCache } from './data/wordCache'
 
-// Start fetching the word cache immediately — before any route renders or word is tapped
 warmWordCache()
 
 const Home = lazy(() => import('./pages/Home'))
@@ -22,7 +21,14 @@ const ContractorSwahili = lazy(() => import('./pages/ContractorSwahili'))
 const ClimbingSwahili = lazy(() => import('./pages/ClimbingSwahili'))
 const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
 const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
+const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
+const AppHome = lazy(() => import('./pages/AppHome'))
+const ModuleStarter = lazy(() => import('./pages/ModuleStarter'))
+const PrintMedical = lazy(() => import('./pages/PrintBook').then(m => ({ default: () => m.default({ specialty: 'medical' }) })))
+const PrintConstruction = lazy(() => import('./pages/PrintBook').then(m => ({ default: () => m.default({ specialty: 'construction' }) })))
+const TrifoldMedical = lazy(() => import('./pages/TrifoldPrint').then(m => ({ default: () => m.default({ specialty: 'medical' }) })))
+const TrifoldConstruction = lazy(() => import('./pages/TrifoldPrint').then(m => ({ default: () => m.default({ specialty: 'construction' }) })))
 
 function PageLoader() {
   return (
@@ -32,11 +38,28 @@ function PageLoader() {
   )
 }
 
-export default function App() {
+const FULLSCREEN_PREFIXES = ['/app', '/print/']
+
+function AppShell() {
+  const { pathname } = useLocation()
+  const isFullscreen = FULLSCREEN_PREFIXES.some(p => pathname === p || pathname.startsWith(p))
+
+  if (isFullscreen) {
+    return (
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/app" element={<ErrorBoundary><AppHome /></ErrorBoundary>} />
+          <Route path="/print/medical" element={<ErrorBoundary><PrintMedical /></ErrorBoundary>} />
+          <Route path="/print/construction" element={<ErrorBoundary><PrintConstruction /></ErrorBoundary>} />
+          <Route path="/print/trifold/medical" element={<ErrorBoundary><TrifoldMedical /></ErrorBoundary>} />
+          <Route path="/print/trifold/construction" element={<ErrorBoundary><TrifoldConstruction /></ErrorBoundary>} />
+        </Routes>
+      </Suspense>
+    )
+  }
+
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: '#0D0D0D', color: '#F7F3EC' }}>
-      <GoogleAnalytics />
-      <MetaPixel />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm"
@@ -44,9 +67,7 @@ export default function App() {
       >
         Skip to main content
       </a>
-
       <Nav />
-
       <main id="main-content">
         <Suspense fallback={<PageLoader />}>
           <Routes>
@@ -62,12 +83,23 @@ export default function App() {
             <Route path="/missionary-spanish" element={<ErrorBoundary><MissionarySpanish /></ErrorBoundary>} />
             <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
+            <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
+            <Route path="/module/:slug" element={<ErrorBoundary><ModuleStarter /></ErrorBoundary>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
       </main>
-
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <>
+      <GoogleAnalytics />
+      <MetaPixel />
+      <AppShell />
+    </>
   )
 }

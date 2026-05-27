@@ -1,0 +1,265 @@
+{
+  "moduleId": "landscaper",
+  "title": "Landscaper",
+  "tagline": "Lawn care, irrigation, hardscape, and seasonal crew management.",
+  "emoji": "🌿",
+  "color": "#34D399",
+  "chapterIntro": {
+    "heading": "Working in Landscaping",
+    "body": "Landscaping requires clear communication with crews and clients about seasonal tasks, irrigation systems, and hardscape maintenance. This chapter focuses on giving instructions in sequence, managing crew schedules, and explaining landscape design decisions in Spanish.",
+    "keyFocus": "Sequential instructions (first, then, finally) and crew coordination language"
+  },
+  "grammarFocus": {
+    "title": "Sequential Task Instructions — Primero, Luego, Finalmente",
+    "explanation": "In landscaping, you often give multi-step instructions to crew members. Spanish uses 'Primero', 'Luego', and 'Finalmente' (or 'Por fin') to create clear sequences. This structure prevents confusion and ensures tasks are completed in the correct order.",
+    "tasks": [
+      {
+        "order": 1,
+        "name": "First: Preparation",
+        "spanishConnector": "Primero",
+        "example": "Primero, coloca el mulch alrededor de las plantas.",
+        "englishTranslation": "First, place the mulch around the plants.",
+        "explanation": "Use 'Primero' to indicate the initial step. It sets the stage for all following instructions."
+      },
+      {
+        "order": 2,
+        "name": "Then: Main Action",
+        "spanishConnector": "Luego",
+        "example": "Luego, rega el área con el sistema de riego.",
+        "englishTranslation": "Then, water the area with the irrigation system.",
+        "explanation": "'Luego' (then/next) connects the second step logically to the first. It shows sequence and progression."
+      },
+      {
+        "order": 3,
+        "name": "Finally: Completion",
+        "spanishConnector": "Finalmente / Por fin",
+        "example": "Finalmente, barre los recortes hacia la calle.",
+        "englishTranslation": "Finally, sweep the clippings toward the street.",
+        "explanation": "'Finalmente' or 'Por fin' indicates the last step. It signals completion and allows for summary or next-day planning."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "mow",
+      "es": "cortar el césped / podar"
+    },
+    {
+      "en": "irrigation",
+      "es": "riego / irrigación / sistema de riego"
+    },
+    {
+      "en": "mulch",
+      "es": "mantillo / mulch / acolchado"
+    },
+    {
+      "en": "trim",
+      "es": "recortar / podar / desmochar"
+    },
+    {
+      "en": "fertilizer",
+      "es": "fertilizante / abono / nutriente"
+    },
+    {
+      "en": "hardscape",
+      "es": "pavimentación / área dura / construcción dura"
+    },
+    {
+      "en": "retaining wall",
+      "es": "muro de contención / muro de retención"
+    },
+    {
+      "en": "grade / gradient",
+      "es": "nivelar / pendiente / desnivel / grado de inclinación"
+    },
+    {
+      "en": "sod",
+      "es": "césped en rollo / tepe / grama en rollo"
+    },
+    {
+      "en": "blower",
+      "es": "sopladora / ventilador / máquina sopladora"
+    },
+    {
+      "en": "edging",
+      "es": "orilla / borde / recorte de borde"
+    },
+    {
+      "en": "prune",
+      "es": "podar / recortar ramas"
+    },
+    {
+      "en": "rake",
+      "es": "rastrillo / rastrillar"
+    },
+    {
+      "en": "landscape fabric",
+      "es": "tela de paisaje / tela antimala hierba / tela geotextil"
+    },
+    {
+      "en": "irrigation head",
+      "es": "cabezal de riego / aspersor / boquilla de riego"
+    },
+    {
+      "en": "sprinkler",
+      "es": "aspersor / rociador / regadera"
+    },
+    {
+      "en": "drip line",
+      "es": "línea de goteo / sistema de goteo / manguera de riego"
+    },
+    {
+      "en": "seasonal maintenance",
+      "es": "mantenimiento estacional / mantenimiento de temporada"
+    },
+    {
+      "en": "lawn fertilization",
+      "es": "fertilización del césped / abonado del prado"
+    },
+    {
+      "en": "winter preparations",
+      "es": "preparación invernal / preparativos de invierno / winterización"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "Edge along the fence line, then blow all the clippings onto the lawn before you run the blower to the street.",
+      "es": "Recorta a lo largo de la cerca, luego sopla todos los recortes hacia el césped antes de soplarlos hacia la calle.",
+      "context": "Crew instruction for mowing and cleanup"
+    },
+    {
+      "en": "First, check the irrigation system for leaks. Then, adjust the heads if the water is not reaching the plants evenly.",
+      "es": "Primero, revisa el sistema de riego para detectar fugas. Luego, ajusta los cabezales si el agua no está llegando a las plantas de forma uniforme.",
+      "context": "Irrigation maintenance and troubleshooting"
+    },
+    {
+      "en": "The grade needs to slope away from the house so water doesn't pool near the foundation.",
+      "es": "La pendiente debe inclinarse hacia afuera de la casa para que el agua no se acumule cerca del cimiento.",
+      "context": "Customer explanation of drainage design"
+    },
+    {
+      "en": "Apply mulch around the shrubs, but keep it a few inches away from the trunks to prevent rot.",
+      "es": "Aplica mantillo alrededor de los arbustos, pero mantén varios centímetros de distancia del tronco para prevenir la pudrición.",
+      "context": "Mulch application guidelines"
+    },
+    {
+      "en": "We'll install the retaining wall this week and then plant the ground cover next week.",
+      "es": "Instalaremos el muro de contención esta semana y luego plantaremos la cobertura del suelo la próxima semana.",
+      "context": "Project scheduling and phased work"
+    },
+    {
+      "en": "Trim the hedges to maintain the shape, but don't remove more than one-third of the branches at a time.",
+      "es": "Poda los setos para mantener la forma, pero no elimines más de un tercio de las ramas a la vez.",
+      "context": "Pruning best practices and crew training"
+    },
+    {
+      "en": "Before winter, we need to fertilize the lawn and blow out all the irrigation lines to prevent freezing.",
+      "es": "Antes del invierno, necesitamos fertilizar el césped y soplar todas las líneas de riego para evitar congelamiento.",
+      "context": "Seasonal preparation and winterization"
+    },
+    {
+      "en": "The sod will take about two weeks to establish. Water it daily, even if it rains.",
+      "es": "El césped en rollo tardará aproximadamente dos semanas en establecerse. Riégalo diariamente, incluso si llueve.",
+      "context": "Sod installation care instructions"
+    },
+    {
+      "en": "This drip line system is more efficient because it delivers water directly to the roots of the plants.",
+      "es": "Este sistema de goteo es más eficiente porque entrega agua directamente a las raíces de las plantas.",
+      "context": "Irrigation system education and upselling"
+    },
+    {
+      "en": "We'll meet at 7 AM tomorrow. Bring the edger, blower, and hedge trimmer.",
+      "es": "Nos vemos a las 7 de la mañana mañana. Trae la orilladora, la sopladora y la podadora de setos.",
+      "context": "Crew coordination and equipment list"
+    },
+    {
+      "en": "The landscape fabric under the mulch will help prevent weeds from growing through.",
+      "es": "La tela de paisaje debajo del mantillo ayudará a prevenir que las malezas crezcan a través.",
+      "context": "Material benefits and installation explanation"
+    },
+    {
+      "en": "After you finish mowing, rake up all the clippings and load them into the truck.",
+      "es": "Después de terminar de cortar el césped, recoge todos los recortes y cárgalos en el camión.",
+      "context": "Cleanup and equipment management"
+    }
+  ],
+  "exercises": {
+    "fillInTheBlank": [
+      {
+        "id": 1,
+        "prompt": "Primero, _____ (corta/cortar) el césped. Luego, _____ (sopla/soplar) los recortes.",
+        "answer": ["corta", "sopla"],
+        "englishVersion": "First, ___ (cut) the lawn. Then, ___ (blow) the clippings.",
+        "hint": "Use the tú command form for instructions to a crew member."
+      },
+      {
+        "id": 2,
+        "prompt": "Finalmente, _____ (revisa/revisar) el sistema de riego para _____ (detecta/detectar) fugas.",
+        "answer": ["revisa", "detectar"],
+        "englishVersion": "Finally, ___ (check) the irrigation system to ___ (detect) leaks.",
+        "hint": "The first verb is command form; the second is infinitive after 'para'."
+      },
+      {
+        "id": 3,
+        "prompt": "Aplica el mantillo alrededor de los arbustos, pero no _____ (toca/toques) el tronco.",
+        "answer": ["toques"],
+        "englishVersion": "Apply mulch around the shrubs, but don't ___ (touch) the trunk.",
+        "hint": "Use the negative tú command form."
+      },
+      {
+        "id": 4,
+        "prompt": "El agua debe _____ (fluye/fluir) lejos de la casa para evitar problemas en el cimiento.",
+        "answer": ["fluir"],
+        "englishVersion": "The water must ___ (flow) away from the house to avoid foundation problems.",
+        "hint": "This is an infinitive after 'debe'."
+      },
+      {
+        "id": 5,
+        "prompt": "Antes del invierno, tenemos que _____ (sopla/soplar) todas las líneas de riego.",
+        "answer": ["soplar"],
+        "englishVersion": "Before winter, we have to ___ (blow) all the irrigation lines.",
+        "hint": "Use infinitive form after 'tenemos que'."
+      }
+    ],
+    "translate": [
+      {
+        "id": 1,
+        "englishText": "First, place the sod. Then, water it daily. Finally, keep it moist for two weeks.",
+        "spanishAnswer": "Primero, coloca el césped en rollo. Luego, riégalo diariamente. Finalmente, mantenerlo húmedo durante dos semanas.",
+        "difficulty": "intermediate",
+        "hint": "Use the sequence connectors Primero-Luego-Finalmente."
+      },
+      {
+        "id": 2,
+        "englishText": "The retaining wall prevents soil from sliding down the slope.",
+        "spanishAnswer": "El muro de contención evita que el suelo se deslice por la pendiente.",
+        "difficulty": "intermediate",
+        "hint": "'Evita que' means 'prevents that' or 'keeps from'."
+      },
+      {
+        "id": 3,
+        "englishText": "Trim the hedge to maintain its shape, but do not cut more than one-third of the branches.",
+        "spanishAnswer": "Poda el seto para mantener su forma, pero no cortes más de un tercio de las ramas.",
+        "difficulty": "advanced",
+        "hint": "Use 'poda' for command and 'no cortes' for negative command."
+      },
+      {
+        "id": 4,
+        "englishText": "The drip irrigation system delivers water directly to the roots of the plants more efficiently.",
+        "spanishAnswer": "El sistema de riego por goteo entrega agua directamente a las raíces de las plantas de manera más eficiente.",
+        "difficulty": "advanced",
+        "hint": "'Entrega' means delivers; 'de manera más eficiente' means more efficiently."
+      }
+    ]
+  },
+  "culturalNote": {
+    "title": "Crew Leadership and Respect in Spanish-Speaking Landscaping",
+    "body": "In landscaping, where teams work outdoors and depend on clear communication, the way you give instructions matters significantly. Spanish-speaking crew members often appreciate leaders who use respectful command forms (tú commands) but also take time to explain the 'why' behind tasks. Using 'Primero-Luego-Finalmente' not only makes instructions clearer but also shows that you value the crew's understanding and professional development. Many experienced landscapers report that crew retention improves when supervisors take 2–3 minutes to explain a task sequence in the worker's native language rather than shouting commands. Additionally, recognizing seasonal transitions and discussing winterization or spring preparations in Spanish builds trust and demonstrates that you see crew members as partners in the work, not just laborers. This approach is especially important in regions where Spanish is the primary language on job sites.",
+    "relatedTopics": [
+      "Crew scheduling and time management",
+      "Equipment maintenance discussions",
+      "Customer communication about landscape design",
+      "Seasonal planning and project sequencing"
+    ]
+  }
+}

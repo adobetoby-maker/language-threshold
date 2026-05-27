@@ -1,0 +1,238 @@
+{
+  "id": "surgery",
+  "title": "General Surgery",
+  "emoji": "🔬",
+  "color": "#F59E0B",
+  "chapterIntro": "Pre-operative informed consent, intra-operative communication, and post-operative wound care instructions are critical for patient safety and comprehension. This chapter covers essential surgical vocabulary, consent phrases, and recovery guidance in Spanish.",
+  "grammarFocus": {
+    "title": "Imperative (Command) Forms for Medical Instructions",
+    "explanation": "Surgeons and nurses must give clear, direct instructions to patients. The imperative mood in Spanish is formed differently for formal (usted) and informal (tú) contexts. In medical settings, usted (formal) is standard. Regular verbs: remove -ar/-er/-ir and add -e/-a for usted. Irregular verbs like 'hacer' (haga), 'ser' (sea), 'ir' (vaya), and 'decir' (diga) are common in surgical instructions.",
+    "examples": [
+      {
+        "en": "Do not eat or drink anything after midnight.",
+        "es": "No coma ni beba nada después de la medianoche."
+      },
+      {
+        "en": "Remove all jewelry before surgery.",
+        "es": "Quítese todas las joyas antes de la cirugía."
+      },
+      {
+        "en": "Keep the wound dry and clean.",
+        "es": "Mantenga la herida seca y limpia."
+      },
+      {
+        "en": "Come back to the clinic in two weeks.",
+        "es": "Vuelva a la clínica en dos semanas."
+      }
+    ]
+  },
+  "extendedVocab": [
+    {
+      "en": "informed consent",
+      "es": "consentimiento informado",
+      "context": "Legal and ethical requirement before surgery"
+    },
+    {
+      "en": "anesthesia",
+      "es": "anestesia",
+      "context": "General or local numbing agents"
+    },
+    {
+      "en": "anesthesiologist",
+      "es": "anestesiólogo/a",
+      "context": "Doctor specializing in anesthesia"
+    },
+    {
+      "en": "incision",
+      "es": "incisión",
+      "context": "Surgical cut or opening"
+    },
+    {
+      "en": "to make an incision",
+      "es": "hacer una incisión",
+      "context": "Cutting action during surgery"
+    },
+    {
+      "en": "laparoscopic surgery",
+      "es": "cirugía laparoscópica",
+      "context": "Minimally invasive surgery with small incisions"
+    },
+    {
+      "en": "open surgery",
+      "es": "cirugía abierta",
+      "context": "Traditional surgery with larger incision"
+    },
+    {
+      "en": "drainage tube",
+      "es": "tubo de drenaje",
+      "context": "Removes fluid after surgery"
+    },
+    {
+      "en": "sutures",
+      "es": "suturas / puntos",
+      "context": "Stitches that close the wound"
+    },
+    {
+      "en": "to remove sutures",
+      "es": "remover las suturas",
+      "context": "Taking out stitches after healing"
+    },
+    {
+      "en": "NPO (nothing by mouth)",
+      "es": "nada por boca (NPO)",
+      "context": "Fasting requirement before surgery"
+    },
+    {
+      "en": "recovery room",
+      "es": "sala de recuperación",
+      "context": "Post-op monitoring area"
+    },
+    {
+      "en": "anesthetic wear off",
+      "es": "efecto de la anestesia se pase",
+      "context": "When numbing fades and pain may be felt"
+    },
+    {
+      "en": "post-operative pain",
+      "es": "dolor postoperatorio",
+      "context": "Pain after surgery"
+    },
+    {
+      "en": "wound infection",
+      "es": "infección de la herida",
+      "context": "Serious post-op complication"
+    },
+    {
+      "en": "signs of infection",
+      "es": "señales de infección",
+      "context": "Redness, swelling, pus, fever"
+    },
+    {
+      "en": "bleeding",
+      "es": "sangrado",
+      "context": "Excessive post-op blood loss"
+    },
+    {
+      "en": "to bandage",
+      "es": "vendar",
+      "context": "Covering the wound with dressing"
+    },
+    {
+      "en": "antibiotic ointment",
+      "es": "ungüento antibiótico",
+      "context": "Infection prevention cream"
+    },
+    {
+      "en": "complications",
+      "es": "complicaciones",
+      "context": "Unexpected post-op problems"
+    }
+  ],
+  "phrases": [
+    {
+      "en": "You must sign this consent form before we proceed with surgery.",
+      "es": "Debe firmar este formulario de consentimiento antes de proceder con la cirugía."
+    },
+    {
+      "en": "Do not eat or drink anything after midnight. This is very important.",
+      "es": "No coma ni beba nada después de la medianoche. Esto es muy importante."
+    },
+    {
+      "en": "The surgery will take approximately two hours.",
+      "es": "La cirugía durará aproximadamente dos horas."
+    },
+    {
+      "en": "We will use general anesthesia, so you will be asleep during the procedure.",
+      "es": "Usaremos anestesia general, así que estará dormido durante el procedimiento."
+    },
+    {
+      "en": "Remove all jewelry, watches, and dentures before entering the operating room.",
+      "es": "Quítese todas las joyas, relojes y dentaduras postizas antes de entrar al quirófano."
+    },
+    {
+      "en": "After surgery, you will wake up in the recovery room with your family nearby.",
+      "es": "Después de la cirugía, despertará en la sala de recuperación con su familia cerca."
+    },
+    {
+      "en": "You may feel some pain or discomfort. We will give you pain medication.",
+      "es": "Puede sentir algo de dolor o molestia. Le daremos medicamento para el dolor."
+    },
+    {
+      "en": "Keep the wound clean and dry for the next two weeks.",
+      "es": "Mantenga la herida limpia y seca durante las próximas dos semanas."
+    },
+    {
+      "en": "Change the bandage every day or as instructed by your nurse.",
+      "es": "Cambie el vendaje cada día o según las instrucciones de su enfermera."
+    },
+    {
+      "en": "If you notice redness, swelling, or pus, call the clinic immediately.",
+      "es": "Si nota enrojecimiento, hinchazón o pus, llame a la clínica inmediatamente."
+    },
+    {
+      "en": "We will remove your sutures in two weeks. Do not pull them out yourself.",
+      "es": "Le removeremos las suturas en dos semanas. No se las quite usted mismo."
+    },
+    {
+      "en": "Rest for at least one week. Do not lift anything heavy or exercise.",
+      "es": "Descanse durante al menos una semana. No levante nada pesado ni haga ejercicio."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "en": "You must not eat or drink anything after _____ . (midnight)",
+      "es": "No debe comer ni beber nada después de la _____.",
+      "answer": "medianoche"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "The surgery will take _____ two hours. (approximately)",
+      "es": "La cirugía durará _____ dos horas.",
+      "answer": "aproximadamente"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Remove all _____ before entering the operating room. (jewelry)",
+      "es": "Quítese todas las _____ antes de entrar al quirófano.",
+      "answer": "joyas"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Keep the _____ clean and dry for two weeks. (wound)",
+      "es": "Mantenga la _____ limpia y seca durante dos semanas.",
+      "answer": "herida"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "If you notice redness or swelling, call the _____ immediately. (clinic)",
+      "es": "Si nota enrojecimiento o hinchazón, llame a la _____ inmediatamente.",
+      "answer": "clínica"
+    },
+    {
+      "type": "translation",
+      "en": "Do not remove the bandage without asking the nurse.",
+      "es": "No quite el vendaje sin preguntarle a la enfermera.",
+      "hint": "Remove = quitar; bandage = vendaje"
+    },
+    {
+      "type": "translation",
+      "en": "You will feel some pain after the anesthesia wears off.",
+      "es": "Sentirá algo de dolor cuando pase el efecto de la anestesia.",
+      "hint": "Feel = sentir; wear off = pasar"
+    },
+    {
+      "type": "translation",
+      "en": "Change your dressing every day and watch for signs of infection.",
+      "es": "Cambie su vendaje cada día y observe señales de infección.",
+      "hint": "Change = cambiar; watch for = observar"
+    },
+    {
+      "type": "translation",
+      "en": "Rest for at least one week before returning to work.",
+      "es": "Descanse durante al menos una semana antes de volver al trabajo.",
+      "hint": "Rest = descansar; return = volver"
+    }
+  ],
+  "culturalNote": "In many Spanish-speaking countries, family involvement in surgical consent and post-operative care is deeply valued. Patients often want multiple family members present during consultations and recovery. Medical professionals should accommodate these cultural expectations when possible, as family support significantly improves patient outcomes and adherence to post-operative instructions. Additionally, some Hispanic patients may rely on traditional remedies or folk medicine practices; direct conversation about these practices—without judgment—helps ensure safe, integrated post-operative care."
+}

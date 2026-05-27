@@ -1,0 +1,54 @@
+{
+  "id": "social-work",
+  "title": "Social Work",
+  "dialogues": [
+    {
+      "they_es": "No tengo un lugar donde quedarme.",
+      "they_en": "I don't have a place to stay.",
+      "you_es": "Voy a conectarle con un albergue cerca de aquí.",
+      "you_en": "I'll connect you with a shelter nearby."
+    },
+    {
+      "they_es": "¿Tengo seguro médico después del alta?",
+      "they_en": "Will I have insurance after discharge?",
+      "you_es": "Vamos a solicitar Medicaid para usted.",
+      "you_en": "We're going to apply for Medicaid for you."
+    },
+    {
+      "they_es": "¿Quién puede cuidarme en casa?",
+      "they_en": "Who can take care of me at home?",
+      "you_es": "¿Tiene familia o amigos disponibles?",
+      "you_en": "Do you have family or friends available?"
+    },
+    {
+      "they_es": "Mi familia no puede ayudar ahora.",
+      "they_en": "My family can't help right now.",
+      "you_es": "Podemos arreglar cuidado en el hogar.",
+      "you_en": "We can arrange home care for you."
+    },
+    {
+      "they_es": "¿Hay recursos para los medicamentos?",
+      "they_en": "Are there resources for medications?",
+      "you_es": "Sí, hay programas de asistencia farmacéutica.",
+      "you_en": "Yes, there are pharmacy assistance programs."
+    },
+    {
+      "they_es": "Necesito ayuda con transporte médico.",
+      "they_en": "I need help with medical transportation.",
+      "you_es": "Podemos coordinar un servicio de transporte.",
+      "you_en": "We can coordinate a transportation service."
+    },
+    {
+      "they_es": "¿Hay centros comunitarios cerca?",
+      "they_en": "Are there community centers nearby?",
+      "you_es": "Sí, voy a darle una lista de recursos.",
+      "you_en": "Yes, I'll give you a list of resources."
+    },
+    {
+      "they_es": "¿Cómo obtengo cupones de comida?",
+      "they_en": "How do I get food stamps?",
+      "you_es": "Puedo ayudarle a solicitar SNAP hoy.",
+      "you_en": "I can help you apply for SNAP today."
+    }
+  ]
+}

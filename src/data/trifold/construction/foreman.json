@@ -1,0 +1,53 @@
+{
+  "id": "foreman",
+  "dialogues": [
+    {
+      "they_es": "¿Qué le toca hacer hoy?",
+      "they_en": "What's my job today?",
+      "you_es": "Termina el techo. Trabaja con Carlos.",
+      "you_en": "Finish the roof. Work with Carlos."
+    },
+    {
+      "they_es": "¿A qué hora empezamos mañana?",
+      "they_en": "What time do we start tomorrow?",
+      "you_es": "Seis y media. Trae tu seguro. Hay inspección.",
+      "you_en": "Six thirty. Bring your gear. There's an inspection."
+    },
+    {
+      "they_es": "¿Está lista la prueba de presión?",
+      "they_en": "Is the pressure test ready?",
+      "you_es": "Todavía no. Espera el inspector. Debe venir a las dos.",
+      "you_en": "Not yet. Wait for the inspector. He should come at two."
+    },
+    {
+      "they_es": "¿Dónde están los permisos?",
+      "they_en": "Where are the permits?",
+      "you_es": "En la oficina. Muéstralos al inspector.",
+      "you_en": "In the office. Show them to the inspector."
+    },
+    {
+      "they_es": "Hay un problema. Encontramos una viga dañada.",
+      "they_en": "There's a problem. We found a damaged beam.",
+      "you_es": "Espera. Hazme una foto. Envío un ingeniero.",
+      "you_en": "Stop. Take me a photo. I'll send an engineer."
+    },
+    {
+      "they_es": "¿Puedo salir una hora? Cita al doctor.",
+      "they_en": "Can I leave for an hour? Doctor's appointment.",
+      "you_es": "Sí, pero marca la hora. Vuelve cuando antes.",
+      "you_en": "Yes, but clock out. Come back as soon as you can."
+    },
+    {
+      "they_es": "¿Necesitamos más trabajadores en el equipo?",
+      "they_en": "Do we need more workers on the crew?",
+      "you_es": "Sí. Llama a Juan. Dile que viene mañana.",
+      "you_en": "Yes. Call Juan. Tell him he comes tomorrow."
+    },
+    {
+      "they_es": "¿Está todo conforme al plan?",
+      "they_en": "Is everything to plan?",
+      "you_es": "Casi. El sur está uno día atrás. Acelera.",
+      "you_en": "Almost. The south is one day behind. Speed it up."
+    }
+  ]
+}

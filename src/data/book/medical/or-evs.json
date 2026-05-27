@@ -1,0 +1,164 @@
+{
+  "id": "or-evs",
+  "title": "OR / EVS",
+  "emoji": "🧹",
+  "color": "#6B7280",
+  "chapterIntro": "Operating rooms and Environmental Services departments require absolute adherence to sterility protocols and infection control procedures. This chapter teaches you the critical Spanish vocabulary and commands needed for pre-operative setup, inter-case turnover, biohazard management, and isolation precautions. Miscommunication in sterile environments can compromise patient safety and surgical outcomes.",
+  "grammarFocus": {
+    "concept": "Negative Imperative Commands — What NOT to Do in Sterile Environments",
+    "explanation": "In OR/EVS contexts, safety protocols are enforced through prohibition. Spanish negative commands (using subjunctive mood) are essential: no + subjunctive for formal/professional contexts. Examples: 'No contamines el campo estéril' (Do not contaminate the sterile field), 'No toques las superficies sin guantes' (Do not touch surfaces without gloves).",
+    "rule": "Negative imperative: No + [verb in subjunctive form]. For tú: no contamines, no toques, no retires. For usted (formal): no contamine, no toque, no retire.",
+    "examples": [
+      "No contamines el campo estéril.",
+      "No remuevas la señal de aislamiento hasta que lo autorice la enfermera.",
+      "No deseches material biohazard en la basura regular.",
+      "No entres en la sala sin EPP completo."
+    ]
+  },
+  "extendedVocab": [
+    {"en": "sterile field", "es": "campo estéril"},
+    {"en": "biohazard", "es": "material biohazard / desecho peligroso"},
+    {"en": "disinfectant", "es": "desinfectante"},
+    {"en": "sharps container", "es": "recipiente para objetos cortopunzantes"},
+    {"en": "turnover", "es": "rotación de sala / limpieza entre casos"},
+    {"en": "isolation", "es": "aislamiento"},
+    {"en": "PPE (personal protective equipment)", "es": "EPP — equipo de protección personal"},
+    {"en": "contaminated", "es": "contaminado"},
+    {"en": "surgical suite", "es": "quirófano / sala de operaciones"},
+    {"en": "terminal clean", "es": "limpieza terminal / desinfección completa"},
+    {"en": "hand hygiene", "es": "higiene de manos"},
+    {"en": "gown", "es": "bata quirúrgica / bata estéril"},
+    {"en": "gloves", "es": "guantes"},
+    {"en": "mask", "es": "mascarilla / barbijo"},
+    {"en": "cap", "es": "gorro quirúrgico"},
+    {"en": "shoe covers", "es": "cubrecalzado"},
+    {"en": "face shield", "es": "protector facial / pantalla facial"},
+    {"en": "exposure incident", "es": "incidente de exposición"},
+    {"en": "bloodborne pathogens", "es": "patógenos transmitidos por sangre"},
+    {"en": "environmental sanitation", "es": "saneamiento ambiental / limpieza del entorno"}
+  ],
+  "phrases": [
+    {
+      "en": "This is an isolation room — full PPE before you go in. Do not remove any linens until the nurse removes the isolation precautions.",
+      "es": "Este es un cuarto de aislamiento — EPP completo antes de entrar. No retire ninguna ropa de cama hasta que la enfermera levante las precauciones de aislamiento."
+    },
+    {
+      "en": "We have a 15-minute turnover between cases. The surgical suite must be cleaned and ready for the next patient.",
+      "es": "Tenemos 15 minutos para la rotación entre casos. El quirófano debe estar limpio y listo para el próximo paciente."
+    },
+    {
+      "en": "Do not touch the sterile field. If you contaminate it, we must start over.",
+      "es": "No toques el campo estéril. Si lo contaminas, tenemos que empezar de nuevo."
+    },
+    {
+      "en": "All sharps and biohazard materials go in these containers. Never mix them with regular trash.",
+      "es": "Todos los objetos cortopunzantes y materiales biohazard van en estos recipientes. Nunca los mezcles con la basura regular."
+    },
+    {
+      "en": "This patient requires contact precautions. Wear gloves and a gown for every entry.",
+      "es": "Este paciente requiere precauciones de contacto. Usa guantes y bata para cada entrada."
+    },
+    {
+      "en": "After you finish the terminal clean, check off all zones on the checklist.",
+      "es": "Después de terminar la limpieza terminal, marca todas las áreas en la lista de verificación."
+    },
+    {
+      "en": "Do not reuse sharps containers. Place a full one in the designated disposal area immediately.",
+      "es": "No reutilices recipientes para objetos cortopunzantes. Coloca uno lleno en el área de eliminación designada inmediatamente."
+    },
+    {
+      "en": "Hand hygiene is your first line of defense. Wash before and after every patient interaction.",
+      "es": "La higiene de manos es tu primera línea de defensa. Lávate las manos antes y después de cada interacción con el paciente."
+    },
+    {
+      "en": "Did you have an exposure incident? Report it to your supervisor right away and go to occupational health.",
+      "es": "¿Tuviste un incidente de exposición? Repórtalo a tu supervisor inmediatamente y ve a salud ocupacional."
+    },
+    {
+      "en": "These instruments need steam sterilization. Place them in the autoclave with the indicator tape.",
+      "es": "Estos instrumentos necesitan esterilización por vapor. Colócalos en el autoclave con la cinta indicadora."
+    },
+    {
+      "en": "The isolation sign is still on the door. Do not remove it until I confirm the patient is no longer contagious.",
+      "es": "La señal de aislamiento sigue en la puerta. No la retires hasta que confirme que el paciente ya no es contagioso."
+    },
+    {
+      "en": "Always perform hand hygiene after removing PPE. Your gloves do not protect your hands after you take them off.",
+      "es": "Siempre realiza higiene de manos después de quitarte el EPP. Tus guantes no protegen tus manos después de quitártelos."
+    }
+  ],
+  "exercises": [
+    {
+      "type": "fill-in-blank",
+      "en": "No __________ (contaminate) el campo estéril durante la cirugía.",
+      "es": "No contamines",
+      "explanation": "Negative command form (tú) of contaminar in subjunctive: no contamines."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Todos los materiales biohazard deben ir en el __________ para objetos cortopunzantes.",
+      "es": "recipiente",
+      "explanation": "Container for sharps is 'recipiente para objetos cortopunzantes' or simply 'recipiente.'"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "Antes de entrar en la sala de aislamiento, asegúrate de llevar __________ completo.",
+      "es": "EPP",
+      "explanation": "Full personal protective equipment = EPP completo. EPP stands for Equipo de Protección Personal."
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "La __________ entre casos debe tomar solo 15 minutos.",
+      "es": "rotación de sala",
+      "explanation": "Turnover between surgical cases is 'rotación de sala' or 'cambio de sala.'"
+    },
+    {
+      "type": "fill-in-blank",
+      "en": "No __________ (remove) la ropa de cama hasta que la enfermera lo autorice.",
+      "es": "retires",
+      "explanation": "Negative command (tú) of retirar: no retires. Removal of linens in isolation requires authorization."
+    },
+    {
+      "type": "translate",
+      "en": "Do not touch the sterile field without gloves.",
+      "es": "No toques el campo estéril sin guantes.",
+      "explanation": "Key phrase for OR safety: 'tocar' = to touch, 'sin guantes' = without gloves."
+    },
+    {
+      "type": "translate",
+      "en": "This patient requires contact precautions and isolation.",
+      "es": "Este paciente requiere precauciones de contacto y aislamiento.",
+      "explanation": "Infection control protocol communication: 'requiere' = requires, 'precauciones de contacto' = contact precautions."
+    },
+    {
+      "type": "translate",
+      "en": "After the exposure incident, report immediately to occupational health.",
+      "es": "Después del incidente de exposición, reporta inmediatamente a salud ocupacional.",
+      "explanation": "Critical safety protocol: 'incidente de exposición' = exposure incident, 'salud ocupacional' = occupational health."
+    },
+    {
+      "type": "translate",
+      "en": "Always perform hand hygiene after removing your PPE.",
+      "es": "Siempre realiza higiene de manos después de quitarte el EPP.",
+      "explanation": "Core infection control: 'higiene de manos' = hand hygiene, 'quitarte' = removing (reflexive), 'EPP' = PPE."
+    }
+  ],
+  "culturalNote": "In many Spanish-speaking hospitals, Environmental Services (Servicios de Limpieza) staff are highly respected members of the infection control team. Their role in maintaining sterile fields and preventing nosocomial infections is recognized as critical to patient safety. When communicating with EVS staff, use formal 'usted' and acknowledge their expertise. Additionally, in Latin American hospitals, 'bata' refers to any hospital gown, while 'bata quirúrgica' specifically denotes a surgical gown. Proper terminology prevents confusion in high-stakes OR environments where precision saves lives.",
+  "vocab": [
+    {"en": "sterile field", "es": "campo estéril"},
+    {"en": "biohazard", "es": "material biohazard / desecho peligroso"},
+    {"en": "disinfectant", "es": "desinfectante"},
+    {"en": "sharps container", "es": "recipiente para objetos cortopunzantes"},
+    {"en": "turnover", "es": "rotación de sala / limpieza entre casos"},
+    {"en": "isolation", "es": "aislamiento"},
+    {"en": "PPE", "es": "EPP — equipo de protección personal"},
+    {"en": "contaminated", "es": "contaminado"},
+    {"en": "surgical suite", "es": "quirófano / sala de operaciones"},
+    {"en": "terminal clean", "es": "limpieza terminal / desinfección completa"}
+  ],
+  "samplePhrase": {
+    "en": "This is an isolation room — full PPE before you go in. Do not remove any linens until the nurse removes the isolation precautions.",
+    "es": "Este es un cuarto de aislamiento — EPP completo antes de entrar. No retire ninguna ropa de cama hasta que la enfermera levante las precauciones de aislamiento."
+  },
+  "scenario": "OR turnover, isolation cleaning, biohazard disposal protocol"
+}

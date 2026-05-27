@@ -1,0 +1,217 @@
+{
+  "id": "fmg",
+  "title": "Foreign Medical Graduate",
+  "emoji": "🌎",
+  "color": "#C9A84C",
+  "chapterIntro": "International medical graduates entering US residency programs face a unique vocabulary challenge: translating clinical concepts learned in Spanish-language training into the specific terminology and documentation standards of American healthcare systems. This chapter bridges that gap, focusing on the vocabulary and communication patterns you'll encounter in daily rounds, handoffs, and attending presentations. Whether you trained in Mexico, Spain, Latin America, or elsewhere, you'll learn how to present cases, request consults, and document findings using the clinical Spanish that resonates with both Spanish-speaking patients and English-speaking colleagues.",
+  "grammarFocus": {
+    "title": "Formal Case Presentation Structure",
+    "description": "The SOAP note structure and case presentation formula are universal in US medicine. Here's how to construct them in Spanish and English:",
+    "englishFormula": "This is a [age]-year-old [gender] with [chief complaint]. The patient presents with [history of present illness]. On physical exam, [key findings]. The differential diagnosis includes [ordered list]. My assessment is [leading diagnosis], and the plan is [management steps].",
+    "spanishFormula": "Se trata de un/una [age] años con [queja principal]. El paciente presenta [historia de la enfermedad actual]. Al examen físico, [hallazgos clave]. El diagnóstico diferencial incluye [lista ordenada]. Mi evaluación es [diagnóstico principal], y el plan es [pasos de manejo].",
+    "example": {
+      "english": "This is a 45-year-old male with chest pain. The patient presents with acute onset substernal chest pressure radiating to the left arm, associated with dyspnea and diaphoresis. On physical exam, he is hypertensive and tachycardic with a regular rate and rhythm. The differential diagnosis includes acute myocardial infarction, unstable angina, and aortic dissection. My assessment is non-ST-elevation myocardial infarction given the elevated troponin and EKG changes. The plan is dual antiplatelet therapy, anticoagulation, and cardiology consult.",
+      "spanish": "Se trata de un hombre de 45 años con dolor de pecho. El paciente presenta inicio agudo de presión torácica subesternal que irradia al brazo izquierdo, asociada con disnea y diaforesis. Al examen físico, está hipertenso y taquicárdico con ritmo cardiaco regular. El diagnóstico diferencial incluye infarto agudo del miocardio, angina inestable y disección aórtica. Mi evaluación es infarto del miocardio sin elevación del segmento ST, dado el aumento de troponina y cambios en el EKG. El plan es terapia antiagregante dual, anticoagulación e interconsulta con cardiología."
+    }
+  },
+  "extendedVocab": [
+    {
+      "en": "SOAP note",
+      "es": "nota SOAP (subjetivo, objetivo, evaluación, plan)",
+      "context": "Documentation framework used in all US medical records"
+    },
+    {
+      "en": "chief complaint",
+      "es": "motivo principal de consulta / queja principal",
+      "context": "The primary reason patient seeks care, often abbreviated as CC"
+    },
+    {
+      "en": "history of present illness",
+      "es": "historia de la enfermedad actual",
+      "context": "Detailed narrative of current symptoms; abbreviated HPI"
+    },
+    {
+      "en": "physical exam",
+      "es": "exploración física / examen físico",
+      "context": "Systematic assessment documented by body system"
+    },
+    {
+      "en": "differential diagnosis",
+      "es": "diagnóstico diferencial",
+      "context": "Ranked list of possible diagnoses, often written as DDx"
+    },
+    {
+      "en": "attending physician",
+      "es": "médico adjunto / médico responsable",
+      "context": "Senior physician supervising residents; called 'the attending'"
+    },
+    {
+      "en": "rounds",
+      "es": "rondas / visitas a pacientes",
+      "context": "Daily bedside rounds where team reviews all patients"
+    },
+    {
+      "en": "handoff",
+      "es": "entrega de turno / traspaso de paciente",
+      "context": "Sign-out; transfer of patient care between clinicians"
+    },
+    {
+      "en": "order",
+      "es": "orden médica / prescripción",
+      "context": "Any instruction to nursing, lab, or pharmacy"
+    },
+    {
+      "en": "consult",
+      "es": "interconsulta / consulta especializada",
+      "context": "Request for specialist evaluation"
+    },
+    {
+      "en": "sign and symptom",
+      "es": "signo y síntoma",
+      "context": "Sign = objective finding; symptom = subjective complaint"
+    },
+    {
+      "en": "assessment",
+      "es": "evaluación",
+      "context": "Clinician's interpretation and diagnosis in SOAP note"
+    },
+    {
+      "en": "plan",
+      "es": "plan de manejo / plan de tratamiento",
+      "context": "Treatment strategy and follow-up in SOAP note"
+    },
+    {
+      "en": "work-up",
+      "es": "evaluación diagnóstica / estudios diagnósticos",
+      "context": "Diagnostic tests and investigations"
+    },
+    {
+      "en": "workup",
+      "es": "estudio de laboratorio",
+      "context": "Alternative spelling; same meaning as work-up"
+    },
+    {
+      "en": "rule out",
+      "es": "descartar / excluir diagnóstico",
+      "context": "To exclude a diagnosis via testing; abbreviation R/O"
+    },
+    {
+      "en": "rule in",
+      "es": "confirmar diagnóstico / establecer diagnóstico",
+      "context": "To confirm a diagnosis; opposite of rule out"
+    },
+    {
+      "en": "presentation",
+      "es": "presentación clínica / cuadro clínico",
+      "context": "How a disease manifests clinically"
+    },
+    {
+      "en": "follow-up",
+      "es": "seguimiento / control posterior",
+      "context": "Planned return visit or evaluation"
+    },
+    {
+      "en": "disposition",
+      "es": "destino del paciente",
+      "context": "Patient's placement: admission, discharge, transfer, or observation"
+    }
+  ],
+  "phrases": [
+    {
+      "english": "On rounds, I present this patient as a 45-year-old male with chest pain and dyspnea.",
+      "spanish": "En rondas, presento este paciente como un hombre de 45 años con dolor de pecho y disnea."
+    },
+    {
+      "english": "The patient's troponin is elevated at 2.4, and the EKG shows ST-segment changes.",
+      "spanish": "La troponina del paciente está elevada en 2.4, y el EKG muestra cambios del segmento ST."
+    },
+    {
+      "english": "My leading differential is acute myocardial infarction with possible aortic dissection.",
+      "spanish": "Mi diagnóstico diferencial principal es infarto agudo del miocardio con posible disección aórtica."
+    },
+    {
+      "english": "I need a cardiology consult urgently for this patient.",
+      "spanish": "Necesito una interconsulta con cardiología urgente para este paciente."
+    },
+    {
+      "english": "Please sign this order for an EKG and troponin panel.",
+      "spanish": "Por favor, firma esta orden para un EKG y panel de troponina."
+    },
+    {
+      "english": "During handoff, I'll explain the case details and clinical plan to the night team.",
+      "spanish": "Durante la entrega de turno, explicaré los detalles del caso y el plan clínico al equipo nocturno."
+    },
+    {
+      "english": "The attending wants us to rule out sepsis before discharge.",
+      "spanish": "El médico adjunto quiere que descartemos sepsis antes del alta."
+    },
+    {
+      "english": "Can you document this finding in the physical exam section?",
+      "spanish": "¿Puedes documentar este hallazgo en la sección de exploración física?"
+    },
+    {
+      "english": "We need to discuss the diagnostic work-up with the patient and obtain informed consent.",
+      "spanish": "Necesitamos discutir la evaluación diagnóstica con el paciente y obtener consentimiento informado."
+    },
+    {
+      "english": "The disposition is admission to the cardiac care unit with continuous monitoring.",
+      "spanish": "El destino del paciente es ingreso a la unidad de cuidados cardiacos con monitoreo continuo."
+    },
+    {
+      "english": "I'll follow up with lab results and call the patient with the findings.",
+      "spanish": "Seguiré los resultados de laboratorio y llamaré al paciente con los hallazgos."
+    },
+    {
+      "english": "Based on the presentation and work-up, I recommend starting empiric antibiotics.",
+      "spanish": "Basado en la presentación clínica y la evaluación diagnóstica, recomiendo iniciar antibióticos empíricos."
+    }
+  ],
+  "exercises": {
+    "fillInBlank": [
+      {
+        "prompt": "During rounds, you need to present: 'This is a 38-year-old female with ___ (chief complaint). The patient presents with ___ (HPI). On physical exam, ___ (key finding). The differential includes ___ (DDx), and my assessment is ___ (leading diagnosis).'",
+        "englishAnswer": "abdominal pain / acute onset left lower quadrant pain with fever and nausea / tenderness and guarding in the left lower quadrant / appendicitis, diverticulitis, ectopic pregnancy / acute appendicitis",
+        "spanishAnswer": "dolor abdominal / dolor agudo en el cuadrante inferior izquierdo con fiebre y náusea / sensibilidad y defensa en el cuadrante inferior izquierdo / apendicitis, diverticulitis, embarazo ectópico / apendicitis aguda"
+      },
+      {
+        "prompt": "You're requesting a consult: 'I need a ___ consult urgently for this patient who presents with ___ and has ___ as the most likely diagnosis.'",
+        "englishAnswer": "neurology / sudden-onset weakness and slurred speech / acute ischemic stroke",
+        "spanishAnswer": "neurología / debilidad de inicio súbito y lenguaje inarticulado / accidente cerebrovascular isquémico agudo"
+      },
+      {
+        "prompt": "In the SOAP note assessment, you write: 'My evaluation is ___ based on ___, and the plan is ___.'",
+        "englishAnswer": "congestive heart failure with acute decompensation / elevated B-type natriuretic peptide and pulmonary edema on imaging / diuretics, beta-blockers, and cardiology consult",
+        "spanishAnswer": "insuficiencia cardiaca congestiva con descompensación aguda / péptido natriurético tipo B elevado y edema pulmonar en imágenes / diuréticos, betabloqueadores e interconsulta con cardiología"
+      },
+      {
+        "prompt": "During handoff, you say: 'The disposition is ___, and the plan includes ___ with follow-up ___.'",
+        "englishAnswer": "admission to the telemetry unit / continuous cardiac monitoring and IV antibiotics / in clinic within one week",
+        "spanishAnswer": "ingreso a la unidad de telemetría / monitoreo cardíaco continuo y antibióticos intravenosos / en la clínica dentro de una semana"
+      },
+      {
+        "prompt": "You document: 'The work-up to ___ includes ___, and I will ___ before finalizing the diagnosis.'",
+        "englishAnswer": "rule out pulmonary embolism / CT pulmonary angiography and D-dimer / discuss the risks and benefits with the patient",
+        "spanishAnswer": "descartar embolia pulmonar / angiografía pulmonar computarizada y dímero D / discutir los riesgos y beneficios con el paciente"
+      }
+    ],
+    "translate": [
+      {
+        "english": "The patient's presentation is consistent with acute hepatitis given the elevated liver enzymes and bilirubin.",
+        "spanish": "La presentación del paciente es consistente con hepatitis aguda dado los enzimas hepáticos y bilirrubina elevados."
+      },
+      {
+        "english": "I need to rule out myocardial infarction before considering discharge in this high-risk patient.",
+        "spanish": "Necesito descartar infarto del miocardio antes de considerar el alta en este paciente de alto riesgo."
+      },
+      {
+        "english": "During rounds, the attending asked me to review the differential diagnosis and prioritize the next diagnostic steps.",
+        "spanish": "Durante las rondas, el médico adjunto me pidió que revisara el diagnóstico diferencial y priorizara los próximos pasos diagnósticos."
+      },
+      {
+        "english": "The handoff included a detailed summary of the patient's history, physical exam findings, and the current assessment with plan for the night team.",
+        "spanish": "La entrega de turno incluyó un resumen detallado de la historia del paciente, hallazgos del examen físico, y la evaluación actual con plan para el equipo nocturno."
+      }
+    ]
+  },
+  "culturalNote": "As a foreign medical graduate, you'll navigate a unique linguistic and cultural challenge: code-switching between Spanish and English in clinical settings. In the US, case presentations are standardized and formulaic — the SOAP note structure is universal, whether you present in English or Spanish. However, you may encounter several scenarios: (1) Presenting to English-speaking attendings while caring for Spanish-speaking patients — you'll translate clinical concepts on the fly, often using both languages simultaneously. (2) Translating your Latin American medical training into US terminology — for example, 'infarto' becomes 'myocardial infarction' or 'MI,' and clinical protocols may differ significantly from your home country. (3) Managing impostor syndrome when discussing complex cases in English, especially early in residency — remember that your bilingual medical knowledge is an asset, not a liability. Many US institutions now value bilingual physicians for patient care. The key is mastering the formulaic, standardized language of case presentations, which relies on consistent terminology and structure regardless of language. This chapter focuses on bridging that vocabulary gap so you can present with confidence, request consults clearly, and document findings accurately in the US medical system."
+}

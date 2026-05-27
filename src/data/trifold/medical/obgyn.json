@@ -1,0 +1,53 @@
+{
+  "id": "obgyn",
+  "dialogues": [
+    {
+      "they_es": "¿Cuándo va a nacer el bebé?",
+      "they_en": "When is the baby coming?",
+      "you_es": "La fecha probable es el quince de junio.",
+      "you_en": "The due date is June fifteenth."
+    },
+    {
+      "they_es": "Tengo muchas contracciones. ¿Es normal?",
+      "they_en": "I have a lot of contractions. Is that normal?",
+      "you_es": "Las contracciones son normales. Venga si duelen cada cinco minutos.",
+      "you_en": "Contractions are normal. Come in if they occur every five minutes."
+    },
+    {
+      "they_es": "El bebé no se mueve como antes.",
+      "they_en": "The baby isn't moving like before.",
+      "you_es": "Cuente diez movimientos. Si no, llame inmediatamente.",
+      "you_en": "Count ten movements. If not, call right away."
+    },
+    {
+      "they_es": "¿Puedo seguir trabajando durante el embarazo?",
+      "they_en": "Can I continue working during pregnancy?",
+      "you_es": "Sí, pero evite estar de pie mucho tiempo.",
+      "you_en": "Yes, but avoid standing for long periods."
+    },
+    {
+      "they_es": "Tengo náuseas y vómitos severos.",
+      "they_en": "I have severe nausea and vomiting.",
+      "you_es": "Puede ser hipermesis. Le recetaré medicamento.",
+      "you_en": "This may be hyperemesis. I'll prescribe medication."
+    },
+    {
+      "they_es": "¿Qué debo hacer si tengo sangrado?",
+      "they_en": "What should I do if I have bleeding?",
+      "you_es": "Venga al hospital o llame al novecientos once.",
+      "you_en": "Go to the hospital or call nine one one."
+    },
+    {
+      "they_es": "¿Es seguro el parto vaginal a mi edad?",
+      "they_en": "Is vaginal delivery safe at my age?",
+      "you_es": "Sí, pero monitorizaremos cuidadosamente.",
+      "you_en": "Yes, but we'll monitor carefully."
+    },
+    {
+      "they_es": "Tengo dolor de espalda muy fuerte.",
+      "they_en": "I have severe back pain.",
+      "you_es": "Es común. Descanse y use calor local.",
+      "you_en": "It's common. Rest and use heat locally."
+    }
+  ]
+}

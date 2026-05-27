@@ -1,0 +1,53 @@
+{
+  "id": "orthopedics",
+  "dialogues": [
+    {
+      "they_es": "Creo que me rompí la muñeca.",
+      "they_en": "I think I broke my wrist.",
+      "you_es": "Vamos a tomar radiografías para verificar.",
+      "you_en": "Let's take X-rays to verify."
+    },
+    {
+      "they_es": "¿Cuánto tiempo necesito usar el yeso?",
+      "they_en": "How long do I need to wear the cast?",
+      "you_es": "Cuatro a seis semanas. Volveré a revisar.",
+      "you_en": "Four to six weeks. I'll check again."
+    },
+    {
+      "they_es": "Mi rodilla está muy hinchada y duele.",
+      "they_en": "My knee is very swollen and hurts.",
+      "you_es": "Póngase hielo durante veinte minutos cada hora.",
+      "you_en": "Put ice on it for twenty minutes each hour."
+    },
+    {
+      "they_es": "¿Necesito cirugía para el hombro?",
+      "they_en": "Do I need surgery for my shoulder?",
+      "you_es": "Primero intentemos la terapia física. Luego decidimos.",
+      "you_en": "Let's try physical therapy first. Then we decide."
+    },
+    {
+      "they_es": "Mi cadera me causa mucho dolor.",
+      "they_en": "My hip causes me a lot of pain.",
+      "you_es": "Levante la pierna lentamente. ¿Le duele?",
+      "you_en": "Raise your leg slowly. Does it hurt?"
+    },
+    {
+      "they_es": "¿Puedo trabajar después de la operación?",
+      "they_en": "Can I work after the surgery?",
+      "you_es": "No por seis semanas. Tiene que descansar.",
+      "you_en": "Not for six weeks. You must rest."
+    },
+    {
+      "they_es": "¿Puedo caminar sin muletas?",
+      "they_en": "Can I walk without crutches?",
+      "you_es": "Aún no. Vamos a hacer ejercicios primero.",
+      "you_en": "Not yet. Let's do exercises first."
+    },
+    {
+      "they_es": "El tobillo se siente débil.",
+      "they_en": "My ankle feels weak.",
+      "you_es": "Necesita fortalecer los músculos del pie.",
+      "you_en": "You need to strengthen your foot muscles."
+    }
+  ]
+}

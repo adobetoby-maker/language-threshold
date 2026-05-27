@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { sansFont } from '../constants'
+import { getWordCache } from '../data/wordCache'
 
-interface WordCardData {
+export interface WordCardData {
   headword: string
   wordEmoji: string
   partOfSpeech: string
@@ -45,20 +46,32 @@ export default function WordCard({ word, sentence, x, y, color, onClose }: Props
     setError(null)
     setCard(null)
 
-    fetch('/api/word-lookup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ word, sentence }),
-    })
-      .then(r => r.json())
-      .then(data => {
-        if (cancelled) return
-        if (data.error === 'rateLimit') { setError('Rate limit reached. Try again shortly.'); return }
-        if (data.card) setCard(data.card)
-        else setError("Couldn't look that up.")
+    const cacheKey = `${word}|${sentence}`
+
+    getWordCache().then(cache => {
+      if (cancelled) return
+      if (cache[cacheKey]) {
+        setCard(cache[cacheKey])
+        setLoading(false)
+        return
+      }
+
+      // Not in static cache — fall through to live API
+      fetch('/api/word-lookup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word, sentence }),
       })
-      .catch(() => { if (!cancelled) setError("Couldn't look that up.") })
-      .finally(() => { if (!cancelled) setLoading(false) })
+        .then(r => r.json())
+        .then(data => {
+          if (cancelled) return
+          if (data.error === 'rateLimit') { setError('Rate limit reached. Try again shortly.'); return }
+          if (data.card) setCard(data.card)
+          else setError("Couldn't look that up.")
+        })
+        .catch(() => { if (!cancelled) setError("Couldn't look that up.") })
+        .finally(() => { if (!cancelled) setLoading(false) })
+    })
 
     return () => { cancelled = true }
   }, [word, sentence])
