@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { APP_URL } from '../constants'
 
 const GOLD = '#C9A84C'
+const SKY = '#60A5FA'
 
 const MODULES = [
   { slug: 'medical',      label: 'Medical',      color: '#34d399' },
@@ -92,12 +93,15 @@ export default function Nav() {
           >
             Founder
           </Link>
-          <a
-            href={APP_URL}
-            className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.18em] text-white/35 hover:text-white/70 transition-colors"
+          <Link
+            to="/missionary-portal"
+            className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            style={{ color: pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = SKY }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}
           >
-            Sign In
-          </a>
+            Missionary Log In
+          </Link>
           <a
             href={APP_URL}
             className="rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
@@ -151,9 +155,16 @@ export default function Nav() {
           >
             Founder
           </Link>
+          <Link
+            to="/missionary-portal"
+            className="col-span-2 flex items-center justify-center gap-2 rounded-xl border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+            style={{ borderColor: `${SKY}35`, color: SKY, backgroundColor: 'rgba(96,165,250,0.05)' }}
+          >
+            🕊️ Missionary Log In — Save Progress
+          </Link>
           <a
             href={APP_URL}
-            className="col-span-2 mt-3 text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black"
+            className="col-span-2 mt-1 text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black"
             style={{ backgroundColor: GOLD }}
           >
             Start Learning Free →

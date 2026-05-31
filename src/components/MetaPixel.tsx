@@ -8,27 +8,31 @@ declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void
     _fbq?: unknown
+    _fbPixelReady?: boolean
   }
 }
 
 function loadPixel(pixelId: string) {
-  if (window.fbq) return
+  if (window._fbPixelReady) return
   const fbq = function (...args: unknown[]) {
-    (fbq as unknown as { q: unknown[] }).q = (fbq as unknown as { q: unknown[] }).q || []
-    ;(fbq as unknown as { q: unknown[] }).q.push(args)
+    (fbq as unknown as { q: unknown[][] }).q = (fbq as unknown as { q: unknown[][] }).q || []
+    ;(fbq as unknown as { q: unknown[][] }).q.push(args)
   }
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[] }).loaded = true
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[] }).version = '2.0'
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[] }).q = []
+  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).loaded = true
+  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).version = '2.0'
+  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).q = []
   window.fbq = fbq as (...args: unknown[]) => void
   window._fbq = fbq
 
   const script = document.createElement('script')
   script.src = 'https://connect.facebook.net/en_US/fbevents.js'
   script.async = true
+  script.onload = () => {
+    window._fbPixelReady = true
+    window.fbq!('init', pixelId)
+    window.fbq!('track', 'PageView')
+  }
   document.head.appendChild(script)
-
-  window.fbq('init', pixelId)
 }
 
 export function MetaPixel() {
@@ -41,7 +45,7 @@ export function MetaPixel() {
   }, [])
 
   useEffect(() => {
-    if (!PIXEL_ID || !window.fbq) return
+    if (!PIXEL_ID || !window.fbq || !window._fbPixelReady) return
     window.fbq('track', 'PageView')
   }, [location])
 

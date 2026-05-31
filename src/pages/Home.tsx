@@ -1,6 +1,6 @@
 import { useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { APP_URL } from '../constants'
+import { APP_URL, isBetaFree } from '../constants'
 
 const EarthGlobe = lazy(() => import('../components/EarthGlobe').then(m => ({ default: m.EarthGlobe })))
 
@@ -257,6 +257,103 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Missionary hero callout */}
+        <section className="relative py-24 px-6 sm:px-10 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,_rgba(14,30,60,0.95)_0%,_rgba(2,4,15,0.90)_75%)] pointer-events-none" />
+          <div className="relative max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8 }}
+              className="rounded-3xl border border-sky-500/20 overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, rgba(14,30,60,0.98) 0%, rgba(2,10,30,0.98) 100%)' }}
+            >
+              {/* Top accent bar */}
+              <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-sky-400/60 to-transparent" />
+
+              <div className="p-8 sm:p-12 lg:p-16">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+
+                  {/* Left — copy */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-5">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-sky-400/80">For LDS Missionaries</span>
+                      <span className="rounded-full bg-sky-500/15 border border-sky-500/25 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-widest text-sky-300">Always Free</span>
+                    </div>
+
+                    <h2 className="font-serif text-3xl sm:text-4xl font-bold leading-tight text-white mb-4">
+                      The words the MTC<br />
+                      <span className="text-sky-300">never taught you.</span>
+                    </h2>
+
+                    <p className="text-sm text-white/50 leading-relaxed mb-6 max-w-md">
+                      All six missionary discussions — word for word. Door approaches, testimony vocabulary, tracting openers. Built for missionaries headed to Spanish and Swahili missions. Free forever.
+                    </p>
+
+                    <ul className="space-y-2 mb-8">
+                      {[
+                        'All 6 discussions — Restoration through Commandments',
+                        'Door approaches and tracting vocabulary',
+                        'Testimony language at every fluency level',
+                        'Swahili missions fully covered',
+                      ].map(item => (
+                        <li key={item} className="flex items-start gap-2.5 text-sm text-white/60">
+                          <svg className="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <circle cx="7" cy="7" r="6.5" stroke="rgba(96,165,250,0.4)" />
+                            <path d="M4.5 7l2 2 3-3" stroke="#60a5fa" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="/module/missionary"
+                        className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black transition-opacity hover:opacity-90"
+                        style={{ background: 'linear-gradient(135deg, #7DD3FC 0%, #60A5FA 100%)' }}
+                      >
+                        Start Free — No Account Needed
+                      </a>
+                      <a
+                        href="/missionary-portal"
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-sky-500/30 px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-sky-300 transition-all hover:border-sky-400/50 hover:bg-sky-500/05"
+                      >
+                        Log In to Save Progress →
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Right — discussion list */}
+                  <div className="w-full lg:w-64 shrink-0">
+                    <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-sky-400/60 mb-4">The Six Discussions</p>
+                    <div className="space-y-2">
+                      {[
+                        { num: 1, title: 'The Restoration' },
+                        { num: 2, title: 'The Plan of Salvation' },
+                        { num: 3, title: 'The Gospel of Jesus Christ' },
+                        { num: 4, title: 'The Commandments' },
+                        { num: 5, title: 'Laws & Ordinances' },
+                        { num: 6, title: 'Door Approaches & Tracting' },
+                      ].map(d => (
+                        <div
+                          key={d.num}
+                          className="flex items-center gap-3 rounded-xl border border-sky-500/10 bg-sky-900/10 px-4 py-2.5"
+                        >
+                          <span className="font-mono text-[10px] text-sky-400/60 shrink-0 w-4">{d.num}</span>
+                          <span className="text-sm text-white/60 leading-snug">{d.title}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom accent bar */}
+              <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
+            </motion.div>
           </div>
         </section>
 
@@ -519,17 +616,26 @@ export default function Home() {
         {/* Pricing */}
         <section id="pricing" className="relative py-24 px-6 sm:px-10">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(10,18,34,0.94)_0%,_rgba(2,4,15,0.88)_70%)] pointer-events-none" />
-          <div className="relative max-w-4xl mx-auto">
+          <div className="relative max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.8 }}
               className="text-center mb-12"
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>Simple Pricing</p>
-              <h2 className="font-serif text-4xl font-bold">Free for 7 days. Then less than a missed shift.</h2>
+              <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>
+                {isBetaFree() ? 'Open Beta' : 'Simple Pricing'}
+              </p>
+              <h2 className="font-serif text-4xl font-bold">
+                {isBetaFree() ? 'Free through August 1, 2026 — all modules unlocked.' : 'Free for 7 days. Then less than a missed shift.'}
+              </h2>
+              {isBetaFree() && (
+                <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
+                  We're in open beta. No account, no card, no limit — explore everything.
+                </p>
+              )}
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Free */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
@@ -557,15 +663,12 @@ export default function Home() {
                 viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.05 }}
                 className="relative rounded-2xl border border-[#C9A84C]/30 bg-gradient-to-br from-[#0f0d04] to-[#02040f] p-7 shadow-[0_0_60px_rgba(201,168,76,0.08)]"
               >
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 font-mono text-[9px] uppercase tracking-widest text-black" style={{ backgroundColor: GOLD }}>
-                  Best Value
-                </div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.3em] mb-2" style={{ color: GOLD }}>Pro Annual</div>
                 <div className="flex items-end gap-1 mb-1">
                   <span className="font-serif text-5xl font-bold text-white">$149</span>
                   <span className="text-white/50 mb-1">/year</span>
                 </div>
-                <p className="text-sm text-white/45 mb-5">$12.42/mo · 7-day free trial</p>
+                <p className="text-sm text-white/45 mb-5">{isBetaFree() ? 'Free through Aug 1 · then $12.42/mo' : '$12.42/mo · 7-day free trial'}</p>
                 <ul className="space-y-2 mb-7">
                   {['660+ professional lessons', '13 medical specialties', '9 construction trades', 'AI speaking feedback', 'Grammar studio + conjugation', 'Daily challenges + leaderboard'].map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm text-white/75">
@@ -577,9 +680,11 @@ export default function Home() {
                   href={`${APP_URL}/pricing`}
                   className="group relative overflow-hidden block w-full text-center rounded-full bg-gradient-to-r from-[#E5C158] via-[#C9A84C] to-[#E5C158] py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,168,76,0.4)] hover:scale-[1.01] transition-all duration-300"
                 >
-                  Start 7-Day Free Trial →
+                  {isBetaFree() ? 'Access Everything Free →' : 'Start 7-Day Free Trial →'}
                 </a>
-                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">Cancel anytime · No charge until day 8</p>
+                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">
+                  {isBetaFree() ? 'Free beta · all modules · no card needed' : 'Cancel anytime · No charge until day 8'}
+                </p>
               </motion.div>
 
               {/* Family */}
@@ -604,6 +709,73 @@ export default function Home() {
                 <a href={`${APP_URL}/pricing`} className="block w-full text-center rounded-full border border-violet-500/40 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-violet-300 hover:bg-violet-500/10 transition-all duration-300">
                   See Family Plan →
                 </a>
+              </motion.div>
+
+              {/* Team — highlighted/recommended */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}
+                className="relative rounded-2xl p-7"
+                style={{
+                  border: '1px solid rgba(0,201,177,0.35)',
+                  background: 'linear-gradient(135deg, #06181a 0%, #02040f 100%)',
+                  boxShadow: '0 0 70px rgba(0,201,177,0.10)',
+                }}
+              >
+                {/* Recommended badge */}
+                <div
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 font-mono text-[9px] uppercase tracking-widest"
+                  style={{ backgroundColor: '#00C9B1', color: '#02040f' }}
+                >
+                  Recommended
+                </div>
+
+                <div
+                  className="font-mono text-[10px] uppercase tracking-[0.3em] mb-2"
+                  style={{ color: '#00C9B1' }}
+                >
+                  Team
+                </div>
+
+                <div className="flex items-end gap-1 mb-1">
+                  <span className="font-serif text-5xl font-bold text-white">$99</span>
+                  <span className="text-white/50 mb-1">/mo</span>
+                </div>
+                <p className="text-sm text-white/45 mb-5">5 seats included · Admin dashboard</p>
+
+                <ul className="space-y-2 mb-7">
+                  {[
+                    'Everything in Family',
+                    'Team dashboard + member management',
+                    'Usage analytics per seat',
+                    'Shared progress tracking',
+                    'Priority support',
+                  ].map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-white/75">
+                      <span className="shrink-0 mt-0.5" style={{ color: '#00C9B1' }}>✦</span>{f}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="mailto:hello@languagethreshold.com?subject=Team%20Plan%20Inquiry"
+                  className="block w-full text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(90deg, #00C9B1, #00a896, #00C9B1)',
+                    color: '#02040f',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 30px rgba(0,201,177,0.40)';
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1.01)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none';
+                    (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)';
+                  }}
+                >
+                  Contact for Team Plan →
+                </a>
+                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">hello@languagethreshold.com</p>
               </motion.div>
             </div>
           </div>

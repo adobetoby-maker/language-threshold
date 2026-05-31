@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { sansFont, displayFont } from '../constants'
+import { sansFont, displayFont, isBetaFree, BETA_FREE_LABEL } from '../constants'
 import { MEDICAL_MODULES } from '../data/medicalModules'
 import type { MedicalModule } from '../data/medicalModules'
 import { CONSTRUCTION_MODULES } from '../data/constructionModules'
@@ -428,7 +428,13 @@ export default function AppHome() {
   const [tab, setTab] = useState<Tab>('learn')
 
   const modules = specialty === 'medical' ? MEDICAL_MODULES : CONSTRUCTION_MODULES
+  const beta = isBetaFree()
+  // Beta: user picks any module. Non-beta: show rotating featured module only.
+  const [selectedModuleId, setSelectedModuleId] = useState<string | null>(null)
   const featuredModule = modules[getFeaturedIndex(modules.length)]
+  const activeModule = beta
+    ? (modules.find(m => m.id === selectedModuleId) ?? featuredModule)
+    : featuredModule
   const color = SPECIALTY_COLORS[specialty]
 
   useEffect(() => {
@@ -447,6 +453,13 @@ export default function AppHome() {
       {/* Status bar spacer for notch phones */}
       <div style={{ height: 'env(safe-area-inset-top, 16px)' }} />
 
+      {/* Beta banner */}
+      {beta && (
+        <div style={{ ...sansFont, background: 'rgba(201,168,76,0.12)', borderBottom: '1px solid rgba(201,168,76,0.25)', padding: '6px 16px', textAlign: 'center', fontSize: 10, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#C9A84C' }}>
+          🎁 {BETA_FREE_LABEL}
+        </div>
+      )}
+
       {/* App header */}
       <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div>
@@ -459,9 +472,38 @@ export default function AppHome() {
         </div>
       </div>
 
+      {/* Beta module picker — only shown during free period */}
+      {beta && tab === 'learn' && (
+        <div style={{ padding: '10px 16px 0', overflowX: 'auto' }}>
+          <div style={{ display: 'flex', gap: 6, paddingBottom: 8 }}>
+            {modules.map(m => (
+              <button
+                key={m.id}
+                onClick={() => setSelectedModuleId(m.id)}
+                style={{
+                  ...sansFont,
+                  flexShrink: 0,
+                  background: activeModule.id === m.id ? color + '20' : '#1a1a1a',
+                  border: `1px solid ${activeModule.id === m.id ? color + '60' : 'rgba(255,255,255,0.08)'}`,
+                  borderRadius: 20,
+                  padding: '5px 12px',
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: activeModule.id === m.id ? color : '#71717A',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {m.emoji} {m.title}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Tab content */}
       <div style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 120px)' }}>
-        {tab === 'learn' && <LearnTab specialty={specialty} module={featuredModule} />}
+        {tab === 'learn' && <LearnTab specialty={specialty} module={activeModule} />}
         {tab === 'vocab' && <VocabTab specialty={specialty} />}
         {tab === 'book' && <BookTab specialty={specialty} />}
         {tab === 'settings' && <SettingsTab specialty={specialty} onSwitch={s => { setSpecialty(s); setTab('learn') }} />}

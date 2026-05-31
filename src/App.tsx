@@ -21,10 +21,12 @@ const ContractorSwahili = lazy(() => import('./pages/ContractorSwahili'))
 const ClimbingSwahili = lazy(() => import('./pages/ClimbingSwahili'))
 const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
 const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
+const MissionaryPortal = lazy(() => import('./pages/MissionaryPortal'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
 const ModuleStarter = lazy(() => import('./pages/ModuleStarter'))
+const FishingModule = lazy(() => import('./pages/FishingModule'))
 const PrintMedical = lazy(() => import('./pages/PrintBook').then(m => ({ default: () => m.default({ specialty: 'medical' }) })))
 const PrintConstruction = lazy(() => import('./pages/PrintBook').then(m => ({ default: () => m.default({ specialty: 'construction' }) })))
 const TrifoldMedical = lazy(() => import('./pages/TrifoldPrint').then(m => ({ default: () => m.default({ specialty: 'medical' }) })))
@@ -82,8 +84,10 @@ function AppShell() {
             <Route path="/climbing-swahili" element={<ErrorBoundary><ClimbingSwahili /></ErrorBoundary>} />
             <Route path="/missionary-spanish" element={<ErrorBoundary><MissionarySpanish /></ErrorBoundary>} />
             <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
+            <Route path="/missionary-portal" element={<ErrorBoundary><MissionaryPortal /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
+            <Route path="/module/fishing" element={<ErrorBoundary><FishingModule /></ErrorBoundary>} />
             <Route path="/module/:slug" element={<ErrorBoundary><ModuleStarter /></ErrorBoundary>} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

@@ -1,3 +1,5 @@
+import { BETA_FREE_LABEL, isBetaFree } from '../constants'
+
 const GOLD = '#C9A84C'
 
 export function MiniGlobeButton({ href, size = 160 }: { href: string; size?: number }) {
@@ -63,7 +65,7 @@ export function MiniGlobeButton({ href, size = 160 }: { href: string; size?: num
             Start Learning Free
           </div>
           <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-white/25">
-            7-day trial · no card needed
+            {isBetaFree() ? BETA_FREE_LABEL : '7-day trial · no card needed'}
           </div>
         </div>
       </a>

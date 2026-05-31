@@ -47,6 +47,16 @@ export default function Footer() {
           © {new Date().getFullYear()} Language Threshold. All rights reserved.
         </div>
       </div>
-    </footer>
+          <div className="text-center py-2 text-xs" style={{ opacity: 0.3 }}>
+        <a
+          href="https://worker-bee.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-60 transition-opacity"
+        >
+          Anderton &amp; Associates Web Services
+        </a>
+      </div>
+</footer>
   )
 }

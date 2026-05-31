@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { APP_URL } from '../constants'
+import { APP_URL, isBetaFree } from '../constants'
 
 const EarthGlobe = lazy(() => import('../components/EarthGlobe').then(m => ({ default: m.EarthGlobe })))
 
@@ -33,7 +33,7 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(52,211,153,0.25)',
     tint: 'rgba(52,211,153,0.05)',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', 'Pediatrics', 'OB / GYN', 'ICU / Critical Care', 'Surgery & Pre-Op', 'Radiology', 'Pharmacy', 'Behavioral Health', 'Dental', 'Lab & Pathology', 'Home Health'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: ['13 specialties — ER, OR, OB, ICU, and more', 'Bedside manner: pain scales, consent, discharge', 'SBAR handoff and charting abbreviations', 'AI partner trained on real clinical dialogue'],
     steps: [
       { label: 'Choose your specialty', detail: 'Start in your unit — ER, OR, OB, ICU, or outpatient. Each module maps to real clinical workflows.' },
@@ -52,7 +52,7 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(251,146,60,0.25)',
     tint: 'rgba(251,146,60,0.05)',
     modules: ['Framing & Carpentry', 'Electrical', 'Plumbing', 'Concrete & Masonry', 'HVAC', 'Roofing', 'Drywall & Finishing', 'Landscaping', 'Safety & OSHA Compliance'],
-    languages: ['Spanish', 'Swahili', 'Portuguese'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: ['9 trades — framing, electrical, plumbing, and more', 'Safety briefings, PPE instructions, hazard calls', 'Blueprint reading and measurements — all languages', 'OSHA-compliant vocabulary built in'],
     steps: [
       { label: 'Pick your trade', detail: 'Framing, electrical, plumbing — start where your crew works. Each module mirrors your actual workflow.' },
@@ -71,7 +71,7 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(96,165,250,0.25)',
     tint: 'rgba(96,165,250,0.05)',
     modules: ['LDS Missionary Spanish — all 6 discussions', 'LDS Missionary Swahili', 'LDS Missionary French', 'Faith Volunteer Foundations'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: ['All six missionary discussions — word for word', 'Tracting openers, door approaches, follow-ups', 'Testimony vocabulary at every fluency level', 'Missionary Spanish is always free — no account required'],
     steps: [
       { label: 'Start with discussion one', detail: 'The Restoration — every phrase, every question, every testimony expression. In order.' },
@@ -90,7 +90,7 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(129,140,248,0.25)',
     tint: 'rgba(129,140,248,0.05)',
     modules: ['Soccer / Football', 'Baseball', 'Hockey', 'Basketball', 'Wrestling', 'Track & Field', 'Swimming', 'American Football', 'Volleyball'],
-    languages: ['Spanish', 'French', 'Portuguese', 'German'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: ['9 sports — soccer, hockey, baseball, and more', 'On-field communication: positions, plays, corrections', 'Halftime talks, drill instructions, game-day calls', 'Athletic training and injury vocabulary'],
     steps: [
       { label: 'Pick your sport', detail: 'Sport-specific vocabulary from day one — positions, plays, set pieces, and drills in context.' },
@@ -109,7 +109,7 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(250,204,21,0.25)',
     tint: 'rgba(250,204,21,0.05)',
     modules: ['Dairy & Cattle', 'Ranch & Cowboy', 'Meatpacking & Processing', 'Crop & Field Operations', 'Irrigation & Equipment'],
-    languages: ['Spanish', 'Swahili', 'Portuguese'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: ['5 modules — dairy, ranch, meatpacking, crops, and irrigation', 'Equipment operation and maintenance vocabulary', 'Safety and hazard communication in all languages', 'Daily scheduling, shift coordination, and task instructions'],
     steps: [
       { label: 'Choose your operation', detail: 'Dairy, ranch, or meatpacking — each module is built around the specific environment and workflow.' },
@@ -127,14 +127,14 @@ const STARTERS: Record<string, StarterData> = {
     color: '#c084fc',
     borderColor: 'rgba(192,132,252,0.25)',
     tint: 'rgba(192,132,252,0.05)',
-    modules: ['K–12 Teacher', 'Legal Immigration'],
-    languages: ['Spanish', 'French'],
-    bullets: ['Classroom instructions and behavior management', 'Parent communication — IEP, report cards, phone calls', 'School enrollment and legal immigration vocabulary', 'Emergency and safety communication'],
+    modules: ['K–12 Classroom', 'Parent & Family Communication', 'Legal Immigration', 'ESL & Adult Education'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['4 modules — classroom, family, legal, and adult ESL', 'Classroom instructions and behavior management', 'Parent communication — IEP, report cards, phone calls', 'School enrollment, legal immigration, and rights-based vocabulary'],
     steps: [
       { label: 'Start with the classroom', detail: 'Directions, behavior management, and daily routines — the phrases you use every period.' },
       { label: 'Parent communication', detail: 'IEP meetings, report cards, phone calls, and enrollment — every interaction that crosses the language gap.' },
       { label: 'Legal and enrollment', detail: 'Immigration documentation vocabulary, enrollment forms, and rights-based language for families.' },
-      { label: 'Emergency situations', detail: 'Evacuation, lockdown, medical, and crisis communication — clear and calm under pressure.' },
+      { label: 'Adult ESL and after-school', detail: 'Evening ESL instruction, adult learner vocabulary, and community education phrases.' },
     ],
   },
   hospitality: {
@@ -146,9 +146,9 @@ const STARTERS: Record<string, StarterData> = {
     color: '#fb7185',
     borderColor: 'rgba(251,113,133,0.25)',
     tint: 'rgba(251,113,133,0.05)',
-    modules: ['Restaurant & Hospitality'],
-    languages: ['Spanish', 'French', 'Portuguese'],
-    bullets: ['Front-of-house: menus, allergens, special requests', 'Back-of-house: kitchen communication and safety', 'Hotel check-in, housekeeping, guest services', 'Complaint handling and service recovery'],
+    modules: ['Restaurant & Fine Dining', 'Hotel & Resort', 'Bar & Nightlife', 'Event & Catering', 'Tourism & Excursions'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['5 modules — restaurant, hotel, bar, events, and tourism', 'Front-of-house: menus, allergens, specials, and special requests', 'Back-of-house: kitchen communication and safety', 'Complaint handling, service recovery, and VIP guest management'],
     steps: [
       { label: 'Front-of-house first', detail: 'Menus, allergens, specials, and special requests — the vocabulary guests actually need from you.' },
       { label: 'Back-of-house coordination', detail: 'Kitchen calls, prep instructions, safety, and timing — communication that keeps service running.' },
@@ -165,10 +165,10 @@ const STARTERS: Record<string, StarterData> = {
     color: '#0ea5e9',
     borderColor: 'rgba(14,165,233,0.25)',
     tint: 'rgba(14,165,233,0.05)',
-    modules: ['Deep Sea & Big Game', 'Offshore & Panga Fishing', 'Shore & Surf Fishing'],
-    languages: ['Spanish'],
+    modules: ['Deep Sea & Big Game', 'Offshore & Panga Fishing', 'Shore & Surf Fishing', 'Freshwater & River Fishing'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: [
-      '100+ fish species in Spanish — marlin, dorado, tuna, roosterfish',
+      '100+ fish species in 7 languages — marlin, dorado, tuna, roosterfish',
       'Charter & panga communication — directions, timing, gear',
       'Weather, tides, and navigation phrases',
       'Tackle, bait, and rigging vocabulary',
@@ -182,6 +182,63 @@ const STARTERS: Record<string, StarterData> = {
       { label: 'Handle the catch', detail: 'Regulations, measurements, live release, weigh-in procedures — and the tournament vocab for competitive anglers.' },
     ],
   },
+  climbing: {
+    emoji: '🧗',
+    title: 'Climbing Language',
+    tagline: 'Communicate on the wall, at the crag, and across the mountain.',
+    persona: 'For sport climbers, guides, and alpinists climbing in Spanish, French, German, and Swahili-speaking regions.',
+    roles: ['Sport Climbers', 'Trad Climbers', 'Climbing Guides', 'Alpine Climbers', 'Gym Instructors'],
+    color: '#a3e635',
+    borderColor: 'rgba(163,230,53,0.25)',
+    tint: 'rgba(163,230,53,0.05)',
+    modules: ['Sport & Rock Climbing', 'Trad & Alpine', 'Ice & Mixed Climbing', 'Guiding & Instruction', 'Gym & Indoor Climbing'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['5 modules — sport, trad, alpine, ice, and gym', 'Belay commands and wall communication in 4 languages', 'Gear vocabulary — protection, anchors, harness systems', 'Guide instruction and client safety communication', 'Mountain weather, retreat, and emergency phrases'],
+    steps: [
+      { label: 'Belay commands first', detail: 'On-belay, climbing, take, slack, off-belay — the safety calls that every climbing partner must share, whatever the language.' },
+      { label: 'Route and gear vocab', detail: 'Protection placement, anchor building, and route-finding language across sport, trad, and alpine terrain.' },
+      { label: 'Guide instruction', detail: 'Client coaching, risk communication, and progression feedback — for guides working in international climbing destinations.' },
+      { label: 'Emergency and retreat', detail: 'Weather calls, retreat decisions, and emergency communication — the vocabulary no one wants to need but everyone must have.' },
+    ],
+  },
+  hunting: {
+    emoji: '🦌',
+    title: 'World Hunting Language',
+    tagline: 'Hunt anywhere. Communicate with any outfitter.',
+    persona: 'For hunters booking international trips — Mexico dove, Argentina birds, Africa plains game, and European driven hunts.',
+    roles: ['International Hunters', 'Outfitters', 'Hunting Guides', 'Safari Clients', 'Lodge Owners'],
+    color: '#d97706',
+    borderColor: 'rgba(217,119,6,0.25)',
+    tint: 'rgba(217,119,6,0.05)',
+    modules: ['Mexico Dove & Quail', 'Mexico Deer & Big Game', 'Argentina Dove & Bird Hunting', 'Africa Safari & Plains Game', 'European Driven Hunts', 'Outfitter & Lodge Communication'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['6 modules — Mexico, Argentina, Africa, and Europe', 'Species names, seasons, and bag limits in every language', 'Outfitter and guide communication — logistics, directions, safety', 'Firearms, ammunition, and gear vocabulary', 'Field dressing, trophy care, and export regulations', 'Lodge life: meals, schedules, tips, and cultural customs'],
+    steps: [
+      { label: 'Choose your destination', detail: 'Mexico dove, Argentina birds, African safari, or European driven hunt — each module is built around the specific region and game.' },
+      { label: 'Pre-trip outfitter communication', detail: 'Confirming logistics, gear lists, customs declarations, and arrival details — in your outfitter\'s language, before you fly.' },
+      { label: 'Communicate in the field', detail: 'Hunt calls, safety commands, positioning instructions, and real-time coordination with your guide.' },
+      { label: 'Handle the harvest', detail: 'Field dressing vocabulary, trophy care instructions, CITES documentation, and trophy export procedures.' },
+    ],
+  },
+  business: {
+    emoji: '💼',
+    title: 'World Business Language',
+    tagline: 'Close deals, build relationships, and lead teams across borders.',
+    persona: 'For executives, sales professionals, and managers working with international clients and teams.',
+    roles: ['Executives', 'Sales Teams', 'Operations Managers', 'Finance Directors', 'Business Travelers'],
+    color: '#e2e8f0',
+    borderColor: 'rgba(226,232,240,0.2)',
+    tint: 'rgba(226,232,240,0.03)',
+    modules: ['Negotiations & Contracts', 'Client Entertainment', 'Meetings & Presentations', 'Travel & Logistics', 'Finance & Banking', 'Networking & Relationships'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['6 modules — negotiations, entertainment, meetings, travel, finance, networking', 'Formal register: contracts, proposals, terms, and closings', 'Client relationship building — dinners, gifts, and cultural customs', 'Meeting facilitation: agenda, action items, and decisions', 'Travel vocabulary: airports, hotels, ground transport, expenses'],
+    steps: [
+      { label: 'Formality and register first', detail: 'Every language has its own formal register for business. Start with titles, greetings, and the right level of formality for your target market.' },
+      { label: 'Negotiations and contracts', detail: 'Proposals, terms, pricing, concessions, and closings — the vocabulary of deals in Spanish, French, German, Portuguese, and Japanese.' },
+      { label: 'Client entertainment', detail: 'Dining, drinks, gifts, and hospitality. Cultural norms around entertaining vary widely — this module covers the unwritten rules.' },
+      { label: 'Relationships that last', detail: 'Small talk, follow-up phrases, and the relationship vocabulary that turns a transaction into a long-term partnership.' },
+    ],
+  },
   kids: {
     emoji: '🧒',
     title: 'Junior Linguist',
@@ -191,9 +248,9 @@ const STARTERS: Record<string, StarterData> = {
     color: '#f472b6',
     borderColor: 'rgba(244,114,182,0.25)',
     tint: 'rgba(244,114,182,0.05)',
-    modules: ['Junior Linguist — Ages 4–7', 'Junior Linguist — Ages 8–12', 'Family Language Play'],
-    languages: ['Spanish', 'French', 'Japanese', 'More'],
-    bullets: ['Vocabulary games, songs, and animated stories', 'CEFR-structured progression for kids', 'Parent dashboard to track progress', 'Included in Family Plan — all 6 profiles'],
+    modules: ['Junior Linguist — Ages 4–7', 'Junior Linguist — Ages 8–12', 'Family Language Play', 'Parent Coaching'],
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    bullets: ['4 modules — early learners, advanced kids, family play, and parent coaching', 'Vocabulary games, songs, and animated stories', 'CEFR-structured progression for kids', 'Parent dashboard to track progress and streaks'],
     steps: [
       { label: 'Pick the right age path', detail: 'Two distinct tracks: 4–7 builds sound recognition and simple phrases. 8–12 moves into grammar and conversation.' },
       { label: 'Games and songs first', detail: 'Every vocabulary set arrives as a game or song before a drill. Kids remember what feels like play.' },
@@ -219,10 +276,13 @@ export default function ModuleStarter() {
   const { slug = 'medical' } = useParams<{ slug: string }>()
   const d = STARTERS[slug] ?? STARTERS.medical
 
-  const freeLabel = slug === 'missionary' ? 'Free — Always' : '7-Day Trial'
-  const freeCta   = slug === 'missionary' ? 'Start Free →'  : 'Start Trial →'
+  const beta = isBetaFree()
+  const freeLabel = slug === 'missionary' ? 'Free — Always' : beta ? 'Free Beta' : '7-Day Trial'
+  const freeCta   = slug === 'missionary' ? 'Start Free →'  : beta ? 'Access Free →' : 'Start Trial →'
   const freeItems = slug === 'missionary'
     ? ['Full Missionary Spanish', 'All 6 discussions', 'No account required']
+    : beta
+    ? ['All modules unlocked through Aug 1', 'No account or card needed', 'AI speaking feedback']
     : ['All modules unlocked', 'AI speaking feedback', 'Cancel anytime']
 
   return (
@@ -301,7 +361,7 @@ export default function ModuleStarter() {
             transition={{ delay: 0.55, duration: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <SlideButton href={APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : 'Start 7-Day Free Trial →'} />
+            <SlideButton href={APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : beta ? 'Access Everything Free →' : 'Start 7-Day Free Trial →'} />
             <a
               href="#how-it-works"
               className="rounded-full border border-white/[0.15] px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/55 hover:border-white/30 hover:text-white/80 transition-all duration-300"
@@ -312,6 +372,8 @@ export default function ModuleStarter() {
           <p className="mt-4 font-mono text-[9px] uppercase tracking-widest text-white/25">
             {slug === 'missionary'
               ? 'Missionary Spanish is always free — no trial, no card, no expiration'
+              : beta
+              ? 'Free open beta · all modules unlocked · no card needed · through Aug 1, 2026'
               : 'No credit card required · Cancel anytime'}
           </p>
         </section>
@@ -454,7 +516,7 @@ export default function ModuleStarter() {
               </div>
               <p className="text-sm text-white/45 mb-5">$12.42/mo · 7-day free trial</p>
               <ul className="space-y-2 mb-6 flex-1">
-                {['All 26 modules, 7 languages', 'AI speaking partner', 'Grammar studio + conjugation', 'Daily challenges + leaderboard'].map(f => (
+                {['All 12 specialties · 70+ modules', '8 languages — Spanish, French, Italian, Greek, German, Portuguese, Japanese, Swahili', 'AI speaking partner', 'Grammar studio + daily challenges'].map(f => (
                   <li key={f} className="flex items-start gap-2 text-sm text-white/75">
                     <span className="shrink-0 mt-0.5" style={{ color: GOLD }}>✦</span>{f}
                   </li>
