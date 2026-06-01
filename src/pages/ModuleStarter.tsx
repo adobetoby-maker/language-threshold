@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { APP_URL, isBetaFree } from '../constants'
+import { APP_URL, MISSIONARY_APP_URL, isBetaFree } from '../constants'
 
 const EarthGlobe = lazy(() => import('../components/EarthGlobe').then(m => ({ default: m.EarthGlobe })))
 
@@ -361,7 +361,7 @@ export default function ModuleStarter() {
             transition={{ delay: 0.55, duration: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <SlideButton href={APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : beta ? 'Access Everything Free →' : 'Start 7-Day Free Trial →'} />
+            <SlideButton href={slug === 'missionary' ? MISSIONARY_APP_URL : APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : beta ? 'Access Everything Free →' : 'Start 7-Day Free Trial →'} />
             <a
               href="#how-it-works"
               className="rounded-full border border-white/[0.15] px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/55 hover:border-white/30 hover:text-white/80 transition-all duration-300"
@@ -489,7 +489,7 @@ export default function ModuleStarter() {
                 ))}
               </ul>
               <a
-                href={APP_URL}
+                href={slug === 'missionary' ? MISSIONARY_APP_URL : APP_URL}
                 className="block w-full text-center rounded-full border border-white/[0.15] py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/60 hover:border-white/30 hover:text-white/85 transition-all duration-300"
               >
                 {freeCta}
@@ -545,7 +545,7 @@ export default function ModuleStarter() {
             <p className="text-white/45 text-base mb-8 max-w-md mx-auto">
               7-day trial. Every module unlocked. No credit card until you decide it's worth it.
             </p>
-            <SlideButton href={APP_URL} label="Start Free Trial →" />
+            <SlideButton href={slug === 'missionary' ? MISSIONARY_APP_URL : APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : 'Start Free Trial →'} />
           </motion.div>
         </section>
 

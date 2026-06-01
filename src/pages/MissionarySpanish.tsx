@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
+import { MISSIONARY_APP_URL, displayFont, serifFont, sansFont } from '../constants'
 import { MISSIONARY_MODULES, type MissionaryModule } from '../data/missionaryModules'
 import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
 
 const SPANISH_COLOR = '#7C3AED'
-const MISSIONARY_APP_URL = `${APP_URL}?module=restoration&lang=es`
+const MISSIONARY_APP_URL_ES = `${MISSIONARY_APP_URL}&lang=es`
 
 interface TappedWord { word: string; sentence: string; x: number; y: number }
 
@@ -97,7 +97,7 @@ function ModuleCard({ mod }: { mod: MissionaryModule }) {
           </p>
 
           <a
-            href={MISSIONARY_APP_URL}
+            href={MISSIONARY_APP_URL_ES}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block w-full text-center py-3 rounded-full font-semibold text-sm transition-opacity hover:opacity-90"
@@ -163,7 +163,7 @@ export default function MissionarySpanish() {
 
             <div className="flex flex-wrap gap-4">
               <a
-                href={APP_URL}
+                href={MISSIONARY_APP_URL_ES}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90"
@@ -355,7 +355,7 @@ export default function MissionarySpanish() {
               <em style={{ color: SPANISH_COLOR }}>Now you can too.</em>
             </h2>
             <a
-              href={APP_URL}
+              href={MISSIONARY_APP_URL_ES}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-10 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90 mb-4"
