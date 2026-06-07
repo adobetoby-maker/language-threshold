@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
 import { CONSTRUCTION_MODULES, type ConstructionModule } from '../data/constructionModules'
+import { CONSTRUCTION_SUBSECTIONS, type ConstructionSubsection } from '../data/constructionLessons'
 import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
+import LessonGrid from '../components/LessonGrid'
 
 const SWAHILI_COLOR = '#00BFA5'
 const CONTRACTOR_APP_URL = `${APP_URL}?module=framer&lang=sw`
@@ -107,6 +109,64 @@ function ModuleCard({ mod }: { mod: ConstructionModule }) {
           >
             Practice {mod.title} Swahili →
           </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SubsectionCard({ sub }: { sub: ConstructionSubsection }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div
+      style={{
+        backgroundColor: '#161616',
+        border: `1px solid ${open ? sub.color + '40' : 'rgba(0,191,165,0.12)'}`,
+        borderRadius: 16,
+        overflow: 'hidden',
+        transition: 'border-color 0.2s',
+      }}
+    >
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%',
+          textAlign: 'left',
+          padding: '20px 20px 16px',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
+          <span style={{ fontSize: 28 }}>{sub.emoji}</span>
+          <span style={{
+            ...sansFont, fontSize: 10, fontWeight: 700, color: sub.color,
+            backgroundColor: sub.color + '18', borderRadius: 20, padding: '3px 10px',
+            textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap',
+          }}>
+            {sub.lessons.length} lessons
+          </span>
+        </div>
+        <h3 style={{ ...displayFont, fontSize: 17, fontWeight: 700, color: '#F7F3EC', margin: '0 0 4px' }}>
+          {sub.title}
+        </h3>
+        <p style={{ ...sansFont, fontSize: 12, color: '#A89F94', margin: '0 0 10px', lineHeight: 1.5 }}>
+          {sub.tagline}
+        </p>
+        <span style={{
+          ...sansFont, fontSize: 11, fontWeight: 600,
+          color: open ? sub.color : '#71717A',
+        }}>
+          {open ? 'Close ↑' : 'See lessons in Kiswahili ↓'}
+        </span>
+      </button>
+
+      {open && (
+        <div style={{ padding: '0 16px 20px', borderTop: `1px solid ${sub.color}18` }}>
+          <div style={{ paddingTop: 16 }}>
+            <LessonGrid lessons={sub.lessons} color={sub.color} lang="sw" />
+          </div>
         </div>
       )}
     </div>
@@ -242,6 +302,35 @@ export default function ContractorSwahili() {
             {CONSTRUCTION_MODULES.map(mod => (
               <FadeIn key={mod.id}>
                 <ModuleCard mod={mod} />
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lesson curriculum — trades × lessons in Swahili */}
+      <section id="lessons" className="py-28" style={{ backgroundColor: '#0D0D0D' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <div className="mb-4">
+              <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: SWAHILI_COLOR }}>
+                Nine trades · full lesson curriculum · Kiswahili
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ ...displayFont, color: '#F7F3EC' }}>
+              Full lesson curriculum<br />
+              <em style={{ color: '#C9A84C' }}>in Kiswahili.</em>
+            </h2>
+            <p className="max-w-2xl text-base leading-relaxed mb-16" style={{ ...sansFont, color: '#A89F94' }}>
+              Every trade, every task — vocabulary your crew uses on the job site, now in Kiswahili.
+              Click any trade to expand the lessons and see Swahili translations alongside English.
+            </p>
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {CONSTRUCTION_SUBSECTIONS.map(sub => (
+              <FadeIn key={sub.id}>
+                <SubsectionCard sub={sub} />
               </FadeIn>
             ))}
           </div>

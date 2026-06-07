@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
 import { MEDICAL_MODULES, type MedicalModule } from '../data/medicalModules'
+import { MEDICAL_SUBSECTIONS, type MedicalSubsection } from '../data/medicalLessons'
 import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
+import LessonGrid from '../components/LessonGrid'
 
 const SWAHILI_COLOR = '#00BFA5'
 const MEDICAL_APP_URL = `${APP_URL}?module=emergency&lang=sw`
@@ -105,6 +107,64 @@ function ModuleCard({ mod }: { mod: MedicalModule }) {
           >
             Practice {mod.title} Swahili →
           </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SubsectionCard({ sub }: { sub: MedicalSubsection }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div
+      style={{
+        backgroundColor: '#161616',
+        border: `1px solid ${open ? sub.color + '40' : 'rgba(0,191,165,0.12)'}`,
+        borderRadius: 16,
+        overflow: 'hidden',
+        transition: 'border-color 0.2s',
+      }}
+    >
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%',
+          textAlign: 'left',
+          padding: '20px 20px 16px',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
+          <span style={{ fontSize: 28 }}>{sub.emoji}</span>
+          <span style={{
+            ...sansFont, fontSize: 10, fontWeight: 700, color: sub.color,
+            backgroundColor: sub.color + '18', borderRadius: 20, padding: '3px 10px',
+            textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap',
+          }}>
+            30 lessons
+          </span>
+        </div>
+        <h3 style={{ ...displayFont, fontSize: 17, fontWeight: 700, color: '#F7F3EC', margin: '0 0 4px' }}>
+          {sub.title}
+        </h3>
+        <p style={{ ...sansFont, fontSize: 12, color: '#A89F94', margin: '0 0 10px', lineHeight: 1.5 }}>
+          {sub.tagline}
+        </p>
+        <span style={{
+          ...sansFont, fontSize: 11, fontWeight: 600,
+          color: open ? sub.color : '#71717A',
+        }}>
+          {open ? 'Close ↑' : 'See lessons in Kiswahili ↓'}
+        </span>
+      </button>
+
+      {open && (
+        <div style={{ padding: '0 16px 20px', borderTop: `1px solid ${sub.color}18` }}>
+          <div style={{ paddingTop: 16 }}>
+            <LessonGrid lessons={sub.lessons} color={sub.color} lang="sw" />
+          </div>
         </div>
       )}
     </div>
@@ -240,6 +300,36 @@ export default function MedicalSwahili() {
             {MEDICAL_MODULES.map(mod => (
               <FadeIn key={mod.id}>
                 <ModuleCard mod={mod} />
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lesson curriculum — 13 specialties × 30 lessons in Swahili */}
+      <section id="lessons" className="py-28" style={{ backgroundColor: '#0D0D0D' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <div className="mb-4">
+              <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: SWAHILI_COLOR }}>
+                Thirteen specialties · 30 lessons each · Kiswahili
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ ...displayFont, color: '#F7F3EC' }}>
+              Full lesson curriculum<br />
+              <em style={{ color: '#C9A84C' }}>in Kiswahili.</em>
+            </h2>
+            <p className="max-w-2xl text-base leading-relaxed mb-16" style={{ ...sansFont, color: '#A89F94' }}>
+              390 lessons built from the actual vocabulary of each clinical role — now fully translated
+              into Kiswahili. Click any specialty to expand the lessons and see the Swahili translations
+              side by side with English.
+            </p>
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {MEDICAL_SUBSECTIONS.map(sub => (
+              <FadeIn key={sub.id}>
+                <SubsectionCard sub={sub} />
               </FadeIn>
             ))}
           </div>

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
 import { CLIMBING_MODULES, type ClimbingModule, GEAR_PHOTOS } from '../data/climbingModules'
+import { CLIMBING_SUBSECTIONS, type ClimbingSubsection } from '../data/climbingLessons'
 import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
+import LessonGrid from '../components/LessonGrid'
 
 const SWAHILI_COLOR = '#00BFA5'
 const CLIMBING_APP_URL = `${APP_URL}?module=gear&lang=sw`
@@ -105,6 +107,37 @@ function ModuleCard({ mod }: { mod: ClimbingModule }) {
           >
             Practice {mod.title} Swahili →
           </a>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SubsectionCard({ sub }: { sub: ClimbingSubsection }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ backgroundColor: '#161616', border: `1px solid ${open ? sub.color + '40' : 'rgba(0,191,165,0.12)'}`, borderRadius: 16, overflow: 'hidden', transition: 'border-color 0.2s' }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{ width: '100%', textAlign: 'left', padding: '20px 20px 16px', background: 'none', border: 'none', cursor: 'pointer' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
+          <span style={{ fontSize: 28 }}>{sub.emoji}</span>
+          <span style={{ ...sansFont, fontSize: 10, fontWeight: 700, color: sub.color, backgroundColor: sub.color + '18', borderRadius: 20, padding: '3px 10px', textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap' }}>
+            {sub.lessons.length} lessons
+          </span>
+        </div>
+        <h3 style={{ ...displayFont, fontSize: 17, fontWeight: 700, color: '#F7F3EC', margin: '0 0 4px' }}>{sub.title}</h3>
+        <p style={{ ...sansFont, fontSize: 12, color: '#A89F94', margin: '0 0 10px', lineHeight: 1.5 }}>{sub.tagline}</p>
+        <span style={{ ...sansFont, fontSize: 11, fontWeight: 600, color: open ? sub.color : '#71717A' }}>
+          {open ? 'Close ↑' : 'See lessons in Kiswahili ↓'}
+        </span>
+      </button>
+      {open && (
+        <div style={{ padding: '0 16px 20px', borderTop: `1px solid ${sub.color}18` }}>
+          <div style={{ paddingTop: 16 }}>
+            <LessonGrid lessons={sub.lessons} color={sub.color} lang="sw" />
+          </div>
         </div>
       )}
     </div>
@@ -219,16 +252,16 @@ export default function ClimbingSwahili() {
           <FadeIn>
             <div className="mb-4">
               <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: SWAHILI_COLOR }}>
-                Three essential modules
+                Ten climbing modules
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ ...displayFont, color: '#F7F3EC' }}>
-              Gear. Safety. Technique.<br />
-              <em style={{ color: '#C9A84C' }}>In Kiswahili.</em>
+              Gear. Safety. Routes.<br />
+              <em style={{ color: '#C9A84C' }}>All in Kiswahili.</em>
             </h2>
             <p className="max-w-2xl text-base leading-relaxed mb-16" style={{ ...sansFont, color: '#A89F94' }}>
-              Everything a guide, gym instructor, or climbing partner needs to communicate clearly and
-              safely — the same depth as our Spanish climbing modules, now in Swahili.
+              Ten modules covering everything from gear rental and belay commands to route grades, outdoor sport
+              climbing, and performance training — each with full Swahili vocabulary and AI practice.
             </p>
           </FadeIn>
 
@@ -236,6 +269,34 @@ export default function ClimbingSwahili() {
             {CLIMBING_MODULES.map(mod => (
               <FadeIn key={mod.id}>
                 <ModuleCard mod={mod} />
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lesson curriculum */}
+      <section id="lessons" className="py-28" style={{ backgroundColor: '#0D0D0D' }}>
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <div className="mb-4">
+              <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: SWAHILI_COLOR }}>
+                Lesson curriculum
+              </span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ ...displayFont, color: '#F7F3EC' }}>
+              6 modules.<br />
+              <em style={{ color: '#C9A84C' }}>48 structured lessons in Kiswahili.</em>
+            </h2>
+            <p className="max-w-2xl text-base leading-relaxed mb-16" style={{ ...sansFont, color: '#A89F94' }}>
+              Click any module to expand the lessons and see full Swahili translations alongside English.
+              Each lesson covers 10 vocabulary pairs and a practical sample phrase.
+            </p>
+          </FadeIn>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {CLIMBING_SUBSECTIONS.map(sub => (
+              <FadeIn key={sub.id}>
+                <SubsectionCard sub={sub} />
               </FadeIn>
             ))}
           </div>

@@ -316,6 +316,17 @@ export default function LanguageLens() {
                 </p>
               </a>
               <a
+                href="/medical-swahili"
+                className="block p-6 rounded-2xl transition-all no-underline"
+                style={{ backgroundColor: '#161616', border: '1px solid rgba(0,191,165,0.15)' }}
+              >
+                <div className="text-2xl mb-2">🩺</div>
+                <div className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>Medical Swahili</div>
+                <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
+                  Kiswahili for East African clinical settings — ER, nursing, OB/GYN, and surgery.
+                </p>
+              </a>
+              <a
                 href="/contractor-spanish"
                 className="block p-6 rounded-2xl transition-all no-underline"
                 style={{ backgroundColor: '#161616', border: '1px solid rgba(255,122,74,0.15)' }}
@@ -324,6 +335,17 @@ export default function LanguageLens() {
                 <div className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>Contractor Spanish</div>
                 <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
                   Spanish for framers, plumbers, electricians, drywall crews, and foremen.
+                </p>
+              </a>
+              <a
+                href="/contractor-swahili"
+                className="block p-6 rounded-2xl transition-all no-underline"
+                style={{ backgroundColor: '#161616', border: '1px solid rgba(0,191,165,0.12)' }}
+              >
+                <div className="text-2xl mb-2">🏗️</div>
+                <div className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>Contractor Swahili</div>
+                <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
+                  Kiswahili for construction sites — framing, plumbing, electrical, safety, and foreman.
                 </p>
               </a>
             </div>
