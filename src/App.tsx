@@ -24,6 +24,11 @@ const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
 const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
 const MissionaryPortal = lazy(() => import('./pages/MissionaryPortal'))
 const MedicalPortuguese = lazy(() => import('./pages/MedicalPortuguese'))
+const MedicalFrench   = lazy(() => import('./pages/MedicalFrench'))
+const MedicalGerman   = lazy(() => import('./pages/MedicalGerman'))
+const MedicalItalian  = lazy(() => import('./pages/MedicalItalian'))
+const MedicalJapanese = lazy(() => import('./pages/MedicalJapanese'))
+const MedicalKorean   = lazy(() => import('./pages/MedicalKorean'))
 const ContractorPortuguese = lazy(() => import('./pages/ContractorPortuguese'))
 const ClimbingPortuguese = lazy(() => import('./pages/ClimbingPortuguese'))
 const MissionaryPortuguese = lazy(() => import('./pages/MissionaryPortuguese'))
@@ -91,6 +96,11 @@ function AppShell() {
             <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
             <Route path="/missionary-portal" element={<ErrorBoundary><MissionaryPortal /></ErrorBoundary>} />
             <Route path="/medical-portuguese" element={<ErrorBoundary><MedicalPortuguese /></ErrorBoundary>} />
+            <Route path="/medical-french"   element={<ErrorBoundary><MedicalFrench /></ErrorBoundary>} />
+            <Route path="/medical-german"   element={<ErrorBoundary><MedicalGerman /></ErrorBoundary>} />
+            <Route path="/medical-italian"  element={<ErrorBoundary><MedicalItalian /></ErrorBoundary>} />
+            <Route path="/medical-japanese" element={<ErrorBoundary><MedicalJapanese /></ErrorBoundary>} />
+            <Route path="/medical-korean"   element={<ErrorBoundary><MedicalKorean /></ErrorBoundary>} />
             <Route path="/contractor-portuguese" element={<ErrorBoundary><ContractorPortuguese /></ErrorBoundary>} />
             <Route path="/climbing-portuguese" element={<ErrorBoundary><ClimbingPortuguese /></ErrorBoundary>} />
             <Route path="/missionary-portuguese" element={<ErrorBoundary><MissionaryPortuguese /></ErrorBoundary>} />

@@ -13,7 +13,7 @@ const CATEGORIES = [
     color: 'from-emerald-950/90 to-[#02040f]',
     border: 'border-emerald-800/40', hover: 'hover:border-emerald-600/50',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', '+ 10 more'],
-    languages: 'Spanish · Swahili · Portuguese',
+    languages: 'Spanish · Swahili · Portuguese · French · German · Italian · Japanese · Korean',
     href: '/module/medical',
   },
   {
