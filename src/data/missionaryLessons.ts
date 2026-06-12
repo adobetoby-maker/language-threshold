@@ -245,4 +245,49 @@ export const MISSIONARY_SUBSECTIONS: MissionarySubsection[] = [
       },
     ],
   },
+  {
+    id: "church-service",
+    emoji: "⛪",
+    title: "Serving in the Church",
+    tagline: "Coordinate meetings, callings, ordinances, and rides for branch members.",
+    color: "#7C3AED",
+    lessons: [
+      {
+        id: "church-service-1", lessonNumber: 1, title: "Teaching Assignments on Sunday",
+        scenario: "A branch leader asks a member to give a talk or teach a lesson on Sunday in the Twin Falls Swahili branch.",
+        vocab: [{"en":"teach a lesson","es":"dar una lección","sw":"kufundisha somo"},{"en":"will you speak","es":"¿hablarás?","sw":"je, utazungumza?"},{"en":"Sunday","es":"el domingo","sw":"Jumapili"},{"en":"talk (speech)","es":"el discurso","sw":"hotuba"},{"en":"topic","es":"el tema","sw":"mada"},{"en":"lesson manual","es":"el manual de lecciones","sw":"kitabu cha masomo"},{"en":"prepare","es":"prepararse","sw":"jiandae / jitayarishe"},{"en":"speaker","es":"el orador","sw":"mzungumzaji"},{"en":"fifteen minutes","es":"quince minutos","sw":"dakika kumi na tano"},{"en":"class","es":"la clase","sw":"darasa"}],
+        samplePhrase: {"en":"Will you give a talk on Sunday? The topic is faith.","es":"¿Darás un discurso el domingo? El tema es la fe.","sw":"Je, utatoa hotuba Jumapili? Mada ni imani."},
+      },
+      {
+        id: "church-service-2", lessonNumber: 2, title: "Assigning Opening and Closing Prayers",
+        scenario: "The meeting conductor assigns members to give the opening and closing prayers before the meeting begins.",
+        vocab: [{"en":"opening prayer","es":"la oración de apertura","sw":"maombi ya ufunguzi"},{"en":"closing prayer","es":"la oración de cierre","sw":"maombi ya kufunga"},{"en":"will you pray","es":"¿orarás?","sw":"je, utaomba?"},{"en":"bow your head","es":"inclinar la cabeza","sw":"inamisha kichwa"},{"en":"fold your arms","es":"kunja mikono","sw":"kunja mikono"},{"en":"in the name of Jesus Christ","es":"en el nombre de Jesucristo","sw":"kwa jina la Yesu Kristo"},{"en":"amen","es":"amén","sw":"amina"},{"en":"invocation","es":"la invocación","sw":"sala ya mwanzo"},{"en":"benediction","es":"la bendición final","sw":"sala ya mwisho"},{"en":"assigned to pray","es":"asignado para orar","sw":"amepewa kazi ya kuomba"}],
+        samplePhrase: {"en":"Will you say the opening prayer on Sunday?","es":"¿Podrías dar la oración de apertura el domingo?","sw":"Je, unaweza kusema maombi ya ufunguzi Jumapili?"},
+      },
+      {
+        id: "church-service-3", lessonNumber: 3, title: "Rides to Church",
+        scenario: "A ward member offers a ride or calls to coordinate transportation so everyone can attend sacrament meeting.",
+        vocab: [{"en":"ride to church","es":"el aventón a la iglesia","sw":"lifti kwenda kanisani"},{"en":"pick you up","es":"recogerte","sw":"kukuchukua"},{"en":"what time","es":"¿a qué hora?","sw":"saa ngapi?"},{"en":"your address","es":"tu dirección","sw":"anwani yako"},{"en":"Sunday morning","es":"el domingo por la mañana","sw":"Jumapili asubuhi"},{"en":"transportation","es":"el transporte","sw":"usafiri"},{"en":"on the way","es":"de camino","sw":"njiani"},{"en":"I can take you","es":"te puedo llevar","sw":"naweza kukupeleka"},{"en":"church building","es":"el edificio de la iglesia","sw":"jengo la kanisa"},{"en":"meeting time","es":"la hora de la reunión","sw":"saa ya mkutano"}],
+        samplePhrase: {"en":"Can I pick you up for church on Sunday morning?","es":"¿Puedo recogerte para ir a la iglesia el domingo por la mañana?","sw":"Je, naweza kukuchukua kwenda kanisani Jumapili asubuhi?"},
+      },
+      {
+        id: "church-service-4", lessonNumber: 4, title: "Administering the Sacrament",
+        scenario: "Priesthood holders prepare and pass the sacrament in the branch meeting, using Swahili to coordinate with deacons.",
+        vocab: [{"en":"sacrament","es":"el sacramento","sw":"sakramenti"},{"en":"bless the bread","es":"bendecir el pan","sw":"kubariki mkate"},{"en":"bless the water","es":"bendecir el agua","sw":"kubariki maji"},{"en":"pass the sacrament","es":"pasar el sacramento","sw":"kusambaza sakramenti"},{"en":"deacon","es":"el diácono","sw":"diakoni"},{"en":"priest","es":"el sacerdote (aarónico)","sw":"kasisi wa kanisa"},{"en":"remember Him","es":"recordarlo a Él","sw":"mkumbuke yeye"},{"en":"renew covenants","es":"renovar convenios","sw":"huisha agano"},{"en":"sacred ordinance","es":"ordenanza sagrada","sw":"tendo takatifu"},{"en":"witnesses","es":"los testigos","sw":"mashahidi"}],
+        samplePhrase: {"en":"The sacrament is passed each week to help us remember Jesus Christ and renew our covenants.","es":"El sacramento se pasa cada semana para ayudarnos a recordar a Jesucristo y renovar nuestros convenios.","sw":"Sakramenti inasambazwa kila wiki kutusaidia kukumbuka Yesu Kristo na kuhuisha agano letu."},
+      },
+      {
+        id: "church-service-5", lessonNumber: 5, title: "Baptism and Confirmation Day",
+        scenario: "Leaders and missionaries coordinate the baptism service and the following Sunday confirmation for a new convert.",
+        vocab: [{"en":"baptism service","es":"el servicio de bautismo","sw":"ibada ya ubatizo"},{"en":"schedule a date","es":"programar una fecha","sw":"panga tarehe"},{"en":"font","es":"la pila bautismal","sw":"beseni la ubatizo"},{"en":"white clothing","es":"la ropa blanca","sw":"nguo nyeupe"},{"en":"confirmation","es":"la confirmación","sw":"uthibitisho"},{"en":"laying on of hands","es":"la imposición de manos","sw":"kuweka mikono juu"},{"en":"gift of the Holy Ghost","es":"el don del Espíritu Santo","sw":"kipawa cha Roho Mtakatifu"},{"en":"authorized holder","es":"poseedor autorizado","sw":"mwenye mamlaka"},{"en":"following Sunday","es":"el domingo siguiente","sw":"Jumapili inayofuata"},{"en":"membership record","es":"el registro de membresía","sw":"kumbukumbu ya uanachama"}],
+        samplePhrase: {"en":"After baptism on Saturday, you will be confirmed and receive the Gift of the Holy Ghost the following Sunday.","es":"Después del bautismo el sábado, serás confirmado y recibirás el Don del Espíritu Santo el domingo siguiente.","sw":"Baada ya ubatizo Jumamosi, utathibitishwa na kupokea Kipawa cha Roho Mtakatifu Jumapili inayofuata."},
+      },
+      {
+        id: "church-service-6", lessonNumber: 6, title: "Conducting a Meeting and Extending Callings",
+        scenario: "The branch president conducts sacrament meeting, sustains new callings, and makes announcements in Swahili.",
+        vocab: [{"en":"conduct the meeting","es":"presidir la reunión","sw":"kuongoza mkutano"},{"en":"welcome everyone","es":"dar la bienvenida a todos","sw":"karibisha wote"},{"en":"opening hymn","es":"el himno de apertura","sw":"wimbo wa ufunguzi"},{"en":"sustain","es":"sostener","sw":"kuunga mkono"},{"en":"calling","es":"el llamamiento","sw":"wito wa kanisa"},{"en":"extend a calling","es":"extender un llamamiento","sw":"toa wito"},{"en":"released","es":"relevado","sw":"kuachiliwa kutoka kwa wito"},{"en":"branch president","es":"el presidente de rama","sw":"rais wa tawi"},{"en":"announcements","es":"los anuncios","sw":"matangazo"},{"en":"closing hymn","es":"el himno de clausura","sw":"wimbo wa kufunga"}],
+        samplePhrase: {"en":"We will now begin our sacrament meeting. Will you please stand to be sustained in your new calling?","es":"Comenzaremos ahora nuestra reunión sacramental. ¿Se ponen de pie para ser sostenidos en su nuevo llamamiento?","sw":"Tutaanza sasa mkutano wetu wa sakramenti. Je, simama ili uthibitishwe katika wito wako mpya?"},
+      },
+    ],
+  },
 ]
