@@ -333,7 +333,7 @@ export default function ClimbingSwahili() {
             <h2 className="text-2xl font-bold mb-8" style={{ ...displayFont, color: '#F7F3EC' }}>
               Also on Language Threshold
             </h2>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-3 gap-5">
               <a
                 href="/climbing-spanish"
                 className="group block p-6 rounded-2xl transition-all"
@@ -345,6 +345,19 @@ export default function ClimbingSwahili() {
                 </div>
                 <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
                   The same three modules — for Spanish-speaking climbing partners.
+                </p>
+              </a>
+              <a
+                href="/climbing-portuguese"
+                className="group block p-6 rounded-2xl transition-all"
+                style={{ backgroundColor: '#161616', border: '1px solid rgba(0,199,119,0.15)', textDecoration: 'none' }}
+              >
+                <div className="text-2xl mb-2">🇧🇷</div>
+                <div className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>
+                  Climbing Portuguese
+                </div>
+                <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
+                  The same three modules — for Brazilian Portuguese-speaking climbing partners.
                 </p>
               </a>
               <a

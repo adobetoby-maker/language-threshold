@@ -24,15 +24,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
   if (await checkRateLimit(req, res)) return
 
-  const { word, sentence } = req.body ?? {}
+  const { word, sentence, lang = 'es' } = req.body ?? {}
   if (!word || !sentence) return res.status(400).json({ error: 'Missing word or sentence' })
 
   const key = process.env.ANTHROPIC_API_KEY
   if (!key) return res.status(500).json({ error: 'AI not configured' })
 
+  const langLabel = lang === 'pt' ? 'Portuguese (Brazilian)' : lang === 'sw' ? 'Swahili' : 'Spanish'
+  const sysPrompt = `You are a bilingual ${langLabel} dictionary for working professionals. Keep definitions concise. Always populate morphStem, morphEnding, morphConjugations, and commonPhrases to show how words change on the job.`
+
   const tool = {
     name: 'return_word_card',
-    description: 'Return a Spanish word card for a professional learner, including morphological breakdown.',
+    description: `Return a ${langLabel} word card for a professional learner, including morphological breakdown.`,
     input_schema: {
       type: 'object',
       properties: {
@@ -74,10 +77,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: JSON.stringify({
         model: 'claude-haiku-4-5',
         max_tokens: 700,
-        system: [{ type: 'text', text: 'You are a bilingual Spanish dictionary for working professionals. Keep definitions concise. Always populate morphStem, morphEnding, morphConjugations, and commonPhrases to show how words change on the job.', cache_control: { type: 'ephemeral' } }],
+        system: [{ type: 'text', text: sysPrompt, cache_control: { type: 'ephemeral' } }],
         tools: [{ ...tool, cache_control: { type: 'ephemeral' } }],
         tool_choice: { type: 'tool', name: 'return_word_card' },
-        messages: [{ role: 'user', content: `Spanish word: "${word}"\nContext: "${sentence}"` }],
+        messages: [{ role: 'user', content: `${langLabel} word: "${word}"\nContext: "${sentence}"` }],
       }),
     })
 

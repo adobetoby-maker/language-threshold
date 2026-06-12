@@ -13,7 +13,7 @@ const CATEGORIES = [
     color: 'from-emerald-950/90 to-[#02040f]',
     border: 'border-emerald-800/40', hover: 'hover:border-emerald-600/50',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', '+ 10 more'],
-    languages: 'Spanish · Swahili',
+    languages: 'Spanish · Swahili · Portuguese',
     href: '/module/medical',
   },
   {
@@ -21,7 +21,7 @@ const CATEGORIES = [
     color: 'from-orange-950/90 to-[#02040f]',
     border: 'border-orange-800/40', hover: 'hover:border-orange-600/50',
     modules: ['Framing', 'Electrical', 'Plumbing', '+ 6 more'],
-    languages: 'Spanish · Portuguese',
+    languages: 'Spanish · Swahili · Portuguese',
     href: '/module/construction',
   },
   {
@@ -29,7 +29,7 @@ const CATEGORIES = [
     color: 'from-sky-950/90 to-[#02040f]',
     border: 'border-sky-800/40', hover: 'hover:border-sky-600/50',
     modules: ['LDS Missionary', 'Missionary Swahili'],
-    languages: 'Spanish · Swahili',
+    languages: 'Spanish · Swahili · Portuguese',
     href: '/module/missionary',
   },
   {
@@ -89,10 +89,11 @@ const LANGUAGES = [
   { flag: '🇯🇵', name: 'Japanese'   },
   { flag: '🇰🇷', name: 'Korean'     },
   { flag: '🇧🇷', name: 'Português'  },
+  { flag: '🇰🇪', name: 'Kiswahili'  },
 ]
 
 const STATS = [
-  { n: '7',    label: 'Languages',                   icon: '🌐' },
+  { n: '8',    label: 'Languages',                   icon: '🌐' },
   { n: '26+',  label: 'Modules',                     icon: '📦' },
   { n: '660+', label: 'Pro Lessons',                 icon: '📚' },
   { n: 'MD',   label: 'Surgeon-Built', icon: '🩺' },
@@ -187,7 +188,7 @@ export default function Home() {
               className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto"
             >
               Not tourist phrases. Not flashcards. 660+ professional lessons for medical workers
-              and tradespeople — with AI speaking feedback built in. 7 languages.
+              and tradespeople — with AI speaking feedback built in. 8 languages.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
@@ -823,7 +824,7 @@ export default function Home() {
             <span style={{ color: GOLD }}>✦</span> Language Threshold
           </span>
           <p className="font-mono text-[10px] uppercase tracking-widest text-white/20">
-            Professional language learning · 26 modules · 7 languages
+            Professional language learning · 26 modules · 8 languages
           </p>
           <a href={APP_URL} className="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors">
             Open App →

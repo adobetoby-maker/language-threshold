@@ -338,6 +338,19 @@ export default function MissionarySpanish() {
                   Thirteen clinical modules for Spanish-speaking patients.
                 </p>
               </a>
+              <a
+                href="/missionary-portuguese"
+                className="group block p-6 rounded-2xl transition-all"
+                style={{ backgroundColor: '#161616', border: '1px solid rgba(0,199,119,0.15)', textDecoration: 'none' }}
+              >
+                <div className="text-2xl mb-2">🇧🇷</div>
+                <div className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>
+                  Missionary Portuguese
+                </div>
+                <p className="text-sm" style={{ ...sansFont, color: '#A89F94' }}>
+                  The same four modules — for Brazil and Portuguese-speaking missions.
+                </p>
+              </a>
             </div>
           </div>
         </section>

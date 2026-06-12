@@ -1,7 +1,7 @@
 {
-  "name": "Medical Spanish + Construction Spanish",
-  "short_name": "MedSpanish",
-  "description": "Learn medical and construction Spanish for real-world communication on the job.",
+  "name": "Language Threshold",
+  "short_name": "LangThreshold",
+  "description": "Professional language learning for medical workers, tradespeople, and missionaries. 8 languages, 26 modules, AI speaking feedback.",
   "start_url": "/app",
   "display": "standalone",
   "background_color": "#0D0D0D",

@@ -7,14 +7,15 @@ interface Lesson {
   lessonNumber: number
   title: string
   scenario: string
-  vocab: Array<{ en: string; es: string }>
-  samplePhrase: { en: string; es: string }
+  vocab: Array<{ en: string; es: string; sw?: string }>
+  samplePhrase: { en: string; es: string; sw?: string }
 }
 
 interface Props {
   subsectionId: string
   lessons: Lesson[]
   color: string
+  lang?: 'es' | 'sw'
 }
 
 const STORAGE_KEY = 'lt-lesson-progress'
@@ -40,7 +41,7 @@ function saveProgress(p: Record<string, boolean>) {
 
 interface TappedWord { word: string; sentence: string; x: number; y: number }
 
-function LessonDetail({ lesson, color, onClose }: { lesson: Lesson; color: string; onClose: () => void }) {
+function LessonDetail({ lesson, color, lang = 'es', onClose }: { lesson: Lesson; color: string; lang?: 'es' | 'sw'; onClose: () => void }) {
   const [tapped, setTapped] = useState<TappedWord | null>(null)
   const [practiced, setPracticed] = useState(() => loadProgress()[lesson.id] ?? false)
 
@@ -72,26 +73,29 @@ function LessonDetail({ lesson, color, onClose }: { lesson: Lesson; color: strin
         Vocabulary — tap to look up
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px', marginBottom: 20 }}>
-        {lesson.vocab.map(v => (
-          <div key={v.en} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 6 }}>
-            <span style={{ ...sansFont, fontSize: 13, fontWeight: 600, color: '#F7F3EC' }}>{v.en}</span>
-            <button
-              onClick={e => {
-                const rect = (e.target as HTMLElement).getBoundingClientRect()
-                setTapped({ word: v.es.split(/[\s/,]/)[0], sentence: `${v.en}: ${v.es}`, x: rect.left + rect.width / 2, y: rect.bottom })
-              }}
-              style={{ ...sansFont, background: 'none', border: 'none', padding: 0, cursor: 'pointer', color, fontSize: 13, textDecoration: 'underline dotted', textUnderlineOffset: 3, textAlign: 'right' }}
-            >
-              {v.es}
-            </button>
-          </div>
-        ))}
+        {lesson.vocab.map(v => {
+          const translation = lang === 'sw' ? (v.sw ?? v.es) : v.es
+          return (
+            <div key={v.en} style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 6 }}>
+              <span style={{ ...sansFont, fontSize: 13, fontWeight: 600, color: '#F7F3EC' }}>{v.en}</span>
+              <button
+                onClick={e => {
+                  const rect = (e.target as HTMLElement).getBoundingClientRect()
+                  setTapped({ word: translation.split(/[\s/,]/)[0], sentence: `${v.en}: ${translation}`, x: rect.left + rect.width / 2, y: rect.bottom })
+                }}
+                style={{ ...sansFont, background: 'none', border: 'none', padding: 0, cursor: 'pointer', color, fontSize: 13, textDecoration: 'underline dotted', textUnderlineOffset: 3, textAlign: 'right' }}
+              >
+                {translation}
+              </button>
+            </div>
+          )
+        })}
       </div>
 
       {/* Sample phrase */}
       <div style={{ backgroundColor: `${color}08`, border: `1px solid ${color}20`, borderRadius: 10, padding: '12px 14px', marginBottom: 16 }}>
         <p style={{ ...sansFont, fontSize: 10, fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 6px' }}>Sample phrase</p>
-        <p style={{ ...sansFont, fontSize: 14, fontWeight: 600, color: '#F7F3EC', margin: '0 0 4px', lineHeight: 1.5 }}>"{lesson.samplePhrase.es}"</p>
+        <p style={{ ...sansFont, fontSize: 14, fontWeight: 600, color: '#F7F3EC', margin: '0 0 4px', lineHeight: 1.5 }}>"{lang === 'sw' ? (lesson.samplePhrase.sw ?? lesson.samplePhrase.es) : lesson.samplePhrase.es}"</p>
         <p style={{ ...sansFont, fontSize: 12, color: '#71717A', margin: 0, lineHeight: 1.4 }}>"{lesson.samplePhrase.en}"</p>
       </div>
 
@@ -115,7 +119,7 @@ function LessonDetail({ lesson, color, onClose }: { lesson: Lesson; color: strin
   )
 }
 
-export default function LessonGrid({ lessons, color }: Omit<Props, 'subsectionId'> & { subsectionId?: string }) {
+export default function LessonGrid({ lessons, color, lang = 'es' }: Omit<Props, 'subsectionId'> & { subsectionId?: string }) {
   const [progress, setProgress] = useState<Record<string, boolean>>(loadProgress)
   const [openLesson, setOpenLesson] = useState<string | null>(null)
 
@@ -185,6 +189,7 @@ export default function LessonGrid({ lessons, color }: Omit<Props, 'subsectionId
                 <LessonDetail
                   lesson={lesson}
                   color={color}
+                  lang={lang}
                   onClose={() => {
                     setOpenLesson(null)
                     setProgress(loadProgress())

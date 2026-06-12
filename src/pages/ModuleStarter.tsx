@@ -18,6 +18,7 @@ interface StarterData {
   tint: string
   modules: string[]
   languages: string[]
+  langRoutes?: Record<string, string>
   bullets: string[]
   steps: { label: string; detail: string }[]
 }
@@ -34,6 +35,7 @@ const STARTERS: Record<string, StarterData> = {
     tint: 'rgba(52,211,153,0.05)',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', 'Pediatrics', 'OB / GYN', 'ICU / Critical Care', 'Surgery & Pre-Op', 'Radiology', 'Pharmacy', 'Behavioral Health', 'Dental', 'Lab & Pathology', 'Home Health'],
     languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    langRoutes: { Spanish: '/medical-spanish', Swahili: '/medical-swahili', Portuguese: '/medical-portuguese' },
     bullets: ['13 specialties — ER, OR, OB, ICU, and more', 'Bedside manner: pain scales, consent, discharge', 'SBAR handoff and charting abbreviations', 'AI partner trained on real clinical dialogue'],
     steps: [
       { label: 'Choose your specialty', detail: 'Start in your unit — ER, OR, OB, ICU, or outpatient. Each module maps to real clinical workflows.' },
@@ -53,6 +55,7 @@ const STARTERS: Record<string, StarterData> = {
     tint: 'rgba(251,146,60,0.05)',
     modules: ['Framing & Carpentry', 'Electrical', 'Plumbing', 'Concrete & Masonry', 'HVAC', 'Roofing', 'Drywall & Finishing', 'Landscaping', 'Safety & OSHA Compliance'],
     languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    langRoutes: { Spanish: '/contractor-spanish', Swahili: '/contractor-swahili', Portuguese: '/contractor-portuguese' },
     bullets: ['9 trades — framing, electrical, plumbing, and more', 'Safety briefings, PPE instructions, hazard calls', 'Blueprint reading and measurements — all languages', 'OSHA-compliant vocabulary built in'],
     steps: [
       { label: 'Pick your trade', detail: 'Framing, electrical, plumbing — start where your crew works. Each module mirrors your actual workflow.' },
@@ -72,6 +75,7 @@ const STARTERS: Record<string, StarterData> = {
     tint: 'rgba(96,165,250,0.05)',
     modules: ['LDS Missionary Spanish — all 6 discussions', 'LDS Missionary Swahili', 'LDS Missionary French', 'Faith Volunteer Foundations'],
     languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    langRoutes: { Spanish: '/missionary-spanish', Swahili: '/missionary-swahili', Portuguese: '/missionary-portuguese' },
     bullets: ['All six missionary discussions — word for word', 'Tracting openers, door approaches, follow-ups', 'Testimony vocabulary at every fluency level', 'Missionary Spanish is always free — no account required'],
     steps: [
       { label: 'Start with discussion one', detail: 'The Restoration — every phrase, every question, every testimony expression. In order.' },
@@ -168,7 +172,7 @@ const STARTERS: Record<string, StarterData> = {
     modules: ['Deep Sea & Big Game', 'Offshore & Panga Fishing', 'Shore & Surf Fishing', 'Freshwater & River Fishing'],
     languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
     bullets: [
-      '100+ fish species in 7 languages — marlin, dorado, tuna, roosterfish',
+      '100+ fish species in 8 languages — marlin, dorado, tuna, roosterfish',
       'Charter & panga communication — directions, timing, gear',
       'Weather, tides, and navigation phrases',
       'Tackle, bait, and rigging vocabulary',
@@ -193,6 +197,7 @@ const STARTERS: Record<string, StarterData> = {
     tint: 'rgba(163,230,53,0.05)',
     modules: ['Sport & Rock Climbing', 'Trad & Alpine', 'Ice & Mixed Climbing', 'Guiding & Instruction', 'Gym & Indoor Climbing'],
     languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
+    langRoutes: { Spanish: '/climbing-spanish', Swahili: '/climbing-swahili', Portuguese: '/climbing-portuguese' },
     bullets: ['5 modules — sport, trad, alpine, ice, and gym', 'Belay commands and wall communication in 4 languages', 'Gear vocabulary — protection, anchors, harness systems', 'Guide instruction and client safety communication', 'Mountain weather, retreat, and emergency phrases'],
     steps: [
       { label: 'Belay commands first', detail: 'On-belay, climbing, take, slack, off-belay — the safety calls that every climbing partner must share, whatever the language.' },
@@ -280,7 +285,7 @@ export default function ModuleStarter() {
   const freeLabel = slug === 'missionary' ? 'Free — Always' : beta ? 'Free Beta' : '7-Day Trial'
   const freeCta   = slug === 'missionary' ? 'Start Free →'  : beta ? 'Access Free →' : 'Start Trial →'
   const freeItems = slug === 'missionary'
-    ? ['Full Missionary Spanish', 'All 6 discussions', 'No account required']
+    ? ['Spanish · Swahili · Portuguese — all included', 'All 6 discussions, word for word', 'No account or card — ever']
     : beta
     ? ['All modules unlocked through Aug 1', 'No account or card needed', 'AI speaking feedback']
     : ['All modules unlocked', 'AI speaking feedback', 'Cancel anytime']
@@ -333,7 +338,18 @@ export default function ModuleStarter() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="text-7xl mb-5">{d.emoji}</div>
             <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-4" style={{ color: d.color }}>
-              {d.languages.join(' · ')}
+              {d.languages.map((lang, i) => {
+                const route = d.langRoutes?.[lang]
+                return (
+                  <span key={lang}>
+                    {i > 0 && ' · '}
+                    {route
+                      ? <Link to={route} className="underline underline-offset-2 hover:opacity-70 transition-opacity">{lang}</Link>
+                      : lang
+                    }
+                  </span>
+                )
+              })}
             </p>
             <h1 className="font-serif text-5xl sm:text-6xl font-bold leading-tight mb-5">{d.title}</h1>
             <p className="text-xl text-white/60 leading-relaxed max-w-xl mx-auto mb-3">{d.tagline}</p>
@@ -469,17 +485,17 @@ export default function ModuleStarter() {
             <h2 className="font-serif text-3xl font-bold">Less than a missed shift.</h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className={slug === 'missionary' ? 'max-w-sm mx-auto' : 'grid sm:grid-cols-2 gap-6'}>
             {/* Free / Trial card */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: slug === 'missionary' ? 0 : -20 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.7 }}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 flex flex-col"
             >
               <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-2">{freeLabel}</div>
               <div className="font-serif text-4xl font-bold text-white mb-1">$0</div>
               <p className="text-sm text-white/45 mb-5">
-                {slug === 'missionary' ? 'Missionary Spanish — always free.' : 'Full access. No credit card.'}
+                {slug === 'missionary' ? 'All missionary modules — no account, no card, no expiration.' : 'Full access. No credit card.'}
               </p>
               <ul className="space-y-2 mb-6 flex-1">
                 {freeItems.map(f => (
@@ -496,37 +512,39 @@ export default function ModuleStarter() {
               </a>
             </motion.div>
 
-            {/* Pro card */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.08 }}
-              className="relative rounded-2xl border p-7 flex flex-col"
-              style={{ borderColor: `${GOLD}4d`, background: 'linear-gradient(135deg, #0f0d04, #02040f)', boxShadow: `0 0 60px rgba(201,168,76,0.08)` }}
-            >
-              <div
-                className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 font-mono text-[9px] uppercase tracking-widest text-black"
-                style={{ backgroundColor: GOLD }}
+            {/* Pro card — hidden for missionary */}
+            {slug !== 'missionary' && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.08 }}
+                className="relative rounded-2xl border p-7 flex flex-col"
+                style={{ borderColor: `${GOLD}4d`, background: 'linear-gradient(135deg, #0f0d04, #02040f)', boxShadow: `0 0 60px rgba(201,168,76,0.08)` }}
               >
-                Best Value
-              </div>
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] mb-2" style={{ color: GOLD }}>Pro Annual</div>
-              <div className="flex items-end gap-1 mb-1">
-                <span className="font-serif text-4xl font-bold text-white">$149</span>
-                <span className="text-white/50 mb-1">/year</span>
-              </div>
-              <p className="text-sm text-white/45 mb-5">$12.42/mo · 7-day free trial</p>
-              <ul className="space-y-2 mb-6 flex-1">
-                {['All 12 specialties · 70+ modules', '8 languages — Spanish, French, Italian, Greek, German, Portuguese, Japanese, Swahili', 'AI speaking partner', 'Grammar studio + daily challenges'].map(f => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-white/75">
-                    <span className="shrink-0 mt-0.5" style={{ color: GOLD }}>✦</span>{f}
-                  </li>
-                ))}
-              </ul>
-              <SlideButton href={`${APP_URL}/pricing`} label="Start 7-Day Free Trial →" size="sm" />
-              <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">
-                Cancel anytime · No charge until day 8
-              </p>
-            </motion.div>
+                <div
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 font-mono text-[9px] uppercase tracking-widest text-black"
+                  style={{ backgroundColor: GOLD }}
+                >
+                  Best Value
+                </div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] mb-2" style={{ color: GOLD }}>Pro Annual</div>
+                <div className="flex items-end gap-1 mb-1">
+                  <span className="font-serif text-4xl font-bold text-white">$149</span>
+                  <span className="text-white/50 mb-1">/year</span>
+                </div>
+                <p className="text-sm text-white/45 mb-5">$12.42/mo · 7-day free trial</p>
+                <ul className="space-y-2 mb-6 flex-1">
+                  {['All 12 specialties · 70+ modules', '8 languages — Spanish, French, Italian, Greek, German, Portuguese, Japanese, Swahili', 'AI speaking partner', 'Grammar studio + daily challenges'].map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-white/75">
+                      <span className="shrink-0 mt-0.5" style={{ color: GOLD }}>✦</span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <SlideButton href={`${APP_URL}/pricing`} label="Start 7-Day Free Trial →" size="sm" />
+                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">
+                  Cancel anytime · No charge until day 8
+                </p>
+              </motion.div>
+            )}
           </div>
         </section>
 
@@ -543,7 +561,9 @@ export default function ModuleStarter() {
               The language gap closes<br />when you start.
             </h2>
             <p className="text-white/45 text-base mb-8 max-w-md mx-auto">
-              7-day trial. Every module unlocked. No credit card until you decide it's worth it.
+              {slug === 'missionary'
+                ? 'Every module. Every discussion. Free — no account, no card, no expiration.'
+                : '7-day trial. Every module unlocked. No credit card until you decide it\'s worth it.'}
             </p>
             <SlideButton href={slug === 'missionary' ? MISSIONARY_APP_URL : APP_URL} label={slug === 'missionary' ? 'Start Learning Free →' : 'Start Free Trial →'} />
           </motion.div>

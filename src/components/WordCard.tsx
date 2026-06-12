@@ -22,10 +22,11 @@ interface Props {
   x: number
   y: number
   color: string
+  lang?: string
   onClose: () => void
 }
 
-export default function WordCard({ word, sentence, x, y, color, onClose }: Props) {
+export default function WordCard({ word, sentence, x, y, color, lang = 'es', onClose }: Props) {
   const [card, setCard] = useState<WordCardData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -46,7 +47,7 @@ export default function WordCard({ word, sentence, x, y, color, onClose }: Props
     setError(null)
     setCard(null)
 
-    const cacheKey = `${word}|${sentence}`
+    const cacheKey = lang !== 'es' ? `${lang}:${word}|${sentence}` : `${word}|${sentence}`
 
     getWordCache().then(cache => {
       if (cancelled) return
@@ -60,7 +61,7 @@ export default function WordCard({ word, sentence, x, y, color, onClose }: Props
       fetch('/api/word-lookup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ word, sentence }),
+        body: JSON.stringify({ word, sentence, lang }),
       })
         .then(r => r.json())
         .then(data => {
@@ -74,7 +75,7 @@ export default function WordCard({ word, sentence, x, y, color, onClose }: Props
     })
 
     return () => { cancelled = true }
-  }, [word, sentence])
+  }, [word, sentence, lang])
 
   useEffect(() => {
     function handler(e: MouseEvent) {

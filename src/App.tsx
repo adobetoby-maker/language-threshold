@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import NotFound from './pages/NotFound'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import ErrorBoundary from './components/ErrorBoundary'
@@ -22,6 +23,10 @@ const ClimbingSwahili = lazy(() => import('./pages/ClimbingSwahili'))
 const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
 const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
 const MissionaryPortal = lazy(() => import('./pages/MissionaryPortal'))
+const MedicalPortuguese = lazy(() => import('./pages/MedicalPortuguese'))
+const ContractorPortuguese = lazy(() => import('./pages/ContractorPortuguese'))
+const ClimbingPortuguese = lazy(() => import('./pages/ClimbingPortuguese'))
+const MissionaryPortuguese = lazy(() => import('./pages/MissionaryPortuguese'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
@@ -85,11 +90,15 @@ function AppShell() {
             <Route path="/missionary-spanish" element={<ErrorBoundary><MissionarySpanish /></ErrorBoundary>} />
             <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
             <Route path="/missionary-portal" element={<ErrorBoundary><MissionaryPortal /></ErrorBoundary>} />
+            <Route path="/medical-portuguese" element={<ErrorBoundary><MedicalPortuguese /></ErrorBoundary>} />
+            <Route path="/contractor-portuguese" element={<ErrorBoundary><ContractorPortuguese /></ErrorBoundary>} />
+            <Route path="/climbing-portuguese" element={<ErrorBoundary><ClimbingPortuguese /></ErrorBoundary>} />
+            <Route path="/missionary-portuguese" element={<ErrorBoundary><MissionaryPortuguese /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
             <Route path="/module/fishing" element={<ErrorBoundary><FishingModule /></ErrorBoundary>} />
             <Route path="/module/:slug" element={<ErrorBoundary><ModuleStarter /></ErrorBoundary>} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
