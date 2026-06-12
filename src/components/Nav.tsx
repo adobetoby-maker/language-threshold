@@ -55,7 +55,7 @@ export default function Nav() {
         </Link>
 
         {/* Module links — desktop */}
-        <div className="hidden lg:flex items-center gap-5 flex-1 justify-center">
+        <div className="hidden lg:flex items-center gap-3 flex-1 justify-center overflow-hidden">
           {MODULES.map(m => {
             const isActive = pathname === `/module/${m.slug}`
             return (
@@ -77,7 +77,7 @@ export default function Nav() {
         <div className="flex items-center gap-3 shrink-0">
           <Link
             to="/about"
-            className="hidden lg:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
             style={{ color: pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
@@ -86,7 +86,7 @@ export default function Nav() {
           </Link>
           <Link
             to="/founder"
-            className="hidden lg:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
             style={{ color: pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
@@ -95,7 +95,7 @@ export default function Nav() {
           </Link>
           <Link
             to="/missionary-portal"
-            className="hidden sm:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
             style={{ color: pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = SKY }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 
 interface FadeInProps {
@@ -6,10 +6,14 @@ interface FadeInProps {
   className?: string
 }
 
+// Content renders visible (no class) until JS mounts — bots/screenshots see full content.
+// After mount the fade-in class is added and IntersectionObserver drives the reveal.
 export default function FadeIn({ children, className = '' }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const el = ref.current
     if (!el) return
 
@@ -20,7 +24,7 @@ export default function FadeIn({ children, className = '' }: FadeInProps) {
           obs.unobserve(el)
         }
       },
-      { threshold: 0, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
     )
 
     obs.observe(el)
@@ -28,7 +32,7 @@ export default function FadeIn({ children, className = '' }: FadeInProps) {
   }, [])
 
   return (
-    <div ref={ref} className={`fade-in ${className}`}>
+    <div ref={ref} className={`${mounted ? 'fade-in' : ''} ${className}`}>
       {children}
     </div>
   )
