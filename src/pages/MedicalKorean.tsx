@@ -145,7 +145,7 @@ export default function MedicalKorean() {
               className="leading-[1.1] mb-6"
               style={{ ...displayFont, fontSize: 'clamp(2.8rem, 6vw, 5.5rem)', color: '#F7F3EC' }}
             >
-              환자들이 이미 사용하는<br />
+              환자들이 이미 사용하는{' '}<br />
               <em style={{ color: KOREAN_COLOR }}>한국어를 배우세요.</em>
             </h1>
 

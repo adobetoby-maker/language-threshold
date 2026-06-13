@@ -14,15 +14,26 @@ declare global {
 
 function loadPixel(pixelId: string) {
   if (window._fbPixelReady) return
-  const fbq = function (...args: unknown[]) {
-    (fbq as unknown as { q: unknown[][] }).q = (fbq as unknown as { q: unknown[][] }).q || []
-    ;(fbq as unknown as { q: unknown[][] }).q.push(args)
+  // Standard Facebook stub — fbevents.js expects callMethod + queue shape
+  if (!window.fbq) {
+    type FbqFn = ((...args: unknown[]) => void) & {
+      callMethod?: (...args: unknown[]) => void
+      queue: unknown[][]
+      push: FbqFn
+      loaded: boolean
+      version: string
+    }
+    const fbq = function (...args: unknown[]) {
+      if ((fbq as FbqFn).callMethod) (fbq as FbqFn).callMethod!(...args)
+      else (fbq as FbqFn).queue.push(args)
+    } as FbqFn
+    fbq.push = fbq
+    fbq.loaded = true
+    fbq.version = '2.0'
+    fbq.queue = []
+    window.fbq = fbq as unknown as (...args: unknown[]) => void
+    window._fbq = fbq
   }
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).loaded = true
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).version = '2.0'
-  ;(fbq as unknown as { loaded: boolean; version: string; q: unknown[][] }).q = []
-  window.fbq = fbq as (...args: unknown[]) => void
-  window._fbq = fbq
 
   const script = document.createElement('script')
   script.src = 'https://connect.facebook.net/en_US/fbevents.js'

@@ -237,7 +237,7 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0 }} transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>How It Works</p>
@@ -364,7 +364,7 @@ export default function Home() {
           <div className="relative max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0 }} transition={{ duration: 0.8 }}
               className="text-center mb-14"
             >
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>See It in Action</p>
@@ -482,7 +482,7 @@ export default function Home() {
           <div className="relative max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }} transition={{ duration: 0.8 }}
+              viewport={{ once: true, amount: 0 }} transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>26 Modules · 8 Categories</p>
