@@ -5,7 +5,7 @@ import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
 import { usePageMeta } from '../hooks/usePageMeta'
 
-const LANG_COLOR = '#A855F7'
+const LANG_COLOR = '#6366F1'
 const LANG: LangKey = 'ko'
 const APP_URL_LANG = `${MISSIONARY_APP_URL}&lang=ko`
 
@@ -37,7 +37,7 @@ function ModuleCard({ mod }: { mod: MissionaryModule }) {
         <p className="text-sm leading-relaxed" style={{ ...sansFont, color: '#A89F94' }}>{localTagline}</p>
         <div className="flex flex-wrap gap-1.5 mt-4">
           {mod.vocab.slice(0, 4).map(v => (
-            <span key={v.en} className="text-xs px-2 py-0.5 rounded-full" style={{ ...sansFont, backgroundColor: `rgba(168,85,247,0.08)`, color: LANG_COLOR, border: `1px solid rgba(168,85,247,0.2)` }}>
+            <span key={v.en} className="text-xs px-2 py-0.5 rounded-full" style={{ ...sansFont, backgroundColor: `rgba(99,102,241,0.08)`, color: LANG_COLOR, border: `1px solid rgba(99,102,241,0.2)` }}>
               {v.en}
             </span>
           ))}
