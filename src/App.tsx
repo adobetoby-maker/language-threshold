@@ -17,11 +17,7 @@ const Founder = lazy(() => import('./pages/Founder'))
 const ContractorSpanish = lazy(() => import('./pages/ContractorSpanish'))
 const ClimbingSpanish = lazy(() => import('./pages/ClimbingSpanish'))
 const MedicalSpanish = lazy(() => import('./pages/MedicalSpanish'))
-const MedicalSwahili = lazy(() => import('./pages/MedicalSwahili'))
-const ContractorSwahili = lazy(() => import('./pages/ContractorSwahili'))
-const ClimbingSwahili = lazy(() => import('./pages/ClimbingSwahili'))
 const MissionarySpanish = lazy(() => import('./pages/MissionarySpanish'))
-const MissionarySwahili = lazy(() => import('./pages/MissionarySwahili'))
 const MissionaryPortal = lazy(() => import('./pages/MissionaryPortal'))
 const MedicalPortuguese = lazy(() => import('./pages/MedicalPortuguese'))
 const MedicalFrench   = lazy(() => import('./pages/MedicalFrench'))
@@ -104,11 +100,7 @@ function AppShell() {
             <Route path="/contractor-spanish" element={<ErrorBoundary><ContractorSpanish /></ErrorBoundary>} />
             <Route path="/climbing-spanish" element={<ErrorBoundary><ClimbingSpanish /></ErrorBoundary>} />
             <Route path="/medical-spanish" element={<ErrorBoundary><MedicalSpanish /></ErrorBoundary>} />
-            <Route path="/medical-swahili" element={<ErrorBoundary><MedicalSwahili /></ErrorBoundary>} />
-            <Route path="/contractor-swahili" element={<ErrorBoundary><ContractorSwahili /></ErrorBoundary>} />
-            <Route path="/climbing-swahili" element={<ErrorBoundary><ClimbingSwahili /></ErrorBoundary>} />
             <Route path="/missionary-spanish" element={<ErrorBoundary><MissionarySpanish /></ErrorBoundary>} />
-            <Route path="/missionary-swahili" element={<ErrorBoundary><MissionarySwahili /></ErrorBoundary>} />
             <Route path="/missionary-portal" element={<ErrorBoundary><MissionaryPortal /></ErrorBoundary>} />
             <Route path="/medical-portuguese" element={<ErrorBoundary><MedicalPortuguese /></ErrorBoundary>} />
             <Route path="/medical-french"   element={<ErrorBoundary><MedicalFrench /></ErrorBoundary>} />
