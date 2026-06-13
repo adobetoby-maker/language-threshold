@@ -32,6 +32,21 @@ const MedicalKorean   = lazy(() => import('./pages/MedicalKorean'))
 const ContractorPortuguese = lazy(() => import('./pages/ContractorPortuguese'))
 const ClimbingPortuguese = lazy(() => import('./pages/ClimbingPortuguese'))
 const MissionaryPortuguese = lazy(() => import('./pages/MissionaryPortuguese'))
+const ContractorFrench   = lazy(() => import('./pages/ContractorFrench'))
+const ContractorGerman   = lazy(() => import('./pages/ContractorGerman'))
+const ContractorItalian  = lazy(() => import('./pages/ContractorItalian'))
+const ContractorJapanese = lazy(() => import('./pages/ContractorJapanese'))
+const ContractorKorean   = lazy(() => import('./pages/ContractorKorean'))
+const MissionaryFrench   = lazy(() => import('./pages/MissionaryFrench'))
+const MissionaryGerman   = lazy(() => import('./pages/MissionaryGerman'))
+const MissionaryItalian  = lazy(() => import('./pages/MissionaryItalian'))
+const MissionaryJapanese = lazy(() => import('./pages/MissionaryJapanese'))
+const MissionaryKorean   = lazy(() => import('./pages/MissionaryKorean'))
+const ClimbingFrench     = lazy(() => import('./pages/ClimbingFrench'))
+const ClimbingGerman     = lazy(() => import('./pages/ClimbingGerman'))
+const ClimbingItalian    = lazy(() => import('./pages/ClimbingItalian'))
+const ClimbingJapanese   = lazy(() => import('./pages/ClimbingJapanese'))
+const ClimbingKorean     = lazy(() => import('./pages/ClimbingKorean'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
@@ -104,6 +119,21 @@ function AppShell() {
             <Route path="/contractor-portuguese" element={<ErrorBoundary><ContractorPortuguese /></ErrorBoundary>} />
             <Route path="/climbing-portuguese" element={<ErrorBoundary><ClimbingPortuguese /></ErrorBoundary>} />
             <Route path="/missionary-portuguese" element={<ErrorBoundary><MissionaryPortuguese /></ErrorBoundary>} />
+            <Route path="/contractor-french"   element={<ErrorBoundary><ContractorFrench /></ErrorBoundary>} />
+            <Route path="/contractor-german"   element={<ErrorBoundary><ContractorGerman /></ErrorBoundary>} />
+            <Route path="/contractor-italian"  element={<ErrorBoundary><ContractorItalian /></ErrorBoundary>} />
+            <Route path="/contractor-japanese" element={<ErrorBoundary><ContractorJapanese /></ErrorBoundary>} />
+            <Route path="/contractor-korean"   element={<ErrorBoundary><ContractorKorean /></ErrorBoundary>} />
+            <Route path="/missionary-french"   element={<ErrorBoundary><MissionaryFrench /></ErrorBoundary>} />
+            <Route path="/missionary-german"   element={<ErrorBoundary><MissionaryGerman /></ErrorBoundary>} />
+            <Route path="/missionary-italian"  element={<ErrorBoundary><MissionaryItalian /></ErrorBoundary>} />
+            <Route path="/missionary-japanese" element={<ErrorBoundary><MissionaryJapanese /></ErrorBoundary>} />
+            <Route path="/missionary-korean"   element={<ErrorBoundary><MissionaryKorean /></ErrorBoundary>} />
+            <Route path="/climbing-french"     element={<ErrorBoundary><ClimbingFrench /></ErrorBoundary>} />
+            <Route path="/climbing-german"     element={<ErrorBoundary><ClimbingGerman /></ErrorBoundary>} />
+            <Route path="/climbing-italian"    element={<ErrorBoundary><ClimbingItalian /></ErrorBoundary>} />
+            <Route path="/climbing-japanese"   element={<ErrorBoundary><ClimbingJapanese /></ErrorBoundary>} />
+            <Route path="/climbing-korean"     element={<ErrorBoundary><ClimbingKorean /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
             <Route path="/module/fishing" element={<ErrorBoundary><FishingModule /></ErrorBoundary>} />
