@@ -25,7 +25,7 @@ export function GoogleAnalytics() {
     document.head.appendChild(script)
 
     window.dataLayer = window.dataLayer || []
-    window.gtag = function gtag() { window.dataLayer.push(arguments) }
+    window.gtag = function gtag(...args: unknown[]) { window.dataLayer.push(args) }
     window.gtag('js', new Date())
     window.gtag('config', GA_ID, { anonymize_ip: true })
     if (GADS_ID) window.gtag('config', GADS_ID)
@@ -40,7 +40,7 @@ export function GoogleAnalytics() {
   return null
 }
 
-// Fire a Google Ads conversion (call after successful subscribe/purchase)
+// eslint-disable-next-line react-refresh/only-export-components
 export function trackGAdsConversion(label: string, value?: number, currency = 'USD') {
   if (!window.gtag || !GADS_ID) return
   window.gtag('event', 'conversion', {

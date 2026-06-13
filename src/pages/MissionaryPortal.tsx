@@ -396,6 +396,7 @@ export default function MissionaryPortal() {
       if (decoded) {
         saveProfile({ ...decoded.profile, savedAt: Date.now() })
         localStorage.setItem(PROGRESS_KEY, JSON.stringify(decoded.progress))
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setProfile(decoded.profile)
         // Clean up hash
         window.history.replaceState(null, '', window.location.pathname)

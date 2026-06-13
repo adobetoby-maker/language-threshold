@@ -13,7 +13,7 @@ export default function FadeIn({ children, className = '' }: FadeInProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    const frame = requestAnimationFrame(() => setMounted(true))
     const el = ref.current
     if (!el) return
 
@@ -28,7 +28,7 @@ export default function FadeIn({ children, className = '' }: FadeInProps) {
     )
 
     obs.observe(el)
-    return () => obs.disconnect()
+    return () => { cancelAnimationFrame(frame); obs.disconnect() }
   }, [])
 
   return (

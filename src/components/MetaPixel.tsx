@@ -63,6 +63,7 @@ export function MetaPixel() {
   return null
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function trackMetaEvent(event: string, params?: Record<string, unknown>) {
   if (!window.fbq) return
   window.fbq('track', event, params)

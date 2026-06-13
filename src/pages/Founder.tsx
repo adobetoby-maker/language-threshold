@@ -20,22 +20,22 @@ const TIMELINE = [
   {
     year: '1999 – 2001',
     heading: 'Mission in Japan — Full Immersion, Zero Shortcuts',
-    body: `Two years serving an LDS mission in Japan. I arrived with almost no Japanese and had to build fluency entirely through immersion — living with native companions, teaching, reading kanji daily, navigating layers of social register that no textbook adequately prepares you for. It was the hardest and most formative linguistic experience of my life. I didn\'t just learn the language. I learned how acquisition actually works when the stakes are real and there\'s no English to fall back on.`,
+    body: `Two years serving an LDS mission in Japan. I arrived with almost no Japanese and had to build fluency entirely through immersion — living with native companions, teaching, reading kanji daily, navigating layers of social register that no textbook adequately prepares you for. It was the hardest and most formative linguistic experience of my life. I didn't just learn the language. I learned how acquisition actually works when the stakes are real and there's no English to fall back on.`,
   },
   {
     year: '2001 – 2006',
     heading: 'The FLSR — A Door That Changed Everything',
-    body: `At BYU I lived in the Foreign Language Student Residence. I moved into the Japanese apartment first — after two years in Japan I was already fluent, so it felt like home. Then the bug hit me. I wanted another language. I crossed into the Spanish apartment and stayed for a year.\n\nThe rule was simple and absolute: the moment you stepped through the threshold of the apartment, you spoke the language of that floor. No English. Not in the kitchen at midnight, not when you were exhausted, not when the word wasn\'t coming. We cooked together four nights a week. We went to church together in Spanish. We built friendships in a language I had barely started.\n\nWithin weeks — not months — I was functional in Spanish. Not because I\'m gifted. Because the vocabulary I was learning had a home. I needed kitchen words to cook. I needed Sunday school vocabulary because I had to teach a lesson with three weeks of Spanish under my belt. I needed the language of community because I was living in one.\n\nThat\'s when I understood something that no linguistics textbook had explained as clearly: context-first learning works at a speed that classroom learning simply cannot match. And standing in that apartment, I started dreaming of a way to give that experience to someone who couldn\'t move into the FLSR — a nurse, a foreman, a missionary, an orthopedic surgeon going to El Salvador.\n\nThe threshold in the name is not a metaphor. It was a door.`,
+    body: `At BYU I lived in the Foreign Language Student Residence. I moved into the Japanese apartment first — after two years in Japan I was already fluent, so it felt like home. Then the bug hit me. I wanted another language. I crossed into the Spanish apartment and stayed for a year.\n\nThe rule was simple and absolute: the moment you stepped through the threshold of the apartment, you spoke the language of that floor. No English. Not in the kitchen at midnight, not when you were exhausted, not when the word wasn't coming. We cooked together four nights a week. We went to church together in Spanish. We built friendships in a language I had barely started.\n\nWithin weeks — not months — I was functional in Spanish. Not because I'm gifted. Because the vocabulary I was learning had a home. I needed kitchen words to cook. I needed Sunday school vocabulary because I had to teach a lesson with three weeks of Spanish under my belt. I needed the language of community because I was living in one.\n\nThat's when I understood something that no linguistics textbook had explained as clearly: context-first learning works at a speed that classroom learning simply cannot match. And standing in that apartment, I started dreaming of a way to give that experience to someone who couldn't move into the FLSR — a nurse, a foreman, a missionary, an orthopedic surgeon going to El Salvador.\n\nThe threshold in the name is not a metaphor. It was a door.`,
   },
   {
     year: '2001 – 2006',
     heading: 'BYU — The Science to Match the Experience',
-    body: `The FLSR gave me the lived intuition. The linguistics degree gave me the framework to understand why it worked. Phonology, morphology, syntax, psycholinguistics, acquisition theory — with a minor in Japanese and 12 required credits of formal Spanish. I also spent time in nursing school before returning to linguistics, which gave me my first real look at clinical communication and how language barriers in healthcare aren\'t just inconvenient — in medicine, they cost outcomes. I graduated in 2006.`,
+    body: `The FLSR gave me the lived intuition. The linguistics degree gave me the framework to understand why it worked. Phonology, morphology, syntax, psycholinguistics, acquisition theory — with a minor in Japanese and 12 required credits of formal Spanish. I also spent time in nursing school before returning to linguistics, which gave me my first real look at clinical communication and how language barriers in healthcare aren't just inconvenient — in medicine, they cost outcomes. I graduated in 2006.`,
   },
   {
     year: '2006',
     heading: 'Ciudad Obregón — Adobe Bricks and the Right Tool',
-    body: `My first trip to México wasn\'t medical. It was construction. My father and I traveled to Ciudad Obregón on a service mission to help a native tribe outside the city build homes — making adobe bricks by hand in the desert heat.\n\nTwo years earlier, back in the US, my father and I had finished building an adobe brick press. With that press, two people could make 1,000 bricks in a day. In Ciudad Obregón, twenty people worked until their backs gave out and made 750.\n\nThe whole time I was there, I kept doing the math. How many more homes could we have built with the press? How many families could have been housed in the same two weeks? The tool existed. They just didn\'t have it. And so they struggled — not because they weren\'t working hard enough, but because no one had brought them the right tool.\n\nI left thinking about that for a long time. There is always a better way. But if you don\'t know it exists, you just struggle. The whole time.\n\nThat\'s what most language learners are doing. Working hard. Making 750 bricks a day by hand. Not because they\'re doing it wrong — because no one has handed them the press.`,
+    body: `My first trip to México wasn't medical. It was construction. My father and I traveled to Ciudad Obregón on a service mission to help a native tribe outside the city build homes — making adobe bricks by hand in the desert heat.\n\nTwo years earlier, back in the US, my father and I had finished building an adobe brick press. With that press, two people could make 1,000 bricks in a day. In Ciudad Obregón, twenty people worked until their backs gave out and made 750.\n\nThe whole time I was there, I kept doing the math. How many more homes could we have built with the press? How many families could have been housed in the same two weeks? The tool existed. They just didn't have it. And so they struggled — not because they weren't working hard enough, but because no one had brought them the right tool.\n\nI left thinking about that for a long time. There is always a better way. But if you don't know it exists, you just struggle. The whole time.\n\nThat's what most language learners are doing. Working hard. Making 750 bricks a day by hand. Not because they're doing it wrong — because no one has handed them the press.`,
   },
   {
     year: '2006 – 2010',
@@ -45,17 +45,17 @@ const TIMELINE = [
   {
     year: '2010 – 2015',
     heading: 'Orthopedic Residency',
-    body: `Five years of orthopedic residency sharpened both the clinical and the communication sides of practice. Orthopedics puts you in the room with patients who are often frightened, in pain, and making decisions they don\'t fully understand — in a language that may not be their own. I watched that gap cost people outcomes. Clear communication in the patient\'s language isn\'t a courtesy; in orthopedics and surgery, it directly affects informed consent, compliance, and recovery.`,
+    body: `Five years of orthopedic residency sharpened both the clinical and the communication sides of practice. Orthopedics puts you in the room with patients who are often frightened, in pain, and making decisions they don't fully understand — in a language that may not be their own. I watched that gap cost people outcomes. Clear communication in the patient's language isn't a courtesy; in orthopedics and surgery, it directly affects informed consent, compliance, and recovery.`,
   },
   {
     year: '2015 – Present',
     heading: 'In Practice — and Building Something on the Side',
-    body: `I\'ve been in orthopedic practice since 2015. The neighboring towns where I work and live are 25–30% Hispanic. The need is visible and constant — in waiting rooms, in post-op instructions, in follow-up calls. Language Threshold grew out of that daily reality: a tool I wanted for myself and for every colleague, contractor, coach, or missionary who has ever stood across from someone and known that the language barrier was the only thing in the way.`,
+    body: `I've been in orthopedic practice since 2015. The neighboring towns where I work and live are 25–30% Hispanic. The need is visible and constant — in waiting rooms, in post-op instructions, in follow-up calls. Language Threshold grew out of that daily reality: a tool I wanted for myself and for every colleague, contractor, coach, or missionary who has ever stood across from someone and known that the language barrier was the only thing in the way.`,
   },
   {
     year: '2025',
     heading: 'Operation Walk — El Salvador',
-    body: `Last year I traveled to El Salvador with Operation Walk, a nonprofit that provides free orthopedic surgery to patients in underserved communities. The Spanish I\'d built over decades — academic, immersive, clinical, conversational — came together in one room. And I still hit moments where I reached for a word or phrase and it wasn\'t there. That experience is directly reflected in the depth of the medical module in this platform. I\'m going back again this fall.`,
+    body: `Last year I traveled to El Salvador with Operation Walk, a nonprofit that provides free orthopedic surgery to patients in underserved communities. The Spanish I'd built over decades — academic, immersive, clinical, conversational — came together in one room. And I still hit moments where I reached for a word or phrase and it wasn't there. That experience is directly reflected in the depth of the medical module in this platform. I'm going back again this fall.`,
   },
 ]
 
@@ -96,8 +96,8 @@ export default function Founder() {
             "
           </blockquote>
           <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style={{ ...sansFont, color: '#A89F94' }}>
-            A physician reads a set of symptoms and maps them to a known pattern — that\'s diagnosis.
-            A fluent speaker hears a sentence and maps it to familiar structures — that\'s comprehension.
+            A physician reads a set of symptoms and maps them to a known pattern — that's diagnosis.
+            A fluent speaker hears a sentence and maps it to familiar structures — that's comprehension.
             The mechanism is the same. The training method should be too: give people the right patterns,
             in the right context, with enough repetition to make recognition automatic.
           </p>
@@ -247,20 +247,20 @@ export default function Founder() {
             </p>
             <p>
               Language Threshold is built around one principle: <strong style={{ color: '#F7F3EC' }}>domain-first acquisition.</strong> Learn
-              the language of your field, in the context of your work, using the patterns you\'ll actually need.
+              the language of your field, in the context of your work, using the patterns you'll actually need.
               The breadth comes later. The depth that gets you functional comes first.
             </p>
             <p>
               In 2006 I helped build homes in México by making adobe bricks by hand. Twenty people.
               Backbreaking work. 750 bricks a day. Two years earlier my father and I had built a brick press
-              that could produce 1,000 bricks with two people. The press wasn\'t there. So everyone struggled.
-              I left thinking: the right tool makes everything easier. People don\'t fail at languages because
-              they\'re lazy — they fail because no one has handed them the right tool for the context they\'re in.
+              that could produce 1,000 bricks with two people. The press wasn't there. So everyone struggled.
+              I left thinking: the right tool makes everything easier. People don't fail at languages because
+              they're lazy — they fail because no one has handed them the right tool for the context they're in.
             </p>
             <p>
-              I\'m building this as an ongoing project. Every trip to El Salvador, every conversation with a
+              I'm building this as an ongoing project. Every trip to El Salvador, every conversation with a
               neighbor, every clinical case that crossed a language barrier — it all feeds back into the
-              curriculum. This isn\'t a product I shipped and walked away from. It\'s a practice I\'m still in.
+              curriculum. This isn't a product I shipped and walked away from. It's a practice I'm still in.
             </p>
           </div>
         </div>

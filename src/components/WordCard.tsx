@@ -43,14 +43,13 @@ export default function WordCard({ word, sentence, x, y, color, lang = 'es', onC
 
   useEffect(() => {
     let cancelled = false
-    setLoading(true)
-    setError(null)
-    setCard(null)
-
     const cacheKey = lang !== 'es' ? `${lang}:${word}|${sentence}` : `${word}|${sentence}`
 
     getWordCache().then(cache => {
       if (cancelled) return
+      setLoading(true)
+      setError(null)
+      setCard(null)
       if (cache[cacheKey]) {
         setCard(cache[cacheKey])
         setLoading(false)

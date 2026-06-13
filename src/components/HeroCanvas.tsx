@@ -136,20 +136,23 @@ function LatitudeRing({ y, radius, opacity }: { y: number; radius: number; opaci
 
 // ─── Floating dust ───────────────────────────────────────────────────────────
 
+// Generated once at module load — positions are stable across re-renders
+const STAR_POSITIONS = (() => {
+  const COUNT = 1200
+  const pos = new Float32Array(COUNT * 3)
+  for (let i = 0; i < COUNT; i++) {
+    const r = 12 + Math.random() * 20
+    const theta = Math.random() * Math.PI * 2
+    const phi   = Math.random() * Math.PI
+    pos[i * 3]     = r * Math.sin(phi) * Math.cos(theta)
+    pos[i * 3 + 1] = r * Math.cos(phi)
+    pos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta)
+  }
+  return pos
+})()
+
 function StarField() {
-  const positions = useMemo(() => {
-    const COUNT = 1200
-    const pos = new Float32Array(COUNT * 3)
-    for (let i = 0; i < COUNT; i++) {
-      const r = 12 + Math.random() * 20
-      const theta = Math.random() * Math.PI * 2
-      const phi   = Math.random() * Math.PI
-      pos[i * 3]     = r * Math.sin(phi) * Math.cos(theta)
-      pos[i * 3 + 1] = r * Math.cos(phi)
-      pos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta)
-    }
-    return pos
-  }, [])
+  const positions = STAR_POSITIONS
 
   const geo = useMemo(() => {
     const g = new THREE.BufferGeometry()
