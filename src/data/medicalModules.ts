@@ -1,9 +1,12 @@
 export interface VocabPair { en: string; es: string; sw: string; pt: string; fr: string; de: string; it: string; ja: string; ko: string }
+export type LangKey = 'fr' | 'de' | 'it' | 'ja' | 'ko'
 export interface MedicalModule {
   id: string
   emoji: string
   title: string
   tagline: string
+  titles?: Partial<Record<LangKey, string>>
+  taglines?: Partial<Record<LangKey, string>>
   color: string
   vocab: VocabPair[]
   samplePhrase: { en: string; es: string; sw: string; pt: string; fr: string; de: string; it: string; ja: string; ko: string }
@@ -16,6 +19,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🚨',
     title: 'Emergency Medicine',
     tagline: 'Rapid triage, pain assessment, and critical instructions under pressure.',
+    titles: { fr: 'Médecine d\'urgence', de: 'Notfallmedizin', it: 'Medicina d\'urgenza', ja: '救急医学', ko: '응급 의학' },
+    taglines: { fr: 'Triage rapide, évaluation de la douleur et instructions critiques sous pression.', de: 'Schnelle Triage, Schmerzbeurteilung und kritische Anweisungen unter Druck.', it: 'Triage rapido, valutazione del dolore e istruzioni critiche sotto pressione.', ja: '迅速なトリアージ、疼痛評価、緊急時の指示。', ko: '신속한 중증도 분류, 통증 평가 및 긴박한 상황에서의 지시.' },
     color: '#EF4444',
     vocab: [
       { en: 'chief complaint', es: 'motivo principal de consulta', sw: 'tatizo kuu la mgonjwa', pt: 'queixa principal', fr: 'motif de consultation', de: 'Hauptbeschwerde', it: 'motivo principale della visita', ja: '主訴', ko: '주訴 (주요 증상)' },
@@ -47,6 +52,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '💉',
     title: 'Nursing',
     tagline: 'Medication administration, patient instructions, discharge teaching.',
+    titles: { fr: 'Soins infirmiers', de: 'Krankenpflege', it: 'Assistenza infermieristica', ja: '看護', ko: '간호' },
+    taglines: { fr: 'Administration des médicaments, instructions aux patients, enseignement à la sortie.', de: 'Medikamentengabe, Patientenanweisungen, Entlassungsschulung.', it: 'Somministrazione di farmaci, istruzioni al paziente, insegnamento alla dimissione.', ja: '薬剤投与、患者への説明、退院指導。', ko: '약물 투여, 환자 교육, 퇴원 지도.' },
     color: '#4A9EFF',
     vocab: [
       { en: 'medication', es: 'medicamento / medicina', sw: 'dawa', pt: 'medicamento / medicação', fr: 'médicament', de: 'Medikament', it: 'farmaco / medicinale', ja: '薬剤', ko: '약물' },
@@ -78,6 +85,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🦴',
     title: 'Orthopedics',
     tagline: 'Fractures, surgical consents, post-op recovery instructions.',
+    titles: { fr: 'Orthopédie', de: 'Orthopädie', it: 'Ortopedia', ja: '整形外科', ko: '정형외과' },
+    taglines: { fr: 'Fractures, consentements chirurgicaux et instructions de récupération post-opératoire.', de: 'Frakturen, chirurgische Einwilligungen und postoperative Genesungsanweisungen.', it: 'Fratture, consensi chirurgici e istruzioni per il recupero post-operatorio.', ja: '骨折、手術同意書、術後回復指示。', ko: '골절, 수술 동의서, 수술 후 회복 안내.' },
     color: '#8B5CF6',
     vocab: [
       { en: 'fracture', es: 'fractura', sw: 'mfupa uliovunjika', pt: 'fratura', fr: 'fracture', de: 'Fraktur / Knochenbruch', it: 'frattura', ja: '骨折', ko: '골절' },
@@ -109,6 +118,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🏥',
     title: 'Family Medicine',
     tagline: 'Primary care visits, chronic disease management, preventive care.',
+    titles: { fr: 'Médecine de famille', de: 'Allgemeinmedizin', it: 'Medicina di famiglia', ja: '家庭医学', ko: '가정의학' },
+    taglines: { fr: 'Consultations en soins primaires, gestion des maladies chroniques, prévention.', de: 'Hausarztbesuche, Behandlung chronischer Erkrankungen, Vorsorge.', it: 'Visite di medicina generale, gestione delle malattie croniche, cure preventive.', ja: '初期医療受診、慢性疾患管理、予防医療。', ko: '일차 진료, 만성 질환 관리, 예방 진료.' },
     color: '#10B981',
     vocab: [
       { en: 'symptoms', es: 'síntomas', sw: 'dalili za ugonjwa', pt: 'sintomas', fr: 'symptômes', de: 'Symptome', it: 'sintomi', ja: '症状', ko: '증상' },
@@ -140,6 +151,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🤱',
     title: 'OB/GYN',
     tagline: 'Prenatal care, labor and delivery, postpartum instructions.',
+    titles: { fr: 'Gynécologie-Obstétrique', de: 'Gynäkologie & Geburtshilfe', it: 'Ginecologia e Ostetricia', ja: '産婦人科', ko: '산부인과' },
+    taglines: { fr: 'Soins prénataux, accouchement et instructions post-partum.', de: 'Pränatale Betreuung, Geburt und postpartale Anweisungen.', it: 'Assistenza prenatale, parto e istruzioni post-partum.', ja: '出産前ケア、分娩、産後指導。', ko: '산전 진료, 분만, 산후 안내.' },
     color: '#EC4899',
     vocab: [
       { en: 'prenatal', es: 'prenatal / antes del parto', sw: 'kabla ya kuzaa / wakati wa ujauzito', pt: 'pré-natal', fr: 'prénatal / suivi de grossesse', de: 'Pränatal / vorgeburtlich', it: 'prenatale', ja: '産前', ko: '산전' },
@@ -171,6 +184,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🔬',
     title: 'General Surgery',
     tagline: 'Pre-op consent, operative communication, and post-surgical care.',
+    titles: { fr: 'Chirurgie générale', de: 'Allgemeinchirurgie', it: 'Chirurgia generale', ja: '一般外科', ko: '일반 외과' },
+    taglines: { fr: 'Consentement pré-opératoire, communication opératoire et soins post-chirurgicaux.', de: 'Präoperative Einwilligung, operative Kommunikation und postoperative Nachsorge.', it: 'Consenso preoperatorio, comunicazione operativa e assistenza post-chirurgica.', ja: '術前同意、術中コミュニケーション、術後ケア。', ko: '수술 전 동의, 수술 중 소통, 수술 후 관리.' },
     color: '#F59E0B',
     vocab: [
       { en: 'consent', es: 'consentimiento informado', sw: 'idhini ya mgonjwa', pt: 'consentimento informado', fr: 'consentement éclairé', de: 'Einwilligung', it: 'consenso informato', ja: '同意', ko: '동의' },
@@ -202,6 +217,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '❤️',
     title: 'Cardiology',
     tagline: 'Heart disease, EKG findings, medication adherence, lifestyle changes.',
+    titles: { fr: 'Cardiologie', de: 'Kardiologie', it: 'Cardiologia', ja: '循環器内科', ko: '심장내과' },
+    taglines: { fr: 'Maladies cardiaques, résultats ECG, observance médicamenteuse, changements de mode de vie.', de: 'Herzerkrankungen, EKG-Befunde, Medikamententreue, Lebensstiländerungen.', it: 'Malattie cardiache, referti ECG, aderenza terapeutica, modifiche dello stile di vita.', ja: '心疾患、心電図所見、服薬遵守、生活習慣改善。', ko: '심장 질환, 심전도 소견, 약물 복용 준수, 생활 습관 변화.' },
     color: '#EF4444',
     vocab: [
       { en: 'EKG / ECG', es: 'electrocardiograma / EKG', sw: 'mkanda wa moyo / EKG', pt: 'eletrocardiograma / ECG', fr: 'ECG / électrocardiogramme', de: 'EKG', it: 'ECG / elettrocardiogramma', ja: '心電図', ko: '심전도 (EKG/ECG)' },
@@ -233,6 +250,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🏃',
     title: 'Physical Therapy',
     tagline: 'Rehabilitation exercises, mobility assessment, home exercise programs.',
+    titles: { fr: 'Kinésithérapie', de: 'Physiotherapie', it: 'Fisioterapia', ja: '理学療法', ko: '물리 치료' },
+    taglines: { fr: 'Exercices de réhabilitation, évaluation de la mobilité, programmes d\'exercices à domicile.', de: 'Rehabilitationsübungen, Mobilitätsbeurteilung, Heimübungsprogramme.', it: 'Esercizi di riabilitazione, valutazione della mobilità, programmi di esercizi a domicilio.', ja: 'リハビリ運動、運動能力評価、自宅運動プログラム。', ko: '재활 운동, 운동성 평가, 가정 운동 프로그램.' },
     color: '#34D399',
     vocab: [
       { en: 'exercise', es: 'ejercicio', sw: 'mazoezi', pt: 'exercício', fr: 'exercice', de: 'Übung', it: 'esercizio', ja: '運動', ko: '운동' },
@@ -264,6 +283,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '💊',
     title: 'Pain Management',
     tagline: 'Pain scale documentation, opioid counseling, nerve block instructions.',
+    titles: { fr: 'Gestion de la douleur', de: 'Schmerztherapie', it: 'Gestione del dolore', ja: '疼痛管理', ko: '통증 관리' },
+    taglines: { fr: 'Documentation de l\'échelle de douleur, conseil sur les opioïdes, instructions sur les blocs nerveux.', de: 'Schmerzskala-Dokumentation, Opioidberatung, Nervenblockadeanweisungen.', it: 'Documentazione della scala del dolore, consulenza sugli oppioidi, istruzioni sui blocchi nervosi.', ja: '疼痛スケール記録、オピオイド指導、神経ブロック説明。', ko: '통증 척도 기록, 아편유사제 상담, 신경 차단술 안내.' },
     color: '#A78BFA',
     vocab: [
       { en: 'chronic pain', es: 'dolor crónico', sw: 'maumivu ya muda mrefu / maumivu sugu', pt: 'dor crônica', fr: 'douleur chronique', de: 'Chronischer Schmerz', it: 'dolore cronico', ja: '慢性疼痛', ko: '만성 통증' },
@@ -295,6 +316,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '📋',
     title: 'Medical Receptionist',
     tagline: 'Scheduling, insurance verification, patient registration.',
+    titles: { fr: 'Secrétaire médicale', de: 'Medizinische Rezeptionistin', it: 'Receptionist medico', ja: '医療受付', ko: '의료 접수 담당자' },
+    taglines: { fr: 'Prise de rendez-vous, vérification de l\'assurance, inscription des patients.', de: 'Terminplanung, Versicherungsüberprüfung, Patientenregistrierung.', it: 'Pianificazione degli appuntamenti, verifica assicurativa, registrazione del paziente.', ja: '予約管理、保険確認、患者登録。', ko: '예약 관리, 보험 확인, 환자 등록.' },
     color: '#4A9EFF',
     vocab: [
       { en: 'appointment', es: 'cita', sw: 'miadi / tarehe ya ziara', pt: 'consulta / agendamento', fr: 'rendez-vous', de: 'Termin', it: 'appuntamento / visita', ja: '予約', ko: '예약' },
@@ -326,6 +349,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🤝',
     title: 'Medical Social Work',
     tagline: 'Discharge planning, benefits navigation, social determinants of health.',
+    titles: { fr: 'Travail social médical', de: 'Medizinische Sozialarbeit', it: 'Servizio sociale medico', ja: '医療ソーシャルワーク', ko: '의료 사회 사업' },
+    taglines: { fr: 'Planification de la sortie, orientation vers les aides, déterminants sociaux de la santé.', de: 'Entlassungsplanung, Sozialleistungsberatung, soziale Gesundheitsdeterminanten.', it: 'Pianificazione delle dimissioni, orientamento ai sussidi, determinanti sociali della salute.', ja: '退院計画、給付制度案内、健康の社会的決定要因。', ko: '퇴원 계획, 혜택 안내, 건강의 사회적 결정 요인.' },
     color: '#F59E0B',
     vocab: [
       { en: 'discharge plan', es: 'plan de alta', sw: 'mpango wa kutoka hospitalini', pt: 'plano de alta', fr: 'projet de sortie', de: 'Entlassungsplan', it: 'piano di dimissione', ja: '退院計画', ko: '퇴원 계획' },
@@ -357,6 +382,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🧹',
     title: 'OR / EVS',
     tagline: 'Surgical suite turnover, sterile field protocol, hospital housekeeping.',
+    titles: { fr: 'Bloc opératoire / Services environnementaux', de: 'OP / Umweltdienste', it: 'Sala operatoria / Servizi ambientali', ja: '手術室・環境整備サービス', ko: '수술실 / 환경 서비스' },
+    taglines: { fr: 'Rotation de la salle opératoire, protocole de champ stérile, entretien hospitalier.', de: 'OP-Umrüstung, Steriles-Feld-Protokoll, Krankenhausreinigung.', it: 'Turnover della sala operatoria, protocollo del campo sterile, pulizia ospedaliera.', ja: '手術室の準備交代、無菌野プロトコル、病院清掃。', ko: '수술실 전환, 무균 영역 프로토콜, 병원 청소.' },
     color: '#6B7280',
     vocab: [
       { en: 'sterile field', es: 'campo estéril', sw: 'eneo tasa / eneo lisilo na vijidudu', pt: 'campo estéril', fr: 'champ stérile', de: 'Steriles Feld', it: 'campo sterile', ja: '無菌野', ko: '무균 영역' },
@@ -388,6 +415,8 @@ export const MEDICAL_MODULES: MedicalModule[] = [
     emoji: '🌎',
     title: 'Foreign Medical Graduate',
     tagline: 'US clinical vocabulary, USMLE patient encounters, residency communication.',
+    titles: { fr: 'Diplômé médical étranger', de: 'Ausländischer Medizinabsolvent', it: 'Laureato in medicina straniero', ja: '外国医学部卒業生', ko: '외국 의과대학 졸업생' },
+    taglines: { fr: 'Vocabulaire clinique américain, cas patients USMLE, communication en résidence.', de: 'US-klinisches Vokabular, USMLE-Patientenbegegnungen, Kommunikation im Assistenzarzt-Programm.', it: 'Vocabolario clinico americano, incontri con i pazienti USMLE, comunicazione durante la specializzazione.', ja: '米国臨床語彙、USMLE患者対応、研修医コミュニケーション。', ko: '미국 임상 어휘, USMLE 환자 접촉, 레지던트 소통.' },
     color: '#C9A84C',
     vocab: [
       { en: 'SOAP note', es: 'nota SOAP (subjetivo, objetivo, evaluación, plan)', sw: 'kumbukumbu ya SOAP (hisia, uchunguzi, tathmini, mpango)', pt: 'nota SOAP (subjetivo, objetivo, avaliação, plano)', fr: 'note SOAP', de: 'SOAP-Notiz', it: 'nota SOAP', ja: 'SOAPノート', ko: 'SOAP 노트' },

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
-import { MEDICAL_MODULES, type MedicalModule } from '../data/medicalModules'
+import { MEDICAL_MODULES, type MedicalModule, type LangKey } from '../data/medicalModules'
 import FadeIn from '../components/FadeIn'
 import WordCard from '../components/WordCard'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -10,7 +10,10 @@ const MEDICAL_APP_URL = `${APP_URL}?module=emergency&lang=ko`
 
 interface TappedWord { word: string; sentence: string; x: number; y: number }
 
+const LANG: LangKey = 'ko'
 function ModuleCard({ mod }: { mod: MedicalModule }) {
+  const localTitle = mod.titles?.[LANG] ?? mod.title
+  const localTagline = mod.taglines?.[LANG] ?? mod.tagline
   const [open, setOpen] = useState(false)
   const [tapped, setTapped] = useState<TappedWord | null>(null)
   return (
@@ -34,10 +37,10 @@ function ModuleCard({ mod }: { mod: MedicalModule }) {
           </span>
         </div>
         <h3 className="text-lg font-bold mb-1" style={{ ...displayFont, color: '#F7F3EC' }}>
-          {mod.title}
+          {localTitle}
         </h3>
         <p className="text-sm leading-relaxed" style={{ ...sansFont, color: '#A89F94' }}>
-          {mod.tagline}
+          {localTagline}
         </p>
 
         <div className="flex flex-wrap gap-1.5 mt-4">
@@ -104,7 +107,7 @@ function ModuleCard({ mod }: { mod: MedicalModule }) {
             className="inline-block w-full text-center py-3 rounded-full font-semibold text-sm transition-opacity hover:opacity-90"
             style={{ ...sansFont, backgroundColor: mod.color, color: '#0D0D0D' }}
           >
-            {mod.title} 한국어로 연습하기 →
+            {localTitle} 한국어로 연습하기 →
           </a>
         </div>
       )}
