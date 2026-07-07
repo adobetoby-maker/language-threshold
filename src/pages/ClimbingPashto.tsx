@@ -95,7 +95,7 @@ export default function ClimbingPashto() {
         <div className="max-w-6xl mx-auto px-6 relative">
           <FadeIn>
             <div className="flex items-center gap-2 mb-6">
-              <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: LANG_COLOR }}>د غرختو پښتو — Climbing Pashto</span>
+              <span className="text-xs uppercase tracking-[0.25em] font-semibold" style={{ ...sansFont, color: LANG_COLOR }}>Climbing Pashto — د غرختو پښتو</span>
               <span style={{ color: 'rgba(201,168,76,0.3)' }}>·</span>
               <span className="text-xs uppercase tracking-[0.25em]" style={{ ...sansFont, color: '#A89F94' }}>Language Threshold</span>
             </div>
