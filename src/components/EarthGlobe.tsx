@@ -27,6 +27,7 @@ const LANG_COLORS: Record<string, string> = {
   Japanese:   'rgba(244,114,182,0.55)',
   Korean:     'rgba(168,85,247,0.55)',
   Portuguese: 'rgba(249,115,22,0.55)',
+  Pashto:     'rgba(16,185,129,0.55)',
 }
 
 const LANG_LABELS = [
@@ -41,6 +42,8 @@ const LANG_LABELS = [
   { text: '한국어',     lat: 37.5,   lng: 127.0,  color: LANG_COLORS.Korean     },
   { text: 'Português', lat: -15.8,  lng: -47.9,  color: LANG_COLORS.Portuguese },
   { text: 'Português', lat: 38.7,   lng: -9.1,   color: LANG_COLORS.Portuguese },
+  { text: 'پښتو',      lat: 34.5,   lng: 69.2,   color: LANG_COLORS.Pashto     },
+  { text: 'پښتو',      lat: 34.0,   lng: 71.5,   color: LANG_COLORS.Pashto     },
 ]
 
 interface GeoFeature {

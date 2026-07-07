@@ -30,7 +30,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const key = process.env.ANTHROPIC_API_KEY
   if (!key) return res.status(500).json({ error: 'AI not configured' })
 
-  const langLabel = lang === 'pt' ? 'Portuguese (Brazilian)' : lang === 'sw' ? 'Swahili' : 'Spanish'
+  const LANG_LABELS: Record<string, string> = {
+    es: 'Spanish', pt: 'Portuguese (Brazilian)', sw: 'Swahili', fr: 'French',
+    de: 'German', it: 'Italian', ja: 'Japanese', ko: 'Korean', ps: 'Pashto',
+  }
+  const langLabel = LANG_LABELS[lang] ?? 'Spanish'
   const sysPrompt = `You are a bilingual ${langLabel} dictionary for working professionals. Keep definitions concise. Always populate morphStem, morphEnding, morphConjugations, and commonPhrases to show how words change on the job.`
 
   const tool = {

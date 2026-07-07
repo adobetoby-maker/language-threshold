@@ -34,8 +34,8 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(52,211,153,0.25)',
     tint: 'rgba(52,211,153,0.05)',
     modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', 'Pediatrics', 'OB / GYN', 'ICU / Critical Care', 'Surgery & Pre-Op', 'Radiology', 'Pharmacy', 'Behavioral Health', 'Dental', 'Lab & Pathology', 'Home Health'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
-    langRoutes: { Spanish: '/medical-spanish', Swahili: '/medical-swahili', Portuguese: '/medical-portuguese' },
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese', 'Pashto'],
+    langRoutes: { Spanish: '/medical-spanish', Swahili: '/medical-swahili', Portuguese: '/medical-portuguese', Pashto: '/medical-pashto' },
     bullets: ['13 specialties — ER, OR, OB, ICU, and more', 'Bedside manner: pain scales, consent, discharge', 'SBAR handoff and charting abbreviations', 'AI partner trained on real clinical dialogue'],
     steps: [
       { label: 'Choose your specialty', detail: 'Start in your unit — ER, OR, OB, ICU, or outpatient. Each module maps to real clinical workflows.' },
@@ -54,8 +54,8 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(251,146,60,0.25)',
     tint: 'rgba(251,146,60,0.05)',
     modules: ['Framing & Carpentry', 'Electrical', 'Plumbing', 'Concrete & Masonry', 'HVAC', 'Roofing', 'Drywall & Finishing', 'Landscaping', 'Safety & OSHA Compliance'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
-    langRoutes: { Spanish: '/contractor-spanish', Swahili: '/contractor-swahili', Portuguese: '/contractor-portuguese' },
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese', 'Pashto'],
+    langRoutes: { Spanish: '/contractor-spanish', Swahili: '/contractor-swahili', Portuguese: '/contractor-portuguese', Pashto: '/contractor-pashto' },
     bullets: ['9 trades — framing, electrical, plumbing, and more', 'Safety briefings, PPE instructions, hazard calls', 'Blueprint reading and measurements — all languages', 'OSHA-compliant vocabulary built in'],
     steps: [
       { label: 'Pick your trade', detail: 'Framing, electrical, plumbing — start where your crew works. Each module mirrors your actual workflow.' },
@@ -74,8 +74,8 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(96,165,250,0.25)',
     tint: 'rgba(96,165,250,0.05)',
     modules: ['LDS Missionary Spanish — all 6 discussions', 'LDS Missionary Swahili', 'LDS Missionary French', 'Faith Volunteer Foundations'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
-    langRoutes: { Spanish: '/missionary-spanish', Swahili: '/missionary-swahili', Portuguese: '/missionary-portuguese' },
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese', 'Pashto'],
+    langRoutes: { Spanish: '/missionary-spanish', Swahili: '/missionary-swahili', Portuguese: '/missionary-portuguese', Pashto: '/missionary-pashto' },
     bullets: ['All six missionary discussions — word for word', 'Tracting openers, door approaches, follow-ups', 'Testimony vocabulary at every fluency level', 'Missionary Spanish is always free — no account required'],
     steps: [
       { label: 'Start with discussion one', detail: 'The Restoration — every phrase, every question, every testimony expression. In order.' },
@@ -196,8 +196,8 @@ const STARTERS: Record<string, StarterData> = {
     borderColor: 'rgba(163,230,53,0.25)',
     tint: 'rgba(163,230,53,0.05)',
     modules: ['Sport & Rock Climbing', 'Trad & Alpine', 'Ice & Mixed Climbing', 'Guiding & Instruction', 'Gym & Indoor Climbing'],
-    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese'],
-    langRoutes: { Spanish: '/climbing-spanish', Swahili: '/climbing-swahili', Portuguese: '/climbing-portuguese' },
+    languages: ['Spanish', 'Swahili', 'French', 'Portuguese', 'Italian', 'Greek', 'German', 'Japanese', 'Pashto'],
+    langRoutes: { Spanish: '/climbing-spanish', Swahili: '/climbing-swahili', Portuguese: '/climbing-portuguese', Pashto: '/climbing-pashto' },
     bullets: ['5 modules — sport, trad, alpine, ice, and gym', 'Belay commands and wall communication in 4 languages', 'Gear vocabulary — protection, anchors, harness systems', 'Guide instruction and client safety communication', 'Mountain weather, retreat, and emergency phrases'],
     steps: [
       { label: 'Belay commands first', detail: 'On-belay, climbing, take, slack, off-belay — the safety calls that every climbing partner must share, whatever the language.' },

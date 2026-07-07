@@ -9,7 +9,7 @@ interface PageMeta {
 
 const BASE_TITLE = 'Language Threshold — AI Language Training for Professionals in the Field'
 const BASE_CANONICAL = 'https://languagethreshold.com'
-const BASE_DESC = 'Professional language learning for medical workers, tradespeople, missionaries, and coaches. 660+ AI-powered lessons in Spanish, French, German, Italian, Japanese, Korean, Portuguese, and Swahili.'
+const BASE_DESC = 'Professional language learning for medical workers, tradespeople, missionaries, and coaches. 660+ AI-powered lessons in Spanish, French, German, Italian, Japanese, Korean, Portuguese, Swahili, and Pashto.'
 
 function setMeta(selector: string, attr: string, value: string) {
   const el = document.querySelector<HTMLMetaElement>(selector)

@@ -43,6 +43,10 @@ const ClimbingGerman     = lazy(() => import('./pages/ClimbingGerman'))
 const ClimbingItalian    = lazy(() => import('./pages/ClimbingItalian'))
 const ClimbingJapanese   = lazy(() => import('./pages/ClimbingJapanese'))
 const ClimbingKorean     = lazy(() => import('./pages/ClimbingKorean'))
+const MedicalPashto      = lazy(() => import('./pages/MedicalPashto'))
+const ContractorPashto   = lazy(() => import('./pages/ContractorPashto'))
+const ClimbingPashto     = lazy(() => import('./pages/ClimbingPashto'))
+const MissionaryPashto   = lazy(() => import('./pages/MissionaryPashto'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
@@ -126,6 +130,10 @@ function AppShell() {
             <Route path="/climbing-italian"    element={<ErrorBoundary><ClimbingItalian /></ErrorBoundary>} />
             <Route path="/climbing-japanese"   element={<ErrorBoundary><ClimbingJapanese /></ErrorBoundary>} />
             <Route path="/climbing-korean"     element={<ErrorBoundary><ClimbingKorean /></ErrorBoundary>} />
+            <Route path="/medical-pashto"      element={<ErrorBoundary><MedicalPashto /></ErrorBoundary>} />
+            <Route path="/contractor-pashto"   element={<ErrorBoundary><ContractorPashto /></ErrorBoundary>} />
+            <Route path="/climbing-pashto"     element={<ErrorBoundary><ClimbingPashto /></ErrorBoundary>} />
+            <Route path="/missionary-pashto"   element={<ErrorBoundary><MissionaryPashto /></ErrorBoundary>} />
             <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
             <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
             <Route path="/module/fishing" element={<ErrorBoundary><FishingModule /></ErrorBoundary>} />

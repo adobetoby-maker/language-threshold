@@ -90,10 +90,11 @@ const LANGUAGES = [
   { flag: '🇰🇷', name: 'Korean'     },
   { flag: '🇧🇷', name: 'Português'  },
   { flag: '🇰🇪', name: 'Kiswahili'  },
+  { flag: '🇦🇫', name: 'پښتو Pashto' },
 ]
 
 const STATS = [
-  { n: '8',    label: 'Languages',                   icon: '🌐' },
+  { n: '9',    label: 'Languages',                   icon: '🌐' },
   { n: '26+',  label: 'Modules',                     icon: '📦' },
   { n: '660+', label: 'Pro Lessons',                 icon: '📚' },
   { n: 'MD',   label: 'Surgeon-Built', icon: '🩺' },
@@ -188,7 +189,7 @@ export default function Home() {
               className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto"
             >
               Not tourist phrases. Not flashcards. 660+ professional lessons for medical workers
-              and tradespeople — with AI speaking feedback built in. 8 languages.
+              and tradespeople — with AI speaking feedback built in. 9 languages.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
@@ -824,7 +825,7 @@ export default function Home() {
             <span style={{ color: GOLD }}>✦</span> Language Threshold
           </span>
           <p className="font-mono text-[10px] uppercase tracking-widest text-white/20">
-            Professional language learning · 26 modules · 8 languages
+            Professional language learning · 26 modules · 9 languages
           </p>
           <a href={APP_URL} className="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors">
             Open App →
