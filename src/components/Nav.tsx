@@ -77,6 +77,13 @@ export default function Nav() {
         {/* Right side */}
         <div className="flex items-center gap-3 shrink-0">
           <Link
+            to="/readers"
+            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
+            style={{ color: pathname.startsWith('/readers') ? GOLD : 'rgba(255,255,255,0.32)' }}
+          >
+            Readers
+          </Link>
+          <Link
             to="/about"
             className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
             style={{ color: pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
@@ -105,7 +112,7 @@ export default function Nav() {
           </Link>
           <a
             href={APP_URL}
-            className="rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
+            className="hidden sm:block rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
             style={{ backgroundColor: GOLD }}
           >
             Start Free
@@ -142,6 +149,13 @@ export default function Nav() {
               {m.label}
             </Link>
           ))}
+          <Link
+            to="/readers"
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+            style={{ color: GOLD }}
+          >
+            Readers
+          </Link>
           <Link
             to="/about"
             className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"

@@ -19,6 +19,9 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm" style={{ ...sansFont }}>
+            <Link to="/readers" className="transition-opacity hover:opacity-80" style={{ color: '#C9A84C' }}>
+              Picture Book Readers
+            </Link>
             <Link to="/language-lens" className="transition-opacity hover:opacity-80" style={{ color: '#00D4B8' }}>
               Language Lens
             </Link>
