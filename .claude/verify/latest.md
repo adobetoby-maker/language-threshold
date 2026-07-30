@@ -39,6 +39,25 @@ read the three live-site PNGs three separate times; afterward I installed deps,
 stood up a local dev server, and captured the real pricing section — stronger
 evidence than the gate was asking for.
 
+## Production deployment (verified live)
+
+`vercel --prod` built a Production deployment, but `languagethreshold.com`
+kept serving the OLD bundle (`index-CWzw8M4O.js`) — the custom domain was not
+aliased to the new deployment. Caught by diffing the live bundle hash against
+the deployment's. Fixed with `vercel alias set` → domain now serves
+`index-C_stGFk0.js`.
+
+| Live check | Result |
+|---|---|
+| `curl -sI https://languagethreshold.com` | HTTP/2 200 |
+| `2026-10-01` present in live bundle | 1 match |
+| `2026-08-01` / "Free through Aug 1" in live bundle | 0 matches |
+| Rendered desktop 1440px (`prod-desktop.png`) | "Free through October 1, 2026 — all modules unlocked." |
+| Rendered mobile 375px @2x (`prod-mobile.png`) | Same headline, wraps to 4 lines, no overlap, pricing cards stack cleanly |
+
+Mobile viewport is no longer waived — captured and read on production.
+
 Gate question: Would I show this to Toby right now without him asking? **YES** —
-the changed copy is confirmed in rendered pixels at the exact section that
-matters, and no August reference survives in either codebase.
+the changed copy is confirmed in rendered pixels on the live domain at both
+desktop and mobile, and no August reference survives in either codebase or the
+deployed bundle.
