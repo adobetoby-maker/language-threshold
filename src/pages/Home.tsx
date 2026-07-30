@@ -628,7 +628,7 @@ export default function Home() {
                 {isBetaFree() ? 'Open Beta' : 'Simple Pricing'}
               </p>
               <h2 className="font-serif text-4xl font-bold">
-                {isBetaFree() ? 'Free through August 1, 2026 — all modules unlocked.' : 'Free for 7 days. Then less than a missed shift.'}
+                {isBetaFree() ? 'Free through October 1, 2026 — all modules unlocked.' : 'Free for 7 days. Then less than a missed shift.'}
               </h2>
               {isBetaFree() && (
                 <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
@@ -670,7 +670,7 @@ export default function Home() {
                   <span className="font-serif text-5xl font-bold text-white">$149</span>
                   <span className="text-white/50 mb-1">/year</span>
                 </div>
-                <p className="text-sm text-white/45 mb-5">{isBetaFree() ? 'Free through Aug 1 · then $12.42/mo' : '$12.42/mo · 7-day free trial'}</p>
+                <p className="text-sm text-white/45 mb-5">{isBetaFree() ? 'Free through Oct 1 · then $12.42/mo' : '$12.42/mo · 7-day free trial'}</p>
                 <ul className="space-y-2 mb-7">
                   {['660+ professional lessons', '13 medical specialties', '9 construction trades', 'AI speaking feedback', 'Grammar studio + conjugation', 'Daily challenges + leaderboard'].map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm text-white/75">

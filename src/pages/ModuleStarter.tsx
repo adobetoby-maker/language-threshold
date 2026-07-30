@@ -287,7 +287,7 @@ export default function ModuleStarter() {
   const freeItems = slug === 'missionary'
     ? ['Spanish · Swahili · Portuguese — all included', 'All 6 discussions, word for word', 'No account or card — ever']
     : beta
-    ? ['All modules unlocked through Aug 1', 'No account or card needed', 'AI speaking feedback']
+    ? ['All modules unlocked through Oct 1', 'No account or card needed', 'AI speaking feedback']
     : ['All modules unlocked', 'AI speaking feedback', 'Cancel anytime']
 
   return (
@@ -389,7 +389,7 @@ export default function ModuleStarter() {
             {slug === 'missionary'
               ? 'Missionary Spanish is always free — no trial, no card, no expiration'
               : beta
-              ? 'Free open beta · all modules unlocked · no card needed · through Aug 1, 2026'
+              ? 'Free open beta · all modules unlocked · no card needed · through Oct 1, 2026'
               : 'No credit card required · Cancel anytime'}
           </p>
         </section>
