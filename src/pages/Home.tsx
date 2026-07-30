@@ -627,8 +627,8 @@ export default function Home() {
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>
                 {isBetaFree() ? 'Open Beta' : 'Simple Pricing'}
               </p>
-              <h2 className="font-serif text-4xl font-bold">
-                {isBetaFree() ? 'Free through October 1, 2026 — all modules unlocked.' : 'Free for 7 days. Then less than a missed shift.'}
+              <h2 className="font-serif text-4xl font-bold text-balance">
+                {isBetaFree() ? 'Free through October\u00A01,\u00A02026 — all modules unlocked.' : 'Free for 7 days. Then less than a missed shift.'}
               </h2>
               {isBetaFree() && (
                 <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">

@@ -57,6 +57,28 @@ the deployment's. Fixed with `vercel alias set` → domain now serves
 
 Mobile viewport is no longer waived — captured and read on production.
 
+## Outside input (standing need-20260630-0009)
+
+| Outside input | Opus reviewer on live production PNGs (desktop 1440 + mobile 375): "Ship the date change — clean on desktop, only costs an orphaned em dash on mobile — but don't let a client see this page until the nav stops rendering 'CTION' and the Family/Team cards stop contradicting the 'free through October' promise above them." | PASS |
+
+Reviewer scores: scale 7, vision 7, correctness 4, relationship 5, scope 6, fit 6, style 8, direction 7.
+
+**Acted on:** reviewer predicted "October 1, 2026" would split at 320px (iPhone SE).
+Fixed pre-emptively with non-breaking spaces in the date + `text-balance` on the
+h2, then measured on production: at both 375px and 320px the date now holds on
+one line, and `documentElement.scrollWidth === innerWidth === 320` (no horizontal
+page scroll). Read `ovf-320.png` — nothing clipped.
+
+**One correction to the reviewer:** it attributed the mobile em-dash wrap to this
+change. "August 1, 2026" is only one character shorter than "October 1, 2026", so
+that wrap was almost certainly already present. Not introduced here.
+
+**Left alone deliberately (out of scope, reported to Toby for his call):** the
+dangling em dash opening line 3 on mobile; the clipped desktop nav ("CTION" /
+orphan "H" / duplicated MISSIONARY); Family+Team cards carrying no beta
+qualifier while Pro does; the $99/mo Team card reading as a price drop beside two
+/yr cards; date-format split ("October 1, 2026" vs "Oct 1" with no year).
+
 Gate question: Would I show this to Toby right now without him asking? **YES** —
 the changed copy is confirmed in rendered pixels on the live domain at both
 desktop and mobile, and no August reference survives in either codebase or the
