@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Threshold Readers — Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #f5f0e8; font-family: Georgia, serif; color: #3a2e1e; }
+
+  header {
+    background: #3a2e1e;
+    color: #f5f0e8;
+    padding: 32px 48px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+  header h1 { font-size: 22px; letter-spacing: 0.04em; font-weight: normal; }
+  header span { font-size: 13px; opacity: 0.6; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  nav {
+    background: #2a1f10;
+    padding: 12px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  nav a {
+    color: #c8b89a;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 10px;
+    border: 1px solid #5a4a34;
+    border-radius: 3px;
+    transition: background 0.15s;
+  }
+  nav a:hover { background: #5a4a34; color: #f5f0e8; }
+
+  .book {
+    padding: 48px 48px 64px;
+    border-bottom: 2px solid #d4c4a8;
+  }
+  .book:last-child { border-bottom: none; }
+
+  .book-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .book-num {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8a7260;
+    min-width: 56px;
+  }
+  .book-title {
+    font-size: 24px;
+    font-weight: normal;
+    letter-spacing: 0.01em;
+  }
+  .book-count {
+    font-size: 12px;
+    color: #8a7260;
+    margin-left: auto;
+  }
+
+  .pages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .page-card {
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .page-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  }
+  .page-card.cover {
+    grid-column: span 1;
+    border: 2px solid #c8a870;
+  }
+
+  .page-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    display: block;
+    object-fit: cover;
+    background: #e8e0d4;
+    transition: opacity 0.25s;
+  }
+  .page-card img:not([src]) { opacity: 0; }
+  .page-card .pending img {
+    display: none;
+  }
+  .page-label {
+    padding: 8px 10px 6px;
+    font-size: 10px;
+    line-height: 1.4;
+    color: #5a4a34;
+    border-top: 1px solid #ede5d8;
+  }
+  .page-label strong {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a7260;
+    margin-bottom: 2px;
+  }
+
+  .retry-badge {
+    display: block;
+    background: #f0e8d8;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #9a7a50;
+    letter-spacing: 0.04em;
+  }
+
+  .status-bar {
+    margin-top: 28px;
+    font-size: 11px;
+    color: #8a7260;
+    letter-spacing: 0.04em;
+  }
+  .status-bar .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7a9e6e;
+    margin-right: 6px;
+  }
+  .status-bar .dot.warn { background: #c89a50; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Language Threshold Readers</h1>
+  <span>Image Preview — Books 1–14</span>
+</header>
+
+<nav>
+  <a href="#b1">1 · Hello, Little One</a>
+  <a href="#b2">2 · My Body</a>
+  <a href="#b3">3 · Our House</a>
+  <a href="#b4">4 · Good Food</a>
+  <a href="#b5">5 · Animal Friends</a>
+  <a href="#b6">6 · All the Colors</a>
+  <a href="#b7">7 · One, Two, Three</a>
+  <a href="#b8">8 · Getting Dressed</a>
+  <a href="#b9">9 · I Can Move</a>
+  <a href="#b10">10 · Good Morning</a>
+  <a href="#b11">11 · Let's Play</a>
+  <a href="#b12">12 · I Help</a>
+  <a href="#b13">13 · Big and Small</a>
+  <a href="#b14">14 · How I Feel</a>
+</nav>
+
+<!-- BOOK 1 -->
+<div class="book" id="b1">
+  <div class="book-header">
+    <span class="book-num">Book 1</span>
+    <h2 class="book-title">Hello, Little One</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125654_1c44396f-f01c-43a6-8951-f9fde820290f.png"><div class="page-label"><strong>Cover</strong>Baby reaches up to family circle</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125533_9b43d614-2b3c-41a8-b6c0-e7a3f3716ca0.png"><div class="page-label"><strong>Page 1</strong>Baby's eyes opening, morning light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125535_2480eea3-a12a-42a0-8b97-f42b789491ea.png"><div class="page-label"><strong>Page 2</strong>Mother's hands lifting baby from crib</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125536_01b246c6-e583-4286-9955-e47b5b5525b9.png"><div class="page-label"><strong>Page 3</strong>Mother holds baby at window</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125538_74fe7f07-47d3-41a4-b710-1917088363e9.png"><div class="page-label"><strong>Page 4</strong>Father cradles baby, dusty blue</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125540_5d2370be-760e-47f2-bf3c-c22c4eb1e6eb.png"><div class="page-label"><strong>Page 5</strong>Big sister peers into crib</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125802_e003710d-baad-48a2-9630-5f46f2074b26.png"><div class="page-label"><strong>Page 6</strong>Big brother shows wooden toy to baby</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125544_f6b4a2e2-3b27-44cc-afb1-f2553446a416.png"><div class="page-label"><strong>Page 7</strong>Grandfather offers toy to baby</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125546_bb280590-066c-402a-8780-1f0074af4d4c.png"><div class="page-label"><strong>Page 8</strong>Grandmother rocking baby in kitchen</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125548_887a0baa-28dd-4dc9-86d7-3d939d44355e.png"><div class="page-label"><strong>Page 9</strong>Whole family in living room</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125550_22169dfe-f3f0-4f5d-a030-75509249e8e4.png"><div class="page-label"><strong>Page 10</strong>Baby's hand in grandmother's finger</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125551_e13e7549-7d4c-4ba7-90e1-73bb8b89ce59.png"><div class="page-label"><strong>Page 11</strong>Dog beside sleeping baby</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_125553_47e7a870-ec33-4ff0-bb37-4c77bf3d6666.png"><div class="page-label"><strong>Page 12</strong>Baby sleeping, family in doorway glow</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 2 -->
+<div class="book" id="b2">
+  <div class="book-header">
+    <span class="book-num">Book 2</span>
+    <h2 class="book-title">My Body</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132507_2b1a04c8-f27e-4b19-b4f3-04d3739f2827.png"><div class="page-label"><strong>Cover</strong>Child looking at hands in soft morning light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132509_33362494-51ee-48d3-aea3-682b12c96f19.png"><div class="page-label"><strong>Page 1</strong>Child's eyes opening wide</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132511_762191b0-64db-408a-a888-d92b2ffeaab3.png"><div class="page-label"><strong>Page 2</strong>Child's ear, soft profile</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132513_66aaff72-e0cb-4077-8b60-79706ae3bc9e.png"><div class="page-label"><strong>Page 3</strong>Child's nose, soft focus</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132539_6eb65019-13d4-45b5-ba26-ca9d08657a1e.png"><div class="page-label"><strong>Page 4</strong>Child touching ears with both hands</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132516_1b808b74-8149-49e4-8314-ce3276634fe9.png"><div class="page-label"><strong>Page 5</strong>Child's small open mouth, gentle smile</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132518_9b34bf03-0ef9-4bab-90a1-dcf6d57ef8d3.png"><div class="page-label"><strong>Page 6</strong>Child's two hands open, palms up</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132520_68926661-f079-4f51-92ea-0674c554f142.png"><div class="page-label"><strong>Page 7</strong>Child's bare feet on warm wooden floor</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132522_1f358a27-5a11-423f-98a9-c75e76edbb5a.png"><div class="page-label"><strong>Page 8</strong>Child's arms reaching up</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132523_8a7e31c1-14a8-4613-ba37-2ed742ccb7f9.png"><div class="page-label"><strong>Page 9</strong>Child's knees bent, sitting cross-legged</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132525_8245fde1-f864-48dd-83d2-522ce3e2974c.png"><div class="page-label"><strong>Page 10</strong>Child's back, standing in warm light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132527_aed001d3-bdf0-44eb-b5e0-68015b57aeb7.png"><div class="page-label"><strong>Page 11</strong>Child's belly, hands resting, laughing</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_132529_3847e49a-882b-4ec5-a201-b16a96adc3d8.png"><div class="page-label"><strong>Page 12</strong>Child standing tall, arms out, full body</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 3 -->
+<div class="book" id="b3">
+  <div class="book-header">
+    <span class="book-num">Book 3</span>
+    <h2 class="book-title">Our House</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133316_0799e907-69b4-493f-8758-0e547430f8cf.png"><div class="page-label"><strong>Cover</strong>Cozy house, terracotta roof, yellow-lit window at dusk</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133317_f65b14c4-2c67-42f1-aafb-59d058d0839e.png"><div class="page-label"><strong>Page 1</strong>House from outside, quiet morning</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133319_63fe7890-5a7f-42f2-84d1-32a6bc4cc5d6.png"><div class="page-label"><strong>Page 2</strong>Child's hand pushing open wooden front door</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133320_2ac82906-6fca-4f69-bb0d-07d609425f78.png"><div class="page-label"><strong>Page 3</strong>Open front door, welcome mat</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133321_787dc31c-f2fc-4005-89f1-b77c15d640d3.png"><div class="page-label"><strong>Page 4</strong>Long window with sage curtains</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133323_f67cf2a7-77bd-45d1-9033-fbe21298528d.png"><div class="page-label"><strong>Page 5</strong>Plain wooden floor in soft daylight</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133324_154aea2b-ac9c-4503-b44d-8d5431008b24.png"><div class="page-label"><strong>Page 6</strong>Pale wall with simple lamp</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133325_4cb52c04-28ca-4be2-aec5-c5dc871c99cc.png"><div class="page-label"><strong>Page 7</strong>Child's bed with butter-yellow quilt</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133326_58e46063-3ca1-4b4a-b450-fab3074bfc0b.png"><div class="page-label"><strong>Page 8</strong>Wooden chair beside round table</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133328_40b0537f-b02c-4421-9c3f-e4f80ea05169.png"><div class="page-label"><strong>Page 9</strong>Wooden table, two chairs, bowl of fruit</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133329_8822f825-517d-4a2f-96ab-d1326fb9de71.png"><div class="page-label"><strong>Page 10</strong>Small staircase rising to upper floor</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133330_f65a99d7-2ae0-4ca3-86ea-302831b19dda.png"><div class="page-label"><strong>Page 11</strong>Warm kitchen, wooden table, bowl of fruit</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133331_e93c4386-4e5d-45d9-a09a-6aa58b48d9ea.png"><div class="page-label"><strong>Page 12</strong>Child curled in armchair by warm lamp</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 4 -->
+<div class="book" id="b4">
+  <div class="book-header">
+    <span class="book-num">Book 4</span>
+    <h2 class="book-title">Good Food</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133706_0c3b5ddb-13a9-4327-aadf-cc526e230625.png"><div class="page-label"><strong>Cover</strong>Wooden table, bread, milk, apple, rice</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133707_7e3a66cb-6587-44f5-893e-7d02ed4e48df.png"><div class="page-label"><strong>Page 1</strong>Mother's hands placing bread on table</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133708_f1c450ec-e834-478b-9c59-133dad8a6333.png"><div class="page-label"><strong>Page 2</strong>Tall glass of cold milk</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133709_e5b26cc8-109a-4f33-8495-8e9ecf9bff64.png"><div class="page-label"><strong>Page 3</strong>Loaf of bread and glass of milk</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133711_ecd92b2e-2879-4355-9f83-83be111b4fc8.png"><div class="page-label"><strong>Page 4</strong>Single egg in terracotta bowl</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133712_8e50b132-4bbd-4b0f-973e-b73fef9cd02b.png"><div class="page-label"><strong>Page 5</strong>One muted-red apple on wooden table</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133713_cc94edf3-a147-4b46-9135-cbf9f18aaa7c.png"><div class="page-label"><strong>Page 6</strong>Bowl of white rice, steam rising</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133715_525cadf7-7977-4e39-83e7-c61a6dcfc36a.png"><div class="page-label"><strong>Page 7</strong>Clear glass of water</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133716_b1bf2c2c-ad97-40c3-9763-c2b27428ec1e.png"><div class="page-label"><strong>Page 8</strong>Two pieces of fish on sage leaf</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133717_af6b5ae2-e613-4376-9e26-74c5c4af8a8e.png"><div class="page-label"><strong>Page 9</strong>Bowl of mixed fresh fruit</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133718_e2e0bbb8-b736-415b-bd44-8e11c50e5c50.png"><div class="page-label"><strong>Page 10</strong>Warm bowl of soup, wooden spoon</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133720_ca863955-951d-4545-99d1-99db41a59303.png"><div class="page-label"><strong>Page 11</strong>Child's hands holding wooden spoon</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133721_d200ccb0-0796-4ec2-99af-8821c9492fd0.png"><div class="page-label"><strong>Page 12</strong>Family sharing simple meal</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 5 -->
+<div class="book" id="b5">
+  <div class="book-header">
+    <span class="book-num">Book 5</span>
+    <h2 class="book-title">Animal Friends</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133859_a34e3a72-63c1-454c-8da6-472e15fb6282.png"><div class="page-label"><strong>Cover</strong>Gentle gathering of farm animals</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133901_6dc87245-eea2-4c6c-8c81-b77190eb3392.png"><div class="page-label"><strong>Page 1</strong>Child opening garden gate</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133902_4a2085e5-64cc-49c5-8e2a-c72be8ad6bb0.png"><div class="page-label"><strong>Page 2</strong>Small brown dog running toward child</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133903_f242befa-ee42-4d3b-9c35-b8e3b0e00c9e.png"><div class="page-label"><strong>Page 3</strong>Soft grey cat curled on cushion</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134258_4e5ec4b2-32ae-4d7d-89e8-9670103f1673.png"><div class="page-label"><strong>Page 4</strong>Small yellow bird on sage branch</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133906_054abc7b-5a57-4ced-8135-f8ca62f8beb9.png"><div class="page-label"><strong>Page 5</strong>Gentle cow in meadow</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133907_e134c2e9-54ed-4208-a0dd-26e428e4445c.png"><div class="page-label"><strong>Page 6</strong>Small horse grazing</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133908_1ad37bcf-c7e3-4fdc-85fa-eec1fe6f0f33.png"><div class="page-label"><strong>Page 7</strong>Small brown rabbit nibbling sage leaf</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133910_782ca90a-ddce-4b70-b2c4-f50b5dbdf30c.jpeg"><div class="page-label"><strong>Page 8</strong>Fluffy white sheep on hillside</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133911_63ca8b3a-f9ec-4df9-bc13-f04e49e8e322.png"><div class="page-label"><strong>Page 9</strong>Small grey mouse peering from post</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133912_0dfecabe-b65d-44b9-a4ee-e9c64582d259.png"><div class="page-label"><strong>Page 10</strong>Small white duck waddling</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133914_89e4d426-b5dc-4b86-8438-9cc76140ae39.png"><div class="page-label"><strong>Page 11</strong>Duck and bee near calm blue pond</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_133915_cc16e5b0-67c1-460d-9d94-086b120e3665.png"><div class="page-label"><strong>Page 12</strong>Child in meadow with all the animals</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 6 -->
+<div class="book" id="b6">
+  <div class="book-header">
+    <span class="book-num">Book 6</span>
+    <h2 class="book-title">All the Colors</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134300_b3273895-c442-4e8c-aebc-8e20a0eb7e8f.jpeg"><div class="page-label"><strong>Cover</strong>Child painting, muted color swirls</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134301_96fa2dcb-388c-4f08-b490-c8e400b45950.png"><div class="page-label"><strong>Page 1</strong>Child opening paint box</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134302_b5661fd2-ff76-44d1-9b03-cc49a63f4685.png"><div class="page-label"><strong>Page 2</strong>Single muted-red apple on cream</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134304_1b405ca7-9d3f-45fb-99b3-734eb4e5fbfe.png"><div class="page-label"><strong>Page 3</strong>Red apple beside butter-yellow sun shape</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134305_ef445b1d-38d9-4bdf-9352-93cb3b6d4525.png"><div class="page-label"><strong>Page 4</strong>Butter-yellow sun on cream horizon</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134306_b178cc8a-0414-4f9f-81b1-022c7bd0c5ee.png"><div class="page-label"><strong>Page 5</strong>Dusty-blue pond reflecting sky</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134307_913d3bb1-e9a1-483c-a8f0-f366166c8730.png"><div class="page-label"><strong>Page 6</strong>Sage-green leaf on cream surface</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134309_5402741d-a49c-47f8-956a-a1a47f020f3d.png"><div class="page-label"><strong>Page 7</strong>Dusty-blue stream beside sage leaf</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134310_4d6fe1d2-e038-4718-aa4d-c05d5ece6365.png"><div class="page-label"><strong>Page 8</strong>Coral-orange flower in terracotta pot</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134311_1144c754-44bf-4bee-87d1-2d1a0fdf3e83.png"><div class="page-label"><strong>Page 9</strong>Soft purple lavender cluster</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134312_5bae2395-43dc-4ff2-95fb-afa6437b4da3.png"><div class="page-label"><strong>Page 10</strong>White dove on sage branch</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134314_039c9eda-5de6-40e7-b10b-c0fad16bd4a1.png"><div class="page-label"><strong>Page 11</strong>Child's hand holding multicolored bouquet</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134315_c6ae6086-d044-4270-97bc-96ef402f2296.png"><div class="page-label"><strong>Page 12</strong>Child in garden surrounded by flowers</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 7 -->
+<div class="book" id="b7">
+  <div class="book-header">
+    <span class="book-num">Book 7</span>
+    <h2 class="book-title">One, Two, Three</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134523_e9435f86-45d2-49cc-a5f5-4058a64dffcb.png"><div class="page-label"><strong>Cover</strong>Child counting fingers, warm light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134524_0b3bccd4-214c-48ff-9381-8ecbb79904f5.png"><div class="page-label"><strong>Page 1</strong>One butter-yellow sun</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134526_c123bf1c-1b7e-48f9-81e5-fde48a20a3ec.png"><div class="page-label"><strong>Page 2</strong>Two sage-green leaves</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134527_e76ac9cb-76be-44d6-b072-72cc62fbc7dd.png"><div class="page-label"><strong>Page 3</strong>Two small birds on sage branch</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134528_2d9d2975-e7dd-4e3d-a988-b8c80fa80fd8.png"><div class="page-label"><strong>Page 4</strong>Three round terracotta pots</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134530_15406b9e-77ba-468d-9366-96f6e48d19f0.png"><div class="page-label"><strong>Page 5</strong>Four small coral flowers</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134531_d812dab8-05ba-4574-bef3-c95f1d6d2295.png"><div class="page-label"><strong>Page 6</strong>Five sage-green pebbles</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134533_a2f16e92-ff93-4df6-b723-53b687b945c1.png"><div class="page-label"><strong>Page 7</strong>Six tiny butter-yellow stars</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134534_53e505d3-955d-4526-8af0-ed35d9e74e16.png"><div class="page-label"><strong>Page 8</strong>Seven small round berries</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134535_eb554d56-8149-4602-901d-c9efb9c730fd.png"><div class="page-label"><strong>Page 9</strong>Eight soft sage dots in circle</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134537_f036c98d-db88-469e-a1f7-4c1833227498.png"><div class="page-label"><strong>Page 10</strong>Nine small shells in arc</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134538_043bda82-32e5-4b99-aba3-523646012b83.png"><div class="page-label"><strong>Page 11</strong>Ten terracotta buttons in two rows</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134540_91403d72-bfe7-4d6d-9aa4-f99d43bd23d6.png"><div class="page-label"><strong>Page 12</strong>Child counting objects on table</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 8 -->
+<div class="book" id="b8">
+  <div class="book-header">
+    <span class="book-num">Book 8</span>
+    <h2 class="book-title">Getting Dressed</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134849_6513b69c-8953-4fbe-ad2e-f3239d0fed2f.png"><div class="page-label"><strong>Cover</strong>Child mid-dressing, pulling on sage sweater</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134850_2c48122d-aeac-4237-955c-0508e2e103d7.png"><div class="page-label"><strong>Page 1</strong>Morning clothes laid neatly on a bed</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134851_12318422-8f17-4d23-ac6b-687225746313.png"><div class="page-label"><strong>Page 2</strong>Child holding up terracotta shirt</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134853_b8ac19d4-9830-46cf-9225-1021e83ebd6a.png"><div class="page-label"><strong>Page 3</strong>Folded coral shirt and soft brown pants</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134854_5ba26143-5840-400f-8476-c4a383ecb2eb.png"><div class="page-label"><strong>Page 4</strong>Child stepping into soft brown pants</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134855_4de825cc-403c-4d49-b16f-5c60a83507c6.png"><div class="page-label"><strong>Page 5</strong>Child pulling on soft striped socks</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134857_4ca2f407-0760-4760-93a9-a6205444c27d.png"><div class="page-label"><strong>Page 6</strong>Small sage-green dress on a hook</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134858_9275b1dc-085a-467d-ad23-35d6f1350f81.png"><div class="page-label"><strong>Page 7</strong>Child tying small sage shoes</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134900_a82841b9-0747-4773-b6a4-4793a05bdaa1.png"><div class="page-label"><strong>Page 8</strong>Row of clothing flat lay</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134902_43fcb4da-58fe-4618-b1f0-7e473117fb91.png"><div class="page-label"><strong>Page 9</strong>Child proudly showing off outfit</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134903_9461ac1d-214e-4b21-8e71-bfb8a69935e3.png"><div class="page-label"><strong>Page 10</strong>Terracotta coat, butter-yellow hat on hook</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134905_1c750e99-cc0c-4130-9cc5-9c6090538c6a.png"><div class="page-label"><strong>Page 11</strong>Child bundled in coat and hat</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_134906_d8a5ad24-cd84-483f-bc50-dc9e979d9b7e.png"><div class="page-label"><strong>Page 12</strong>Child running out front door, joyful</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 9 -->
+<div class="book" id="b9">
+  <div class="book-header">
+    <span class="book-num">Book 9</span>
+    <h2 class="book-title">I Can Move</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135237_ed9f57b5-d706-4a39-87a1-f20edefd0e18.png"><div class="page-label"><strong>Cover</strong>Child running joyfully, arms out</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135239_37b7e116-f90a-4b3c-b4f8-04a7238fb1a2.png"><div class="page-label"><strong>Page 1</strong>Child standing tall on sage path</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135240_7e473f0e-567a-4454-9cc6-1314b1f4b4f5.png"><div class="page-label"><strong>Page 2</strong>Child taking one confident step</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135241_a8d87e1e-ae24-4a8a-911d-e15ec252800e.png"><div class="page-label"><strong>Page 3</strong>Child mid-walk along soft path</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135243_bb4a99bb-b1d7-4c31-8bea-c105aa87ebbd.png"><div class="page-label"><strong>Page 4</strong>Child running across sage meadow</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135244_dfcc8bf8-7dab-4251-885d-9f366184a7cf.png"><div class="page-label"><strong>Page 5</strong>Child jumping, arms raised, feet off ground</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135246_8be3edb5-a8d3-4d24-9250-438b68300e77.png"><div class="page-label"><strong>Page 6</strong>Child sitting cross-legged on grass</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135247_d7e1e7c4-8953-4bf7-9422-b86665c01581.png"><div class="page-label"><strong>Page 7</strong>Child jumping, both feet off ground</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135248_2fb5d195-5a15-4178-95d1-a7ad1d641238.png"><div class="page-label"><strong>Page 8</strong>Child standing up from ground</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135250_0ca0209a-42bf-4ba4-9405-70ceedfea8ec.png"><div class="page-label"><strong>Page 9</strong>Child running at full speed</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135251_9a8b0e08-2247-4569-8a21-558e08e96c0e.png"><div class="page-label"><strong>Page 10</strong>Child stopping suddenly, arms out</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135253_6a3ff98a-73e0-4127-8a82-e1eff23f0fa6.png"><div class="page-label"><strong>Page 11</strong>Child sitting quietly to rest</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135254_d91dbb32-2f7f-4a23-b112-95d1f49c3634.png"><div class="page-label"><strong>Page 12</strong>Child lying on back in meadow</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 10 -->
+<div class="book" id="b10">
+  <div class="book-header">
+    <span class="book-num">Book 10</span>
+    <h2 class="book-title">Good Morning</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135335_cb37a33f-1919-4c54-a202-3634fd4194cb.png"><div class="page-label"><strong>Cover</strong>Child waking up in bed, soft morning light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135336_bc7db81d-91a0-4419-9675-7bf040f28981.png"><div class="page-label"><strong>Page 1</strong>Child's eyes opening to morning</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135338_505ee048-3952-4db2-8121-783e61316242.png"><div class="page-label"><strong>Page 2</strong>Child stretching arms wide in bed, yawning</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135339_6545f7a5-48d7-4e88-8838-552a08a80275.png"><div class="page-label"><strong>Page 3</strong>Child washing face at a small basin</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135341_a50fb523-7719-4e13-ac01-12781b7e8d9f.png"><div class="page-label"><strong>Page 4</strong>Child brushing teeth at a small mirror</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135342_09d6cff9-6e90-48bd-badc-4e183d41a690.png"><div class="page-label"><strong>Page 5</strong>Child opening wardrobe to choose clothes</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135343_7cc14dc9-e8d0-4e91-979a-021ecda2a6a2.png"><div class="page-label"><strong>Page 6</strong>Child setting a simple table for breakfast</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135344_ae7400c4-59eb-4c6e-b6af-489e92f788ab.png"><div class="page-label"><strong>Page 7</strong>Child eating breakfast, bread and milk</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135346_bbc3a3b5-f99f-4324-96ba-a4d451dcec0f.png"><div class="page-label"><strong>Page 8</strong>Child drinking from a glass of water</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135347_6b97f81b-2751-4d27-a4bf-f6c99cfae04e.png"><div class="page-label"><strong>Page 9</strong>Child putting on shoes by front door</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135348_e69eda0d-0b64-4d2e-8014-1193439c283f.png"><div class="page-label"><strong>Page 10</strong>Child closing front door, stepping into morning</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135350_e4fd2ed8-53e0-4aa1-a7ab-73be53342fa2.png"><div class="page-label"><strong>Page 11</strong>Child opening a window to the morning</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135351_56a33eaa-f4ab-4a28-990a-2ea62991ef26.png"><div class="page-label"><strong>Page 12</strong>Child walking down sage path, backpack on</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 11 -->
+<div class="book" id="b11">
+  <div class="book-header">
+    <span class="book-num">Book 11</span>
+    <h2 class="book-title">Let's Play</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135708_f7c1bb11-6811-4526-8840-a7ecaed12f8a.png"><div class="page-label"><strong>Cover</strong>Two children playing in meadow, throwing ball</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135710_4ae14d17-3108-40d5-8fbf-389333cd4518.png"><div class="page-label"><strong>Page 1</strong>Two children meeting at a garden gate</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135711_dcfcdd9f-a5e5-4d61-b7b8-0baabffbd060.png"><div class="page-label"><strong>Page 2</strong>Two children running side by side</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135713_85ac8c01-f7a9-47b4-86b7-9bfe3015487a.png"><div class="page-label"><strong>Page 3</strong>Child drawing with crayons on paper</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135714_0d967ba0-4c91-49bc-90a5-7380003d990d.png"><div class="page-label"><strong>Page 4</strong>Child throwing a soft round ball</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135716_40192f76-7aac-4f43-999b-2d74273c01a9.png"><div class="page-label"><strong>Page 5</strong>Child reaching up to catch a ball</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135717_c0a1eefd-cf5c40b0-ac5d-ef8fb1216154.png"><div class="page-label"><strong>Page 6</strong>Two children building a small block tower</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135718_d870d261-0ca5-4db8-b050-2ab4d2e48dfd.png"><div class="page-label"><strong>Page 7</strong>Two children building wooden block tower</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135720_8bdc0190-45de-43a3-aa42-dadb84a38ec8.png"><div class="page-label"><strong>Page 8</strong>Child singing, friend listening and smiling</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135721_c74b1d64-a70d-4c36-a78d-a2b0c404ae2b.png"><div class="page-label"><strong>Page 9</strong>Two children dancing in a circle</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135722_9476d785-ecdf-4c75-a5af-aec831aec62e.png"><div class="page-label"><strong>Page 10</strong>Two children sharing a snack on the grass</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135724_5a8dba92-c239-4920-b0af-76a3faca69ef.png"><div class="page-label"><strong>Page 11</strong>Two children laughing and dancing</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135725_566f646f-17f0-483f-bc58-27e9f1f59a33.png"><div class="page-label"><strong>Page 12</strong>Two children at sunset, content and tired</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 12 -->
+<div class="book" id="b12">
+  <div class="book-header">
+    <span class="book-num">Book 12</span>
+    <h2 class="book-title">I Help</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135722_76d14f79-24e4-44fd-ab91-7c4af3612ca5.png"><div class="page-label"><strong>Cover</strong>Child carrying a wicker basket, cheerful</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135724_d967170a-0719-4f84-b5c3-044c2dc8b99a.png"><div class="page-label"><strong>Page 1</strong>Child watching parent cook</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135726_686a4d95-6578-4703-9871-76acf3b55d04.png"><div class="page-label"><strong>Page 2</strong>Child wiping a table with a soft cloth</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135728_57462706-742f-495c-bdb5-aa3f30cbe6dd.png"><div class="page-label"><strong>Page 3</strong>Child carefully carrying plates</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135730_3c1b845c-f15c-4970-a493-ab4248b18c0e.png"><div class="page-label"><strong>Page 4</strong>Child carrying a small laundry basket</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135732_625de803-de41-4346-b70e-3b0a27ecb961.png"><div class="page-label"><strong>Page 5</strong>Child holding door open for grandmother</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135734_f1104c2c-31c5-4707-b306-47269b157053.png"><div class="page-label"><strong>Page 6</strong>Child smoothing a butter-yellow quilt</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135736_b16173b7-532a-4ae3-ad1c-bae59ca83b5c.png"><div class="page-label"><strong>Page 7</strong>Child watering a sage-green plant</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135737_c9b74235-e144-44df-bf17-4e2fe30e2908.png"><div class="page-label"><strong>Page 8</strong>Child putting toys into a wooden box</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135739_3f8af43d-73e7-4a57-8bb1-88652a22e162.png"><div class="page-label"><strong>Page 9</strong>Child and parent setting the dinner table</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135741_12861a88-86db-4fb5-a77d-fd148c9f7342.png"><div class="page-label"><strong>Page 10</strong>Child sweeping a garden path</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140117_274934f8-c828-418d-945d-f254982b83d9.png"><div class="page-label"><strong>Page 11</strong>Child offering a small flower to grandmother</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_135745_7471fe8d-e4b3-4431-a35b-aa795ab666e0.png"><div class="page-label"><strong>Page 12</strong>Child and parent finishing task together</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 13 -->
+<div class="book" id="b13">
+  <div class="book-header">
+    <span class="book-num">Book 13</span>
+    <h2 class="book-title">Big and Small</h2>
+    <span class="book-count">13/13 ✓</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140355_878cb57c-c8fd-4d14-831e-6d588fb14f0e.png"><div class="page-label"><strong>Cover</strong>Tall leafy tree beside a tiny bird</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140403_76bb20f6-26ea-46ce-9c7e-21a605c16134.png"><div class="page-label"><strong>Page 1</strong>Very tall tree beside small child at its base</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140405_93584483-4722-48c9-906b-5a8d58d32334.png"><div class="page-label"><strong>Page 2</strong>Large gentle elephant beside a tiny mouse</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140407_44907ffa-6b67-4f9d-9972-00f952a9f617.png"><div class="page-label"><strong>Page 3</strong>Large cow beside a small rabbit</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140408_d0216904-28cb-4be6-8925-97c7ccf0843b.png"><div class="page-label"><strong>Page 4</strong>Tall father and small child side by side</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140409_6140d4b4-d47c-477a-956f-183fd7e2a5d4.png"><div class="page-label"><strong>Page 5</strong>Tall sunflower beside a short daisy</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140411_f5685ca1-b072-4368-9452-8e98ea258f02.png"><div class="page-label"><strong>Page 6</strong>Big terracotta bowl beside a small sage cup</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140412_582e6614-794e-46b9-a4af-8f00f27f0433.png"><div class="page-label"><strong>Page 7</strong>Tall sunflower and short daisy, warm light</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140413_ab1be4f8-ebde-4c9a-a695-43024e08e8a3.png"><div class="page-label"><strong>Page 8</strong>Child reaching arms up as high as possible</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140414_159661f0-fc38-48ef-861e-1880119d9f24.png"><div class="page-label"><strong>Page 9</strong>Child crouching very small, tucked down low</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140416_281afbfd-b3da-41b7-994d-2262d6cc7b3c.png"><div class="page-label"><strong>Page 10</strong>Big soft sun above a small house</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140417_1e50fb8a-84f1-48a2-8019-f7ddfe5af080.png"><div class="page-label"><strong>Page 11</strong>Child reaching up high, arms extended</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140419_737fe851-e4c4-4bbb-83c2-51f9864f8c09.png"><div class="page-label"><strong>Page 12</strong>Small child beside a big tree, happy</div></div>
+  </div>
+  <p class="status-bar"><span class="dot"></span>13 of 13 images complete</p>
+</div>
+
+<!-- BOOK 14 -->
+<div class="book" id="b14">
+  <div class="book-header">
+    <span class="book-num">Book 14</span>
+    <h2 class="book-title">How I Feel</h2>
+    <span class="book-count">12/13 ⚠</span>
+  </div>
+  <div class="pages">
+    <div class="page-card cover"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140421_4de69f32-0aaf-4c75-a04c-0292dfdb1b55.png"><div class="page-label"><strong>Cover</strong>Child's gentle face with soft happy smile</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140422_55d5664d-28ad-49e2-b58b-4d8cf4268c01.png"><div class="page-label"><strong>Page 1</strong>Child waking with bright happy smile</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140423_448c92a4-0003-4089-a62a-23f5c4320920.png"><div class="page-label"><strong>Page 2</strong>Child laughing with eyes closed, pure joy</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140425_f65f8c83-8529-4990-83a0-76fbb337917c.png"><div class="page-label"><strong>Page 3</strong>Child smiling brightly with rosy cheeks</div></div>
+    <div class="page-card" style="background:#f8f3ec;"><span class="retry-badge">⏳ Pending retry</span><div class="page-label"><strong>Page 4</strong>Sad expression — needs credit top-up to retry</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140427_b666367e-4c06-46b1-836e-d9824acdce7a.png"><div class="page-label"><strong>Page 5</strong>Child sitting alone hugging knees</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140428_63a82f81-6bfc-472d-9739-9d7941977b9b.png"><div class="page-label"><strong>Page 6</strong>Child with wide eyes, surprised, mouth in O</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140430_beb6e38c-fb2e-4c00-a056-5349473ceee9.png"><div class="page-label"><strong>Page 7</strong>Child with downturned mouth, gently sad</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140433_9d5857c7-25eb-4050-b762-03498bbe3883.png"><div class="page-label"><strong>Page 8</strong>Child with furrowed brows, mildly frustrated</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140434_37029000-0ed4-4b02-aa22-18757c7deebd.png"><div class="page-label"><strong>Page 9</strong>Child eyes closed, calm and peaceful</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140436_eee4927b-b3d5-42ba-b8df-19ef59a08855.png"><div class="page-label"><strong>Page 10</strong>Child holding tummy, looking at food</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140437_a402d6ef-1221-402f-a046-487353ab61f0.png"><div class="page-label"><strong>Page 11</strong>Child yawning, sleepy, rubbing one eye</div></div>
+    <div class="page-card"><img data-src="https://d8j0ntlcm91z4.cloudfront.net/user_3ER8qzhPd5TQMr0pVhlXtjQaavS/hf_20260613_140438_db0a0d48-60e0-4902-859e-ea3f27213684.png"><div class="page-label"><strong>Page 12</strong>Child smiling softly at a friend, content</div></div>
+  </div>
+  <p class="status-bar"><span class="dot warn"></span>12 of 13 images complete — Page 4 pending retry</p>
+</div>
+
+<script>
+(function() {
+  var imgs = document.querySelectorAll('img[data-src]');
+  if (!imgs.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var img = entry.target;
+        img.src = img.dataset.src;
+        observer.unobserve(img);
+      }
+    });
+  }, { rootMargin: '400px 0px' });
+  imgs.forEach(function(img) { observer.observe(img); });
+})();
+</script>
+</body>
+</html>

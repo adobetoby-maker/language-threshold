@@ -1,1 +1,3 @@
-/* /index.html 200
+/readers/*  /readers/:splat  200
+/readers  /readers/index.html  200
+/*  /index.html  200
