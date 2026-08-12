@@ -41,7 +41,7 @@ describe('speaking event outbox', () => {
     expect((await outbox.list('attempt_test')).map(item => item.idempotencyKey)).toEqual(['turn-1', 'turn-2'])
     expect((await outbox.list('attempt_test'))[0].payload).toEqual({ retried: true })
 
-    await outbox.acknowledge('turn-1')
+    await outbox.acknowledge('attempt_test', 'turn-1')
     expect((await outbox.list()).map(item => item.idempotencyKey)).toEqual(['turn-2'])
   })
 
@@ -50,6 +50,15 @@ describe('speaking event outbox', () => {
     await outbox.enqueue({ ...event('other-1', '2026-08-12T10:00:02.000Z'), attemptId: 'attempt_other', sequence: 1 })
 
     await outbox.clear('attempt_test')
+    expect((await outbox.list()).map(item => item.attemptId)).toEqual(['attempt_other'])
+  })
+
+  it('scopes identical idempotency keys to their attempt', async () => {
+    await outbox.enqueue(event('turn-1', '2026-08-12T10:00:01.000Z'))
+    await outbox.enqueue({ ...event('turn-1', '2026-08-12T10:00:02.000Z'), attemptId: 'attempt_other' })
+
+    expect(await outbox.list()).toHaveLength(2)
+    await outbox.acknowledge('attempt_test', 'turn-1')
     expect((await outbox.list()).map(item => item.attemptId)).toEqual(['attempt_other'])
   })
 })

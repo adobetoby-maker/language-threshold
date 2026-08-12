@@ -1,0 +1,31 @@
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { requestSpeakingToken } from './token'
+
+describe('temporary speaking token client', () => {
+  afterEach(() => vi.restoreAllMocks())
+
+  it('requests a same-origin, age-gated, scenario-scoped credential', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify({
+      provider: 'deepgram',
+      accessToken: 'temporary',
+      expiresIn: 30,
+      sttUrl: 'wss://api.deepgram.com/v2/listen',
+      ttsUrl: 'wss://api.deepgram.com/v1/speak',
+    }), { status: 200, headers: { 'Content-Type': 'application/json' } }))
+
+    await expect(requestSpeakingToken('scenario_version_construction_safety_briefing_es_v1', true)).resolves.toMatchObject({ accessToken: 'temporary' })
+    expect(fetchMock).toHaveBeenCalledWith('/api/speaking/token', expect.objectContaining({ method: 'POST', credentials: 'same-origin' }))
+    expect(JSON.parse(String(fetchMock.mock.calls[0][1]?.body))).toEqual({
+      scenarioVersionId: 'scenario_version_construction_safety_briefing_es_v1',
+      ageConfirmed: true,
+    })
+  })
+
+  it('does not accept a malformed provider grant', async () => {
+    vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify({ provider: 'deepgram', expiresIn: 30 }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }))
+    await expect(requestSpeakingToken('scenario_version_construction_safety_briefing_es_v1', true)).rejects.toThrow('invalid temporary credential')
+  })
+})
