@@ -1,4 +1,4 @@
-import type { FeedbackLanguage, ScenarioVersionId } from '../domain/types'
+import type { FeedbackLanguage, ObjectiveId, ScenarioVersionId } from '../domain/types'
 import type { AttemptId } from '../session/types'
 
 export type SpeechStage = 'capture' | 'stt' | 'dialogue' | 'tts' | 'playback'
@@ -21,7 +21,7 @@ export interface SpeechTurnRequest {
 
 export interface SpeechTurnResult {
   assistantText: string
-  completedObjectiveIds: string[]
+  completedObjectiveIds: ObjectiveId[]
   deferredFeedback: string[]
   timings: StageTiming[]
   providerRequestIds: Partial<Record<SpeechProviderKind, string>>
@@ -34,29 +34,41 @@ export interface SpeakingProviderCapabilities {
   mode: 'tap-to-speak'
   locale: 'es-419'
   providers: {
-    stt: { provider: 'deepgram'; model: 'flux-general-multi'; transport: 'websocket' }
-    dialogue: { provider: 'anthropic'; model: string; transport: 'server' }
-    tts: { provider: 'deepgram'; model: string; transport: 'websocket' }
+    stt: ProviderCapability
+    dialogue: ProviderCapability
+    tts: ProviderCapability
   }
   limits: {
-    tokenTtlSeconds: 30
-    hardCapMinutes: 18
-    grantsPerPrincipalPerHour: number
+    tokenTtlSeconds: number
+    grantBudgets: {
+      perAnonymousPrincipalPerHour: number
+      perNetworkAddressPerHour: number
+    }
+    plannedSessionHardCapMinutes: number
+    sessionHardCapEnforcedByServer: boolean
   }
+  ageGate: { mode: 'self-attestation'; productionApproved: false }
   privacy: {
     rawAudioRetainedByApplication: false
     browserAnalyticsSuppressed: true
-    providerModelImprovementOptOutRequired: true
+    sttModelImprovementOptOutRequested: true
+    providerRetentionApprovedForProduction: false
   }
   blockers: string[]
 }
 
-export interface SpeakingTokenGrant {
-  provider: 'deepgram'
+export interface ProviderCapability {
+  provider: SpeechProviderKind
+  model: string
+  transport: 'websocket' | 'server'
+  integrationStatus: 'connectivity-prototype' | 'grant-only' | 'planned'
+}
+
+export interface SpeakingTokenGrant<TProvider extends SpeechProviderKind = SpeechProviderKind> {
+  provider: TProvider
   accessToken: string
   expiresIn: number
-  sttUrl: string
-  ttsUrl: string
+  endpoints: Partial<Record<'stt' | 'tts', string>>
 }
 
 export interface SpeechSpikeMeasurement {
@@ -75,7 +87,7 @@ export interface SpeechSpikeMeasurement {
   estimatedProviderCostUsd: number
 }
 
-export interface StreamingSpeechAdapter {
+export interface StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
   connect(signal: AbortSignal): Promise<void>
   sendAudio(chunk: ArrayBuffer): void

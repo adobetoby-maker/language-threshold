@@ -7,6 +7,12 @@ const LEGACY_STORE_NAME = 'attempt-events'
 
 type AttemptEventKey = [AttemptEvent['attemptId'], AttemptEvent['idempotencyKey']]
 
+function isMigratableAttemptEvent(value: unknown): value is AttemptEvent {
+  if (!value || typeof value !== 'object') return false
+  const candidate = value as Partial<AttemptEvent>
+  return typeof candidate.attemptId === 'string' && typeof candidate.idempotencyKey === 'string'
+}
+
 function eventKey(attemptId: AttemptEvent['attemptId'], idempotencyKey: AttemptEvent['idempotencyKey']): AttemptEventKey {
   return [attemptId, idempotencyKey]
 }
@@ -25,8 +31,11 @@ function openDatabase(): Promise<IDBDatabase> {
           const legacy = request.transaction.objectStore(LEGACY_STORE_NAME)
           legacy.openCursor().onsuccess = cursorEvent => {
             const cursor = (cursorEvent.target as IDBRequest<IDBCursorWithValue | null>).result
-            if (!cursor) return
-            store.put(cursor.value)
+            if (!cursor) {
+              database.deleteObjectStore(LEGACY_STORE_NAME)
+              return
+            }
+            if (isMigratableAttemptEvent(cursor.value)) store.put(cursor.value)
             cursor.continue()
           }
         }
@@ -111,18 +120,11 @@ export class SpeakingEventOutbox {
         return
       }
 
-      const readTransaction = database.transaction(STORE_NAME, 'readonly')
-      const readCompletion = transactionCompletion(readTransaction)
-      const keys = await requestResult(readTransaction.objectStore(STORE_NAME).index('attemptId').getAllKeys(attemptId))
-      await readCompletion
-
-      if (keys.length > 0) {
-        const writeTransaction = database.transaction(STORE_NAME, 'readwrite')
-        const writeCompletion = transactionCompletion(writeTransaction)
-        const store = writeTransaction.objectStore(STORE_NAME)
-        await Promise.all(keys.map(key => requestResult(store.delete(key))))
-        await writeCompletion
-      }
+      const transaction = database.transaction(STORE_NAME, 'readwrite')
+      const completion = transactionCompletion(transaction)
+      const range = IDBKeyRange.bound(eventKey(attemptId, ''), eventKey(attemptId, '\uffff'))
+      await requestResult(transaction.objectStore(STORE_NAME).delete(range))
+      await completion
     } finally {
       database.close()
     }

@@ -9,8 +9,10 @@ describe('temporary speaking token client', () => {
       provider: 'deepgram',
       accessToken: 'temporary',
       expiresIn: 30,
-      sttUrl: 'wss://api.deepgram.com/v2/listen',
-      ttsUrl: 'wss://api.deepgram.com/v1/speak',
+      endpoints: {
+        stt: 'wss://api.deepgram.com/v2/listen',
+        tts: 'wss://api.deepgram.com/v1/speak',
+      },
     }), { status: 200, headers: { 'Content-Type': 'application/json' } }))
 
     await expect(requestSpeakingToken('scenario_version_construction_safety_briefing_es_v1', true)).resolves.toMatchObject({ accessToken: 'temporary' })

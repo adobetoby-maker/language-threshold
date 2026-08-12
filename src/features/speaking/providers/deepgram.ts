@@ -1,14 +1,14 @@
-import type { SpeakingProviderCapabilities, SpeakingTokenGrant, StreamingSpeechAdapter } from './contracts'
+import type { SpeakingProviderCapabilities, SpeakingTokenGrant, StreamingSttUploadAdapter } from './contracts'
 
 type ConnectionState = 'idle' | 'connecting' | 'open' | 'closed'
 
-export class DeepgramStreamingAdapter implements StreamingSpeechAdapter {
+export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
-  readonly grant: SpeakingTokenGrant
+  readonly grant: SpeakingTokenGrant<'deepgram'>
   private socket: WebSocket | null = null
   private state: ConnectionState = 'idle'
 
-  constructor(capabilities: SpeakingProviderCapabilities, grant: SpeakingTokenGrant) {
+  constructor(capabilities: SpeakingProviderCapabilities, grant: SpeakingTokenGrant<'deepgram'>) {
     this.capabilities = capabilities
     this.grant = grant
   }
@@ -18,7 +18,13 @@ export class DeepgramStreamingAdapter implements StreamingSpeechAdapter {
     this.state = 'connecting'
 
     return new Promise((resolve, reject) => {
-      const socket = new WebSocket(this.grant.sttUrl, ['bearer', this.grant.accessToken])
+      const sttUrl = this.grant.endpoints.stt
+      if (!sttUrl) {
+        this.state = 'closed'
+        reject(new Error('The provider grant does not include an STT endpoint.'))
+        return
+      }
+      const socket = new WebSocket(sttUrl, ['bearer', this.grant.accessToken])
       this.socket = socket
       const abort = () => {
         socket.close(1000, 'cancelled')

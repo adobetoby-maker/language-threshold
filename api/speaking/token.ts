@@ -19,6 +19,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'methodNotAllowed' })
   if (!requireTrustedOrigin(req, res)) return
 
+  if (process.env.VERCEL_ENV === 'production') {
+    return res.status(503).json({ error: 'productionDisabled', message: 'The provider-backed speaking spike cannot run in production.' })
+  }
+
   if (process.env.SPEAKING_SPIKE_ENABLED !== 'true' || process.env.SPEAKING_DATA_POLICY_APPROVED !== 'true') {
     return res.status(503).json({ error: 'spikeDisabled', message: 'The provider-backed speaking spike is disabled.' })
   }
@@ -57,8 +61,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       provider: 'deepgram',
       accessToken: grant.access_token,
       expiresIn: grant.expires_in,
-      sttUrl: 'wss://api.deepgram.com/v2/listen?model=flux-general-multi&language_hint=es&mip_opt_out=true',
-      ttsUrl: `wss://api.deepgram.com/v1/speak?model=${encodeURIComponent(process.env.SPEAKING_TTS_MODEL ?? 'aura-2-celeste-es')}&encoding=linear16&sample_rate=24000`,
+      endpoints: {
+        stt: 'wss://api.deepgram.com/v2/listen?model=flux-general-multi&language_hint=es&mip_opt_out=true',
+        tts: `wss://api.deepgram.com/v1/speak?model=${encodeURIComponent(process.env.SPEAKING_TTS_MODEL ?? 'aura-2-celeste-es')}&encoding=linear16&sample_rate=24000`,
+      },
     })
   } catch (error) {
     console.error('Deepgram token grant request failed.', error)

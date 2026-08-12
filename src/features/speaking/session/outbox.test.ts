@@ -3,6 +3,45 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { deduplicateAttemptEvents, SpeakingEventOutbox } from './outbox'
 import type { AttemptEvent } from './types'
 
+const DATABASE_NAME = 'language-threshold-speaking'
+const LEGACY_STORE_NAME = 'attempt-events'
+
+function deleteOutboxDatabase() {
+  return new Promise<void>((resolve, reject) => {
+    const request = indexedDB.deleteDatabase(DATABASE_NAME)
+    request.onsuccess = () => resolve()
+    request.onerror = () => reject(request.error)
+    request.onblocked = () => reject(new Error('Test database deletion was blocked.'))
+  })
+}
+
+function seedLegacyOutbox(records: unknown[]) {
+  return new Promise<void>((resolve, reject) => {
+    const request = indexedDB.open(DATABASE_NAME, 1)
+    request.onupgradeneeded = () => {
+      const store = request.result.createObjectStore(LEGACY_STORE_NAME, { keyPath: 'idempotencyKey' })
+      records.forEach(record => store.put(record))
+    }
+    request.onsuccess = () => {
+      request.result.close()
+      resolve()
+    }
+    request.onerror = () => reject(request.error)
+  })
+}
+
+function databaseStoreNames() {
+  return new Promise<string[]>((resolve, reject) => {
+    const request = indexedDB.open(DATABASE_NAME, 2)
+    request.onsuccess = () => {
+      const names = Array.from(request.result.objectStoreNames)
+      request.result.close()
+      resolve(names)
+    }
+    request.onerror = () => reject(request.error)
+  })
+}
+
 function event(idempotencyKey: string, occurredAt: string): AttemptEvent {
   return {
     id: `event_${idempotencyKey}`,
@@ -19,8 +58,14 @@ function event(idempotencyKey: string, occurredAt: string): AttemptEvent {
 describe('speaking event outbox', () => {
   const outbox = new SpeakingEventOutbox()
 
-  beforeEach(async () => {
-    await outbox.clear()
+  beforeEach(deleteOutboxDatabase)
+
+  it('migrates valid v1 rows, skips malformed rows, and removes the legacy store', async () => {
+    const valid = event('turn-1', '2026-08-12T10:00:01.000Z')
+    await seedLegacyOutbox([valid, { idempotencyKey: 'malformed-without-attempt' }])
+
+    expect((await outbox.list()).map(item => item.idempotencyKey)).toEqual(['turn-1'])
+    expect(await databaseStoreNames()).not.toContain(LEGACY_STORE_NAME)
   })
 
   it('deduplicates retries by idempotency key and orders events chronologically', () => {

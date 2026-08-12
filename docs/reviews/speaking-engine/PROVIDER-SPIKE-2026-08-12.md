@@ -7,7 +7,7 @@
 
 ## Decision
 
-Use a provider-neutral streaming cascade and make **Deepgram Flux Multilingual + Aura-2 Spanish** the first measured speech transport. Keep dialogue and evaluation behind server-owned interfaces; the spike uses Claude Haiku 4.5 as the first dialogue adapter because the repository already operates Anthropic safely on the server.
+Use a provider-neutral streaming cascade and make **Deepgram Flux Multilingual + Aura-2 Spanish** the first transport candidate. This PR provides token-grant and STT-upload connectivity scaffolding only: it does not yet receive transcripts, invoke a speaking dialogue adapter, or manage a TTS socket. Claude Haiku 4.5 is the first planned server dialogue candidate because the repository already operates Anthropic on the server.
 
 This is a testable reference configuration, not a permanent vendor lock. OpenAI transcription/realtime remains the comparison candidate. No provider-backed speaking path may be enabled in production until the PRD launch gates are met.
 
@@ -60,11 +60,12 @@ This estimate must not become a launch promise. Physical-device runs must captur
 ## Security and privacy behavior implemented in this spike
 
 - `GET /api/speaking/capabilities` publishes non-secret configuration status and always returns `productionReady: false`.
-- `POST /api/speaking/token` is disabled unless both `SPEAKING_SPIKE_ENABLED=true` and `SPEAKING_DATA_POLICY_APPROVED=true` are set.
-- The token route requires an approved same-origin request, explicit 13+ confirmation, an allowlisted immutable scenario version, a signed HttpOnly anonymous-principal cookie, configured Upstash budgets, and a server-only Deepgram key.
-- Budget checks fail closed if Upstash is missing or errors. Token grants are limited per signed principal and per network address.
+- `POST /api/speaking/token` refuses the production environment unconditionally. In preview/development it remains disabled unless both `SPEAKING_SPIKE_ENABLED=true` and `SPEAKING_DATA_POLICY_APPROVED=true` are set.
+- The token route requires an approved same-origin request, explicit 13+ self-attestation, an allowlisted immutable scenario version, a signed HttpOnly anonymous-principal cookie, configured Upstash grant limits, and a server-only Deepgram key. Self-attestation is not verified age proof and is not approved for production.
+- Grant checks fail closed if Upstash is missing or errors. Grants are limited per signed anonymous principal and per network address. Deleting the cookie can rotate the anonymous principal, and an open provider socket can outlive the grant token; these controls do not enforce concurrency, audio seconds, the planned 18-minute session cap, or dollar spend.
 - The returned Deepgram credential expires in 30 seconds and is intended only to establish provider WebSockets.
-- The application does not retain raw audio. Speaking routes suppress third-party analytics, including client-side `pushState` and `replaceState` navigation.
+- The application does not retain raw audio. Speaking routes suppress first-party analytics calls. If SPA navigation enters speaking after Meta Pixel has loaded, the app forces a clean document reload so the speaking document starts without the pixel.
+- Machine-readable capabilities distinguish connectivity scaffolding from planned dialogue/TTS integration, mark the 18-minute cap as server-unenforced, and keep provider retention approval false.
 - Provider request IDs and timing data are operational metadata; transcripts and raw audio must not enter analytics.
 
 ## Required physical-device matrix
@@ -97,6 +98,6 @@ Phase 2 can recommend a production provider only when:
 
 - No full-duplex speech-to-speech or barge-in.
 - No production launch or production environment enablement.
-- No claim that anonymous signed principals are the final account/auth design.
+- No claim that anonymous signed principals, self-attested age, grant counts, or a client session timer are the final account/auth/usage-control design.
 - No raw-audio retention, transcript analytics, pronunciation mastery gate, or fake AI conversation.
 - No claim that desktop browser verification satisfies the physical-iPhone launch gate.

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { captureUTMs } from '../lib/utm'
 
@@ -49,6 +49,12 @@ function loadPixel(pixelId: string, shouldTrackPageView: () => boolean) {
 export function MetaPixel() {
   const location = useLocation()
   const suppressAnalytics = location.pathname.startsWith('/app/speak')
+
+  useLayoutEffect(() => {
+    if (!suppressAnalytics) return
+    const loadedPixel = Boolean(window.fbq || window._fbPixelReady || document.querySelector('script[src*="connect.facebook.net"]'))
+    if (loadedPixel) window.location.reload()
+  }, [suppressAnalytics])
 
   useEffect(() => {
     if (!PIXEL_ID || suppressAnalytics) return

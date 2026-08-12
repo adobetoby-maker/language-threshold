@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import type { SpeechTurnResult, SpeakingProviderCapabilities } from './contracts'
+import type { ProviderCapability, SpeechTurnResult, SpeakingProviderCapabilities } from './contracts'
 
 describe('provider-neutral speaking contracts', () => {
   it('keeps provider request ids out of learner-visible scoring fields', () => {
@@ -22,5 +22,15 @@ describe('provider-neutral speaking contracts', () => {
     } as SpeakingProviderCapabilities
     expect(capabilities.productionReady).toBe(false)
     expect(capabilities.blockers).toContain('physical-iphone-validation')
+  })
+
+  it('allows provider candidates without changing the shared capability contract', () => {
+    const candidate: ProviderCapability = {
+      provider: 'openai',
+      model: 'comparison-model',
+      transport: 'websocket',
+      integrationStatus: 'planned',
+    }
+    expect(candidate.provider).toBe('openai')
   })
 })
