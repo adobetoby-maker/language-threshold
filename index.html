@@ -67,6 +67,14 @@
       };
       syncAnalyticsSuppression();
       window.addEventListener('popstate', syncAnalyticsSuppression);
+      ['pushState', 'replaceState'].forEach(function (method) {
+        const original = window.history[method];
+        window.history[method] = function () {
+          const result = original.apply(this, arguments);
+          syncAnalyticsSuppression();
+          return result;
+        };
+      });
       if (!window['ga-disable-' + analyticsId]) {
         const analyticsScript = document.createElement('script');
         analyticsScript.async = true;

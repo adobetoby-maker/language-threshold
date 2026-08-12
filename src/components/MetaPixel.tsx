@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { captureUTMs } from '../lib/utm'
 
@@ -50,6 +50,12 @@ export function MetaPixel() {
   const location = useLocation()
   const suppressAnalytics = location.pathname.startsWith('/app/speak')
 
+  useLayoutEffect(() => {
+    if (!suppressAnalytics) return
+    const loadedPixel = Boolean(window.fbq || window._fbPixelReady || document.querySelector('script[src*="connect.facebook.net"]'))
+    if (loadedPixel) window.location.reload()
+  }, [suppressAnalytics])
+
   useEffect(() => {
     if (!PIXEL_ID || suppressAnalytics) return
     captureUTMs()
@@ -66,6 +72,6 @@ export function MetaPixel() {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function trackMetaEvent(event: string, params?: Record<string, unknown>) {
-  if (!window.fbq) return
+  if (window.location.pathname.startsWith('/app/speak') || !window.fbq) return
   window.fbq('track', event, params)
 }

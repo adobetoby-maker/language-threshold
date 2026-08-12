@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { LANGUAGE_UNIT_MANIFEST, resolveLanguageUnit, validateLanguageUnitManifest } from './catalog'
+import { LANGUAGE_UNIT_MANIFEST, resolveAvailableLanguageUnits, resolveLanguageUnit, tryResolveLanguageUnit, validateLanguageUnitManifest } from './catalog'
 import { SPEAKING_SCENARIOS } from './scenarios'
 
 describe('canonical speaking vocabulary manifest', () => {
@@ -23,5 +23,10 @@ describe('canonical speaking vocabulary manifest', () => {
     expect(new Set(SPEAKING_SCENARIOS.map(scenario => scenario.id)).size).toBe(6)
     expect(new Set(SPEAKING_SCENARIOS.map(scenario => scenario.scenarioId)).size).toBe(6)
     expect(SPEAKING_SCENARIOS.every(scenario => scenario.language === 'es' && scenario.version === 1)).toBe(true)
+  })
+
+  it('offers a non-throwing resolver for graceful curriculum drift handling', () => {
+    expect(tryResolveLanguageUnit('lu_missing')).toBeNull()
+    expect(resolveAvailableLanguageUnits(['lu_es_0001', 'lu_missing']).map(result => Boolean(result.unit))).toEqual([true, false])
   })
 })
