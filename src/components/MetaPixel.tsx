@@ -48,17 +48,18 @@ function loadPixel(pixelId: string) {
 
 export function MetaPixel() {
   const location = useLocation()
+  const suppressAnalytics = location.pathname.startsWith('/app/speak')
 
   useEffect(() => {
-    if (!PIXEL_ID) return
+    if (!PIXEL_ID || suppressAnalytics) return
     captureUTMs()
     loadPixel(PIXEL_ID)
-  }, [])
+  }, [suppressAnalytics])
 
   useEffect(() => {
-    if (!PIXEL_ID || !window.fbq || !window._fbPixelReady) return
+    if (!PIXEL_ID || suppressAnalytics || !window.fbq || !window._fbPixelReady) return
     window.fbq('track', 'PageView')
-  }, [location])
+  }, [location, suppressAnalytics])
 
   return null
 }

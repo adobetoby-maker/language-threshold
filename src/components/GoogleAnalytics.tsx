@@ -13,10 +13,11 @@ declare global {
 
 export function GoogleAnalytics() {
   const location = useLocation()
+  const suppressAnalytics = location.pathname.startsWith('/app/speak')
 
   // Load GA script once on mount
   useEffect(() => {
-    if (!GA_ID) return
+    if (!GA_ID || suppressAnalytics) return
     if (window.gtag) return
 
     const script = document.createElement('script')
@@ -29,13 +30,13 @@ export function GoogleAnalytics() {
     window.gtag('js', new Date())
     window.gtag('config', GA_ID, { anonymize_ip: true })
     if (GADS_ID) window.gtag('config', GADS_ID)
-  }, [])
+  }, [suppressAnalytics])
 
   // Track page views on route change
   useEffect(() => {
-    if (!GA_ID || !window.gtag) return
+    if (!GA_ID || suppressAnalytics || !window.gtag) return
     window.gtag('event', 'page_view', { page_path: location.pathname + location.search })
-  }, [location])
+  }, [location, suppressAnalytics])
 
   return null
 }

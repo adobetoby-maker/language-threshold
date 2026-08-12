@@ -467,9 +467,9 @@ export default function AppHome() {
             {specialty === 'medical' ? '🏥' : '🏗️'} {specialty === 'medical' ? 'Medical' : 'Construction'} Spanish
           </div>
         </div>
-        <div style={{ ...sansFont, fontSize: 11, color: color, background: color + '15', borderRadius: 20, padding: '3px 10px', fontWeight: 700 }}>
-          {specialty === 'medical' ? 'Healthcare' : 'Jobsite'}
-        </div>
+        <a href="/app/speak" style={{ ...sansFont, fontSize: 11, color: '#0D0D0D', background: '#C9A84C', borderRadius: 20, padding: '5px 11px', fontWeight: 800, textDecoration: 'none' }}>
+          🎙 Speak
+        </a>
       </div>
 
       {/* Beta module picker — only shown during free period */}
