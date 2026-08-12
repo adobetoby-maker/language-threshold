@@ -1,12 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { consumeSpeakingGrantBudget } from './_budget'
+import { consumeSpeakingGrantBudget } from './_budget.js'
 import {
   applySpeakingCors,
   LAUNCH_SCENARIO_VERSION_IDS,
   requestIp,
   requireAnonymousPrincipal,
   requireTrustedOrigin,
-} from './_shared'
+} from './_shared.js'
 
 interface DeepgramGrant {
   access_token?: string

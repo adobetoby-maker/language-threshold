@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { applySpeakingCors } from './_shared'
+import { applySpeakingCors } from './_shared.js'
 
 const BLOCKERS = [
   'physical-iphone-validation',
