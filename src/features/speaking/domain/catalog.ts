@@ -40,6 +40,25 @@ function occurrenceId(unitId: LanguageUnitId): ContentOccurrenceId {
   return `occ_${unitId.slice(3)}_module_v1`
 }
 
+function normalizeSpanish(value: string) {
+  return value
+    .normalize('NFKC')
+    .toLocaleLowerCase('es')
+    .trim()
+    .replace(/^(el|la|los|las|un|una|unos|unas)\s+/, '')
+    .replace(/\s+/g, ' ')
+}
+
+function surfaceVariants(surfaceForm: string) {
+  return surfaceForm
+    .split(/\/|—/)
+    .map(normalizeSpanish)
+    .flatMap(variant => {
+      const singularFirstWord = variant.replace(/^([a-záéíóúñü]+)s\b/u, '$1')
+      return singularFirstWord === variant ? [variant] : [variant, singularFirstWord]
+    })
+}
+
 export function resolveLanguageUnit(id: LanguageUnitId): ResolvedLanguageUnit {
   const entry = LANGUAGE_UNIT_MANIFEST.find(candidate => candidate.id === id)
   if (!entry) throw new Error(`Unknown canonical language unit: ${id}`)
@@ -65,7 +84,7 @@ export function resolveLanguageUnit(id: LanguageUnitId): ResolvedLanguageUnit {
     language: 'es',
     locale: 'es-419',
     kind: entry.partOfSpeech === 'phrase' ? 'phrase' : 'word',
-    displayForm: matches[0].es,
+    displayForm: entry.lemma,
     occurrence,
   }
 }
@@ -78,6 +97,8 @@ export function validateLanguageUnitManifest(): string[] {
   const issues: string[] = []
   const ids = new Set<string>()
   const sourceKeys = new Set<string>()
+  const senseKeys = new Set<string>()
+  const conceptSenseKeys = new Set<string>()
 
   for (const entry of LANGUAGE_UNIT_MANIFEST) {
     if (ids.has(entry.id)) issues.push(`Duplicate language unit id: ${entry.id}`)
@@ -87,8 +108,20 @@ export function validateLanguageUnitManifest(): string[] {
     if (sourceKeys.has(sourceKey)) issues.push(`Duplicate source occurrence: ${sourceKey}`)
     sourceKeys.add(sourceKey)
 
+    const localizedSenseKey = `es:es-419:${entry.senseKey}`
+    if (senseKeys.has(localizedSenseKey)) issues.push(`Duplicate localized sense: ${localizedSenseKey}`)
+    senseKeys.add(localizedSenseKey)
+
+    const conceptSenseKey = `${entry.conceptId}:${localizedSenseKey}`
+    if (conceptSenseKeys.has(conceptSenseKey)) issues.push(`Duplicate concept/sense unit: ${conceptSenseKey}`)
+    conceptSenseKeys.add(conceptSenseKey)
+
     try {
-      resolveLanguageUnit(entry.id)
+      const resolved = resolveLanguageUnit(entry.id)
+      const normalizedLemma = normalizeSpanish(entry.lemma)
+      if (!surfaceVariants(resolved.occurrence.surfaceForm).includes(normalizedLemma)) {
+        issues.push(`Lemma "${entry.lemma}" drifted from source surface "${resolved.occurrence.surfaceForm}" for ${entry.id}`)
+      }
     } catch (error) {
       issues.push(error instanceof Error ? error.message : String(error))
     }

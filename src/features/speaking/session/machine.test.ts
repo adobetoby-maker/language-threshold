@@ -31,4 +31,15 @@ describe('speaking session state machine', () => {
     const state = createInitialSessionState(SPEAKING_SCENARIOS[0])
     expect(speakingSessionReducer(state, { type: 'RESPONSE_STARTED' })).toBe(state)
   })
+
+  it('does not pause an idle session or fail a completed attempt', () => {
+    let state = createInitialSessionState(SPEAKING_SCENARIOS[0])
+    expect(speakingSessionReducer(state, { type: 'PAUSE' })).toBe(state)
+    state = speakingSessionReducer(state, { type: 'START', attemptId: 'attempt_test' })
+    state = speakingSessionReducer(state, {
+      type: 'COMPLETE',
+      result: { rubricVersion: 'speaking-rubric-v1', tier: 'clay', understandabilityRatio: 0.4, blockedBy: 'Retry.' },
+    })
+    expect(speakingSessionReducer(state, { type: 'FAIL', message: 'late failure' })).toBe(state)
+  })
 })

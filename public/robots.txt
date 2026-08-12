@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /app/speak
 Sitemap: https://languagethreshold.com/sitemap.xml

@@ -61,15 +61,21 @@
 
     <!-- Google tag (gtag.js). Speaking routes intentionally load no third-party analytics. -->
     <script>
-      if (!window.location.pathname.startsWith('/app/speak')) {
+      const analyticsId = 'G-RP0TZ1MP7E';
+      const syncAnalyticsSuppression = function () {
+        window['ga-disable-' + analyticsId] = window.location.pathname.startsWith('/app/speak');
+      };
+      syncAnalyticsSuppression();
+      window.addEventListener('popstate', syncAnalyticsSuppression);
+      if (!window['ga-disable-' + analyticsId]) {
         const analyticsScript = document.createElement('script');
         analyticsScript.async = true;
-        analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-RP0TZ1MP7E';
+        analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + analyticsId;
         document.head.appendChild(analyticsScript);
         window.dataLayer = window.dataLayer || [];
         window.gtag = function(){window.dataLayer.push(arguments);};
         window.gtag('js', new Date());
-        window.gtag('config', 'G-RP0TZ1MP7E');
+        window.gtag('config', analyticsId, { anonymize_ip: true });
       }
     </script>
   </head>

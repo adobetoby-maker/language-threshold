@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { displayFont, sansFont } from '../constants'
 import { resolveLanguageUnits } from '../features/speaking/domain/catalog'
@@ -18,6 +18,11 @@ export default function SpeakingScenario() {
   const [feedbackLanguage, setFeedbackLanguage] = useState<FeedbackLanguage>('adaptive')
   const [ageConfirmed, setAgeConfirmed] = useState(false)
   const microphone = useMicrophoneCheck()
+  const resetMicrophone = microphone.reset
+
+  useEffect(() => {
+    if (!ageConfirmed) resetMicrophone()
+  }, [ageConfirmed, resetMicrophone])
 
   if (!scenario) {
     return (
@@ -48,7 +53,7 @@ export default function SpeakingScenario() {
         <ol style={{ ...sansFont, color: '#D7D0C5', lineHeight: 1.5, paddingLeft: 22, margin: 0 }}>
           {scenario.objectives.map(objective => <li key={objective.id} style={{ marginBottom: 8 }}>{objective.description}{objective.critical ? ' *' : ''}</li>)}
         </ol>
-        <p style={{ ...sansFont, color: '#71717A', fontSize: 11, margin: '10px 0 0' }}>* Required for Bronze or higher. Pronunciation never independently gates mastery.</p>
+        <p style={{ ...sansFont, color: '#A89F94', fontSize: 11, margin: '10px 0 0' }}>* Required for Bronze or higher. Pronunciation never independently gates mastery.</p>
       </section>
 
       <section style={{ marginTop: 18 }}>
@@ -56,7 +61,7 @@ export default function SpeakingScenario() {
         <div style={{ display: 'grid', gap: 8 }}>
           {vocabulary.map(unit => (
             <div key={unit.id} style={{ ...sansFont, display: 'flex', justifyContent: 'space-between', gap: 14, background: '#161616', borderRadius: 10, padding: '10px 12px' }}>
-              <span style={{ color: '#71717A', fontSize: 12 }}>{unit.source.sourceTerm}</span>
+              <span style={{ color: '#A89F94', fontSize: 12 }}>{unit.source.sourceTerm}</span>
               <span style={{ color: '#F7F3EC', fontSize: 13, fontWeight: 700, textAlign: 'right' }}>{unit.displayForm}</span>
             </div>
           ))}
@@ -81,7 +86,7 @@ export default function SpeakingScenario() {
           </select>
         </label>
 
-        {microphone.state === 'ready' || microphone.state === 'recorded' ? (
+        {microphone.state === 'ready' ? (
           <button type="button" onClick={microphone.startRecording} style={{ ...sansFont, width: '100%', border: 0, borderRadius: 10, background: accent, color: '#0D0D0D', padding: '12px 14px', fontWeight: 800, cursor: 'pointer' }}>
             Tap to record a short test
           </button>
@@ -91,20 +96,23 @@ export default function SpeakingScenario() {
           </button>
         ) : (
           <button type="button" disabled={!canRequestMicrophone} onClick={microphone.requestPermission} style={{ ...sansFont, width: '100%', border: 0, borderRadius: 10, background: canRequestMicrophone ? accent : '#343434', color: canRequestMicrophone ? '#0D0D0D' : '#777', padding: '12px 14px', fontWeight: 800, cursor: canRequestMicrophone ? 'pointer' : 'not-allowed' }}>
-            {microphone.state === 'requesting' ? 'Requesting microphone…' : 'Enable microphone check'}
+            {microphone.state === 'requesting' ? 'Requesting microphone…' : microphone.state === 'recorded' ? 'Enable another microphone check' : 'Enable microphone check'}
           </button>
         )}
 
+        <p aria-live="polite" style={{ ...sansFont, color: '#A89F94', fontSize: 12, minHeight: 18, marginBottom: 0 }}>
+          {microphone.state === 'requesting' ? 'Waiting for browser permission.' : microphone.state === 'ready' ? 'Microphone ready. Tap record when you are ready.' : microphone.state === 'recording' ? 'Recording. Tap stop when finished.' : microphone.state === 'recorded' ? 'Recording complete. Use the player below to check it.' : ''}
+        </p>
         {microphone.error ? <p role="alert" style={{ ...sansFont, color: '#FF8A80', fontSize: 13, lineHeight: 1.5 }}>{microphone.error}</p> : null}
         {microphone.audioUrl ? (
           <div style={{ marginTop: 16 }}>
             <audio controls src={microphone.audioUrl} style={{ width: '100%' }} aria-label="Temporary microphone test playback" />
-            <p style={{ ...sansFont, color: '#71717A', fontSize: 11, marginBottom: 0 }}>Leaving this page destroys the temporary recording URL.</p>
+            <p style={{ ...sansFont, color: '#A89F94', fontSize: 11, marginBottom: 0 }}>Leaving this page destroys the temporary recording URL.</p>
           </div>
         ) : null}
       </section>
 
-      <aside style={{ ...sansFont, color: '#71717A', fontSize: 12, lineHeight: 1.55, marginTop: 18 }}>
+      <aside style={{ ...sansFont, color: '#A89F94', fontSize: 12, lineHeight: 1.55, marginTop: 18 }}>
         Guided STT → dialogue → TTS remains disabled until the provider, retention, latency, and physical-iPhone spike is approved and configured. This page does not simulate an AI conversation.
       </aside>
     </main>

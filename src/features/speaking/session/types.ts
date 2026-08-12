@@ -61,6 +61,7 @@ export interface AttemptEvent {
   attemptId: AttemptId
   scenarioVersionId: ScenarioVersionId
   type: AttemptEventType
+  sequence: number
   occurredAt: string
   payload: Record<string, unknown>
 }

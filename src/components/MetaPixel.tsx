@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-function loadPixel(pixelId: string) {
+function loadPixel(pixelId: string, shouldTrackPageView: () => boolean) {
   if (window._fbPixelReady) return
   // Standard Facebook stub — fbevents.js expects callMethod + queue shape
   if (!window.fbq) {
@@ -41,7 +41,7 @@ function loadPixel(pixelId: string) {
   script.onload = () => {
     window._fbPixelReady = true
     window.fbq!('init', pixelId)
-    window.fbq!('track', 'PageView')
+    if (shouldTrackPageView()) window.fbq!('track', 'PageView')
   }
   document.head.appendChild(script)
 }
@@ -53,7 +53,7 @@ export function MetaPixel() {
   useEffect(() => {
     if (!PIXEL_ID || suppressAnalytics) return
     captureUTMs()
-    loadPixel(PIXEL_ID)
+    loadPixel(PIXEL_ID, () => !window.location.pathname.startsWith('/app/speak'))
   }, [suppressAnalytics])
 
   useEffect(() => {

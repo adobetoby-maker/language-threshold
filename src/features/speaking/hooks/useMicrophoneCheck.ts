@@ -8,6 +8,8 @@ function preferredMimeType() {
 }
 
 export function useMicrophoneCheck() {
+  const mountedRef = useRef(true)
+  const requestTokenRef = useRef(0)
   const streamRef = useRef<MediaStream | null>(null)
   const recorderRef = useRef<MediaRecorder | null>(null)
   const chunksRef = useRef<Blob[]>([])
@@ -18,19 +20,38 @@ export function useMicrophoneCheck() {
 
   const replaceAudioUrl = useCallback((next: string | null) => {
     if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
+    if (!mountedRef.current) {
+      if (next) URL.revokeObjectURL(next)
+      audioUrlRef.current = null
+      return
+    }
     audioUrlRef.current = next
     setAudioUrl(next)
   }, [])
 
   const release = useCallback(() => {
     const recorder = recorderRef.current
-    if (recorder?.state === 'recording') recorder.stop()
+    if (recorder) {
+      recorder.ondataavailable = null
+      recorder.onstop = null
+      if (recorder.state === 'recording') recorder.stop()
+    }
     recorderRef.current = null
     streamRef.current?.getTracks().forEach(track => track.stop())
     streamRef.current = null
   }, [])
 
+  const reset = useCallback(() => {
+    requestTokenRef.current += 1
+    release()
+    replaceAudioUrl(null)
+    setError(null)
+    setState('idle')
+  }, [release, replaceAudioUrl])
+
   const requestPermission = useCallback(async () => {
+    const requestToken = requestTokenRef.current + 1
+    requestTokenRef.current = requestToken
     setError(null)
     setState('requesting')
     try {
@@ -38,11 +59,17 @@ export function useMicrophoneCheck() {
         throw new Error('This browser does not provide the required microphone recording APIs.')
       }
       release()
-      streamRef.current = await navigator.mediaDevices.getUserMedia({
+      const stream = await navigator.mediaDevices.getUserMedia({
         audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
       })
+      if (!mountedRef.current || requestToken !== requestTokenRef.current) {
+        stream.getTracks().forEach(track => track.stop())
+        return
+      }
+      streamRef.current = stream
       setState('ready')
     } catch (cause) {
+      if (!mountedRef.current || requestToken !== requestTokenRef.current) return
       const message = cause instanceof DOMException && cause.name === 'NotAllowedError'
         ? 'Microphone access was denied. Update the site permission in Safari settings and try again.'
         : cause instanceof Error ? cause.message : 'Microphone access failed.'
@@ -62,8 +89,11 @@ export function useMicrophoneCheck() {
     }
     recorder.onstop = () => {
       const blob = new Blob(chunksRef.current, { type: recorder.mimeType || 'audio/webm' })
+      recorderRef.current = null
+      streamRef.current?.getTracks().forEach(track => track.stop())
+      streamRef.current = null
       replaceAudioUrl(URL.createObjectURL(blob))
-      setState('recorded')
+      if (mountedRef.current) setState('recorded')
     }
     recorderRef.current = recorder
     recorder.start(250)
@@ -75,6 +105,7 @@ export function useMicrophoneCheck() {
   }, [])
 
   useEffect(() => {
+    mountedRef.current = true
     const pauseForBackground = () => {
       if (document.visibilityState === 'hidden' && recorderRef.current?.state === 'recording') {
         recorderRef.current.stop()
@@ -82,11 +113,13 @@ export function useMicrophoneCheck() {
     }
     document.addEventListener('visibilitychange', pauseForBackground)
     return () => {
+      mountedRef.current = false
+      requestTokenRef.current += 1
       document.removeEventListener('visibilitychange', pauseForBackground)
       release()
       if (audioUrlRef.current) URL.revokeObjectURL(audioUrlRef.current)
     }
   }, [release])
 
-  return { state, audioUrl, error, requestPermission, startRecording, stopRecording }
+  return { state, audioUrl, error, requestPermission, startRecording, stopRecording, reset }
 }

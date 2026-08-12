@@ -42,7 +42,7 @@ export function speakingSessionReducer(state: SpeakingSessionState, action: Spea
       if (state.phase !== 'speaking') return state
       return { ...state, phase: 'listening' }
     case 'PAUSE':
-      if (state.phase === 'paused' || state.phase === 'completed' || state.phase === 'error') return state
+      if (state.phase === 'idle' || state.phase === 'paused' || state.phase === 'completed' || state.phase === 'error') return state
       return { ...state, phase: 'paused', previousActivePhase: state.phase }
     case 'RESUME':
       if (state.phase !== 'paused') return state
@@ -51,6 +51,7 @@ export function speakingSessionReducer(state: SpeakingSessionState, action: Spea
       if (state.phase === 'idle' || state.phase === 'completed') return state
       return { ...state, phase: 'completed', result: action.result, previousActivePhase: null }
     case 'FAIL':
+      if (state.phase === 'completed') return state
       return { ...state, phase: 'error', errorMessage: action.message, previousActivePhase: null }
     case 'RESET':
       return { ...state, phase: 'idle', attemptId: null, completedObjectiveIds: [], turnCount: 0, errorMessage: null, result: null, previousActivePhase: null }

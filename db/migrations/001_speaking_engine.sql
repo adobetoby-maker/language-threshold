@@ -1,6 +1,8 @@
 -- Speaking Engine durable state. PostgreSQL 16+.
 -- Raw audio is intentionally absent: the product does not retain it by default.
 
+begin;
+
 create table if not exists principals (
   id uuid primary key,
   kind text not null check (kind in ('anonymous', 'account')),
@@ -25,7 +27,9 @@ create table if not exists language_units (
   part_of_speech text not null,
   sense_key text not null,
   status text not null default 'canonical' check (status in ('canonical', 'provisional', 'retired')),
-  created_at timestamptz not null default now()
+  created_at timestamptz not null default now(),
+  unique (language, locale, sense_key),
+  unique (concept_id, language, locale, sense_key)
 );
 
 create table if not exists content_occurrences (
@@ -58,7 +62,7 @@ create table if not exists speaking_scenario_versions (
 );
 
 create table if not exists speaking_attempts (
-  id uuid primary key,
+  id text primary key check (id ~ '^attempt_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'),
   principal_id uuid not null references principals(id),
   scenario_version_id text not null references speaking_scenario_versions(id),
   status text not null check (status in ('active', 'paused', 'completed', 'failed')),
@@ -68,9 +72,10 @@ create table if not exists speaking_attempts (
 );
 
 create table if not exists speaking_attempt_events (
-  id uuid primary key,
-  attempt_id uuid not null references speaking_attempts(id) on delete cascade,
+  id text primary key check (id ~ '^event_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'),
+  attempt_id text not null references speaking_attempts(id) on delete cascade,
   idempotency_key text not null,
+  sequence integer not null check (sequence >= 0),
   event_type text not null,
   occurred_at timestamptz not null,
   payload jsonb not null default '{}'::jsonb,
@@ -82,7 +87,7 @@ create index if not exists speaking_attempt_events_attempt_time
 
 create table if not exists speaking_evaluations (
   id uuid primary key,
-  attempt_id uuid not null references speaking_attempts(id) on delete cascade,
+  attempt_id text not null references speaking_attempts(id) on delete cascade,
   rubric_version text not null,
   evaluator_provider text not null,
   evaluator_model text not null,
@@ -95,7 +100,7 @@ create table if not exists learner_vocabulary_state (
   principal_id uuid not null references principals(id),
   language_unit_id text not null references language_units(id),
   stage text not null check (stage in ('seen', 'recognized', 'recalled', 'spoken', 'spontaneous')),
-  source_attempt_id uuid references speaking_attempts(id),
+  source_attempt_id text references speaking_attempts(id),
   updated_at timestamptz not null default now(),
   primary key (principal_id, language_unit_id)
 );
@@ -104,7 +109,9 @@ create table if not exists learner_speaking_state (
   principal_id uuid not null references principals(id),
   scenario_id text not null references speaking_scenarios(id),
   best_tier text not null check (best_tier in ('clay', 'bronze', 'silver', 'gold')),
-  best_attempt_id uuid not null references speaking_attempts(id),
+  best_attempt_id text not null references speaking_attempts(id),
   updated_at timestamptz not null default now(),
   primary key (principal_id, scenario_id)
 );
+
+commit;

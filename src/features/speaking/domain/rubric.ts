@@ -2,6 +2,7 @@ import type {
   CircumlocutionEvaluationProposal,
   MasteryResult,
   ObjectiveId,
+  RecoveryObjective,
   RubricEvidence,
   SpeakingScenarioVersion,
 } from './types'
@@ -82,12 +83,12 @@ export function scoreSpeakingAttempt(scenario: SpeakingScenarioVersion, evidence
 
 export function acceptsCircumlocution(
   proposal: CircumlocutionEvaluationProposal,
-  requiredFeatureCount: number,
+  recovery: RecoveryObjective,
 ) {
   return proposal.blindGuessConceptId === proposal.targetConceptId
     && proposal.usedTargetLanguage
     && !proposal.vague
-    && proposal.distinguishingFeatureCount >= requiredFeatureCount
+    && proposal.distinguishingFeatureCount >= recovery.minimumDistinguishingFeatures
     && proposal.evidenceSpans.length > 0
     && proposal.confidence >= 0.8
 }

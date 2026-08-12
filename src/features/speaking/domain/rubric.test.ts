@@ -36,6 +36,25 @@ describe('speaking mastery rubric v1', () => {
     })
     expect(result.tier).toBe('gold')
   })
+
+  it('reports the first missing objective that blocks Silver', () => {
+    const result = scoreSpeakingAttempt(scenario, {
+      validEndState: true,
+      completedObjectiveIds: scenario.objectives.filter(objective => objective.critical).map(objective => objective.id),
+      hintCount: 0, englishFallbackCount: 0, communicationBreakdownCount: 0,
+      recoveryEventCount: 1, understandableLearnerTurns: 10, totalLearnerTurns: 10,
+    })
+
+    expect(result.tier).toBe('bronze')
+    expect(result.blockedBy).toContain('Ask the crew member to confirm the instruction.')
+  })
+
+  it('treats zero learner turns as incomplete even when the caller marks the end state valid', () => {
+    expect(scoreSpeakingAttempt(scenario, {
+      validEndState: true, completedObjectiveIds: allObjectives, hintCount: 0, englishFallbackCount: 0,
+      communicationBreakdownCount: 0, recoveryEventCount: 1, understandableLearnerTurns: 0, totalLearnerTurns: 0,
+    }).tier).toBe('incomplete')
+  })
 })
 
 describe('circumlocution acceptance', () => {
@@ -44,7 +63,7 @@ describe('circumlocution acceptance', () => {
       targetConceptId: 'concept_harness', blindGuessConceptId: 'concept_harness',
       evidenceSpans: ['lo que te protege cuando trabajas arriba'], distinguishingFeatureCount: 2,
       usedTargetLanguage: true, vague: false, confidence: 0.92,
-    }, 1)).toBe(true)
+    }, scenario.recovery)).toBe(true)
   })
 
   it('rejects vague descriptions even when the guessed referent happens to match', () => {
@@ -52,6 +71,6 @@ describe('circumlocution acceptance', () => {
       targetConceptId: 'concept_harness', blindGuessConceptId: 'concept_harness',
       evidenceSpans: ['una cosa'], distinguishingFeatureCount: 0,
       usedTargetLanguage: true, vague: true, confidence: 0.95,
-    }, 1)).toBe(false)
+    }, scenario.recovery)).toBe(false)
   })
 })

@@ -30,7 +30,7 @@ export default function SpeakingHome() {
             <article key={scenario.id} style={{ background: '#161616', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 18, padding: 18 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
                 <span style={{ ...sansFont, color: specialty.color, fontSize: 12, fontWeight: 800 }}>{specialty.icon} {specialty.label}</span>
-                <span style={{ ...sansFont, color: '#71717A', fontSize: 11 }}>{scenario.level} · {scenario.quickMinutes}–{scenario.targetMinutes} min</span>
+                <span style={{ ...sansFont, color: '#A89F94', fontSize: 11 }}>{scenario.level} · {scenario.quickMinutes}–{scenario.targetMinutes} min</span>
               </div>
               <h2 style={{ ...displayFont, fontSize: 22, margin: '12px 0 7px' }}>{scenario.title}</h2>
               <p style={{ ...sansFont, color: '#A89F94', lineHeight: 1.55, fontSize: 14, margin: '0 0 14px' }}>{scenario.summary}</p>
