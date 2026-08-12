@@ -1,12 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { consumeSpeakingGrantBudget } from './_budget.js'
 import {
   applySpeakingCors,
   LAUNCH_SCENARIO_VERSION_IDS,
-  requestIp,
   requireAnonymousPrincipal,
   requireTrustedOrigin,
 } from './_shared.js'
+import { reserveProviderGrant, verifySessionLease } from './_session.js'
 
 interface DeepgramGrant {
   access_token?: string
@@ -27,16 +26,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(503).json({ error: 'spikeDisabled', message: 'The provider-backed speaking spike is disabled.' })
   }
 
-  const { ageConfirmed, scenarioVersionId } = req.body ?? {}
+  const { ageConfirmed, scenarioVersionId, lease, purpose } = req.body ?? {}
   if (ageConfirmed !== true) return res.status(403).json({ error: 'ageGate', message: 'Speaking is currently restricted to ages 13 and older.' })
   if (typeof scenarioVersionId !== 'string' || !LAUNCH_SCENARIO_VERSION_IDS.has(scenarioVersionId)) {
     return res.status(400).json({ error: 'invalidScenario', message: 'Select an approved speaking scenario version.' })
   }
+  if (purpose !== 'stt' && purpose !== 'tts') {
+    return res.status(400).json({ error: 'invalidPurpose', message: 'Select an approved speech transport purpose.' })
+  }
 
   const principalId = requireAnonymousPrincipal(req, res)
   if (!principalId) return
-  const budget = await consumeSpeakingGrantBudget(principalId, requestIp(req))
-  if (!budget.allowed) return res.status(budget.status).json({ error: budget.error, message: budget.message })
+  const verifiedLease = typeof lease === 'string' ? verifySessionLease(lease, principalId, scenarioVersionId) : null
+  if (!verifiedLease) return res.status(403).json({ error: 'invalidSession', message: 'Start a fresh controlled speaking session.' })
+  const grantReservation = await reserveProviderGrant(verifiedLease)
+  if (!grantReservation.allowed) {
+    const status = grantReservation.reason === 'limit' ? 429 : 503
+    return res.status(status).json({ error: 'providerGrantDenied', message: 'The controlled session cannot issue another provider grant.' })
+  }
 
   const key = process.env.DEEPGRAM_API_KEY
   if (!key) return res.status(503).json({ error: 'providerUnavailable', message: 'The speech provider is not configured.' })
@@ -61,10 +68,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       provider: 'deepgram',
       accessToken: grant.access_token,
       expiresIn: grant.expires_in,
-      endpoints: {
-        stt: 'wss://api.deepgram.com/v2/listen?model=flux-general-multi&language_hint=es&mip_opt_out=true',
-        tts: `wss://api.deepgram.com/v1/speak?model=${encodeURIComponent(process.env.SPEAKING_TTS_MODEL ?? 'aura-2-celeste-es')}&encoding=linear16&sample_rate=24000`,
-      },
+      endpoints: purpose === 'stt'
+        ? { stt: 'wss://api.deepgram.com/v2/listen?model=flux-general-multi&language_hint=es&encoding=linear16&sample_rate=16000&eot_timeout_ms=1200&mip_opt_out=true' }
+        : { tts: `wss://api.deepgram.com/v1/speak?model=${encodeURIComponent(process.env.SPEAKING_TTS_MODEL ?? 'aura-2-celeste-es')}&encoding=linear16&sample_rate=24000` },
     })
   } catch (error) {
     console.error('Deepgram token grant request failed.', error)

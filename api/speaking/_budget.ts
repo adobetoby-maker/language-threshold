@@ -29,7 +29,7 @@ export type SpeakingBudgetResult =
   | { allowed: true }
   | { allowed: false; status: 429 | 503; error: 'budgetExceeded' | 'budgetUnavailable'; message: string }
 
-export async function consumeSpeakingGrantBudget(principalId: string, ip: string): Promise<SpeakingBudgetResult> {
+export async function consumeSpeakingSessionBudget(principalId: string, ip: string): Promise<SpeakingBudgetResult> {
   const configured = limiters()
   if (!configured) {
     return { allowed: false, status: 503, error: 'budgetUnavailable', message: 'Speaking usage budgets are not configured.' }
