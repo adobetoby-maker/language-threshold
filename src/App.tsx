@@ -50,6 +50,8 @@ const MissionaryPashto   = lazy(() => import('./pages/MissionaryPashto'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
 const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
+const SpeakingHome = lazy(() => import('./pages/SpeakingHome'))
+const SpeakingScenario = lazy(() => import('./pages/SpeakingScenario'))
 const ModuleStarter = lazy(() => import('./pages/ModuleStarter'))
 const FishingModule = lazy(() => import('./pages/FishingModule'))
 const PrintMedical = lazy(() => import('./pages/PrintBook').then(m => ({ default: () => m.default({ specialty: 'medical' }) })))
@@ -76,6 +78,8 @@ function AppShell() {
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/app" element={<ErrorBoundary><AppHome /></ErrorBoundary>} />
+          <Route path="/app/speak" element={<ErrorBoundary><SpeakingHome /></ErrorBoundary>} />
+          <Route path="/app/speak/:scenarioId" element={<ErrorBoundary><SpeakingScenario /></ErrorBoundary>} />
           <Route path="/print/medical" element={<ErrorBoundary><PrintMedical /></ErrorBoundary>} />
           <Route path="/print/construction" element={<ErrorBoundary><PrintConstruction /></ErrorBoundary>} />
           <Route path="/print/trifold/medical" element={<ErrorBoundary><TrifoldMedical /></ErrorBoundary>} />
