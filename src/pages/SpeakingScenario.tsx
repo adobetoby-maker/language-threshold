@@ -6,11 +6,12 @@ import { findScenario } from '../features/speaking/domain/scenarios'
 import type { FeedbackLanguage } from '../features/speaking/domain/types'
 import { useMicrophoneCheck } from '../features/speaking/hooks/useMicrophoneCheck'
 import { useSpeakingCapabilities } from '../features/speaking/hooks/useSpeakingCapabilities'
+import { SpeakingTurnLoopPanel } from '../features/speaking/components/SpeakingTurnLoopPanel'
 
 const FEEDBACK_OPTIONS: Array<{ value: FeedbackLanguage; label: string }> = [
   { value: 'english', label: 'English coaching' },
   { value: 'target', label: 'Spanish coaching' },
-  { value: 'adaptive', label: 'Adaptive coaching' },
+  { value: 'adaptive', label: 'Adaptive coaching (preview rule)' },
 ]
 
 export default function SpeakingScenario() {
@@ -21,10 +22,15 @@ export default function SpeakingScenario() {
   const microphone = useMicrophoneCheck()
   const capabilities = useSpeakingCapabilities()
   const resetMicrophone = microphone.reset
+  const liveTurnLoopEnabled = capabilities.status === 'ready' && capabilities.data.enabled
 
   useEffect(() => {
     if (!ageConfirmed) resetMicrophone()
   }, [ageConfirmed, resetMicrophone])
+
+  useEffect(() => {
+    if (liveTurnLoopEnabled) resetMicrophone()
+  }, [liveTurnLoopEnabled, resetMicrophone])
 
   if (!scenario) {
     return (
@@ -71,9 +77,11 @@ export default function SpeakingScenario() {
       </section>
 
       <section style={{ marginTop: 24, background: `${accent}12`, border: `1px solid ${accent}40`, borderRadius: 16, padding: 18 }}>
-        <h2 style={{ ...displayFont, fontSize: 20, margin: '0 0 8px' }}>Private microphone check</h2>
+        <h2 style={{ ...displayFont, fontSize: 20, margin: '0 0 8px' }}>{liveTurnLoopEnabled ? 'Microphone and coaching setup' : 'Private microphone check'}</h2>
         <p style={{ ...sansFont, color: '#A89F94', lineHeight: 1.5, fontSize: 13, marginTop: 0 }}>
-          This foundation check records only into a temporary browser memory buffer. It is not uploaded, saved to disk, scored, or sent to an AI provider.
+          {liveTurnLoopEnabled
+            ? 'The configured development loop appears below. Review the provider-data notice before starting.'
+            : 'This foundation check records only into a temporary browser memory buffer. It is not uploaded, saved to disk, scored, or sent to an AI provider.'}
         </p>
 
         <label style={{ ...sansFont, display: 'flex', alignItems: 'flex-start', gap: 10, color: '#D7D0C5', fontSize: 13, margin: '16px 0' }}>
@@ -88,7 +96,7 @@ export default function SpeakingScenario() {
           </select>
         </label>
 
-        {microphone.state === 'ready' ? (
+        {!liveTurnLoopEnabled ? <>{microphone.state === 'ready' ? (
           <button type="button" onClick={microphone.startRecording} style={{ ...sansFont, width: '100%', border: 0, borderRadius: 10, background: accent, color: '#0D0D0D', padding: '12px 14px', fontWeight: 800, cursor: 'pointer' }}>
             Tap to record a short test
           </button>
@@ -111,8 +119,18 @@ export default function SpeakingScenario() {
             <audio controls src={microphone.audioUrl} style={{ width: '100%' }} aria-label="Temporary microphone test playback" />
             <p style={{ ...sansFont, color: '#A89F94', fontSize: 11, marginBottom: 0 }}>Leaving this page destroys the temporary recording URL.</p>
           </div>
-        ) : null}
+        ) : null}</> : null}
       </section>
+
+      {capabilities.status === 'ready' && capabilities.data.enabled ? (
+        <SpeakingTurnLoopPanel
+          scenario={scenario}
+          capabilities={capabilities.data}
+          ageConfirmed={ageConfirmed}
+          feedbackLanguage={feedbackLanguage}
+          accent={accent}
+        />
+      ) : null}
 
       <aside style={{ ...sansFont, color: '#A89F94', fontSize: 12, lineHeight: 1.55, marginTop: 18 }}>
         {capabilities.status === 'loading'

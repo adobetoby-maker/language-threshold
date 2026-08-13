@@ -40,12 +40,18 @@ export interface SpeakingProviderCapabilities {
   }
   limits: {
     tokenTtlSeconds: number
-    grantBudgets: {
+    sessionStartBudgets: {
       perAnonymousPrincipalPerHour: number
       perNetworkAddressPerHour: number
     }
-    plannedSessionHardCapMinutes: number
-    sessionHardCapEnforcedByServer: boolean
+    tokenIssuanceBudgets: {
+      perAnonymousPrincipalPerHour: number
+      perNetworkAddressPerHour: number
+    }
+    sessionLeaseMinutes: number
+    maxTurnsPerSession: number
+    maxProviderTokenIssuancesPerSession: number
+    browserAudioSecondsAuthoritative: false
   }
   ageGate: { mode: 'self-attestation'; productionApproved: false }
   privacy: {
@@ -61,7 +67,7 @@ export interface ProviderCapability {
   provider: SpeechProviderKind
   model: string
   transport: 'websocket' | 'server'
-  integrationStatus: 'connectivity-prototype' | 'grant-only' | 'planned'
+  integrationStatus: 'connectivity-prototype' | 'grant-only' | 'planned' | 'turn-loop'
 }
 
 export interface SpeakingTokenGrant<TProvider extends SpeechProviderKind = SpeechProviderKind> {
@@ -69,6 +75,48 @@ export interface SpeakingTokenGrant<TProvider extends SpeechProviderKind = Speec
   accessToken: string
   expiresIn: number
   endpoints: Partial<Record<'stt' | 'tts', string>>
+}
+
+export interface SpeakingSessionLease {
+  sessionId: string
+  lease: string
+  expiresAt: string
+  hardCapSeconds: number
+  maxTurns: number
+}
+
+export interface DialogueHistoryEntry {
+  role: 'learner' | 'assistant'
+  text: string
+}
+
+export interface DialogueTurnResult {
+  assistantText: string
+  provisionalObjectiveIds: ObjectiveId[]
+  deferredFeedback: string[]
+  turnSequence: number
+  usage: {
+    reportedAudioSeconds: number
+    requestedTtsCharacters: number
+    dialogueInputTokens: number
+    dialogueOutputTokens: number
+  }
+  sessionUsage?: {
+    providerTokenIssuances: number
+    completedTurns: number
+    reportedAudioSeconds: number
+    requestedTtsCharacters: number
+    dialogueInputTokens: number
+    dialogueOutputTokens: number
+  }
+}
+
+export interface FluxTurnResult {
+  transcript: string
+  confidence: number
+  audioWindowStart: number
+  audioWindowEnd: number
+  providerRequestId: string
 }
 
 export interface SpeechSpikeMeasurement {
@@ -91,6 +139,7 @@ export interface StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
   connect(signal: AbortSignal): Promise<void>
   sendAudio(chunk: ArrayBuffer): void
-  endLearnerTurn(): void
+  onUnexpectedTermination(handler: (error: Error) => void): () => void
+  finishLearnerTurn(signal: AbortSignal, timeoutMs?: number): Promise<FluxTurnResult>
   cancel(): Promise<void>
 }
