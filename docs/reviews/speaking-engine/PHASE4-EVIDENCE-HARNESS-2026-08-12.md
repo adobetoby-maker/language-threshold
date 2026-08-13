@@ -8,19 +8,21 @@
 
 ## Implemented
 
-- A versioned `speaking-provider-evidence-v1` JSON bundle records scenario/session correlation, provider model identities, manually entered non-sensitive tester/device context, viewport size, completed-turn timings, Deepgram STT request IDs, application usage, stable lifecycle failure codes, latency percentiles, and a list-price estimate.
-- Evidence is generated and downloaded entirely in the browser. It is never uploaded automatically.
+- A versioned `speaking-provider-evidence-v1` JSON bundle records run/provider-session correlation, provider model identities, manually entered tester/device context, viewport size, completed-turn timings, Deepgram STT request IDs, application usage, stable lifecycle failure codes, qualified latency percentiles, and a versioned list-price estimate.
+- Evidence is generated entirely in the browser and never uploaded automatically. Safari-safe download and a copyable fallback are both available; device-managed Downloads may sync externally.
 - The export deliberately omits transcripts, partner responses, coaching, objective evidence, raw audio, the signed session lease, provider access tokens, and durable keys.
 - The UI requires an alias, device, OS, browser, and matrix-case description before download and warns testers not to enter names, addresses, or sensitive information.
 - Timing definitions distinguish capture, Flux finalization, dialogue, first TTS audio, TTS socket completion, post-provider playback drain, and total active-turn duration.
-- p50/p95 calculations use nearest-rank percentiles and remain `null` when no completed turn exists.
-- Provider cost remains a versioned list-price estimate with `costIsProviderReconciled=false`; an authorized human must compare the export with provider records/invoices.
+- p50/p95 calculations use nearest-rank percentiles, include sample/missing counts, and remain `null` when no completed turn exists.
+- Provider cost includes the dated rates and sources and remains `costIsProviderReconciled=false`; unsupported model configurations produce no estimate.
 - Live microphone failure handlers now attach before `getUserMedia` completion, and a failed next-turn STT setup is associated with the upcoming turn rather than the completed turn.
+- Stop tears down microphone capture before the first awaited operation. Cancellation, backgrounding, permission denial, and pre-provider failures preserve a local run envelope for export.
+- Export construction uses explicit field allow-lists. The privacy block states that tester-entered context is unverified instead of claiming that arbitrary free text is structurally safe.
 
 ## Local verification
 
 - ESLint: pass
-- Vitest: 67 tests across 16 files, pass
+- Vitest: 72 tests across 17 files, pass after review remediation
 - API TypeScript: pass
 - browser TypeScript and production Vite build: pass
 - mocked 390×844 two-segment turn and evidence download: pass
@@ -39,4 +41,4 @@ No Preview or Production environment variable, deployment flag, provider credent
 
 ## Next gate
 
-Before any real request, complete the readiness checklist in `PROVIDER-DEVICE-EVIDENCE-RUNBOOK.md`. Until then Phase 4 remains blocked at the external-configuration boundary, not the application harness boundary.
+Before any real request, complete the readiness checklist in `PROVIDER-DEVICE-EVIDENCE-RUNBOOK.md`. Until then Phase 4 remains blocked at the external configuration/privacy-approval boundary; the harness result alone does not authorize provider use.

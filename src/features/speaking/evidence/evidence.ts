@@ -1,5 +1,5 @@
 import type { SpeakingProviderCapabilities, SpeakingSessionLease } from '../providers/contracts'
-import { estimateSpikeProviderCost } from '../providers/cost'
+import { estimateSpikeProviderCost, SPIKE_LIST_PRICE_METADATA } from '../providers/cost'
 import type { SpeakingScenarioVersion } from '../domain/types'
 import {
   SPEAKING_EVIDENCE_SCHEMA_VERSION,
@@ -14,12 +14,12 @@ import {
 const MAX_CONTEXT_LENGTH = 120
 
 function cleanContext(value: string) {
-  return value.trim().replace(/[\r\n\t]+/g, ' ').slice(0, MAX_CONTEXT_LENGTH)
+  return value.trim().replace(/[\r\n\t]+/g, ' ').replace(/[^a-zA-Z0-9 ._:/()+-]/g, '').slice(0, MAX_CONTEXT_LENGTH)
 }
 
 export function sanitizeEvidenceContext(context: SpeakingEvidenceRunContext): SpeakingEvidenceRunContext {
   return {
-    testerAlias: cleanContext(context.testerAlias),
+    testerAlias: cleanContext(context.testerAlias).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32),
     deviceModel: cleanContext(context.deviceModel),
     osVersion: cleanContext(context.osVersion),
     browserVersion: cleanContext(context.browserVersion),
@@ -38,11 +38,37 @@ export function nearestRankPercentile(values: number[], percentile: number) {
 
 function percentilePair(values: Array<number | null>) {
   const present = values.filter((value): value is number => value !== null)
-  return { p50: nearestRankPercentile(present, 0.5), p95: nearestRankPercentile(present, 0.95) }
+  return {
+    p50: nearestRankPercentile(present, 0.5),
+    p95: nearestRankPercentile(present, 0.95),
+    sampleCount: present.length,
+    missingCount: values.length - present.length,
+  }
+}
+
+function safeCount(value: number) {
+  return Number.isFinite(value) && value >= 0 ? value : 0
+}
+
+function safeProviderRequestId(value: string) {
+  return value.replace(/[^a-zA-Z0-9._:-]/g, '').slice(0, 160)
+}
+
+function copySessionUsage(usage: SpeakingTurnEvidence['sessionUsage']) {
+  return usage ? {
+    providerTokenIssuances: safeCount(usage.providerTokenIssuances),
+    completedTurns: safeCount(usage.completedTurns),
+    reportedAudioSeconds: safeCount(usage.reportedAudioSeconds),
+    requestedTtsCharacters: safeCount(usage.requestedTtsCharacters),
+    dialogueInputTokens: safeCount(usage.dialogueInputTokens),
+    dialogueOutputTokens: safeCount(usage.dialogueOutputTokens),
+  } : null
 }
 
 export function classifyEvidenceError(error: unknown): SpeakingEvidenceErrorCode {
   if (error instanceof DOMException && error.name === 'AbortError') return 'cancelled'
+  if (error instanceof DOMException && (error.name === 'NotAllowedError' || error.name === 'SecurityError')) return 'permission-denied'
+  if (error instanceof DOMException && (error.name === 'NotFoundError' || error.name === 'NotReadableError')) return 'audio-unavailable'
   const message = error instanceof Error ? error.message.toLowerCase() : ''
   if (message.includes('60-second')) return 'capture-timeout'
   if (message.includes('microphone capture ended')) return 'microphone-ended'
@@ -51,6 +77,7 @@ export function classifyEvidenceError(error: unknown): SpeakingEvidenceErrorCode
   if (message.includes('invalid') || message.includes('without returning audio') || message.includes('without a finalized transcript')) return 'invalid-provider-response'
   if (message.includes('provider') || message.includes('dialogue')) return 'provider-rejected'
   if (message.includes('18-minute') || message.includes('expired')) return 'session-expired'
+  if (message.includes('backgrounded')) return 'backgrounded'
   return 'unknown-failure'
 }
 
@@ -59,7 +86,8 @@ export function createEvidenceEvent(stage: SpeakingEvidenceStage, turnSequence: 
 }
 
 export function buildSpeakingEvidenceBundle(input: {
-  session: SpeakingSessionLease
+  runId: string
+  session: SpeakingSessionLease | null
   sessionStartedAt: string
   scenario: SpeakingScenarioVersion
   capabilities: SpeakingProviderCapabilities
@@ -69,13 +97,29 @@ export function buildSpeakingEvidenceBundle(input: {
   viewport: { width: number; height: number; devicePixelRatio: number }
   exportedAt?: Date
 }): SpeakingEvidenceBundle {
-  const latestUsage = [...input.turns].reverse().find(turn => turn.sessionUsage)?.sessionUsage
+  const providerConfiguration = {
+    stt: `${input.capabilities.providers.stt.provider}/${input.capabilities.providers.stt.model}`,
+    dialogue: `${input.capabilities.providers.dialogue.provider}/${input.capabilities.providers.dialogue.model}`,
+    tts: `${input.capabilities.providers.tts.provider}/${input.capabilities.providers.tts.model}`,
+  }
+  const hasSupportedPriceSchedule = providerConfiguration.stt === SPIKE_LIST_PRICE_METADATA.sttModel
+    && providerConfiguration.dialogue === SPIKE_LIST_PRICE_METADATA.dialogueModel
+    && providerConfiguration.tts.startsWith(`${SPIKE_LIST_PRICE_METADATA.ttsModel}-`)
+  let latestUsageIndex = -1
+  for (let index = input.turns.length - 1; index >= 0; index -= 1) {
+    if (input.turns[index].sessionUsage) {
+      latestUsageIndex = index
+      break
+    }
+  }
+  const latestUsage = latestUsageIndex >= 0 ? input.turns[latestUsageIndex].sessionUsage : null
+  const clientTail = latestUsageIndex >= 0 ? input.turns.slice(latestUsageIndex + 1) : input.turns
   const aggregateUsage = latestUsage
     ? {
-        sttAudioSeconds: latestUsage.reportedAudioSeconds,
-        ttsCharacters: latestUsage.requestedTtsCharacters,
-        dialogueInputTokens: latestUsage.dialogueInputTokens,
-        dialogueOutputTokens: latestUsage.dialogueOutputTokens,
+        sttAudioSeconds: latestUsage.reportedAudioSeconds + clientTail.reduce((total, turn) => total + turn.usage.reportedAudioSeconds, 0),
+        ttsCharacters: latestUsage.requestedTtsCharacters + clientTail.reduce((total, turn) => total + turn.usage.requestedTtsCharacters, 0),
+        dialogueInputTokens: latestUsage.dialogueInputTokens + clientTail.reduce((total, turn) => total + turn.usage.dialogueInputTokens, 0),
+        dialogueOutputTokens: latestUsage.dialogueOutputTokens + clientTail.reduce((total, turn) => total + turn.usage.dialogueOutputTokens, 0),
         retries: 0,
       }
     : input.turns.reduce((usage, turn) => ({
@@ -90,16 +134,13 @@ export function buildSpeakingEvidenceBundle(input: {
     schemaVersion: SPEAKING_EVIDENCE_SCHEMA_VERSION,
     exportedAt: (input.exportedAt ?? new Date()).toISOString(),
     session: {
-      id: input.session.sessionId,
+      runId: input.runId,
+      providerSessionId: input.session?.sessionId ?? null,
       startedAt: input.sessionStartedAt,
       scenarioVersionId: input.scenario.id,
       locale: input.scenario.locale,
     },
-    providerConfiguration: {
-      stt: `${input.capabilities.providers.stt.provider}/${input.capabilities.providers.stt.model}`,
-      dialogue: `${input.capabilities.providers.dialogue.provider}/${input.capabilities.providers.dialogue.model}`,
-      tts: `${input.capabilities.providers.tts.provider}/${input.capabilities.providers.tts.model}`,
-    },
+    providerConfiguration,
     client: {
       viewportWidth: Math.max(0, Math.round(input.viewport.width)),
       viewportHeight: Math.max(0, Math.round(input.viewport.height)),
@@ -118,16 +159,44 @@ export function buildSpeakingEvidenceBundle(input: {
         playbackDrain: percentilePair(input.turns.map(turn => turn.timings.playbackMs)),
         total: percentilePair(input.turns.map(turn => turn.timings.totalMs)),
       },
-      estimatedListCostUsd: estimateSpikeProviderCost(aggregateUsage),
+      estimatedListCostUsd: hasSupportedPriceSchedule ? estimateSpikeProviderCost(aggregateUsage) : null,
+      estimatedListCostMetadata: { ...SPIKE_LIST_PRICE_METADATA, sources: [...SPIKE_LIST_PRICE_METADATA.sources] },
+      costEstimateStatus: hasSupportedPriceSchedule ? 'list-price-estimate' : 'unsupported-provider-configuration',
+      usageSource: latestUsage ? 'session-cumulative-plus-client-tail' : 'client-sum',
+      sessionUsageThroughTurn: latestUsageIndex >= 0 ? input.turns[latestUsageIndex].turnSequence : null,
       costIsProviderReconciled: false,
     },
-    turns: input.turns.map(turn => structuredClone(turn)),
-    events: input.events.map(event => ({ ...event })),
+    turns: input.turns.map(turn => ({
+      turnSequence: safeCount(turn.turnSequence),
+      startedAt: turn.startedAt,
+      completedAt: turn.completedAt,
+      timings: {
+        captureMs: safeCount(turn.timings.captureMs),
+        sttFinalizeMs: safeCount(turn.timings.sttFinalizeMs),
+        dialogueMs: safeCount(turn.timings.dialogueMs),
+        ttsFirstAudioMs: turn.timings.ttsFirstAudioMs === null ? null : safeCount(turn.timings.ttsFirstAudioMs),
+        ttsCompletionMs: safeCount(turn.timings.ttsCompletionMs),
+        playbackMs: safeCount(turn.timings.playbackMs),
+        totalMs: safeCount(turn.timings.totalMs),
+      },
+      sttProviderRequestId: safeProviderRequestId(turn.sttProviderRequestId),
+      usage: {
+        reportedAudioSeconds: safeCount(turn.usage.reportedAudioSeconds),
+        requestedTtsCharacters: safeCount(turn.usage.requestedTtsCharacters),
+        dialogueInputTokens: safeCount(turn.usage.dialogueInputTokens),
+        dialogueOutputTokens: safeCount(turn.usage.dialogueOutputTokens),
+      },
+      sessionUsage: copySessionUsage(turn.sessionUsage),
+    })),
+    events: input.events.map(event => ({
+      occurredAt: event.occurredAt,
+      turnSequence: event.turnSequence === null ? null : safeCount(event.turnSequence),
+      stage: event.stage,
+      code: event.code,
+    })),
     privacy: {
-      includesTranscript: false,
-      includesRawAudio: false,
-      includesPartnerText: false,
-      includesCoachingText: false,
+      structuredContentFields: { transcript: false, rawAudio: false, partnerText: false, coachingText: false },
+      testerEnteredContextIsUnverified: true,
       automaticallyUploaded: false,
     },
   }

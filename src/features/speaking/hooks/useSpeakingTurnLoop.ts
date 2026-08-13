@@ -18,6 +18,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
   const [history, setHistory] = useState<DialogueHistoryEntry[]>([])
   const [latestResult, setLatestResult] = useState<DialogueTurnResult | null>(null)
   const [latestTiming, setLatestTiming] = useState<TurnTiming | null>(null)
+  const [evidenceRunId, setEvidenceRunId] = useState<string | null>(null)
   const [sessionStartedAt, setSessionStartedAt] = useState<string | null>(null)
   const [evidenceTurns, setEvidenceTurns] = useState<SpeakingTurnEvidence[]>([])
   const [evidenceEvents, setEvidenceEvents] = useState<SpeakingEvidenceEvent[]>([])
@@ -83,11 +84,22 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     if (controllerRef.current) throw new Error('Reset the active speaking session before starting another one.')
     const activeCapabilities = capabilities
     operationInFlightRef.current = true
-    stageRef.current = 'session'
+    setSession(null)
+    setHistory([])
+    setLatestResult(null)
+    setLatestTiming(null)
+    setSessionStartedAt(null)
+    setEvidenceTurns([])
+    setEvidenceEvents([])
+    recordedEventKeysRef.current.clear()
+    const attemptId = createAttemptId()
+    setEvidenceRunId(attemptId)
+    setSessionStartedAt(new Date().toISOString())
+    stageRef.current = 'capture'
     evidenceTurnSequenceRef.current = 1
     const controller = new AbortController()
     controllerRef.current = controller
-    dispatch({ type: 'START', attemptId: createAttemptId() })
+    dispatch({ type: 'START', attemptId })
     const microphone = new PcmMicrophoneCapture()
     microphoneRef.current = microphone
     watchMicrophone(microphone, controller, 1)
@@ -95,9 +107,10 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     try {
       await microphoneArm
       await microphone.prepare(controller.signal)
+      stageRef.current = 'session'
       const nextSession = await startSpeakingSession(scenario.id, ageConfirmed, controller.signal)
       setSession(nextSession)
-      setSessionStartedAt(new Date().toISOString())
+      stageRef.current = 'stt'
       const grant = await requestSpeakingToken(scenario.id, ageConfirmed, nextSession.lease, 'stt', controller.signal)
       const stt = new DeepgramSttUploadAdapter(activeCapabilities, grant)
       sttRef.current = stt
@@ -146,10 +159,10 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     const captureEndedAt = performance.now()
     const turnSequence = evidenceTurnSequenceRef.current
     try {
+      const reportedAudioSecondsPromise = microphone.finishTurn()
       const player = new Linear16StreamPlayer()
       playerRef.current = player
-      await player.arm()
-      const reportedAudioSeconds = await microphone.finishTurn()
+      const [reportedAudioSeconds] = await Promise.all([reportedAudioSecondsPromise, player.arm()])
       stageRef.current = 'stt'
       const transcriptResult = await stt.finishLearnerTurn(controller.signal)
       const transcriptAt = performance.now()
@@ -175,6 +188,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
         { role: 'assistant' as const, text: dialogue.assistantText },
       ].slice(-8))
 
+      stageRef.current = 'tts'
       const ttsGrant = await requestSpeakingToken(scenario.id, ageConfirmed, activeSession.lease, 'tts', controller.signal)
       const tts = new DeepgramTtsAdapter()
       ttsRef.current = tts
@@ -211,8 +225,20 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
         completedAt: new Date().toISOString(),
         timings: timing,
         sttProviderRequestId: transcriptResult.providerRequestId,
-        usage: { ...dialogue.usage },
-        sessionUsage: dialogue.sessionUsage ? { ...dialogue.sessionUsage } : null,
+        usage: {
+          reportedAudioSeconds: dialogue.usage.reportedAudioSeconds,
+          requestedTtsCharacters: dialogue.usage.requestedTtsCharacters,
+          dialogueInputTokens: dialogue.usage.dialogueInputTokens,
+          dialogueOutputTokens: dialogue.usage.dialogueOutputTokens,
+        },
+        sessionUsage: dialogue.sessionUsage ? {
+          providerTokenIssuances: dialogue.sessionUsage.providerTokenIssuances,
+          completedTurns: dialogue.sessionUsage.completedTurns,
+          reportedAudioSeconds: dialogue.sessionUsage.reportedAudioSeconds,
+          requestedTtsCharacters: dialogue.sessionUsage.requestedTtsCharacters,
+          dialogueInputTokens: dialogue.sessionUsage.dialogueInputTokens,
+          dialogueOutputTokens: dialogue.sessionUsage.dialogueOutputTokens,
+        } : null,
       }])
       if (dialogue.turnSequence >= activeSession.maxTurns) {
         await microphone.stop()
@@ -248,7 +274,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     } catch (error) {
       operationInFlightRef.current = false
       if (!controller.signal.aborted) {
-        recordEvidenceEvent(stageRef.current, turnSequence, error)
+        recordEvidenceEvent(stageRef.current, evidenceTurnSequenceRef.current, error)
         dispatch({ type: 'FAIL', message: error instanceof Error ? error.message : 'The speaking turn failed.' })
         await cancel()
       }
@@ -256,12 +282,21 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     }
   }, [cancel, capabilities, feedbackLanguage, history, recordEvidenceEvent, scenario.id, session, watchMicrophone, watchStt])
 
+  const cancelAndPreserveEvidence = useCallback(async () => {
+    if (state.phase === 'idle' || state.phase === 'error' || state.phase === 'completed') return
+    const error = new DOMException('The controlled speaking session was cancelled by the tester.', 'AbortError')
+    recordEvidenceEvent(stageRef.current, evidenceTurnSequenceRef.current, error)
+    await cancel()
+    dispatch({ type: 'FAIL', message: 'The controlled session was cancelled. Its browser-local evidence remains available below.' })
+  }, [cancel, recordEvidenceEvent, state.phase])
+
   const reset = useCallback(async () => {
     await cancel()
     setSession(null)
     setHistory([])
     setLatestResult(null)
     setLatestTiming(null)
+    setEvidenceRunId(null)
     setSessionStartedAt(null)
     setEvidenceTurns([])
     setEvidenceEvents([])
@@ -273,11 +308,15 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
 
   useEffect(() => {
     const stopForBackground = () => {
-      if (document.visibilityState === 'hidden' && state.phase !== 'idle') void reset()
+      if (document.visibilityState !== 'hidden' || state.phase === 'idle' || state.phase === 'error' || state.phase === 'completed') return
+      const error = new Error('The controlled speaking session was backgrounded and stopped.')
+      recordEvidenceEvent('session', evidenceTurnSequenceRef.current, error)
+      dispatch({ type: 'FAIL', message: 'The speaking session stopped when this tab was backgrounded. Its browser-local evidence remains available below.' })
+      void cancel()
     }
     document.addEventListener('visibilitychange', stopForBackground)
     return () => document.removeEventListener('visibilitychange', stopForBackground)
-  }, [reset, state.phase])
+  }, [cancel, recordEvidenceEvent, state.phase])
 
   useEffect(() => {
     if (!session) return
@@ -291,5 +330,5 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     return () => clearTimeout(timeout)
   }, [cancel, recordEvidenceEvent, session])
 
-  return { state, session, sessionStartedAt, history, latestResult, latestTiming, evidenceTurns, evidenceEvents, start, stopAndRespond, cancel, reset }
+  return { state, session, evidenceRunId, sessionStartedAt, history, latestResult, latestTiming, evidenceTurns, evidenceEvents, start, stopAndRespond, cancelAndPreserveEvidence, reset }
 }
