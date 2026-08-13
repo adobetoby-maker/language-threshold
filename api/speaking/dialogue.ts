@@ -24,10 +24,12 @@ interface AnthropicMessageResponse {
   usage?: { input_tokens?: number; output_tokens?: number }
 }
 
-function validHistory(value: unknown): value is Array<{ role: 'learner' | 'assistant'; text: string }> {
-  return Array.isArray(value) && value.length <= 8 && value.every(item => item && typeof item === 'object'
+export function validDialogueHistory(value: unknown): value is Array<{ role: 'learner' | 'assistant'; text: string }> {
+  return Array.isArray(value) && value.length <= 8 && value.length % 2 === 0 && value.every((item, index) => item && typeof item === 'object'
     && ((item as { role?: unknown }).role === 'learner' || (item as { role?: unknown }).role === 'assistant')
+    && (item as { role: string }).role === (index % 2 === 0 ? 'learner' : 'assistant')
     && typeof (item as { text?: unknown }).text === 'string'
+    && (item as { text: string }).text.trim().length > 0
     && (item as { text: string }).text.length <= 800)
 }
 
@@ -64,7 +66,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!Number.isInteger(turnSequence) || turnSequence < 1 || turnSequence > MAX_SPEAKING_TURNS) return res.status(400).json({ error: 'invalidTurnSequence' })
   if (typeof transcript !== 'string' || transcript.trim().length < 1 || transcript.length > 1200) return res.status(400).json({ error: 'invalidTranscript' })
   if (feedbackLanguage !== 'english' && feedbackLanguage !== 'target' && feedbackLanguage !== 'adaptive') return res.status(400).json({ error: 'invalidFeedbackLanguage' })
-  if (!validHistory(history)) return res.status(400).json({ error: 'invalidHistory' })
+  if (!validDialogueHistory(history)) return res.status(400).json({ error: 'invalidHistory' })
 
   const principalId = requireAnonymousPrincipal(req, res)
   if (!principalId) return
@@ -119,7 +121,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             properties: {
               assistantText: { type: 'string' },
               provisionalObjectiveIds: { type: 'array', items: { type: 'string', enum: [...objectiveIds] } },
-              deferredFeedback: { type: 'array', maxItems: 3, items: { type: 'string' } },
+              deferredFeedback: { type: 'array', items: { type: 'string' } },
             },
             required: ['assistantText', 'provisionalObjectiveIds', 'deferredFeedback'],
           },

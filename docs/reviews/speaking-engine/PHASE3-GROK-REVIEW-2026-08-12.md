@@ -10,6 +10,8 @@ The local Grok CLI was invoked in read-only plan mode with subagents, memory, an
 
 No Grok verdict or finding is inferred. The same review scope was completed independently by Claude Opus CLI and Codex/Sol CLI. The full reviewer prompt is reproduced below so a Grok review can be run later without changing scope.
 
+The CLI was retried for targeted verification after remediation commit `0f3d6f449c68889464b9094273d6fe6a4a7e1714`. It again exited before reading the repository with `No auth credentials for cli-chat-proxy` / `Not signed in`. This second attempt also produced no review and no verdict.
+
 ## Review prompt
 
 Perform an independent architecture, security, privacy, correctness, and implementation review of draft PR #8 at exact commit `ecd8b1f5967951455c49e8efc80fb688ba156bac`, diff base `13b31dc4dc0bcebb343ba61a9cbb5bc646e66126`, against `docs/PRD-SPEAKING-ENGINE.md` at `fb52c4450afc2fb97f03c6e392cab4782eb4c48c` and Issue #7. Work read-only.

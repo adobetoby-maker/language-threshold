@@ -6,6 +6,15 @@ export class PcmMicrophoneCapture {
   private source: MediaStreamAudioSourceNode | null = null
   private processor: ScriptProcessorNode | null = null
   private startedAt = 0
+  private unexpectedEndHandler: ((error: Error) => void) | null = null
+  private trackEndHandlers: Array<{ track: MediaStreamTrack; handler: () => void }> = []
+
+  onUnexpectedEnd(handler: (error: Error) => void) {
+    this.unexpectedEndHandler = handler
+    return () => {
+      if (this.unexpectedEndHandler === handler) this.unexpectedEndHandler = null
+    }
+  }
 
   async arm() {
     if (typeof AudioContext === 'undefined') throw new Error('Live PCM capture is unavailable in this browser.')
@@ -25,6 +34,11 @@ export class PcmMicrophoneCapture {
     try {
       await this.arm()
       this.stream = stream
+      this.trackEndHandlers = stream.getTracks().map(track => {
+        const handler = () => this.unexpectedEndHandler?.(new Error('Microphone capture ended unexpectedly.'))
+        track.addEventListener('ended', handler, { once: true })
+        return { track, handler }
+      })
       signal.addEventListener('abort', () => { void this.stop() }, { once: true })
     } catch (error) {
       stream.getTracks().forEach(track => track.stop())
@@ -67,6 +81,8 @@ export class PcmMicrophoneCapture {
     this.processor?.disconnect()
     if (this.processor) this.processor.onaudioprocess = null
     this.source?.disconnect()
+    this.trackEndHandlers.forEach(({ track, handler }) => track.removeEventListener('ended', handler))
+    this.trackEndHandlers = []
     this.stream?.getTracks().forEach(track => track.stop())
     this.stream = null
     this.source = null

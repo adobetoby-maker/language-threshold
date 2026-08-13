@@ -53,16 +53,18 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
   private finalizing = false
   private terminalError: Error | null = null
   private finalWaiters = new Set<TurnWaiter>()
+  private unexpectedTerminationHandlers = new Set<(error: Error) => void>()
 
   constructor(capabilities: SpeakingProviderCapabilities, grant: SpeakingTokenGrant<'deepgram'>) {
     this.capabilities = capabilities
     this.grant = grant
   }
 
-  private fail(error: Error) {
+  private fail(error: Error, unexpected = false) {
     this.terminalError = error
     this.finalWaiters.forEach(waiter => waiter.reject(error))
     this.finalWaiters.clear()
+    if (unexpected) this.unexpectedTerminationHandlers.forEach(handler => handler(error))
   }
 
   private completeFinalTurn() {
@@ -121,7 +123,7 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
               && turn.transcript === parsed.transcript)
             if (!duplicate) this.finalTurns.push(parsed)
           } else if (message.type === 'FatalError' || message.type === 'Error') {
-            this.fail(new Error(message.description || 'The speech provider returned an error.'))
+            this.fail(new Error(message.description || 'The speech provider returned an error.'), !this.finalizing)
             socket.close(1011, 'provider-error')
           }
         } catch { /* provider sent an unknown non-JSON message */ }
@@ -129,9 +131,10 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
       socket.addEventListener('error', () => {
         clearTimeout(connectTimeout)
         signal.removeEventListener('abort', abort)
+        const wasOpen = this.state === 'open'
         this.state = 'closed'
         const error = new Error('The streaming speech connection failed.')
-        this.fail(error)
+        this.fail(error, wasOpen && !this.finalizing)
         reject(error)
       }, { once: true })
       socket.addEventListener('close', () => {
@@ -139,9 +142,10 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
         signal.removeEventListener('abort', abort)
         if (!this.terminalError && !signal.aborted) {
           if (this.finalizing) this.completeFinalTurn()
-          else this.fail(new Error('The speech connection closed before the learner ended the turn.'))
+          else this.fail(new Error('The speech connection closed before the learner ended the turn.'), true)
         }
         this.state = 'closed'
+        this.unexpectedTerminationHandlers.clear()
       }, { once: true })
     })
   }
@@ -149,6 +153,12 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
   sendAudio(chunk: ArrayBuffer) {
     if (this.state !== 'open' || !this.socket) throw new Error('The speech connection is not open.')
     this.socket.send(chunk)
+  }
+
+  onUnexpectedTermination(handler: (error: Error) => void) {
+    this.unexpectedTerminationHandlers.add(handler)
+    if (this.terminalError && !this.finalizing) queueMicrotask(() => handler(this.terminalError!))
+    return () => this.unexpectedTerminationHandlers.delete(handler)
   }
 
   finishLearnerTurn(signal: AbortSignal, timeoutMs = 8_000) {
@@ -185,9 +195,10 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
   async cancel() {
     if (!this.socket || this.state === 'closed') return
     if (this.state === 'open') this.socket.send(JSON.stringify({ type: 'CloseStream' }))
-    this.socket.close(1000, 'cancelled')
     this.state = 'closed'
     this.fail(new DOMException('The speech connection was cancelled.', 'AbortError'))
+    this.unexpectedTerminationHandlers.clear()
+    this.socket.close(1000, 'cancelled')
   }
 }
 
@@ -236,8 +247,18 @@ export class DeepgramTtsAdapter {
       }, { once: true })
       socket.addEventListener('message', event => {
         if (event.data instanceof ArrayBuffer) {
-          if (event.data.byteLength > 0) receivedAudio = true
-          onAudio(event.data)
+          if (event.data.byteLength === 0 || event.data.byteLength % 2 !== 0) {
+            finishReject(new Error('Text-to-speech returned an invalid linear16 audio frame.'))
+            socket.close(1011, 'invalid-audio')
+            return
+          }
+          receivedAudio = true
+          try {
+            onAudio(event.data)
+          } catch (error) {
+            finishReject(error instanceof Error ? error : new Error('Text-to-speech audio handling failed.'))
+            socket.close(1011, 'audio-handler-error')
+          }
           return
         }
         if (typeof event.data !== 'string') return

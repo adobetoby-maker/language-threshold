@@ -47,6 +47,16 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     operationInFlightRef.current = false
   }, [])
 
+  const watchLiveCapture = useCallback((microphone: PcmMicrophoneCapture, stt: DeepgramSttUploadAdapter, controller: AbortController) => {
+    const fail = (error: Error) => {
+      if (controllerRef.current !== controller || controller.signal.aborted || sttRef.current !== stt) return
+      dispatch({ type: 'FAIL', message: error.message })
+      void cancel()
+    }
+    stt.onUnexpectedTermination(fail)
+    microphone.onUnexpectedEnd(fail)
+  }, [cancel])
+
   const start = useCallback(async (ageConfirmed: boolean) => {
     if (!capabilities?.enabled) throw new Error('The provider turn loop is not configured.')
     if (operationInFlightRef.current) return
@@ -70,6 +80,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
       await microphone.start(chunk => stt.sendAudio(chunk), controller.signal)
       sttRef.current = stt
       microphoneRef.current = microphone
+      watchLiveCapture(microphone, stt, controller)
       captureStartedAtRef.current = performance.now()
       captureTimeoutRef.current = window.setTimeout(() => {
         dispatch({ type: 'FAIL', message: 'This learner turn reached the 60-second development limit.' })
@@ -85,7 +96,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
       }
       throw error
     }
-  }, [cancel, capabilities, scenario.id])
+  }, [cancel, capabilities, scenario.id, watchLiveCapture])
 
   const stopAndRespond = useCallback(async (ageConfirmed: boolean) => {
     if (operationInFlightRef.current) return
@@ -168,6 +179,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
       await microphone.start(chunk => nextStt.sendAudio(chunk), controller.signal)
       sttRef.current = nextStt
       microphoneRef.current = microphone
+      watchLiveCapture(microphone, nextStt, controller)
       captureStartedAtRef.current = performance.now()
       captureTimeoutRef.current = window.setTimeout(() => {
         dispatch({ type: 'FAIL', message: 'This learner turn reached the 60-second development limit.' })
@@ -183,7 +195,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
       }
       throw error
     }
-  }, [cancel, capabilities, feedbackLanguage, history, scenario.id, session, state.turnCount])
+  }, [cancel, capabilities, feedbackLanguage, history, scenario.id, session, state.turnCount, watchLiveCapture])
 
   const reset = useCallback(async () => {
     await cancel()

@@ -139,6 +139,7 @@ export interface StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
   connect(signal: AbortSignal): Promise<void>
   sendAudio(chunk: ArrayBuffer): void
+  onUnexpectedTermination(handler: (error: Error) => void): () => void
   finishLearnerTurn(signal: AbortSignal, timeoutMs?: number): Promise<FluxTurnResult>
   cancel(): Promise<void>
 }

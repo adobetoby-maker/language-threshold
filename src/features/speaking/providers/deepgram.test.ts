@@ -28,7 +28,10 @@ class MockWebSocket extends EventTarget {
   close() { this.dispatchEvent(new Event('close')) }
 }
 
-afterEach(() => vi.unstubAllGlobals())
+afterEach(() => {
+  vi.useRealTimers()
+  vi.unstubAllGlobals()
+})
 
 describe('Deepgram Flux messages', () => {
   it('accepts a complete EndOfTurn transcript', () => {
@@ -78,6 +81,58 @@ describe('Deepgram Flux messages', () => {
     await expect(turn).rejects.toThrow('bad audio')
   })
 
+  it('notifies the live capture when an open Flux socket terminates unexpectedly', async () => {
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramSttUploadAdapter(capabilities, grant)
+    const controller = new AbortController()
+    await adapter.connect(controller.signal)
+    const terminated = new Promise<Error>(resolve => adapter.onUnexpectedTermination(resolve))
+    MockWebSocket.latest?.close()
+    await expect(terminated).resolves.toMatchObject({ message: 'The speech connection closed before the learner ended the turn.' })
+  })
+
+  it('does not report an explicit cancellation as an unexpected termination', async () => {
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramSttUploadAdapter(capabilities, grant)
+    await adapter.connect(new AbortController().signal)
+    const handler = vi.fn()
+    adapter.onUnexpectedTermination(handler)
+    await adapter.cancel()
+    expect(handler).not.toHaveBeenCalled()
+  })
+
+  it('bounds finalization and ignores a transcript that arrives after timeout', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramSttUploadAdapter(capabilities, grant)
+    const controller = new AbortController()
+    const connected = adapter.connect(controller.signal)
+    await vi.runAllTicks()
+    await connected
+    const turn = adapter.finishLearnerTurn(controller.signal, 25)
+    const assertion = expect(turn).rejects.toThrow('did not finalize')
+    await vi.advanceTimersByTimeAsync(25)
+    await assertion
+    MockWebSocket.latest?.dispatchEvent(new MessageEvent('message', { data: JSON.stringify({
+      type: 'TurnInfo', event: 'EndOfTurn', request_id: 'late', transcript: 'Demasiado tarde.',
+      audio_window_start: 0, audio_window_end: 1, end_of_turn_confidence: 0.8,
+    }) }))
+  })
+
+  it('aborts a pending explicit finalization', async () => {
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramSttUploadAdapter(capabilities, grant)
+    const controller = new AbortController()
+    await adapter.connect(controller.signal)
+    const turn = adapter.finishLearnerTurn(controller.signal)
+    controller.abort()
+    await expect(turn).rejects.toMatchObject({ name: 'AbortError' })
+  })
+
   it('sends CloseStream and returns every EndOfTurn segment', async () => {
     vi.stubGlobal('WebSocket', MockWebSocket)
     vi.stubGlobal('window', { setTimeout, clearTimeout })
@@ -121,6 +176,15 @@ class SilentTtsWebSocket extends MockWebSocket {
   }
 }
 
+class InvalidTtsWebSocket extends MockWebSocket {
+  send(value: unknown) {
+    super.send(value)
+    if (typeof value === 'string' && (JSON.parse(value) as { type?: string }).type === 'Flush') {
+      this.dispatchEvent(new MessageEvent('message', { data: new ArrayBuffer(1) }))
+    }
+  }
+}
+
 describe('Deepgram Aura messages', () => {
   it('streams audio and closes only after Flushed', async () => {
     vi.stubGlobal('WebSocket', MockTtsWebSocket)
@@ -140,5 +204,43 @@ describe('Deepgram Aura messages', () => {
       { ...grant, endpoints: { tts: 'wss://example.test/v1/speak' } },
       'Hola', () => undefined, new AbortController().signal,
     )).rejects.toThrow('without returning audio')
+  })
+
+  it('rejects an odd-byte linear16 audio frame', async () => {
+    vi.stubGlobal('WebSocket', InvalidTtsWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramTtsAdapter()
+    await expect(adapter.speak(
+      { ...grant, endpoints: { tts: 'wss://example.test/v1/speak' } },
+      'Hola', () => undefined, new AbortController().signal,
+    )).rejects.toThrow('invalid linear16')
+  })
+
+  it('bounds an Aura socket that never flushes', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramTtsAdapter()
+    const spoken = adapter.speak(
+      { ...grant, endpoints: { tts: 'wss://example.test/v1/speak' } },
+      'Hola', () => undefined, new AbortController().signal,
+    )
+    const assertion = expect(spoken).rejects.toThrow('within 30 seconds')
+    await vi.runAllTicks()
+    await vi.advanceTimersByTimeAsync(30_000)
+    await assertion
+  })
+
+  it('aborts Aura before it produces audio', async () => {
+    vi.stubGlobal('WebSocket', MockWebSocket)
+    vi.stubGlobal('window', { setTimeout, clearTimeout })
+    const adapter = new DeepgramTtsAdapter()
+    const controller = new AbortController()
+    const spoken = adapter.speak(
+      { ...grant, endpoints: { tts: 'wss://example.test/v1/speak' } },
+      'Hola', () => undefined, controller.signal,
+    )
+    controller.abort()
+    await expect(spoken).rejects.toMatchObject({ name: 'AbortError' })
   })
 })

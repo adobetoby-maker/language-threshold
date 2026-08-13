@@ -35,6 +35,8 @@ The synthesis accepts that verdict. Draft PR #8 remains a draft and production r
 | Preview cookies lacked `Secure` | The principal cookie is Secure in Vercel preview and production, while remaining usable on local development HTTP. |
 | Missing numeric ledger fields could serialize as `NaN` | Usage reads default absent fields to zero. |
 | Cost constants lacked provenance | The list-price module now carries date, currency, model identities, and source URLs. |
+| Live STT or microphone loss could leave the UI listening | Both live resources now report unexpected termination to the hook, which generation-checks the event, fails the session, and tears down media immediately. Expected Stop/Cancel does not trigger the failure path. |
+| Strict Anthropic schema could reject `maxItems` | The unsupported constraint was removed from the provider schema; the server parser and system instruction still independently cap deferred feedback at three items. |
 
 ## Accepted limitations and later work
 
@@ -55,11 +57,13 @@ The synthesis accepts that verdict. Draft PR #8 remains a draft and production r
 ## Verification after remediation
 
 - ESLint: pass
-- Vitest: 49 tests across 14 files, pass
+- Vitest: 63 tests across 15 files, pass
 - API TypeScript (`NodeNext`): pass
 - browser TypeScript and production Vite build: pass
 - mocked 390×844 full turn with two Flux segments: pass
 - mocked rapid double-Stop: one turn, no alert, pass
+- mocked post-open STT loss: immediate error state and media teardown, pass
+- mocked microphone-track loss: immediate error state and transport teardown, pass
 - visible transcript, partner reply, coaching, and provisional evidence: pass
 - WCAG A/AA automated scan on the remediated mobile state: zero violations
 

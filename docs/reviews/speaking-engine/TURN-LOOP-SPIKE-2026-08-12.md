@@ -57,6 +57,7 @@ Those limits remain production blockers.
 
 - Provider connection, finalization, dialogue, and lease timers are bounded.
 - A cancelled session aborts fetches, stops microphone tracks, closes STT/TTS sockets, clears queued playback, and closes audio contexts.
+- Unexpected loss of the active STT socket or microphone track immediately fails the browser session and tears down the remaining live media resources.
 - A dialogue lock serializes turns per session, and the turn sequence plus cached result make a retry idempotent after a successful commit.
 - A failed provider grant, provider response, schema parse, or ledger operation fails the turn closed. This spike does not silently fall back to fake dialogue.
 - Automatic reconnect is not implemented. An unexpected transport close fails the browser session and requires an explicit reset; measuring “reconnect” in this increment means validating that fail-closed recovery path, not transparent replay.

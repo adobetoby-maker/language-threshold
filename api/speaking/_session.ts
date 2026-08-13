@@ -36,6 +36,7 @@ type SessionRecord = {
   scenarioVersionId: string
   startedAt: string
   expiresAt: string
+  expiresAtMs: string | number
   providerTokenIssuances: string | number
   completedTurns: string | number
   reportedAudioSeconds: string | number
@@ -112,6 +113,7 @@ export async function createSpeakingSession(principalId: string, scenarioVersion
     scenarioVersionId,
     startedAt: new Date(startedAtMs).toISOString(),
     expiresAt: new Date(expiresAtMs).toISOString(),
+    expiresAtMs,
     providerTokenIssuances: 0,
     completedTurns: 0,
     reportedAudioSeconds: 0,
@@ -141,9 +143,9 @@ export async function reserveProviderTokenIssuance(payload: SessionLeasePayload)
   const redis = redisClient()
   if (!redis) return { allowed: false as const, reason: 'unavailable' as const }
   const result = Number(await redis.eval(
-    "if redis.call('HGET', KEYS[1], 'principalId') ~= ARGV[1] or redis.call('HGET', KEYS[1], 'scenarioVersionId') ~= ARGV[2] then return -1 end; local current = tonumber(redis.call('HGET', KEYS[1], 'providerTokenIssuances') or '0'); if current >= tonumber(ARGV[3]) then return -2 end; return redis.call('HINCRBY', KEYS[1], 'providerTokenIssuances', 1)",
+    "if redis.call('HGET', KEYS[1], 'principalId') ~= ARGV[1] or redis.call('HGET', KEYS[1], 'scenarioVersionId') ~= ARGV[2] then return -1 end; local expires = tonumber(redis.call('HGET', KEYS[1], 'expiresAtMs') or '0'); if expires <= tonumber(ARGV[4]) then return -1 end; local current = tonumber(redis.call('HGET', KEYS[1], 'providerTokenIssuances') or '0'); if current >= tonumber(ARGV[3]) then return -2 end; return redis.call('HINCRBY', KEYS[1], 'providerTokenIssuances', 1)",
     [sessionKey(payload.sessionId)],
-    [payload.principalId, payload.scenarioVersionId, String(MAX_PROVIDER_TOKEN_ISSUANCES)],
+    [payload.principalId, payload.scenarioVersionId, String(MAX_PROVIDER_TOKEN_ISSUANCES), String(Date.now())],
   ))
   if (result === -1) return { allowed: false as const, reason: 'expired' as const }
   if (result === -2) return { allowed: false as const, reason: 'limit' as const }
