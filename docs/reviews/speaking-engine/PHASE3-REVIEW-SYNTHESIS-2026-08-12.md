@@ -7,6 +7,7 @@
 - Grok CLI attempt against the same prompt and commit; no review was produced because the local CLI was not authenticated
 - Direct review of current Deepgram Flux/Aura, Anthropic Messages/tool-use, and Upstash transaction documentation
 - Local lint, unit, API type-check, build, mocked mobile-browser, and accessibility evidence
+- Targeted final Claude Opus and Codex/Sol CLI verification of code commit `bb7285fd612f0acb6c9e1cb8102c9c8a7d2d6e74`
 
 ## Baseline verdict
 
@@ -71,6 +72,6 @@ Mocked and static results do not establish provider interoperability or physical
 
 ## Advancement decision
 
-The reviewed baseline was a no-go. The accepted code changes close the defects that made preview evidence structurally invalid. A targeted independent CLI verification of the remediation commit is required before changing the controlled-preview verdict.
+The reviewed baseline and first remediation were no-go. The accepted code changes close the defects that made preview evidence structurally invalid. Claude Opus and Codex/Sol independently returned **Approve with follow-ups** on final code commit `bb7285fd612f0acb6c9e1cb8102c9c8a7d2d6e74`, with no remaining blocker.
 
-Even after that verification, “go” means only a protected, named-tester, non-production provider run with isolated credentials and spend/concurrency alerts. It does not mean merge-ready, production-ready, Issue #7 complete, or permission to change deployment flags.
+The Phase 3 decision is therefore **go only for a protected, named-tester, non-production provider run** with isolated credentials and spend/concurrency alerts. It does not mean merge-ready, production-ready, Issue #7 complete, or permission to change deployment flags. The provider/device evidence checklist and all production launch gates remain open.
