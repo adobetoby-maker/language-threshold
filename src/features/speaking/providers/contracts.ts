@@ -101,14 +101,16 @@ export interface DialogueTurnResult {
     dialogueInputTokens: number
     dialogueOutputTokens: number
   }
-  sessionUsage?: {
-    providerTokenIssuances: number
-    completedTurns: number
-    reportedAudioSeconds: number
-    requestedTtsCharacters: number
-    dialogueInputTokens: number
-    dialogueOutputTokens: number
-  }
+  sessionUsage?: SpeakingSessionUsage
+}
+
+export interface SpeakingSessionUsage {
+  providerTokenIssuances: number
+  completedTurns: number
+  reportedAudioSeconds: number
+  requestedTtsCharacters: number
+  dialogueInputTokens: number
+  dialogueOutputTokens: number
 }
 
 export interface FluxTurnResult {
