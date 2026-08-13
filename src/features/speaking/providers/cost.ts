@@ -14,6 +14,12 @@ export const SPIKE_LIST_PRICE_METADATA = {
   ttsModel: 'deepgram/aura-2',
   dialogueModel: 'anthropic/claude-haiku-4-5',
   sources: ['https://deepgram.com/pricing', 'https://platform.claude.com/docs/en/about-claude/pricing'],
+  rates: {
+    sttPerMinute: SPIKE_LIST_PRICES.fluxMultilingualPerMinute,
+    ttsPerThousandCharacters: SPIKE_LIST_PRICES.aura2PerThousandCharacters,
+    dialogueInputPerMillionTokens: SPIKE_LIST_PRICES.claudeHaiku45InputPerMillionTokens,
+    dialogueOutputPerMillionTokens: SPIKE_LIST_PRICES.claudeHaiku45OutputPerMillionTokens,
+  },
 } as const
 
 export function estimateSpikeProviderCost(usage: SpeechSpikeMeasurement['usage']) {
