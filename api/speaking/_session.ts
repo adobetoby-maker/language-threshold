@@ -3,8 +3,8 @@ import { Redis } from '@upstash/redis'
 
 const SESSION_TTL_SECONDS = 18 * 60
 const SESSION_GRACE_SECONDS = 60
-const MAX_PROVIDER_GRANTS = 48
-const MAX_TURNS = 24
+const MAX_PROVIDER_TOKEN_ISSUANCES = 48
+export const MAX_SPEAKING_TURNS = 24
 const MAX_AUDIO_SECONDS = 18 * 60
 
 export interface SessionLeasePayload {
@@ -23,10 +23,10 @@ export interface SpeakingSessionLease {
 }
 
 export interface SpeakingSessionUsage {
-  providerGrants: number
+  providerTokenIssuances: number
   completedTurns: number
   reportedAudioSeconds: number
-  ttsCharacters: number
+  requestedTtsCharacters: number
   dialogueInputTokens: number
   dialogueOutputTokens: number
 }
@@ -36,10 +36,10 @@ type SessionRecord = {
   scenarioVersionId: string
   startedAt: string
   expiresAt: string
-  providerGrants: string | number
+  providerTokenIssuances: string | number
   completedTurns: string | number
   reportedAudioSeconds: string | number
-  ttsCharacters: string | number
+  requestedTtsCharacters: string | number
   dialogueInputTokens: string | number
   dialogueOutputTokens: string | number
 }
@@ -106,25 +106,27 @@ export async function createSpeakingSession(principalId: string, scenarioVersion
   const startedAtMs = Date.now()
   const expiresAtMs = startedAtMs + SESSION_TTL_SECONDS * 1000
   const payload: SessionLeasePayload = { sessionId, principalId, scenarioVersionId, expiresAt: expiresAtMs }
-  await redis.hset(sessionKey(sessionId), {
+  const transaction = redis.multi()
+  transaction.hset(sessionKey(sessionId), {
     principalId,
     scenarioVersionId,
     startedAt: new Date(startedAtMs).toISOString(),
     expiresAt: new Date(expiresAtMs).toISOString(),
-    providerGrants: 0,
+    providerTokenIssuances: 0,
     completedTurns: 0,
     reportedAudioSeconds: 0,
-    ttsCharacters: 0,
+    requestedTtsCharacters: 0,
     dialogueInputTokens: 0,
     dialogueOutputTokens: 0,
   })
-  await redis.expire(sessionKey(sessionId), SESSION_TTL_SECONDS + SESSION_GRACE_SECONDS)
+  transaction.expire(sessionKey(sessionId), SESSION_TTL_SECONDS + SESSION_GRACE_SECONDS)
+  await transaction.exec()
   return {
     sessionId,
     lease: encodeSessionLease(payload, secret),
     expiresAt: new Date(expiresAtMs).toISOString(),
     hardCapSeconds: SESSION_TTL_SECONDS,
-    maxTurns: MAX_TURNS,
+    maxTurns: MAX_SPEAKING_TURNS,
   }
 }
 
@@ -135,14 +137,17 @@ function recordMatches(record: SessionRecord | null, principalId: string, scenar
     && Date.parse(record.expiresAt) > Date.now())
 }
 
-export async function reserveProviderGrant(payload: SessionLeasePayload) {
+export async function reserveProviderTokenIssuance(payload: SessionLeasePayload) {
   const redis = redisClient()
   if (!redis) return { allowed: false as const, reason: 'unavailable' as const }
-  const record = await redis.hgetall<SessionRecord>(sessionKey(payload.sessionId))
-  if (!recordMatches(record, payload.principalId, payload.scenarioVersionId)) return { allowed: false as const, reason: 'expired' as const }
-  const grants = await redis.hincrby(sessionKey(payload.sessionId), 'providerGrants', 1)
-  if (grants > MAX_PROVIDER_GRANTS) return { allowed: false as const, reason: 'limit' as const }
-  return { allowed: true as const, grants }
+  const result = Number(await redis.eval(
+    "if redis.call('HGET', KEYS[1], 'principalId') ~= ARGV[1] or redis.call('HGET', KEYS[1], 'scenarioVersionId') ~= ARGV[2] then return -1 end; local current = tonumber(redis.call('HGET', KEYS[1], 'providerTokenIssuances') or '0'); if current >= tonumber(ARGV[3]) then return -2 end; return redis.call('HINCRBY', KEYS[1], 'providerTokenIssuances', 1)",
+    [sessionKey(payload.sessionId)],
+    [payload.principalId, payload.scenarioVersionId, String(MAX_PROVIDER_TOKEN_ISSUANCES)],
+  ))
+  if (result === -1) return { allowed: false as const, reason: 'expired' as const }
+  if (result === -2) return { allowed: false as const, reason: 'limit' as const }
+  return { allowed: true as const, tokenIssuances: result }
 }
 
 export async function getCachedTurnResult<T>(sessionId: string, turnSequence: number) {
@@ -175,7 +180,7 @@ export async function validateDialogueTurn(payload: SessionLeasePayload, turnSeq
   if (!recordMatches(record, payload.principalId, payload.scenarioVersionId)) return { allowed: false as const, reason: 'expired' as const }
   const completedTurns = Number(record?.completedTurns ?? 0)
   const totalAudio = Number(record?.reportedAudioSeconds ?? 0)
-  if (turnSequence !== completedTurns + 1 || turnSequence > MAX_TURNS) return { allowed: false as const, reason: 'sequence' as const }
+  if (turnSequence !== completedTurns + 1 || turnSequence > MAX_SPEAKING_TURNS) return { allowed: false as const, reason: 'sequence' as const }
   if (!Number.isFinite(reportedAudioSeconds) || reportedAudioSeconds <= 0 || reportedAudioSeconds > 60 || totalAudio + reportedAudioSeconds > MAX_AUDIO_SECONDS) {
     return { allowed: false as const, reason: 'audioLimit' as const }
   }
@@ -186,7 +191,7 @@ export async function commitDialogueTurn<T extends object>(
   payload: SessionLeasePayload,
   turnSequence: number,
   reportedAudioSeconds: number,
-  ttsCharacters: number,
+  requestedTtsCharacters: number,
   dialogueInputTokens: number,
   dialogueOutputTokens: number,
   result: T,
@@ -194,14 +199,14 @@ export async function commitDialogueTurn<T extends object>(
   const redis = redisClient()
   if (!redis) throw new Error('Speaking session storage is unavailable.')
   const ttl = Math.max(60, Math.ceil((payload.expiresAt - Date.now()) / 1000) + SESSION_GRACE_SECONDS)
-  const pipeline = redis.pipeline()
-  pipeline.hset(sessionKey(payload.sessionId), { completedTurns: turnSequence })
-  pipeline.hincrbyfloat(sessionKey(payload.sessionId), 'reportedAudioSeconds', reportedAudioSeconds)
-  pipeline.hincrby(sessionKey(payload.sessionId), 'ttsCharacters', ttsCharacters)
-  pipeline.hincrby(sessionKey(payload.sessionId), 'dialogueInputTokens', dialogueInputTokens)
-  pipeline.hincrby(sessionKey(payload.sessionId), 'dialogueOutputTokens', dialogueOutputTokens)
-  pipeline.set(resultKey(payload.sessionId, turnSequence), result, { ex: ttl })
-  await pipeline.exec()
+  const transaction = redis.multi()
+  transaction.hset(sessionKey(payload.sessionId), { completedTurns: turnSequence })
+  transaction.hincrbyfloat(sessionKey(payload.sessionId), 'reportedAudioSeconds', reportedAudioSeconds)
+  transaction.hincrby(sessionKey(payload.sessionId), 'requestedTtsCharacters', requestedTtsCharacters)
+  transaction.hincrby(sessionKey(payload.sessionId), 'dialogueInputTokens', dialogueInputTokens)
+  transaction.hincrby(sessionKey(payload.sessionId), 'dialogueOutputTokens', dialogueOutputTokens)
+  transaction.set(resultKey(payload.sessionId, turnSequence), result, { ex: ttl })
+  await transaction.exec()
 }
 
 export async function readSessionUsage(sessionId: string): Promise<SpeakingSessionUsage | null> {
@@ -209,18 +214,18 @@ export async function readSessionUsage(sessionId: string): Promise<SpeakingSessi
   const record = redis ? await redis.hgetall<SessionRecord>(sessionKey(sessionId)) : null
   if (!record) return null
   return {
-    providerGrants: Number(record.providerGrants),
-    completedTurns: Number(record.completedTurns),
-    reportedAudioSeconds: Number(record.reportedAudioSeconds),
-    ttsCharacters: Number(record.ttsCharacters),
-    dialogueInputTokens: Number(record.dialogueInputTokens),
-    dialogueOutputTokens: Number(record.dialogueOutputTokens),
+    providerTokenIssuances: Number(record.providerTokenIssuances ?? 0),
+    completedTurns: Number(record.completedTurns ?? 0),
+    reportedAudioSeconds: Number(record.reportedAudioSeconds ?? 0),
+    requestedTtsCharacters: Number(record.requestedTtsCharacters ?? 0),
+    dialogueInputTokens: Number(record.dialogueInputTokens ?? 0),
+    dialogueOutputTokens: Number(record.dialogueOutputTokens ?? 0),
   }
 }
 
 export const SPEAKING_SESSION_LIMITS = {
   ttlSeconds: SESSION_TTL_SECONDS,
-  maxProviderGrants: MAX_PROVIDER_GRANTS,
-  maxTurns: MAX_TURNS,
+  maxProviderTokenIssuances: MAX_PROVIDER_TOKEN_ISSUANCES,
+  maxTurns: MAX_SPEAKING_TURNS,
   maxReportedAudioSeconds: MAX_AUDIO_SECONDS,
 } as const

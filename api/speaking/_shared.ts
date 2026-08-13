@@ -90,7 +90,7 @@ export function requireAnonymousPrincipal(req: VercelRequest, res: VercelRespons
 
   const principalId = randomUUID()
   const signed = `${principalId}.${signature(principalId, secret)}`
-  const secure = process.env.VERCEL_ENV === 'production' ? '; Secure' : ''
+  const secure = process.env.VERCEL_ENV === 'preview' || process.env.VERCEL_ENV === 'production' ? '; Secure' : ''
   res.setHeader('Set-Cookie', `${PRINCIPAL_COOKIE}=${encodeURIComponent(signed)}; Path=/api/speaking; HttpOnly; SameSite=Strict; Max-Age=86400${secure}`)
   return principalId
 }

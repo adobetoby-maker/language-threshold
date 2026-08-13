@@ -7,6 +7,13 @@ export class PcmMicrophoneCapture {
   private processor: ScriptProcessorNode | null = null
   private startedAt = 0
 
+  async arm() {
+    if (typeof AudioContext === 'undefined') throw new Error('Live PCM capture is unavailable in this browser.')
+    const context = this.context ?? new AudioContext()
+    this.context = context
+    await context.resume()
+  }
+
   async prepare(signal: AbortSignal) {
     if (this.stream) throw new Error('Microphone capture is already active.')
     if (!navigator.mediaDevices?.getUserMedia || typeof AudioContext === 'undefined') throw new Error('Live PCM capture is unavailable in this browser.')
@@ -16,9 +23,7 @@ export class PcmMicrophoneCapture {
       throw new DOMException('Microphone capture was cancelled.', 'AbortError')
     }
     try {
-      const context = this.context ?? new AudioContext()
-      await context.resume()
-      this.context = context
+      await this.arm()
       this.stream = stream
       signal.addEventListener('abort', () => { void this.stop() }, { once: true })
     } catch (error) {

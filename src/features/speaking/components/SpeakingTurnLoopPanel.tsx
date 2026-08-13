@@ -24,15 +24,17 @@ export function SpeakingTurnLoopPanel({ scenario, capabilities, ageConfirmed, fe
 
   const act = (task: () => Promise<unknown>) => {
     setActionError(null)
-    void task().catch(error => setActionError(error instanceof Error ? error.message : 'The speaking action failed.'))
+    void task().catch(error => {
+      if (error instanceof DOMException && error.name === 'AbortError') return
+      setActionError(error instanceof Error ? error.message : 'The speaking action failed.')
+    })
   }
 
   return (
     <section style={{ ...sansFont, marginTop: 18, border: `1px solid ${accent}55`, background: '#161616', borderRadius: 16, padding: 18 }}>
       <h2 style={{ fontSize: 19, margin: '0 0 8px' }}>Live turn-loop spike</h2>
       <p style={{ color: '#A89F94', fontSize: 12, lineHeight: 1.55, marginTop: 0 }}>
-        Preview/development only. Microphone audio goes directly to Deepgram and is not retained by Language Threshold. Transcribed text is sent to Anthropic under the unapproved provider-retention terms shown in the launch blockers.
-        Each learner turn is capped at 60 seconds in this client.
+        Preview/development only. Microphone audio goes directly to Deepgram and is not retained by Language Threshold. The transcript and recent browser-supplied history go to Anthropic; generated partner text goes to Deepgram for speech. The response and usage record are cached by Language Threshold for at most 19 minutes, and Reset does not delete that server cache early. Provider retention terms are not production-approved. Each learner turn is capped at 60 seconds in this client.
       </p>
 
       {loop.state.phase === 'idle' ? (
@@ -48,7 +50,7 @@ export function SpeakingTurnLoopPanel({ scenario, capabilities, ageConfirmed, fe
       ) : loop.state.phase === 'thinking' ? (
         <p aria-live="polite">Finalizing your transcript and preparing the response…</p>
       ) : loop.state.phase === 'speaking' ? (
-        <p aria-live="polite">Playing the partner response…</p>
+        <p aria-live="polite">Playing the partner response or preparing the next turn…</p>
       ) : (
         <button type="button" onClick={() => act(loop.reset)} style={{ width: '100%', border: 0, borderRadius: 10, padding: '12px 14px', fontWeight: 800 }}>Reset controlled session</button>
       )}
@@ -69,6 +71,15 @@ export function SpeakingTurnLoopPanel({ scenario, capabilities, ageConfirmed, fe
         <div style={{ color: '#A89F94', fontSize: 12 }}>
           <strong>Deferred coaching</strong>
           <ul>{loop.latestResult.deferredFeedback.map((item, index) => <li key={index}>{item}</li>)}</ul>
+        </div>
+      ) : null}
+
+      {loop.latestResult?.provisionalObjectiveIds.length ? (
+        <div style={{ color: '#A89F94', fontSize: 12 }}>
+          <strong>Provisional evidence (does not change mastery)</strong>
+          <ul>{loop.latestResult.provisionalObjectiveIds.map(id => (
+            <li key={id}>{scenario.objectives.find(objective => objective.id === id)?.description ?? id}</li>
+          ))}</ul>
         </div>
       ) : null}
 

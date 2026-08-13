@@ -11,7 +11,7 @@ import { SpeakingTurnLoopPanel } from '../features/speaking/components/SpeakingT
 const FEEDBACK_OPTIONS: Array<{ value: FeedbackLanguage; label: string }> = [
   { value: 'english', label: 'English coaching' },
   { value: 'target', label: 'Spanish coaching' },
-  { value: 'adaptive', label: 'Adaptive coaching' },
+  { value: 'adaptive', label: 'Adaptive coaching (preview rule)' },
 ]
 
 export default function SpeakingScenario() {

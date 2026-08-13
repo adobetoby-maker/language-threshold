@@ -28,9 +28,11 @@ export class Linear16StreamPlayer {
     this.sources.add(source)
   }
 
-  async waitUntilFinished(signal: AbortSignal) {
+  async waitUntilFinished(signal: AbortSignal, timeoutMs = 30_000) {
+    const deadline = performance.now() + timeoutMs
     while (this.context && this.nextStartTime > this.context.currentTime) {
       if (signal.aborted) throw new DOMException('Audio playback was cancelled.', 'AbortError')
+      if (performance.now() >= deadline) throw new Error('Audio playback did not finish within 30 seconds.')
       await new Promise(resolve => setTimeout(resolve, 25))
     }
   }

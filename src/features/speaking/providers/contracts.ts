@@ -40,13 +40,17 @@ export interface SpeakingProviderCapabilities {
   }
   limits: {
     tokenTtlSeconds: number
-    grantBudgets: {
+    sessionStartBudgets: {
+      perAnonymousPrincipalPerHour: number
+      perNetworkAddressPerHour: number
+    }
+    tokenIssuanceBudgets: {
       perAnonymousPrincipalPerHour: number
       perNetworkAddressPerHour: number
     }
     sessionLeaseMinutes: number
     maxTurnsPerSession: number
-    maxProviderGrantsPerSession: number
+    maxProviderTokenIssuancesPerSession: number
     browserAudioSecondsAuthoritative: false
   }
   ageGate: { mode: 'self-attestation'; productionApproved: false }
@@ -93,15 +97,15 @@ export interface DialogueTurnResult {
   turnSequence: number
   usage: {
     reportedAudioSeconds: number
-    ttsCharacters: number
+    requestedTtsCharacters: number
     dialogueInputTokens: number
     dialogueOutputTokens: number
   }
   sessionUsage?: {
-    providerGrants: number
+    providerTokenIssuances: number
     completedTurns: number
     reportedAudioSeconds: number
-    ttsCharacters: number
+    requestedTtsCharacters: number
     dialogueInputTokens: number
     dialogueOutputTokens: number
   }
@@ -135,6 +139,6 @@ export interface StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
   connect(signal: AbortSignal): Promise<void>
   sendAudio(chunk: ArrayBuffer): void
-  waitForEndOfTurn(signal: AbortSignal, timeoutMs?: number): Promise<FluxTurnResult>
+  finishLearnerTurn(signal: AbortSignal, timeoutMs?: number): Promise<FluxTurnResult>
   cancel(): Promise<void>
 }

@@ -32,12 +32,25 @@ export function parseFluxEndOfTurn(value: unknown): FluxTurnResult | null {
   }
 }
 
+export function combineFluxTurns(turns: FluxTurnResult[]): FluxTurnResult | null {
+  if (!turns.length) return null
+  const ordered = [...turns].sort((left, right) => left.audioWindowStart - right.audioWindowStart)
+  return {
+    transcript: ordered.map(turn => turn.transcript).join(' ').trim(),
+    confidence: Math.min(...ordered.map(turn => turn.confidence)),
+    audioWindowStart: ordered[0].audioWindowStart,
+    audioWindowEnd: Math.max(...ordered.map(turn => turn.audioWindowEnd)),
+    providerRequestId: ordered.at(-1)!.providerRequestId,
+  }
+}
+
 export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
   readonly capabilities: SpeakingProviderCapabilities
   readonly grant: SpeakingTokenGrant<'deepgram'>
   private socket: WebSocket | null = null
   private state: ConnectionState = 'idle'
-  private finalTurn: FluxTurnResult | null = null
+  private finalTurns: FluxTurnResult[] = []
+  private finalizing = false
   private terminalError: Error | null = null
   private finalWaiters = new Set<TurnWaiter>()
 
@@ -52,8 +65,19 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
     this.finalWaiters.clear()
   }
 
+  private completeFinalTurn() {
+    const combined = combineFluxTurns(this.finalTurns)
+    if (!combined) {
+      this.fail(new Error('The speech provider closed without a finalized transcript.'))
+      return
+    }
+    this.finalWaiters.forEach(waiter => waiter.resolve(combined))
+    this.finalWaiters.clear()
+  }
+
   connect(signal: AbortSignal): Promise<void> {
     if (this.state !== 'idle') return Promise.reject(new Error('The speech connection has already been used.'))
+    if (signal.aborted) return Promise.reject(new DOMException('The speech connection was cancelled.', 'AbortError'))
     this.state = 'connecting'
 
     return new Promise((resolve, reject) => {
@@ -91,9 +115,11 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
           const message = JSON.parse(event.data) as { type?: string; description?: string }
           const parsed = parseFluxEndOfTurn(message)
           if (parsed) {
-            this.finalTurn = parsed
-            this.finalWaiters.forEach(waiter => waiter.resolve(parsed))
-            this.finalWaiters.clear()
+            const duplicate = this.finalTurns.some(turn => turn.providerRequestId === parsed.providerRequestId
+              && turn.audioWindowStart === parsed.audioWindowStart
+              && turn.audioWindowEnd === parsed.audioWindowEnd
+              && turn.transcript === parsed.transcript)
+            if (!duplicate) this.finalTurns.push(parsed)
           } else if (message.type === 'FatalError' || message.type === 'Error') {
             this.fail(new Error(message.description || 'The speech provider returned an error.'))
             socket.close(1011, 'provider-error')
@@ -111,8 +137,9 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
       socket.addEventListener('close', () => {
         clearTimeout(connectTimeout)
         signal.removeEventListener('abort', abort)
-        if (!this.finalTurn && !this.terminalError && !signal.aborted) {
-          this.fail(new Error('The speech connection closed before the turn was finalized.'))
+        if (!this.terminalError && !signal.aborted) {
+          if (this.finalizing) this.completeFinalTurn()
+          else this.fail(new Error('The speech connection closed before the learner ended the turn.'))
         }
         this.state = 'closed'
       }, { once: true })
@@ -124,10 +151,11 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
     this.socket.send(chunk)
   }
 
-  waitForEndOfTurn(signal: AbortSignal, timeoutMs = 8_000) {
-    if (this.finalTurn) return Promise.resolve(this.finalTurn)
+  finishLearnerTurn(signal: AbortSignal, timeoutMs = 8_000) {
     if (this.terminalError) return Promise.reject(this.terminalError)
     if (this.state !== 'open') return Promise.reject(new Error('The speech connection is not open.'))
+    if (this.finalizing) return Promise.reject(new Error('The learner turn is already being finalized.'))
+    this.finalizing = true
     return new Promise<FluxTurnResult>((resolve, reject) => {
       let timeout = 0
       const cleanup = () => {
@@ -144,11 +172,13 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
         reject(new DOMException('Waiting for the transcript was cancelled.', 'AbortError'))
       }
       this.finalWaiters.add(waiter)
+      if (signal.aborted) return abort()
       signal.addEventListener('abort', abort, { once: true })
       timeout = window.setTimeout(() => {
         cleanup()
         reject(new Error('The speech provider did not finalize the turn in time.'))
       }, timeoutMs)
+      this.socket?.send(JSON.stringify({ type: 'CloseStream' }))
     })
   }
 
@@ -157,7 +187,7 @@ export class DeepgramSttUploadAdapter implements StreamingSttUploadAdapter {
     if (this.state === 'open') this.socket.send(JSON.stringify({ type: 'CloseStream' }))
     this.socket.close(1000, 'cancelled')
     this.state = 'closed'
-    this.finalWaiters.clear()
+    this.fail(new DOMException('The speech connection was cancelled.', 'AbortError'))
   }
 }
 
@@ -174,10 +204,22 @@ export class DeepgramTtsAdapter {
       socket.binaryType = 'arraybuffer'
       this.socket = socket
       let flushed = false
+      let receivedAudio = false
       let settled = false
+      const timeout = window.setTimeout(() => {
+        if (socket.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'Clear' }))
+        finishReject(new Error('Text-to-speech did not complete within 30 seconds.'))
+        socket.close(1000, 'tts-timeout')
+      }, 30_000)
+      const cleanup = () => {
+        clearTimeout(timeout)
+        signal.removeEventListener('abort', abort)
+        if (this.socket === socket) this.socket = null
+      }
       const finishReject = (error: Error) => {
         if (settled) return
         settled = true
+        cleanup()
         reject(error)
       }
       const abort = () => {
@@ -186,12 +228,15 @@ export class DeepgramTtsAdapter {
         finishReject(new DOMException('Text-to-speech was cancelled.', 'AbortError'))
       }
       signal.addEventListener('abort', abort, { once: true })
+      if (signal.aborted) return abort()
       socket.addEventListener('open', () => {
+        if (settled) return socket.close(1000, 'cancelled')
         socket.send(JSON.stringify({ type: 'Speak', text }))
         socket.send(JSON.stringify({ type: 'Flush' }))
       }, { once: true })
       socket.addEventListener('message', event => {
         if (event.data instanceof ArrayBuffer) {
+          if (event.data.byteLength > 0) receivedAudio = true
           onAudio(event.data)
           return
         }
@@ -202,18 +247,22 @@ export class DeepgramTtsAdapter {
             flushed = true
             socket.send(JSON.stringify({ type: 'Close' }))
           } else if (message.type === 'Warning') {
-            socket.close(1011, 'provider-warning')
             finishReject(new Error(message.description || 'The text-to-speech provider returned a warning.'))
+            socket.close(1011, 'provider-warning')
           }
         } catch { /* ignore unknown provider metadata */ }
       })
-      socket.addEventListener('error', () => finishReject(new Error('The text-to-speech connection failed.')), { once: true })
+      socket.addEventListener('error', () => {
+        finishReject(new Error('The text-to-speech connection failed.'))
+        socket.close(1011, 'provider-error')
+      }, { once: true })
       socket.addEventListener('close', () => {
-        signal.removeEventListener('abort', abort)
-        this.socket = null
-        if (flushed && !settled) {
+        cleanup()
+        if (flushed && receivedAudio && !settled) {
           settled = true
           resolve()
+        } else if (flushed && !receivedAudio && !settled) {
+          finishReject(new Error('Text-to-speech completed without returning audio.'))
         } else if (!signal.aborted) {
           finishReject(new Error('The text-to-speech connection closed before audio completed.'))
         }

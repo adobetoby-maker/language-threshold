@@ -19,21 +19,21 @@ It exists to produce testable latency, usage, cancellation, and mobile-lifecycle
 ## Implemented boundary
 
 - A server-created, signed 18-minute session lease binds an anonymous principal to one immutable scenario version.
-- Upstash stores the session ledger and fails closed when unavailable. The preview limits are 24 completed turns, 48 provider grants, 1,080 browser-reported learner-audio seconds, and 60 seconds per reported turn.
-- Each STT and TTS connection requires a fresh 30-second Deepgram grant. The browser receives no durable provider key.
-- Flux accepts raw `linear16` audio at 16 kHz and only an `EndOfTurn` event advances the dialogue stage.
+- Upstash stores the session ledger and fails closed when unavailable. The preview limits are 24 completed turns, 48 provider-token issuances, 1,080 browser-reported learner-audio seconds, and 60 seconds per reported turn. Separate hourly limits apply to session starts and token issuances.
+- The application requests a fresh 30-second Deepgram token for each intended STT or TTS connection. The browser receives no durable provider key. Deepgram tokens are general `usage::write` credentials and can be reused until expiry, so an issuance count is not proof of one connection or a concurrency cap.
+- Flux accepts raw `linear16` audio at 16 kHz. The explicit Stop path sends `CloseStream`, waits for the terminal provider response, and joins all finalized Flux segments collected since Start rather than silently overwriting speech separated by a natural pause.
 - Dialogue runs server-side through the Anthropic Messages API and must return one constrained tool result. Scenario role, objectives, and safety rules are held in an explicit server catalog with a drift test against the client catalog.
 - Objective IDs returned by the model are displayed only as provisional evidence. They do not update mastery or durable progress.
 - Aura TTS streams `linear16` audio at 24 kHz. The client implements `Speak`, `Flush`, `Clear`, and `Close` lifecycle messages.
-- The initial microphone context is resumed in the learner's Start gesture; the playback context is armed in the learner's Stop gesture. Microphone tracks are stopped while the response is generated and played.
+- The microphone context is created and its resume is initiated synchronously in the learner's Start gesture; the playback context is armed in the learner's Stop gesture. Microphone tracks are stopped while the response is generated and played. Physical Safari verification is still required.
 - Hiding the document, cancelling, unchecking the age attestation, hitting the per-turn timeout, or reaching the lease limit stops active media work.
 
 ## Metering semantics
 
-The server ledger records provider-grant count, completed turns, browser-reported learner-audio seconds, TTS characters, and Anthropic input/output tokens. This is useful preview telemetry and abuse resistance, but it is not authoritative billing metering:
+The server ledger records provider-token issuance count, completed turns, browser-reported learner-audio seconds, requested TTS characters, and Anthropic input/output tokens. This is useful preview telemetry and abuse resistance, but it is not authoritative billing metering:
 
 - audio duration is reported by the browser and can be falsified;
-- the grant count does not prove how long an already-open provider socket remained active;
+- the issuance count does not prove how many sockets reused a token or how long an already-open provider socket remained active;
 - the ledger does not yet reserve concurrent connection slots;
 - it does not reconcile against provider invoices or request logs; and
 - an anonymous principal cookie is not a durable authenticated learner identity.
@@ -47,6 +47,8 @@ Those limits remain production blockers.
 - The session start uses the existing 13+ checkbox as a client self-attestation. It is not authoritative age verification and must not be treated as a production control.
 - Raw learner audio goes directly from the browser to Deepgram and is not stored by this application.
 - The finalized transcript and short recent dialogue history go to Anthropic. The UI states this before the learner starts.
+- Recent history is browser-supplied in this spike. It is sent as structured user/assistant messages and treated as untrusted conversation data, but it is not yet reconciled against server-authoritative history.
+- Generated partner text goes to Deepgram for TTS and is cached with the idempotent turn result in Upstash for no more than the remaining lease plus a 60-second grace period. Browser Reset does not delete that cache early.
 - Speaking routes continue to suppress application analytics. Transcripts and raw audio are not emitted to analytics.
 - `mip_opt_out=true` remains on the Deepgram STT request. This flag does not replace contract, DPA, retention, subprocessor, or regional-processing review.
 - The server prompt constrains the role-play and carries authored scenario safety rules. Provider output is schema-checked and length-limited, but model output still requires adversarial and human review.
@@ -57,12 +59,14 @@ Those limits remain production blockers.
 - A cancelled session aborts fetches, stops microphone tracks, closes STT/TTS sockets, clears queued playback, and closes audio contexts.
 - A dialogue lock serializes turns per session, and the turn sequence plus cached result make a retry idempotent after a successful commit.
 - A failed provider grant, provider response, schema parse, or ledger operation fails the turn closed. This spike does not silently fall back to fake dialogue.
+- Automatic reconnect is not implemented. An unexpected transport close fails the browser session and requires an explicit reset; measuring “reconnect” in this increment means validating that fail-closed recovery path, not transparent replay.
 
 ## Verification completed in code
 
 - Unit tests cover PCM conversion, Flux final-event parsing, token/session client contracts, signed-lease binding and expiry, constrained dialogue output, scenario-catalog drift, state-machine behavior, cost math, IDs, and attempt-scoped persistence.
 - ESLint, browser TypeScript build, API TypeScript check, and the Vitest suite are required before publishing the draft.
 - A mocked browser walk-through may exercise the orchestration and responsive UI, but it is not provider interoperability or physical-device evidence.
+- Capture currently uses deprecated main-thread `ScriptProcessorNode`. Its drop/glitch rate must be measured and disclosed during the controlled run; migrate to `AudioWorkletNode` before treating performance data as launch evidence.
 
 ## Required preview and device evidence
 

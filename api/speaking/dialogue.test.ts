@@ -19,5 +19,6 @@ describe('constrained dialogue result', () => {
   it('rejects unknown objective ids and oversized feedback', () => {
     expect(parseDialogueToolResult({ assistantText: 'Hola', provisionalObjectiveIds: ['unknown'], deferredFeedback: [] }, objectiveIds)).toBeNull()
     expect(parseDialogueToolResult({ assistantText: 'Hola', provisionalObjectiveIds: [], deferredFeedback: ['a', 'b', 'c', 'd'] }, objectiveIds)).toBeNull()
+    expect(parseDialogueToolResult({ assistantText: '   ', provisionalObjectiveIds: [], deferredFeedback: [] }, objectiveIds)).toBeNull()
   })
 })

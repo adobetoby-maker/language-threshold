@@ -29,6 +29,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
   const playerRef = useRef<Linear16StreamPlayer | null>(null)
   const captureStartedAtRef = useRef(0)
   const captureTimeoutRef = useRef(0)
+  const operationInFlightRef = useRef(false)
 
   const cancel = useCallback(async () => {
     controllerRef.current?.abort()
@@ -43,18 +44,23 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
     ttsRef.current = null
     await playerRef.current?.cancel()
     playerRef.current = null
+    operationInFlightRef.current = false
   }, [])
 
   const start = useCallback(async (ageConfirmed: boolean) => {
     if (!capabilities?.enabled) throw new Error('The provider turn loop is not configured.')
+    if (operationInFlightRef.current) return
+    if (controllerRef.current) throw new Error('Reset the active speaking session before starting another one.')
     const activeCapabilities = capabilities
-    await cancel()
+    operationInFlightRef.current = true
     const controller = new AbortController()
     controllerRef.current = controller
     dispatch({ type: 'START', attemptId: createAttemptId() })
+    const microphone = new PcmMicrophoneCapture()
+    microphoneRef.current = microphone
+    const microphoneArm = microphone.arm()
     try {
-      const microphone = new PcmMicrophoneCapture()
-      microphoneRef.current = microphone
+      await microphoneArm
       await microphone.prepare(controller.signal)
       const nextSession = await startSpeakingSession(scenario.id, ageConfirmed, controller.signal)
       setSession(nextSession)
@@ -70,7 +76,9 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
         void cancel()
       }, 60_000)
       dispatch({ type: 'MIC_READY' })
+      operationInFlightRef.current = false
     } catch (error) {
+      operationInFlightRef.current = false
       if (!controller.signal.aborted) {
         dispatch({ type: 'FAIL', message: error instanceof Error ? error.message : 'The speaking turn could not start.' })
         await cancel()
@@ -80,12 +88,16 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
   }, [cancel, capabilities, scenario.id])
 
   const stopAndRespond = useCallback(async (ageConfirmed: boolean) => {
+    if (operationInFlightRef.current) return
     const controller = controllerRef.current
     const activeSession = session
     const microphone = microphoneRef.current
     const stt = sttRef.current
     const activeCapabilities = capabilities
-    if (!controller || !activeSession || !microphone || !stt || !activeCapabilities) return
+    if (!controller || !activeSession || !microphone || !stt || !activeCapabilities) {
+      throw new Error('The speaking turn is not ready. Reset the session and try again.')
+    }
+    operationInFlightRef.current = true
     dispatch({ type: 'END_LEARNER_TURN' })
     clearTimeout(captureTimeoutRef.current)
     captureTimeoutRef.current = 0
@@ -96,7 +108,7 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
       playerRef.current = player
       await player.arm()
       const reportedAudioSeconds = await microphone.finishTurn()
-      const transcriptResult = await stt.waitForEndOfTurn(controller.signal)
+      const transcriptResult = await stt.finishLearnerTurn(controller.signal)
       const transcriptAt = performance.now()
       await stt.cancel()
       sttRef.current = null
@@ -141,12 +153,11 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
         ttsFirstAudioMs: firstAudioAt === null ? null : Math.round(firstAudioAt - dialogueAt),
         totalMs: Math.round(completedAt - turnStartedAt),
       })
-      dispatch({ type: 'RESPONSE_FINISHED' })
-
       if (dialogue.turnSequence >= activeSession.maxTurns) {
         await microphone.stop()
         microphoneRef.current = null
         dispatch({ type: 'PAUSE' })
+        operationInFlightRef.current = false
         return
       }
 
@@ -162,7 +173,10 @@ export function useSpeakingTurnLoop(scenario: SpeakingScenarioVersion, capabilit
         dispatch({ type: 'FAIL', message: 'This learner turn reached the 60-second development limit.' })
         void cancel()
       }, 60_000)
+      dispatch({ type: 'RESPONSE_FINISHED' })
+      operationInFlightRef.current = false
     } catch (error) {
+      operationInFlightRef.current = false
       if (!controller.signal.aborted) {
         dispatch({ type: 'FAIL', message: error instanceof Error ? error.message : 'The speaking turn failed.' })
         await cancel()

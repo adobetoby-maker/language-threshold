@@ -1,11 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { consumeSpeakingTokenIssuanceBudget } from './_budget.js'
 import {
   applySpeakingCors,
   LAUNCH_SCENARIO_VERSION_IDS,
+  requestIp,
   requireAnonymousPrincipal,
   requireTrustedOrigin,
 } from './_shared.js'
-import { reserveProviderGrant, verifySessionLease } from './_session.js'
+import { reserveProviderTokenIssuance, verifySessionLease } from './_session.js'
 
 interface DeepgramGrant {
   access_token?: string
@@ -39,10 +41,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!principalId) return
   const verifiedLease = typeof lease === 'string' ? verifySessionLease(lease, principalId, scenarioVersionId) : null
   if (!verifiedLease) return res.status(403).json({ error: 'invalidSession', message: 'Start a fresh controlled speaking session.' })
-  const grantReservation = await reserveProviderGrant(verifiedLease)
+  const hourlyBudget = await consumeSpeakingTokenIssuanceBudget(principalId, requestIp(req))
+  if (!hourlyBudget.allowed) return res.status(hourlyBudget.status).json({ error: hourlyBudget.error, message: hourlyBudget.message })
+  const grantReservation = await reserveProviderTokenIssuance(verifiedLease)
   if (!grantReservation.allowed) {
-    const status = grantReservation.reason === 'limit' ? 429 : 503
-    return res.status(status).json({ error: 'providerGrantDenied', message: 'The controlled session cannot issue another provider grant.' })
+    const status = grantReservation.reason === 'limit' ? 429 : grantReservation.reason === 'expired' ? 403 : 503
+    return res.status(status).json({ error: 'providerTokenIssuanceDenied', message: 'The controlled session cannot issue another provider token.' })
   }
 
   const key = process.env.DEEPGRAM_API_KEY
@@ -53,6 +57,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: 'POST',
       headers: { Authorization: `Token ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ ttl_seconds: 30 }),
+      signal: AbortSignal.timeout(10_000),
     })
     if (!providerResponse.ok) {
       console.error('Deepgram token grant failed.', providerResponse.status)
