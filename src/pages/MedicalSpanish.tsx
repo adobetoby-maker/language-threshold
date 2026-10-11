@@ -8,6 +8,7 @@ import EmailSignupBanner from '../components/EmailSignupBanner'
 import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
+import ProfessionalPlans from '../components/ProfessionalPlans'
 
 function SubsectionCard({ sub }: { sub: MedicalSubsection }) {
   const [open, setOpen] = useState(false)
@@ -419,6 +420,8 @@ export default function MedicalSpanish() {
         </section>
       </FadeIn>
 
+      <ProfessionalPlans accentColor="#4A9EFF" />
+
       {/* Final CTA */}
       <FadeIn>
         <section
@@ -445,16 +448,16 @@ export default function MedicalSpanish() {
               Start with your specialty. Build from there.
             </p>
             <a
-              href={APP_URL}
+              href={`${APP_URL}/pricing`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-10 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90 mb-4"
               style={{ ...sansFont, backgroundColor: '#4A9EFF', color: '#0D0D0D' }}
             >
-              Start Learning — It's Free →
+              View plans and start a free trial →
             </a>
             <p className="text-xs" style={{ ...sansFont, color: '#A89F94' }}>
-              No signup. No credit card. Pick your specialty and start.
+              Preview your specialty, then choose Pro or Team to open every published module.
             </p>
           </div>
         </section>

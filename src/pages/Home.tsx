@@ -741,17 +741,21 @@ export default function Home() {
 
                 <div className="flex items-end gap-1 mb-1">
                   <span className="font-serif text-5xl font-bold text-white">$99</span>
-                  <span className="text-white/50 mb-1">/mo</span>
+                  <span className="text-white/50 mb-1">/month</span>
                 </div>
-                <p className="text-sm text-white/45 mb-5">5 seats included · Admin dashboard</p>
+                <p className="text-sm text-white/45 mb-3">5 learner seats included · Admin dashboard</p>
+                <p className="text-xs text-white/60 mb-5">
+                  Add seats for $15/month each. 15 seats: $249 monthly, $747 for 3 months,
+                  or $2,490 yearly (two months free).
+                </p>
 
                 <ul className="space-y-2 mb-7">
                   {[
-                    'Everything in Family',
+                    'Everything in Pro for every employee',
                     'Team dashboard + member management',
-                    'Usage analytics per seat',
-                    'Shared progress tracking',
-                    'Priority support',
+                    'Practice time and module progress per seat',
+                    'Module assignments and completion certificates',
+                    'Quarterly and annual options',
                   ].map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm text-white/75">
                       <span className="shrink-0 mt-0.5" style={{ color: '#00C9B1' }}>✦</span>{f}
@@ -760,7 +764,7 @@ export default function Home() {
                 </ul>
 
                 <a
-                  href="mailto:hello@languagethreshold.com?subject=Team%20Plan%20Inquiry"
+                  href={`${APP_URL}/team`}
                   className="block w-full text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] font-semibold transition-all duration-300"
                   style={{
                     background: 'linear-gradient(90deg, #00C9B1, #00a896, #00C9B1)',
@@ -775,9 +779,9 @@ export default function Home() {
                     (e.currentTarget as HTMLAnchorElement).style.transform = 'scale(1)';
                   }}
                 >
-                  Contact for Team Plan →
+                  Set Up a Team →
                 </a>
-                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">hello@languagethreshold.com</p>
+                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">5-seat minimum · every published module included</p>
               </motion.div>
             </div>
           </div>

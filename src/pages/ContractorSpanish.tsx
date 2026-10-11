@@ -8,6 +8,7 @@ import EmailSignupBanner from '../components/EmailSignupBanner'
 import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
+import ProfessionalPlans from '../components/ProfessionalPlans'
 
 function SubsectionCard({ sub }: { sub: ConstructionSubsection }) {
   const [open, setOpen] = useState(false)
@@ -415,6 +416,8 @@ export default function ContractorSpanish() {
         </section>
       </FadeIn>
 
+      <ProfessionalPlans accentColor="#FF7A4A" />
+
       {/* Final CTA */}
       <FadeIn>
         <section
@@ -439,16 +442,16 @@ export default function ContractorSpanish() {
               Start with your trade. Build from there.
             </p>
             <a
-              href={APP_URL}
+              href={`${APP_URL}/pricing`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-10 py-4 rounded-full font-semibold text-base transition-opacity hover:opacity-90 mb-4"
               style={{ ...sansFont, backgroundColor: '#FF7A4A', color: '#0D0D0D' }}
             >
-              Start Learning — It's Free →
+              View plans and start a free trial →
             </a>
             <p className="text-xs" style={{ ...sansFont, color: '#A89F94' }}>
-              No signup. No credit card. Pick your trade and start.
+              Preview your trade, then choose Pro or Team to open every published module.
             </p>
           </div>
         </section>
