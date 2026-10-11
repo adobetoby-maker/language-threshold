@@ -30,8 +30,9 @@ export default function ProfessionalPlans({ accentColor }: { accentColor: string
             <h3 className="font-bold mb-2" style={{ ...displayFont, color: '#F7F3EC' }}>Team</h3>
             <p className="text-xl font-bold" style={{ ...sansFont, color: accentColor }}>$99/month</p>
             <p className="text-sm mt-1" style={{ ...sansFont, color: '#A89F94' }}>
-              Five seats included; each extra seat adds $15/month. For 15 seats: $747 for three
-              months or $2,490/year. Admin assignments and progress reporting included.
+              Five seats included. Seats 6–10 add $12/month each; seats 11 and up add $10/month
+              each. Ten seats are $159/month. Fifteen seats are $209/month, $627 for three months,
+              or $2,090/year. Admin assignments and progress reporting included.
             </p>
           </div>
         </div>

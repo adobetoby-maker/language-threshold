@@ -745,8 +745,8 @@ export default function Home() {
                 </div>
                 <p className="text-sm text-white/45 mb-3">5 learner seats included · Admin dashboard</p>
                 <p className="text-xs text-white/60 mb-5">
-                  Add seats for $15/month each. 15 seats: $249 monthly, $747 for 3 months,
-                  or $2,490 yearly (two months free).
+                  10 seats: $159/month. 15 seats: $209 monthly, $627 for 3 months,
+                  or $2,090 yearly (two months free). Seats 6–10 add $12/month; seats 11+ add $10/month.
                 </p>
 
                 <ul className="space-y-2 mb-7">
