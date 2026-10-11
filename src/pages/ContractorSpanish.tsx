@@ -4,7 +4,6 @@ import { CONSTRUCTION_SUBSECTIONS, type ConstructionSubsection } from '../data/c
 import { CONSTRUCTION_MODULES } from '../data/constructionModules'
 import FadeIn from '../components/FadeIn'
 import LessonGrid from '../components/LessonGrid'
-import EmailSignupBanner from '../components/EmailSignupBanner'
 import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
@@ -320,15 +319,6 @@ export default function ContractorSpanish() {
                 Practice all of these in the app →
               </a>
             </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* Email signup — 10% off for 6 months */}
-      <FadeIn>
-        <section id="email-signup" className="py-16">
-          <div className="max-w-6xl mx-auto px-6">
-            <EmailSignupBanner accentColor="#FF7A4A" specialty="construction" />
           </div>
         </section>
       </FadeIn>

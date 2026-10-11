@@ -9,7 +9,6 @@ interface Props {
 export default function EmailSignupBanner({ accentColor, specialty }: Props) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
-  const [code, setCode] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
@@ -23,8 +22,7 @@ export default function EmailSignupBanner({ accentColor, specialty }: Props) {
         body: JSON.stringify({ email: email.trim(), source: specialty }),
       })
       const data = await res.json()
-      if (res.ok && data.code) {
-        setCode(data.code)
+      if (res.ok && data.success) {
         setStatus('success')
       } else {
         setErrorMsg(data.error || 'Something went wrong.')
@@ -70,24 +68,7 @@ export default function EmailSignupBanner({ accentColor, specialty }: Props) {
             You're in!
           </h3>
           <p style={{ ...sansFont, fontSize: 14, color: '#A89F94', margin: '0 0 20px' }}>
-            Use this code at checkout for <strong style={{ color: accentColor }}>10% off your first 6 months</strong>:
-          </p>
-          <div
-            style={{
-              display: 'inline-block',
-              background: accentColor + '18',
-              border: `1.5px dashed ${accentColor}60`,
-              borderRadius: 12,
-              padding: '14px 32px',
-              marginBottom: 16,
-            }}
-          >
-            <span style={{ ...sansFont, fontSize: 28, fontWeight: 800, letterSpacing: '0.12em', color: accentColor }}>
-              {code}
-            </span>
-          </div>
-          <p style={{ ...sansFont, fontSize: 12, color: '#71717A' }}>
-            Enter this code when upgrading to a paid plan in the app.
+            Thanks for signing up. We’ll share new modules and team updates with you.
           </p>
         </div>
       ) : (
@@ -101,13 +82,13 @@ export default function EmailSignupBanner({ accentColor, specialty }: Props) {
               marginBottom: 14,
             }}
           >
-            Limited offer
+            Stay informed
           </div>
           <h3 style={{ ...displayFont, fontSize: 26, color: '#F7F3EC', margin: '0 0 8px', lineHeight: 1.25 }}>
-            Get 10% off your first 6 months
+            Get new module updates
           </h3>
           <p style={{ ...sansFont, fontSize: 14, color: '#A89F94', margin: '0 0 24px', lineHeight: 1.6, maxWidth: 480 }}>
-            Join our list and receive a discount code for 10% off any paid plan — applied automatically for your first six months.
+            Join our list for new specialty modules and team learning updates.
           </p>
           <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             <input
@@ -148,7 +129,7 @@ export default function EmailSignupBanner({ accentColor, specialty }: Props) {
                 transition: 'opacity 0.15s',
               }}
             >
-              {status === 'loading' ? 'Sending…' : 'Get Discount Code →'}
+              {status === 'loading' ? 'Signing up…' : 'Join the List →'}
             </button>
           </form>
           {status === 'error' && (
