@@ -7,8 +7,6 @@ const ALLOWED_ORIGINS = new Set([
   'http://localhost:3000',
 ])
 
-const DISCOUNT_CODE = 'WELCOME10'
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const origin = req.headers.origin ?? ''
   if (ALLOWED_ORIGINS.has(origin)) {
@@ -32,20 +30,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const url = process.env.UPSTASH_REDIS_REST_URL
   const token = process.env.UPSTASH_REDIS_REST_TOKEN
 
-  if (url && token) {
-    try {
-      const { Redis } = await import('@upstash/redis')
-      const redis = new Redis({ url, token })
-      const key = `subscribers:${src}`
-      const exists = await redis.sismember(key, normalized)
-      if (!exists) {
-        await redis.sadd(key, normalized)
-        await redis.rpush('subscribers:log', JSON.stringify({ email: normalized, source: src, ts: new Date().toISOString() }))
-      }
-    } catch (e) {
-      console.error('Redis error:', e)
-    }
-  }
+  if (!url || !token) return res.status(503).json({ error: 'Signup is temporarily unavailable.' })
 
-  return res.status(200).json({ code: DISCOUNT_CODE, message: 'Success' })
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = new Redis({ url, token })
+    const key = `subscribers:${src}`
+    const exists = await redis.sismember(key, normalized)
+    if (!exists) {
+      await redis.sadd(key, normalized)
+      await redis.rpush('subscribers:log', JSON.stringify({ email: normalized, source: src, ts: new Date().toISOString() }))
+    }
+    return res.status(200).json({ success: true })
+  } catch (e) {
+    console.error('Redis error:', e)
+    return res.status(503).json({ error: 'Signup is temporarily unavailable.' })
+  }
 }

@@ -4,7 +4,6 @@ import { MEDICAL_SUBSECTIONS, type MedicalSubsection } from '../data/medicalLess
 import { MEDICAL_MODULES } from '../data/medicalModules'
 import FadeIn from '../components/FadeIn'
 import LessonGrid from '../components/LessonGrid'
-import EmailSignupBanner from '../components/EmailSignupBanner'
 import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
@@ -324,15 +323,6 @@ export default function MedicalSpanish() {
                 Practice all of these in the app →
               </a>
             </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* Email signup — 10% off for 6 months */}
-      <FadeIn>
-        <section id="email-signup" className="py-16">
-          <div className="max-w-6xl mx-auto px-6">
-            <EmailSignupBanner accentColor="#4A9EFF" specialty="medical" />
           </div>
         </section>
       </FadeIn>
