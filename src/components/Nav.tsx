@@ -19,6 +19,8 @@ const MODULES = [
   { slug: 'hunting',      label: 'Hunting',       color: '#d97706' },
   { slug: 'business',     label: 'Business',      color: '#e2e8f0' },
 ]
+const PRIMARY_MODULES = MODULES.slice(0, 3)
+const MORE_MODULES = MODULES.slice(3)
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -48,7 +50,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 no-underline shrink-0">
+        <Link to="/" className="flex items-center gap-2 no-underline shrink-0 whitespace-nowrap">
           <span style={{ color: GOLD, fontSize: '0.9rem' }}>✦</span>
           <span className="font-serif text-[15px] font-semibold tracking-tight text-white/90">
             Language Threshold
@@ -56,14 +58,14 @@ export default function Nav() {
         </Link>
 
         {/* Module links — desktop */}
-        <div className="hidden lg:flex items-center gap-3 flex-1 justify-center overflow-hidden">
-          {MODULES.map(m => {
+        <div className="hidden lg:flex min-w-0 flex-1 items-center justify-center gap-4">
+          {PRIMARY_MODULES.map(m => {
             const isActive = pathname === `/module/${m.slug}`
             return (
               <Link
                 key={m.slug}
                 to={`/module/${m.slug}`}
-                className="font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-200"
+                className="shrink-0 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-200"
                 style={{ color: isActive ? m.color : 'rgba(255,255,255,0.32)' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = m.color }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = isActive ? m.color : 'rgba(255,255,255,0.32)' }}
@@ -72,6 +74,26 @@ export default function Nav() {
               </Link>
             )
           })}
+          <details key={pathname} className="relative shrink-0 group">
+            <summary
+              className="cursor-pointer list-none whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] text-white/50 transition-colors hover:text-white/80"
+              aria-label="More learning categories"
+            >
+              More <span aria-hidden="true">▾</span>
+            </summary>
+            <div className="absolute left-1/2 top-full mt-4 grid w-72 -translate-x-1/2 grid-cols-2 gap-1 rounded-xl border border-white/10 bg-[#02040f] p-3 shadow-2xl">
+              {MORE_MODULES.map(m => (
+                <Link
+                  key={m.slug}
+                  to={`/module/${m.slug}`}
+                  className="rounded-lg px-3 py-2 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors hover:bg-white/10"
+                  style={{ color: pathname === `/module/${m.slug}` ? m.color : 'rgba(255,255,255,0.7)' }}
+                >
+                  {m.label}
+                </Link>
+              ))}
+            </div>
+          </details>
         </div>
 
         {/* Right side */}
