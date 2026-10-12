@@ -8,6 +8,7 @@ import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
 import ProfessionalPlans from '../components/ProfessionalPlans'
+import EnglishForTeams from '../components/EnglishForTeams'
 
 function SubsectionCard({ sub }: { sub: MedicalSubsection }) {
   const [open, setOpen] = useState(false)
@@ -410,6 +411,7 @@ export default function MedicalSpanish() {
         </section>
       </FadeIn>
 
+      <EnglishForTeams context="medical" />
       <ProfessionalPlans accentColor="#4A9EFF" />
 
       {/* Final CTA */}

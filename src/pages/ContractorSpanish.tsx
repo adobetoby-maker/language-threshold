@@ -8,6 +8,7 @@ import VocabReader from '../components/VocabReader'
 import PDFGuideSection from '../components/PDFGuideSection'
 import BookRecommendation from '../components/BookRecommendation'
 import ProfessionalPlans from '../components/ProfessionalPlans'
+import EnglishForTeams from '../components/EnglishForTeams'
 
 function SubsectionCard({ sub }: { sub: ConstructionSubsection }) {
   const [open, setOpen] = useState(false)
@@ -406,6 +407,7 @@ export default function ContractorSpanish() {
         </section>
       </FadeIn>
 
+      <EnglishForTeams context="construction" />
       <ProfessionalPlans accentColor="#FF7A4A" />
 
       {/* Final CTA */}

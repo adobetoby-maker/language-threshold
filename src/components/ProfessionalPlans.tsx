@@ -32,7 +32,8 @@ export default function ProfessionalPlans({ accentColor }: { accentColor: string
             <p className="text-sm mt-1" style={{ ...sansFont, color: '#A89F94' }}>
               Five seats included. Seats 6–10 add $12/month each; seats 11 and up add $10/month
               each. Ten seats are $159/month. Fifteen seats are $209/month, $627 for three months,
-              or $2,090/year. Admin assignments and progress reporting included.
+              or $2,090/year. Admin assignments and progress reporting included. Employees can
+              learn English from Spanish in their selected specialty.
             </p>
           </div>
         </div>

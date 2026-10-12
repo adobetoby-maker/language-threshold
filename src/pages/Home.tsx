@@ -1,6 +1,7 @@
 import { useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { APP_URL, isBetaFree } from '../constants'
+import EnglishForTeams from '../components/EnglishForTeams'
 
 const EarthGlobe = lazy(() => import('../components/EarthGlobe').then(m => ({ default: m.EarthGlobe })))
 
@@ -614,6 +615,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <EnglishForTeams />
 
         {/* Pricing */}
         <section id="pricing" className="relative py-24 px-6 sm:px-10">
