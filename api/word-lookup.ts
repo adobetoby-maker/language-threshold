@@ -79,8 +79,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-beta': 'prompt-caching-2024-07-31' },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5',
-        max_tokens: 700,
+        model: 'claude-haiku-5-5',
+        max_tokens: 1000,
         system: [{ type: 'text', text: sysPrompt, cache_control: { type: 'ephemeral' } }],
         tools: [{ ...tool, cache_control: { type: 'ephemeral' } }],
         tool_choice: { type: 'tool', name: 'return_word_card' },

@@ -132,8 +132,8 @@ async function fetchCard(word, sentence, retries = 4) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5',
-        max_tokens: 700,
+        model: 'claude-haiku-5-5',
+        max_tokens: 1000,
         system: SYSTEM,
         tools: [TOOL],
         tool_choice: { type: 'tool', name: 'return_word_card' },
