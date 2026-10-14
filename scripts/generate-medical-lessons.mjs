@@ -67,8 +67,9 @@ Respond with ONLY valid JSON:
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': KEY, 'anthropic-version': '2023-06-01' },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5',
-        max_tokens: 6000,
+        model: 'claude-haiku-5-5',
+        max_tokens: 8000,
+        thinking: { type: 'disabled' },
         messages: [{ role: 'user', content: prompt }],
       }),
     })
