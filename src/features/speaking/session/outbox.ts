@@ -1,21 +1,55 @@
 import type { AttemptEvent } from './types'
 
 const DATABASE_NAME = 'language-threshold-speaking'
-const DATABASE_VERSION = 1
-const STORE_NAME = 'attempt-events'
+const DATABASE_VERSION = 2
+const STORE_NAME = 'attempt-events-v2'
+const LEGACY_STORE_NAME = 'attempt-events'
+
+type AttemptEventKey = [AttemptEvent['attemptId'], AttemptEvent['idempotencyKey']]
+
+function isMigratableAttemptEvent(value: unknown): value is AttemptEvent {
+  if (!value || typeof value !== 'object') return false
+  const candidate = value as Partial<AttemptEvent>
+  return typeof candidate.attemptId === 'string' && typeof candidate.idempotencyKey === 'string'
+}
+
+function eventKey(attemptId: AttemptEvent['attemptId'], idempotencyKey: AttemptEvent['idempotencyKey']): AttemptEventKey {
+  return [attemptId, idempotencyKey]
+}
 
 function openDatabase(): Promise<IDBDatabase> {
   return new Promise((resolve, reject) => {
+    let blocked = false
     const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION)
     request.onupgradeneeded = () => {
       const database = request.result
       if (!database.objectStoreNames.contains(STORE_NAME)) {
-        const store = database.createObjectStore(STORE_NAME, { keyPath: 'idempotencyKey' })
+        const store = database.createObjectStore(STORE_NAME, { keyPath: ['attemptId', 'idempotencyKey'] })
         store.createIndex('attemptId', 'attemptId', { unique: false })
+
+        if (database.objectStoreNames.contains(LEGACY_STORE_NAME) && request.transaction) {
+          const legacy = request.transaction.objectStore(LEGACY_STORE_NAME)
+          legacy.openCursor().onsuccess = cursorEvent => {
+            const cursor = (cursorEvent.target as IDBRequest<IDBCursorWithValue | null>).result
+            if (!cursor) {
+              database.deleteObjectStore(LEGACY_STORE_NAME)
+              return
+            }
+            if (isMigratableAttemptEvent(cursor.value)) store.put(cursor.value)
+            cursor.continue()
+          }
+        }
       }
     }
-    request.onsuccess = () => resolve(request.result)
+    request.onsuccess = () => {
+      if (blocked) request.result.close()
+      else resolve(request.result)
+    }
     request.onerror = () => reject(request.error ?? new Error('Could not open speaking outbox.'))
+    request.onblocked = () => {
+      blocked = true
+      reject(new Error('Speaking outbox upgrade is blocked by another open tab. Close other tabs and retry.'))
+    }
   })
 }
 
@@ -37,64 +71,67 @@ function transactionCompletion(transaction: IDBTransaction): Promise<void> {
 export class SpeakingEventOutbox {
   async enqueue(event: AttemptEvent) {
     const database = await openDatabase()
-    const transaction = database.transaction(STORE_NAME, 'readwrite')
-    const completion = transactionCompletion(transaction)
-    await requestResult(transaction.objectStore(STORE_NAME).put(event))
-    await completion
-    database.close()
+    try {
+      const transaction = database.transaction(STORE_NAME, 'readwrite')
+      const completion = transactionCompletion(transaction)
+      await requestResult(transaction.objectStore(STORE_NAME).put(event))
+      await completion
+    } finally {
+      database.close()
+    }
   }
 
   async list(attemptId?: AttemptEvent['attemptId']): Promise<AttemptEvent[]> {
     const database = await openDatabase()
-    const transaction = database.transaction(STORE_NAME, 'readonly')
-    const completion = transactionCompletion(transaction)
-    const store = transaction.objectStore(STORE_NAME)
-    const request = attemptId ? store.index('attemptId').getAll(attemptId) : store.getAll()
-    const events = await requestResult(request) as AttemptEvent[]
-    await completion
-    database.close()
-    return events.sort((left, right) => left.sequence - right.sequence || left.occurredAt.localeCompare(right.occurredAt))
+    try {
+      const transaction = database.transaction(STORE_NAME, 'readonly')
+      const completion = transactionCompletion(transaction)
+      const store = transaction.objectStore(STORE_NAME)
+      const request = attemptId ? store.index('attemptId').getAll(attemptId) : store.getAll()
+      const events = await requestResult(request) as AttemptEvent[]
+      await completion
+      return events.sort((left, right) => left.sequence - right.sequence || left.occurredAt.localeCompare(right.occurredAt))
+    } finally {
+      database.close()
+    }
   }
 
-  async acknowledge(idempotencyKey: string) {
+  async acknowledge(attemptId: AttemptEvent['attemptId'], idempotencyKey: string) {
     const database = await openDatabase()
-    const transaction = database.transaction(STORE_NAME, 'readwrite')
-    const completion = transactionCompletion(transaction)
-    await requestResult(transaction.objectStore(STORE_NAME).delete(idempotencyKey))
-    await completion
-    database.close()
+    try {
+      const transaction = database.transaction(STORE_NAME, 'readwrite')
+      const completion = transactionCompletion(transaction)
+      await requestResult(transaction.objectStore(STORE_NAME).delete(eventKey(attemptId, idempotencyKey)))
+      await completion
+    } finally {
+      database.close()
+    }
   }
 
   async clear(attemptId?: AttemptEvent['attemptId']) {
     const database = await openDatabase()
 
-    if (!attemptId) {
+    try {
+      if (!attemptId) {
+        const transaction = database.transaction(STORE_NAME, 'readwrite')
+        const completion = transactionCompletion(transaction)
+        await requestResult(transaction.objectStore(STORE_NAME).clear())
+        await completion
+        return
+      }
+
       const transaction = database.transaction(STORE_NAME, 'readwrite')
       const completion = transactionCompletion(transaction)
-      await requestResult(transaction.objectStore(STORE_NAME).clear())
+      const range = IDBKeyRange.bound(eventKey(attemptId, ''), eventKey(attemptId, '\uffff'))
+      await requestResult(transaction.objectStore(STORE_NAME).delete(range))
       await completion
+    } finally {
       database.close()
-      return
     }
-
-    const readTransaction = database.transaction(STORE_NAME, 'readonly')
-    const readCompletion = transactionCompletion(readTransaction)
-    const keys = await requestResult(readTransaction.objectStore(STORE_NAME).index('attemptId').getAllKeys(attemptId))
-    await readCompletion
-
-    if (keys.length > 0) {
-      const writeTransaction = database.transaction(STORE_NAME, 'readwrite')
-      const writeCompletion = transactionCompletion(writeTransaction)
-      const store = writeTransaction.objectStore(STORE_NAME)
-      await Promise.all(keys.map(key => requestResult(store.delete(key))))
-      await writeCompletion
-    }
-
-    database.close()
   }
 }
 
 export function deduplicateAttemptEvents(events: AttemptEvent[]) {
-  return [...new Map(events.map(event => [event.idempotencyKey, event])).values()]
+  return [...new Map(events.map(event => [`${event.attemptId}\u0000${event.idempotencyKey}`, event])).values()]
     .sort((left, right) => left.sequence - right.sequence || left.occurredAt.localeCompare(right.occurredAt))
 }

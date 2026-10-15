@@ -93,6 +93,18 @@ export function resolveLanguageUnits(ids: LanguageUnitId[]) {
   return ids.map(resolveLanguageUnit)
 }
 
+export function tryResolveLanguageUnit(id: LanguageUnitId): ResolvedLanguageUnit | null {
+  try {
+    return resolveLanguageUnit(id)
+  } catch {
+    return null
+  }
+}
+
+export function resolveAvailableLanguageUnits(ids: LanguageUnitId[]) {
+  return ids.map(id => ({ id, unit: tryResolveLanguageUnit(id) }))
+}
+
 export function validateLanguageUnitManifest(): string[] {
   const issues: string[] = []
   const ids = new Set<string>()

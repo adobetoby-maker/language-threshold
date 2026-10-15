@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { displayFont, sansFont } from '../constants'
-import { resolveLanguageUnits } from '../features/speaking/domain/catalog'
+import { resolveAvailableLanguageUnits } from '../features/speaking/domain/catalog'
 import { findScenario } from '../features/speaking/domain/scenarios'
 import type { FeedbackLanguage } from '../features/speaking/domain/types'
 import { useMicrophoneCheck } from '../features/speaking/hooks/useMicrophoneCheck'
+import { useSpeakingCapabilities } from '../features/speaking/hooks/useSpeakingCapabilities'
 
 const FEEDBACK_OPTIONS: Array<{ value: FeedbackLanguage; label: string }> = [
   { value: 'english', label: 'English coaching' },
@@ -18,6 +19,7 @@ export default function SpeakingScenario() {
   const [feedbackLanguage, setFeedbackLanguage] = useState<FeedbackLanguage>('adaptive')
   const [ageConfirmed, setAgeConfirmed] = useState(false)
   const microphone = useMicrophoneCheck()
+  const capabilities = useSpeakingCapabilities()
   const resetMicrophone = microphone.reset
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function SpeakingScenario() {
     )
   }
 
-  const vocabulary = resolveLanguageUnits(scenario.vocabularyUnitIds)
+  const vocabulary = resolveAvailableLanguageUnits(scenario.vocabularyUnitIds)
   const accent = scenario.specialty === 'construction' ? '#FF7A4A' : '#C9A84C'
   const canRequestMicrophone = ageConfirmed && microphone.state !== 'requesting' && microphone.state !== 'recording'
 
@@ -59,10 +61,10 @@ export default function SpeakingScenario() {
       <section style={{ marginTop: 18 }}>
         <h2 style={{ ...displayFont, fontSize: 20, margin: '0 0 10px' }}>Linked curriculum</h2>
         <div style={{ display: 'grid', gap: 8 }}>
-          {vocabulary.map(unit => (
-            <div key={unit.id} style={{ ...sansFont, display: 'flex', justifyContent: 'space-between', gap: 14, background: '#161616', borderRadius: 10, padding: '10px 12px' }}>
-              <span style={{ color: '#A89F94', fontSize: 12 }}>{unit.source.sourceTerm}</span>
-              <span style={{ color: '#F7F3EC', fontSize: 13, fontWeight: 700, textAlign: 'right' }}>{unit.displayForm}</span>
+          {vocabulary.map(({ id, unit }) => (
+            <div key={id} style={{ ...sansFont, display: 'flex', justifyContent: 'space-between', gap: 14, background: '#161616', borderRadius: 10, padding: '10px 12px' }}>
+              <span style={{ color: '#A89F94', fontSize: 12 }}>{unit?.source.sourceTerm ?? 'Curriculum link unavailable'}</span>
+              <span style={{ color: unit ? '#F7F3EC' : '#FFB4A9', fontSize: 13, fontWeight: 700, textAlign: 'right' }}>{unit?.displayForm ?? id}</span>
             </div>
           ))}
         </div>
@@ -113,7 +115,13 @@ export default function SpeakingScenario() {
       </section>
 
       <aside style={{ ...sansFont, color: '#A89F94', fontSize: 12, lineHeight: 1.55, marginTop: 18 }}>
-        Guided STT → dialogue → TTS remains disabled until the provider, retention, latency, and physical-iPhone spike is approved and configured. This page does not simulate an AI conversation.
+        {capabilities.status === 'loading'
+          ? 'Checking the provider spike configuration…'
+          : capabilities.status === 'error'
+            ? `${capabilities.error} The local microphone check remains available.`
+            : capabilities.data.enabled
+              ? `Provider spike configured for ${capabilities.data.providers.stt.model} STT and ${capabilities.data.mode}. It is still not production-ready; the launch gates remain in force.`
+              : 'Guided STT → dialogue → TTS remains disabled until the guarded provider spike is configured. This page does not simulate an AI conversation.'}
       </aside>
     </main>
   )

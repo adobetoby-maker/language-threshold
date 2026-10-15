@@ -50,7 +50,7 @@ export function GoogleAnalytics() {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function trackGAdsConversion(label: string, value?: number, currency = 'USD') {
-  if (!window.gtag || !GADS_ID) return
+  if (window.location.pathname.startsWith('/app/speak') || !window.gtag || !GADS_ID) return
   window.gtag('event', 'conversion', {
     send_to: `${GADS_ID}/${label}`,
     value,

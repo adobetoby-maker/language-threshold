@@ -1,9 +1,7 @@
 import type { SpeakingScenarioVersion } from '../domain/types'
-import type { AttemptId, SpeakingSessionAction, SpeakingSessionState } from './types'
+import type { SpeakingSessionAction, SpeakingSessionState } from './types'
 
-export function createAttemptId(): AttemptId {
-  return `attempt_${crypto.randomUUID()}`
-}
+export { createAttemptId } from './ids'
 
 export function createInitialSessionState(scenario: SpeakingScenarioVersion): SpeakingSessionState {
   return {
