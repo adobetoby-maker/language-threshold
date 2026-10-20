@@ -1,0 +1,412 @@
+{
+  "source": "66ddd58ca832252866162cf03fc422d17c7dc2fd",
+  "languages": [
+    "Spanish",
+    "French",
+    "German",
+    "Italian",
+    "Japanese",
+    "Chinese",
+    "Korean",
+    "Portuguese",
+    "Pashto",
+    "English"
+  ],
+  "moduleCount": 61,
+  "categories": {
+    "Faith": [
+      {
+        "id": "lds-missionary",
+        "name": "LDS Missionary",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "catholic-ministry",
+        "name": "Catholic Ministry",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Medical": [
+      {
+        "id": "orthopedics",
+        "name": "Orthopedics",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "emergency-medicine",
+        "name": "Emergency Medicine",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "nursing",
+        "name": "Nursing & Patient Care",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "family-medicine",
+        "name": "Family Medicine",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "ob-gyn",
+        "name": "OB/GYN",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "pain-management",
+        "name": "Pain Management",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "cardiology",
+        "name": "Cardiology",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "general-surgery",
+        "name": "General Surgery",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "physical-therapy",
+        "name": "Physical Therapy",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "medical-receptionist",
+        "name": "Medical Receptionist",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "social-work",
+        "name": "Social Work",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Trades": [
+      {
+        "id": "framer",
+        "name": "Framer",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "roofing",
+        "name": "Roofing Foreman",
+        "languages": [
+          "Spanish"
+        ],
+        "lessons": 30
+      },
+      {
+        "id": "foundation-roofing",
+        "name": "Roofing Foundation",
+        "languages": [
+          "Spanish"
+        ],
+        "lessons": 10
+      },
+      {
+        "id": "master-roofing",
+        "name": "Roofing Master",
+        "languages": [
+          "Spanish"
+        ],
+        "lessons": 20
+      },
+      {
+        "id": "construction-foreman",
+        "name": "Construction Foreman",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "plumber",
+        "name": "Plumber",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "drywall",
+        "name": "Drywall Finisher",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "electrician",
+        "name": "Electrician",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "landscaper",
+        "name": "Landscaper",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "auto-mechanic",
+        "name": "Auto Mechanic",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "truck-driver",
+        "name": "Truck Driver",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "construction-safety",
+        "name": "Construction Safety",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Service": [
+      {
+        "id": "restaurant-hospitality",
+        "name": "Restaurant & Hospitality",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "legal-immigration",
+        "name": "Legal & Immigration",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Education": [
+      {
+        "id": "k12-teacher",
+        "name": "K\u201312 Classroom",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Agriculture": [
+      {
+        "id": "dairy-farmer",
+        "name": "Dairy Farmer",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "ranch-cowboy",
+        "name": "Ranch & Cowboy",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "meatpacking-butcher",
+        "name": "Meatpacking & Butcher",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ],
+    "Travel": [
+      {
+        "id": "international-travel",
+        "name": "International Travel",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "travel-breakfast",
+        "name": "Breakfast & Caf\u00e9s",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-lunch",
+        "name": "Lunch & Casual Dining",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-dinner",
+        "name": "Dinner & Special Meals",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-shopping-essentials",
+        "name": "Shopping & Essentials",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-daily-life-services",
+        "name": "Daily Life & Personal Services",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-markets-souvenirs",
+        "name": "Markets & Souvenirs",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-hotels-lodging",
+        "name": "Hotels & Lodging",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-taxi-rideshare",
+        "name": "Taxis & Rideshare",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-trains-transit",
+        "name": "Trains, Buses & Transit",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-scooter-car-rental",
+        "name": "Vespa, Scooter & Car Rental",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-roadside-mechanics",
+        "name": "Roadside Help & Mechanics",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-guides-attractions",
+        "name": "Guides, Tours & Attractions",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-airport-luggage",
+        "name": "Airports & Lost Luggage",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-pharmacy-health",
+        "name": "Pharmacy & Traveler Health",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-social-dating",
+        "name": "Social Life, Invitations & Dating",
+        "languages": "all supported",
+        "lessons": 15
+      },
+      {
+        "id": "travel-problems-services",
+        "name": "Problems, Services & Recovery",
+        "languages": "all supported",
+        "lessons": 15
+      }
+    ],
+    "Sports": [
+      {
+        "id": "soccer",
+        "name": "Soccer / F\u00fatbol",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "hockey",
+        "name": "Hockey",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "baseball",
+        "name": "Baseball / B\u00e9isbol",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "tennis",
+        "name": "Tennis",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "bowling",
+        "name": "Bowling",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "american-football",
+        "name": "American Football",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "lacrosse",
+        "name": "Lacrosse",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "rugby",
+        "name": "Rugby",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "sports-hobbies",
+        "name": "Sports & Hobbies",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "rock-climbing",
+        "name": "Rock Climbing",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "sport-fishing",
+        "name": "Sport Fishing",
+        "languages": [
+          "Spanish"
+        ],
+        "lessons": 10
+      }
+    ],
+    "English for Work": [
+      {
+        "id": "or-evs",
+        "name": "OR Environmental Services",
+        "languages": "all supported",
+        "lessons": 30
+      },
+      {
+        "id": "fmg",
+        "name": "Medical English for FMGs",
+        "languages": "all supported",
+        "lessons": 30
+      }
+    ]
+  },
+  "curricula": 61,
+  "lessonDefinitions": 1540
+}
