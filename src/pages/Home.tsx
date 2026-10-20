@@ -1,6 +1,7 @@
 import { useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { APP_URL, isBetaFree } from '../constants'
+import { CATALOG_COUNTS, CATALOG_LANGUAGES } from '../data/catalogSummary'
 import EnglishForTeams from '../components/EnglishForTeams'
 
 const EarthGlobe = lazy(() => import('../components/EarthGlobe').then(m => ({ default: m.EarthGlobe })))
@@ -10,67 +11,67 @@ const GOLD = '#C9A84C'
 // ── Category data ────────────────────────────────────────────────────────────
 const CATEGORIES = [
   {
-    emoji: '🏥', name: 'Medical', count: 13,
+    emoji: '🏥', name: 'Medical',
     color: 'from-emerald-950/90 to-[#02040f]',
     border: 'border-emerald-800/40', hover: 'hover:border-emerald-600/50',
-    modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics', '+ 10 more'],
-    languages: 'Spanish · Swahili · Portuguese · French · German · Italian · Japanese · Korean',
+    modules: ['Emergency Medicine', 'Nursing & Patient Care', 'Orthopedics'],
+    languages: 'Language availability varies by module',
     href: '/module/medical',
   },
   {
-    emoji: '🔧', name: 'Construction', count: 9,
+    emoji: '🔧', name: 'Construction',
     color: 'from-orange-950/90 to-[#02040f]',
     border: 'border-orange-800/40', hover: 'hover:border-orange-600/50',
-    modules: ['Framing', 'Electrical', 'Plumbing', '+ 6 more'],
-    languages: 'Spanish · Swahili · Portuguese',
+    modules: ['Framing', 'Electrical', 'Plumbing'],
+    languages: 'Language availability varies by module',
     href: '/module/construction',
   },
   {
-    emoji: '🙏', name: 'Missionary', count: 2,
+    emoji: '🙏', name: 'Missionary',
     color: 'from-sky-950/90 to-[#02040f]',
     border: 'border-sky-800/40', hover: 'hover:border-sky-600/50',
-    modules: ['LDS Missionary', 'Missionary Swahili'],
-    languages: 'Spanish · Swahili · Portuguese',
+    modules: ['LDS Missionary', 'Catholic Ministry'],
+    languages: 'Language availability varies by module',
     href: '/module/missionary',
   },
   {
-    emoji: '⚽', name: 'Sports', count: 9,
+    emoji: '⚽', name: 'Sports',
     color: 'from-blue-950/90 to-[#02040f]',
     border: 'border-blue-800/40', hover: 'hover:border-blue-600/50',
-    modules: ['Soccer', 'Hockey', 'Baseball', '+ 6 more'],
-    languages: 'Spanish · French · German · More',
+    modules: ['Soccer', 'Hockey', 'Baseball'],
+    languages: 'Language availability varies by module',
     href: '/module/sports',
   },
   {
-    emoji: '🌾', name: 'Agriculture', count: 3,
+    emoji: '🌾', name: 'Agriculture',
     color: 'from-yellow-950/90 to-[#02040f]',
     border: 'border-yellow-800/40', hover: 'hover:border-yellow-600/50',
     modules: ['Dairy Farmer', 'Ranch Cowboy', 'Meatpacking'],
-    languages: 'Spanish · Portuguese',
+    languages: 'Language availability varies by module',
     href: '/module/agriculture',
   },
   {
-    emoji: '📚', name: 'Education', count: 2,
+    emoji: '📚', name: 'Education',
     color: 'from-violet-950/90 to-[#02040f]',
     border: 'border-violet-800/40', hover: 'hover:border-violet-600/50',
-    modules: ['K-12 Teacher', 'Legal Immigration'],
-    languages: 'Spanish · French',
+    modules: ['K–12 Classroom'],
+    languages: 'Language availability varies by module',
     href: '/module/education',
   },
   {
-    emoji: '🍽️', name: 'Hospitality', count: 1,
+    emoji: '🍽️', name: 'Hospitality',
     color: 'from-rose-950/90 to-[#02040f]',
     border: 'border-rose-800/40', hover: 'hover:border-rose-600/50',
     modules: ['Restaurant & Hospitality'],
-    languages: 'Spanish · French · Portuguese',
+    languages: 'Language availability varies by module',
     href: '/module/hospitality',
   },
   {
-    emoji: '🧒', name: 'Kids', count: 3,
+    emoji: '🧒', name: 'Kids — separate app',
     color: 'from-pink-950/90 to-[#02040f]',
     border: 'border-pink-800/40', hover: 'hover:border-pink-600/50',
-    modules: ['Junior Linguist — ages 4-12'],
-    languages: 'Spanish · French · More',
+    modules: ['Junior Linguist — ages 7–14'],
+    languages: 'Spanish · French · Japanese · Italian · Portuguese',
     href: '/module/kids',
   },
 ]
@@ -82,23 +83,12 @@ const FEATURES = [
   { icon: '🤖', label: 'AI Discussions',   desc: 'Practice with an AI partner who responds in your specialty. ER triage, job-site instructions, missionary discussions.' },
 ]
 
-const LANGUAGES = [
-  { flag: '🇪🇸', name: 'Spanish'    },
-  { flag: '🇫🇷', name: 'French'     },
-  { flag: '🇩🇪', name: 'German'     },
-  { flag: '🇮🇹', name: 'Italian'    },
-  { flag: '🇯🇵', name: 'Japanese'   },
-  { flag: '🇰🇷', name: 'Korean'     },
-  { flag: '🇧🇷', name: 'Português'  },
-  { flag: '🇰🇪', name: 'Kiswahili'  },
-  { flag: '🇦🇫', name: 'پښتو Pashto' },
-]
-
+const LANGUAGES = CATALOG_LANGUAGES
 const STATS = [
-  { n: '9',    label: 'Languages',                   icon: '🌐' },
-  { n: '26+',  label: 'Modules',                     icon: '📦' },
-  { n: '660+', label: 'Pro Lessons',                 icon: '📚' },
-  { n: 'MD',   label: 'Surgeon-Built', icon: '🩺' },
+  { n: String(CATALOG_COUNTS.languages), label: 'Language Options', icon: '🌐' },
+  { n: String(CATALOG_COUNTS.modules), label: 'Module Tracks', icon: '📦' },
+  { n: CATALOG_COUNTS.lessonOutlines.toLocaleString('en-US'), label: 'Lesson Outlines', icon: '📚' },
+  { n: 'MD', label: 'Surgeon-Built', icon: '🩺' },
 ]
 
 // ── Language ticker ───────────────────────────────────────────────────────────
@@ -189,8 +179,8 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="mt-6 text-lg text-white/60 leading-relaxed max-w-xl mx-auto"
             >
-              Not tourist phrases. Not flashcards. 660+ professional lessons for medical workers
-              and tradespeople — with AI speaking feedback built in. 9 languages.
+              Language practice for work, travel, and everyday life — with role-based modules,
+              reading tools, and AI speaking practice. Language availability varies by module.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
@@ -209,7 +199,7 @@ export default function Home() {
                 href="#categories"
                 className="rounded-full border border-white/20 px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/70 hover:border-white/40 hover:text-white transition-all duration-300"
               >
-                Explore 26 Modules ↓
+                Explore Module Tracks ↓
               </a>
             </motion.div>
           </motion.div>
@@ -292,7 +282,7 @@ export default function Home() {
                     </h2>
 
                     <p className="text-sm text-white/50 leading-relaxed mb-6 max-w-md">
-                      All six missionary discussions — word for word. Door approaches, testimony vocabulary, tracting openers. Built for missionaries headed to Spanish and Swahili missions. Free forever.
+                      All six missionary discussions — word for word. Door approaches, testimony vocabulary, tracting openers. Practice missionary Spanish with discussions and vocabulary. Free forever.
                     </p>
 
                     <ul className="space-y-2 mb-8">
@@ -300,7 +290,7 @@ export default function Home() {
                         'All 6 discussions — Restoration through Commandments',
                         'Door approaches and tracting vocabulary',
                         'Testimony language at every fluency level',
-                        'Swahili missions fully covered',
+                        'Spanish missionary practice',
                       ].map(item => (
                         <li key={item} className="flex items-start gap-2.5 text-sm text-white/60">
                           <svg className="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -487,13 +477,13 @@ export default function Home() {
               viewport={{ once: true, amount: 0 }} transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>26 Modules · 8 Categories</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>Explore by Interest</p>
               <h2 className="font-serif text-4xl sm:text-5xl font-bold leading-tight">
                 Learn the language<br />
                 <span className="text-white/40">your purpose demands.</span>
               </h2>
               <p className="mt-5 text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
-                Every module is a complete curriculum — vocabulary, grammar in context, AI conversation partner, spoken challenges — all tailored to a real-world role.
+                The app catalog has 61 module tracks and 1,540 lesson outlines across 10 language options. These counts describe catalog entries, not fully reviewed courses in every language. Lesson content and language-pair coverage vary; curriculum review is ongoing.
               </p>
             </motion.div>
 
@@ -514,7 +504,7 @@ export default function Home() {
                     <div className="flex items-start justify-between mb-3">
                       <span className="text-3xl">{cat.emoji}</span>
                       <span className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white/50">
-                        {cat.count} {cat.count === 1 ? 'module' : 'modules'}
+                        Explore
                       </span>
                     </div>
                     <h3 className="font-serif text-lg font-semibold mb-2">{cat.name}</h3>
@@ -573,6 +563,10 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-white/60">
+            Catalog counts as of October 20, 2026. Lesson outlines are not fully reviewed courses;
+            content depth and supported language pairs vary by module.
+          </p>
         </div>
 
         {/* Who is this for */}
@@ -590,9 +584,9 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
                 { who: 'The Missionary', emoji: '🕊️', story: "He lands in São Paulo on Tuesday. The MTC gave him grammar drills. Language Threshold gave him the words he actually needed.", bullets: ['All six missionary discussions — word for word', 'Tracting openers, door approaches, and follow-up phrases', 'Testimony vocabulary at every level of fluency'] },
-                { who: 'The Nurse', emoji: '🏥', story: "Her patient speaks only Spanish. She knows anatomy. She doesn't know how to ask where it hurts. Until now.", bullets: ['Bedside manner — pain assessment, calming, discharge instructions', 'SBAR handoff phrases for shift changes', '13 medical specialties: ER, OB, OR, Family, and more'] },
-                { who: 'The Crew Lead', emoji: '🔧', story: "Half his crew speaks Spanish. He's been pointing and hoping for two years. Now he runs the tightest bilingual jobsite in the county.", bullets: ['Safety briefings, PPE instructions, and hazard calls', 'Blueprint reading and measurements — in both languages', '9 trades modules: framing, electrical, plumbing, and more'] },
-                { who: 'The Sports Coach', emoji: '⚽', story: "His new striker doesn't speak English. His best defender plays in a French league. Game day is a babel — but it doesn't have to be.", bullets: ['On-field communication: positions, plays, corrections', '9 sports modules — soccer, hockey, baseball, football, and more', 'Coaching language: halftime talks, drills, and game-day calls'] },
+                { who: 'The Nurse', emoji: '🏥', story: "Her patient speaks only Spanish. She knows anatomy. She doesn't know how to ask where it hurts. Until now.", bullets: ['Bedside manner — pain assessment, calming, discharge instructions', 'SBAR handoff phrases for shift changes', 'Healthcare modules include ER, nursing, orthopedics, and family medicine'] },
+                { who: 'The Crew Lead', emoji: '🔧', story: "Half his crew speaks Spanish. He's been pointing and hoping for two years. Now he runs the tightest bilingual jobsite in the county.", bullets: ['Safety briefings, PPE instructions, and hazard calls', 'Blueprint reading and measurements — in both languages', 'Trade modules include framing, electrical, plumbing, and roofing'] },
+                { who: 'The Sports Coach', emoji: '⚽', story: "His new striker doesn't speak English. His best defender plays in a French league. Game day is a babel — but it doesn't have to be.", bullets: ['On-field communication: positions, plays, corrections', 'Sports modules include soccer, hockey, baseball, football, and more', 'Coaching language: halftime talks, drills, and game-day calls'] },
               ].map((p, i) => (
                 <motion.div
                   key={p.who}
@@ -675,7 +669,7 @@ export default function Home() {
                 </div>
                 <p className="text-sm text-white/45 mb-5">{isBetaFree() ? 'Free through Oct 1 · then $12.42/mo' : '$12.42/mo · 7-day free trial'}</p>
                 <ul className="space-y-2 mb-7">
-                  {['660+ professional lessons', '13 medical specialties', '9 construction trades', 'AI speaking feedback', 'Grammar studio + conjugation', 'Daily challenges + leaderboard'].map(f => (
+                  {['Role-based lesson outlines and practice', 'Medical and healthcare modules', 'Construction and trades modules', 'AI speaking feedback', 'Grammar studio + conjugation', 'Daily challenges + leaderboard'].map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm text-white/75">
                       <span className="shrink-0 mt-0.5" style={{ color: GOLD }}>✦</span>{f}
                     </li>
@@ -705,7 +699,7 @@ export default function Home() {
                 </div>
                 <p className="text-sm text-white/45 mb-5">Pro + Junior Linguist · 6 seats</p>
                 <ul className="space-y-2 mb-7">
-                  {['Everything in Pro', 'Junior Linguist (ages 4-12)', 'Kids vocab, stories & games', '6 family profiles'].map(f => (
+                  {['Everything in Pro', 'Junior Linguist (ages 7–14)', 'Kids vocab, stories & games', '6 family profiles'].map(f => (
                     <li key={f} className="flex items-start gap-2 text-sm text-white/60">
                       <span className="shrink-0 text-violet-400 mt-0.5">✦</span>{f}
                     </li>
@@ -820,7 +814,7 @@ export default function Home() {
                 </a>
               </div>
               <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-white/25">
-                7-day free trial · No credit card required
+                See current plans and trial details in the app
               </p>
             </motion.div>
           </div>
@@ -832,7 +826,7 @@ export default function Home() {
             <span style={{ color: GOLD }}>✦</span> Language Threshold
           </span>
           <p className="font-mono text-[10px] uppercase tracking-widest text-white/20">
-            Professional language learning · 26 modules · 9 languages
+            Language practice for work, travel, and everyday life
           </p>
           <a href={APP_URL} className="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-white/60 transition-colors">
             Open App →
