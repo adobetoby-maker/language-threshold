@@ -12,6 +12,7 @@ import { warmWordCache } from './data/wordCache'
 warmWordCache()
 
 const Home = lazy(() => import('./pages/Home'))
+const WhyLearn = lazy(() => import('./pages/WhyLearn'))
 const About = lazy(() => import('./pages/About'))
 const Founder = lazy(() => import('./pages/Founder'))
 const ContractorSpanish = lazy(() => import('./pages/ContractorSpanish'))
@@ -103,6 +104,7 @@ function AppShell() {
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<ErrorBoundary><Home /></ErrorBoundary>} />
+            <Route path="/why-learn-with-us" element={<ErrorBoundary><WhyLearn /></ErrorBoundary>} />
             <Route path="/about" element={<ErrorBoundary><About /></ErrorBoundary>} />
             <Route path="/founder" element={<ErrorBoundary><Founder /></ErrorBoundary>} />
             <Route path="/contractor-spanish" element={<ErrorBoundary><ContractorSpanish /></ErrorBoundary>} />

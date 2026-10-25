@@ -28,6 +28,7 @@ export default function Footer() {
             <a href="https://constructionspanish.app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               Construction Spanish
             </a>
+            <Link to="/why-learn-with-us/" className="transition-opacity hover:opacity-80" style={{ color: '#C9A84C' }}>Why learn with us</Link>
             <Link to="/about" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               About
             </Link>

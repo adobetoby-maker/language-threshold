@@ -1,3 +1,4 @@
+import { WhyLearnTeaser } from '../components/why/WhyLearnContent'
 import { useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { APP_URL, isBetaFree } from '../constants'
@@ -225,6 +226,8 @@ export default function Home() {
         <LanguageTicker />
 
         {/* Features */}
+        <WhyLearnTeaser />
+
         <section className="relative py-24 px-6 sm:px-10 bg-gradient-to-b from-transparent via-[#02040f]/92 to-transparent">
           <div className="max-w-5xl mx-auto">
             <motion.div

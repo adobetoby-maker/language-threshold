@@ -164,6 +164,7 @@ export default function Nav() {
               {m.label}
             </Link>
           ))}
+          <Link to="/why-learn-with-us/" className="flex min-h-11 items-center rounded-xl border border-white/10 px-4 py-3 text-sm text-white">Why learn with us</Link>
           <Link
             to="/about"
             className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
