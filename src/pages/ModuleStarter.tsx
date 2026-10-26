@@ -1,3 +1,4 @@
+import PlanPricing from '../components/PlanPricing'
 import { lazy, Suspense } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -474,18 +475,9 @@ export default function ModuleStarter() {
           </motion.div>
         </section>
 
-        {/* ─── PRICING ──────────────────────────────────────── */}
-        <section id="pricing" className="px-6 sm:px-10 py-16 max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.8 }}
-            className="text-center mb-10"
-          >
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: GOLD }}>Simple Pricing</p>
-            <h2 className="font-serif text-3xl font-bold">Less than a missed shift.</h2>
-          </motion.div>
-
-          <div className={slug === 'missionary' ? 'max-w-sm mx-auto' : 'grid sm:grid-cols-2 gap-6'}>
+        {slug === 'missionary' ? (
+          <section id="pricing" className="px-6 py-16 max-w-md mx-auto">
+            <h2 className="font-serif text-3xl font-bold mb-6">Missionary Spanish is free.</h2>
             {/* Free / Trial card */}
             <motion.div
               initial={{ opacity: 0, x: slug === 'missionary' ? 0 : -20 }} whileInView={{ opacity: 1, x: 0 }}
@@ -512,41 +504,8 @@ export default function ModuleStarter() {
               </a>
             </motion.div>
 
-            {/* Pro card — hidden for missionary */}
-            {slug !== 'missionary' && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.08 }}
-                className="relative rounded-2xl border p-7 flex flex-col"
-                style={{ borderColor: `${GOLD}4d`, background: 'linear-gradient(135deg, #0f0d04, #02040f)', boxShadow: `0 0 60px rgba(201,168,76,0.08)` }}
-              >
-                <div
-                  className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 font-mono text-[9px] uppercase tracking-widest text-black"
-                  style={{ backgroundColor: GOLD }}
-                >
-                  Best Value
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.3em] mb-2" style={{ color: GOLD }}>Pro Annual</div>
-                <div className="flex items-end gap-1 mb-1">
-                  <span className="font-serif text-4xl font-bold text-white">$149</span>
-                  <span className="text-white/50 mb-1">/year</span>
-                </div>
-                <p className="text-sm text-white/45 mb-5">$12.42/mo · 7-day free trial</p>
-                <ul className="space-y-2 mb-6 flex-1">
-                  {['All 12 specialties · 70+ modules', '8 languages — Spanish, French, Italian, Greek, German, Portuguese, Japanese, Swahili', 'AI speaking partner', 'Grammar studio + daily challenges'].map(f => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-white/75">
-                      <span className="shrink-0 mt-0.5" style={{ color: GOLD }}>✦</span>{f}
-                    </li>
-                  ))}
-                </ul>
-                <SlideButton href={`${APP_URL}/pricing`} label="Start 7-Day Free Trial →" size="sm" />
-                <p className="mt-3 text-center font-mono text-[9px] uppercase tracking-widest text-white/25">
-                  Cancel anytime · No charge until day 8
-                </p>
-              </motion.div>
-            )}
-          </div>
-        </section>
+          </section>
+        ) : <PlanPricing />}
 
         {/* ─── BOTTOM CTA ───────────────────────────────────── */}
         <section className="px-6 sm:px-10 py-20 max-w-2xl mx-auto text-center">
