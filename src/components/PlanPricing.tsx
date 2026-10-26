@@ -32,8 +32,20 @@ export default function PlanPricing({ includeTeam = false }: { includeTeam?: boo
         <header className="lt-plan-heading">
           <p className="lt-plan-eyebrow">Individual & family plans</p>
           <h2 id="plan-pricing-title">Choose your plan.<br />Know what you’ll pay.</h2>
-          <p>Individual access is <strong>$19 per month</strong>. Family access is <strong>$249 per year for up to 6 profiles</strong>.</p>
+          <p>For one learner or the whole family.</p>
         </header>
+        <div className="lt-plan-upfront" aria-label="Monthly and family prices">
+          <a className="lt-plan-quick-price" href={`${APP_URL}/pricing?plan=monthly`}>
+            <span className="lt-plan-quick-label">Individual</span>
+            <span className="lt-plan-quick-amount"><strong>$19</strong><span>/month</span></span>
+            <span>1 learner · billed monthly</span>
+          </a>
+          <a className="lt-plan-quick-price lt-plan-quick-family" href={`${APP_URL}/pricing?plan=family`}>
+            <span className="lt-plan-quick-label">Family</span>
+            <span className="lt-plan-quick-amount"><strong>$249</strong><span>/year</span></span>
+            <span>Up to 6 profiles · billed annually</span>
+          </a>
+        </div>
         <div className="lt-plan-trial">
           <strong>Start with a 7-day free trial.</strong>
           <span>Then use the billing option you choose. Payment and renewal terms are shown in checkout.</span>
