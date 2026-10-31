@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node scripts/seo/generate-sitemap.mjs && tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest run",
     "preview": "vite preview",
-    "gen-cache": "node scripts/prebuild-word-cache.mjs"
+    "gen-cache": "node scripts/prebuild-word-cache.mjs",
+    "indexnow:publish": "node scripts/seo/indexnow.mjs"
   },
   "dependencies": {
     "@heycatch/sdk": "^0.8.3",
