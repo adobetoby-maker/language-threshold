@@ -12,6 +12,8 @@ export default defineConfig({
       includeAssets: ['favicon.svg', 'icons/*.png', 'word-cache.json'],
       manifest: false, // we use our own /public/manifest.json
       workbox: {
+        // Blog HTML and its 404 statuses come from the server, not the SPA fallback.
+        navigateFallbackDenylist: [/^\/blog(?:\/|$)/, /^\/api\//, /^\/sitemap\.xml$/],
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
         globIgnores: ['word-cache.json'],
         runtimeCaching: [

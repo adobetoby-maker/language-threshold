@@ -23,6 +23,15 @@ const PRIMARY_MODULES = MODULES.slice(0, 3)
 const MORE_MODULES = MODULES.slice(3)
 
 export default function Nav() {
+  const [hasBlog, setHasBlog] = useState(false)
+  useEffect(() => {
+    const controller = new AbortController()
+    fetch('/api/blog?mode=nav', { signal: controller.signal })
+      .then(response => response.ok ? response.json() : null)
+      .then(data => { if (data?.hasArticles) setHasBlog(true) })
+      .catch(() => {})
+    return () => controller.abort()
+  }, [])
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const { pathname } = useLocation()
@@ -96,6 +105,9 @@ export default function Nav() {
           </details>
         </div>
 
+        {/* Blog uses a full navigation to its server-rendered page. */}
+        {hasBlog && <a href="/blog" className="hidden lg:block font-mono text-[10px] uppercase tracking-[0.14em]" style={{ color: GOLD }}>Blog</a>}
+
         {/* Right side */}
         <div className="flex items-center gap-3 shrink-0">
           <Link
@@ -152,6 +164,7 @@ export default function Nav() {
           className="lg:hidden px-6 pb-6 grid grid-cols-2 gap-2"
           style={{ borderTop: '1px solid rgba(201,168,76,0.08)' }}
         >
+          {hasBlog && <a href="/blog" className="rounded-xl border border-white/10 px-4 py-3 text-sm" style={{ color: GOLD }}>Blog</a>}
           {MODULES.map(m => (
             <Link
               key={m.slug}
