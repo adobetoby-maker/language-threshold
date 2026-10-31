@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/:l([a-z0-9])",
+      "destination": "/?utm_source=heycatch&utm_campaign=:l",
+      "statusCode": 302
+    }
+  ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/readers", "destination": "/readers/index.html" },
