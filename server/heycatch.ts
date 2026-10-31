@@ -1,4 +1,4 @@
-import sanitizeHtml from 'sanitize-html'
+import sanitizeHtml from './sanitize.cjs'
 import { parse } from 'node-html-parser'
 
 export const ORIGIN = 'https://languagethreshold.com'

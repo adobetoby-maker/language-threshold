@@ -38,7 +38,7 @@
   ],
   "functions": {
     "api/blog.ts": {
-      "includeFiles": "server/sitemap-base.xml",
+      "includeFiles": "server/{sitemap-base.xml,sanitize.cjs}",
       "maxDuration": 30
     }
   }
