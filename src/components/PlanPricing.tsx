@@ -113,7 +113,7 @@ export default function PlanPricing({ includeTeam = false }: { includeTeam?: boo
               <h3>Crew lead? Get what you need for your team.</h3>
               <p>Train your crew with flexible seats and a plan that fits your team.</p>
             </div>
-            <a href={`${APP_URL}/teams`}>See team pricing →</a>
+            <a href={`${APP_URL}/team`}>See team pricing →</a>
           </aside>
         )}
         <p className="lt-plan-free">Missionary Spanish remains free. <a href={MISSIONARY_APP_URL}>Open the free module →</a></p>
