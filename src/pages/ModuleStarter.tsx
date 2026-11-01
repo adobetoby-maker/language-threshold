@@ -505,7 +505,7 @@ export default function ModuleStarter() {
             </motion.div>
 
           </section>
-        ) : <PlanPricing />}
+        ) : <PlanPricing includeTeam />}
 
         {/* ─── BOTTOM CTA ───────────────────────────────────── */}
         <section className="px-6 sm:px-10 py-20 max-w-2xl mx-auto text-center">
