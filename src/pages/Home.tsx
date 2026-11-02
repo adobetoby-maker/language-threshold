@@ -21,7 +21,7 @@ const CATEGORIES = [
     href: '/module/medical',
   },
   {
-    emoji: '🔧', name: 'Construction',
+    emoji: '🔨', name: 'Construction',
     color: 'from-orange-950/90 to-[#02040f]',
     border: 'border-orange-800/40', hover: 'hover:border-orange-600/50',
     modules: ['Framing', 'Electrical', 'Plumbing'],
