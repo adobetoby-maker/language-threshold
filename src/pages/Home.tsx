@@ -481,7 +481,7 @@ export default function Home() {
         </section>
 
         {/* Category showcase */}
-        <section id="categories" className="relative py-24 px-6 sm:px-10">
+        <section id="categories" className="relative py-24 px-6 sm:px-10" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(10,22,40,0.94)_0%,_rgba(2,4,15,0.88)_70%)] pointer-events-none" />
           <div className="relative max-w-7xl mx-auto">
             <motion.div
@@ -494,7 +494,7 @@ export default function Home() {
                 Learn the language<br />
                 <span className="text-white/40">your purpose demands.</span>
               </h2>
-              <p className="mt-5 text-white/40 max-w-xl mx-auto text-sm leading-relaxed">
+              <p className="mt-5 text-[#D4DCE8] max-w-2xl mx-auto text-base leading-relaxed">
                 The app catalog has 61 module tracks and 1,540 lesson outlines across 10 language options. These counts describe catalog entries, not fully reviewed courses in every language. Lesson content and language-pair coverage vary; curriculum review is ongoing.
               </p>
             </motion.div>
@@ -515,21 +515,21 @@ export default function Home() {
                   <div className="relative">
                     <div className="flex items-start justify-between mb-3">
                       <span className="text-3xl">{cat.emoji}</span>
-                      <span className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-white/50">
+                      <span className="rounded-full border border-white/10 bg-white/[0.06] px-2 py-0.5 text-[13px] font-semibold tracking-normal text-[#E8ECF2]">
                         Explore
                       </span>
                     </div>
                     <h3 className="font-serif text-lg font-semibold mb-2">{cat.name}</h3>
                     <ul className="space-y-0.5 mb-3">
                       {cat.modules.map((m) => (
-                        <li key={m} className="font-mono text-[10px] text-white/45 tracking-wide">
-                          {m.startsWith('+') ? <span className="text-white/25 italic">{m}</span> : `· ${m}`}
+                        <li key={m} className="text-[16px] font-medium leading-relaxed text-[#E8ECF2] tracking-normal">
+                          {m.startsWith('+') ? <span className="text-[#D4DCE8] italic">{m}</span> : `· ${m}`}
                         </li>
                       ))}
                     </ul>
-                    <p className="font-mono text-[9px] uppercase tracking-widest text-white/25">{cat.languages}</p>
+                    <p className="text-[14px] leading-relaxed tracking-normal text-[#D4DCE8]">{cat.languages}</p>
                   </div>
-                  <div className="mt-4 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-white/30 group-hover:text-white/60 transition-colors">
+                  <div className="mt-4 flex items-center gap-1 text-[15px] font-semibold tracking-normal text-[#E8ECF2] group-hover:text-white transition-colors">
                     <span>Explore</span>
                     <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                   </div>
