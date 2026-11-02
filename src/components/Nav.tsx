@@ -50,8 +50,8 @@ export default function Nav() {
     <nav
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: active ? 'rgba(2,4,15,0.96)' : 'transparent',
-        backdropFilter: active ? 'blur(14px)' : 'none',
+        backgroundColor: active ? '#02040F' : 'rgba(2,4,15,0.94)',
+        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
         borderBottom: active ? '1px solid rgba(201,168,76,0.07)' : 'none',
       }}
     >
@@ -61,14 +61,14 @@ export default function Nav() {
         <div className="flex items-center gap-4 shrink-0">
           <Link to="/" className="flex items-center gap-2 no-underline whitespace-nowrap">
             <img src="/brand/open-door-mark-gold.svg" alt="" width="20" height="17" className="shrink-0" />
-            <span className="font-serif text-[13px] sm:text-[15px] font-semibold tracking-tight text-white/90">
+            <span className="text-[16px] sm:text-[18px] font-semibold tracking-normal text-white">
               Language Threshold
             </span>
           </Link>
           <a
             href="/#pricing"
             onClick={goToPricing}
-            className="hidden lg:inline-flex min-h-9 items-center rounded-full border border-[#C9A84C]/40 px-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[#DCC272] transition-colors hover:border-[#C9A84C] hover:text-white"
+            className="hidden lg:inline-flex min-h-9 items-center rounded-full border border-[#C9A84C]/40 px-3 text-[16px] font-semibold tracking-normal text-[#DCC272] transition-colors hover:border-[#C9A84C] hover:text-white"
           >
             Pricing
           </a>
@@ -82,10 +82,10 @@ export default function Nav() {
               <Link
                 key={m.slug}
                 to={`/module/${m.slug}`}
-                className="shrink-0 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-200"
-                style={{ color: isActive ? m.color : 'rgba(255,255,255,0.32)' }}
+                className="shrink-0 whitespace-nowrap text-[16px] font-semibold tracking-normal transition-all duration-200"
+                style={{ color: isActive ? m.color : '#E8ECF2' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = m.color }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = isActive ? m.color : 'rgba(255,255,255,0.32)' }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = isActive ? m.color : '#E8ECF2' }}
               >
                 {m.label}
               </Link>
@@ -93,7 +93,7 @@ export default function Nav() {
           })}
           <details key={pathname} className="relative shrink-0 group">
             <summary
-              className="cursor-pointer list-none whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.14em] text-white/50 transition-colors hover:text-white/80"
+              className="cursor-pointer list-none whitespace-nowrap text-[16px] font-semibold tracking-normal text-[#E8ECF2] transition-colors hover:text-white"
               aria-label="More learning categories"
             >
               More <span aria-hidden="true">▾</span>
@@ -103,8 +103,8 @@ export default function Nav() {
                 <Link
                   key={m.slug}
                   to={`/module/${m.slug}`}
-                  className="rounded-lg px-3 py-2 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors hover:bg-white/10"
-                  style={{ color: pathname === `/module/${m.slug}` ? m.color : 'rgba(255,255,255,0.7)' }}
+                  className="rounded-lg px-3 py-2 text-[16px] font-semibold tracking-normal transition-colors hover:bg-white/10"
+                  style={{ color: pathname === `/module/${m.slug}` ? m.color : '#FFFFFF' }}
                 >
                   {m.label}
                 </Link>
@@ -117,25 +117,25 @@ export default function Nav() {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <Link
             to="/about"
-            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
-            style={{ color: pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/about' ? GOLD : 'rgba(255,255,255,0.32)' }}
+            className="hidden xl:block text-[16px] font-semibold tracking-normal transition-colors"
+            style={{ color: pathname === '/about' ? GOLD : '#E8ECF2' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#FFFFFF' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/about' ? GOLD : '#E8ECF2' }}
           >
             About
           </Link>
           <Link
             to="/founder"
-            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
-            style={{ color: pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.7)' }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/founder' ? GOLD : 'rgba(255,255,255,0.32)' }}
+            className="hidden xl:block text-[16px] font-semibold tracking-normal transition-colors"
+            style={{ color: pathname === '/founder' ? GOLD : '#E8ECF2' }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#FFFFFF' }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/founder' ? GOLD : '#E8ECF2' }}
           >
             Founder
           </Link>
           <a
             href={APP_URL}
-            className="hidden min-[360px]:inline-flex rounded-full px-3 sm:px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
+            className="hidden min-[360px]:inline-flex rounded-full px-3 sm:px-4 py-2 text-[14px] sm:text-[16px] font-semibold tracking-normal text-black hover:opacity-90 transition-opacity"
             style={{ backgroundColor: GOLD }}
           >
             Start Free
@@ -167,10 +167,10 @@ export default function Nav() {
             <Link
               key={m.slug}
               to={`/module/${m.slug}`}
-              className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
-              style={{ color: 'rgba(255,255,255,0.45)' }}
+              className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-[16px] font-semibold tracking-normal transition-colors"
+              style={{ color: '#E8ECF2' }}
               onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = m.color }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = '#E8ECF2' }}
             >
               {m.label}
             </Link>
@@ -178,28 +178,28 @@ export default function Nav() {
           <Link to="/why-learn-with-us/" className="flex min-h-11 items-center rounded-xl border border-white/10 px-4 py-3 text-sm text-white">Why learn with us</Link>
           <Link
             to="/about"
-            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
-            style={{ color: 'rgba(255,255,255,0.45)' }}
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-[16px] font-semibold tracking-normal transition-colors"
+            style={{ color: '#E8ECF2' }}
           >
             About
           </Link>
           <Link
             to="/founder"
-            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
-            style={{ color: 'rgba(255,255,255,0.45)' }}
+            className="flex items-center gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] px-4 py-3 text-[16px] font-semibold tracking-normal transition-colors"
+            style={{ color: '#E8ECF2' }}
           >
             Founder
           </Link>
           <Link
             to="/missionary-portal"
-            className="col-span-2 flex items-center justify-center gap-2 rounded-xl border px-4 py-3 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors"
+            className="col-span-2 flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-[16px] font-semibold tracking-normal transition-colors"
             style={{ borderColor: `${SKY}35`, color: SKY, backgroundColor: 'rgba(96,165,250,0.05)' }}
           >
             🕊️ Missionary Log In — Save Progress
           </Link>
           <a
             href={APP_URL}
-            className="col-span-2 mt-1 text-center rounded-full py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black"
+            className="col-span-2 mt-1 text-center rounded-full py-3 text-[16px] font-semibold tracking-normal text-black"
             style={{ backgroundColor: GOLD }}
           >
             Start Learning Free →
