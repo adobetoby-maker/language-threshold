@@ -1,206 +1,206 @@
 {
   "/": {
-    "sha256": "369fd51422bb5d8f52399739f1360c4d8886da7ac81edb2685dfd8b5d19c3e54",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "81f338661d8196b0f54ff1eecc4ecc1c633939bda0760feea7655b84f037fb61",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/why-learn-with-us": {
-    "sha256": "16cc22eae905fcef723870393e3be13e98c3c60bab81522ad6dba03c262064de",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "90452234599c3e147ded2f92a6e3d4e0425546cbccf8a059ccb307661acd6626",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/about": {
-    "sha256": "598edfc6f1cc3a9d3ac5e02fd02b5cbbb398cc21711e53d90271e3657a85953d",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "040ca1206df2a2a57e77fbd834ea0c3793a8b1b724670b8f5e67874ccce494b4",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/founder": {
-    "sha256": "c54dc7289abec2d7470e80392911a8ed1a79469eb22c620e062b6dc6c96c42b9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "ed990cb722d867f58e73d2b4196cd3e6683351dfbe7af2949ebd398377bc1607",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-spanish": {
-    "sha256": "965f36790b3b73537ef385130a43d5f5c4bae57bb177957537232974116dcffa",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "05b310721f623c0006119823a3c177337104de438c97627b83a21a6aa15650bf",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-spanish": {
-    "sha256": "17a9be347f153bcfeab244ede80244522fe5730fb533c6f00a761a0c3ca67831",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "608de9f55ed99a97f02b6c42f0f5688613ec7861ec60fa447f27a404e4e10a94",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-spanish": {
-    "sha256": "db3363c704306ce56203532fb538ae035260c11704e67cbbb672e274829c6611",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "f5b033cef6751851d92e70480a77afca07c4b619bd1c1bfadc90d5578645f768",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-spanish": {
-    "sha256": "5bc5fac0c29de6cc194bc2ba4db5240e3fcf1919d47b46315b33fcd64fc68905",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "4216386f948a1d4183312cfde834ec2989481baf9a6b754a2383f2acebf0fc99",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-portal": {
-    "sha256": "4b96be03d4056a39a7d4b12fb44e973cabbbce4c0483b501fa3fdc594cf099ae",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "6106f04bee340c41c40221757f0859afe0e7c6c90a2bac48828754560b3f9d6e",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-portuguese": {
-    "sha256": "02d623196e7564b8f78cb9815b0fc8dda7f98530c2460157fa231b0613f6f30c",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "8dc54a65da39e0e283c1c666dd03ddf4388d3ff681dc06715a6d87b731a884d8",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-french": {
-    "sha256": "8fe812cf823875f38212201e837dfed33898c991065c5faa3cccaf9c66f595cd",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "a1f006e1f5d6ee973d482a987cbb3f2d396c249ffb39600caef20ac9817beb5b",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-german": {
-    "sha256": "16dbfe9fa600787e5e154e18de8c3098d68ae6d8fbfe548c371a421a62d8ec86",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "740509bd4475686ceca09df2a7da2fed880fb59112eb40076cae25f54c4364ad",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-italian": {
-    "sha256": "215471903d0736a8e87c21a0262264df9c2098fe9ff2855cdb6e59861ee10565",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "5ef4f1ac8a9d62e2f83d356b3dd2ccbb02b86d6aee48b7b4a1a39b09bd3d6c1b",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-japanese": {
-    "sha256": "eb260f9d8783e4589fb3c59844179f2c00a3d47ea498507bf2a1b08ec792a2c0",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "8d74e2c7b63357a24021dfe2faa4a5028666c322e79274a396f359e51dc9a555",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-korean": {
-    "sha256": "d5f5a105e3f9205f123bc8854e6f3149f1534ee94307bf7d42fdc3c86abbab00",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "ff6a043a67439f60a90f7682301f4bcedbfcf2d2bf248f5a424350cf6394adf2",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-portuguese": {
-    "sha256": "c7816db23ac66e222febd3c690c91c6b605b90e4e145acfe2319e1c68d1f0c06",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "925452e0ea94698aefbe41c0ccc1116fe1af8b1c0673f67b5f9b5d5832f4473d",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-portuguese": {
-    "sha256": "6d7ab8fba0799424b1afaf36cd7aaf26a3d07e56cb523e1af44ac70df6d56168",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "c69a9afb871eaadf71adfd8b38f24fe79014c3d39ed6f698e8cfceef13fed0cc",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-portuguese": {
-    "sha256": "8f6b8f4bbe263c6e87cef73e85e7e3087a75e9866b4a07545aca40aef02f0408",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "2632aed028fe685e501a11ae45008aea4f4c4b48b1af836c4aba1363407a8cd7",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-french": {
-    "sha256": "0c3af6ed96227abd0aa3428031f451a88d373f040a8121511dcc36fc51b7653a",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "b2f4119b7257c87669a1e0b98407423816cc314ef0fceaa80d592a241c58712b",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-german": {
-    "sha256": "836ac5eadd5ca0325f79dd780e743a22d5be6920fb980a799a79ea0d739dd5f3",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "f0316b94fe1a61e10fd98b94b78a0e938d0cfc9ccb05df80f9fa5870b0aac68a",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-italian": {
-    "sha256": "1bc8400e25acbc35d2526548aaf850850c1733f7f7bb4a76805ab2c72b9bbec2",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "6cebc3deab127a9768bd309a4541b5c23bf1e0e7f40810c2d67e0f4130ee5252",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-japanese": {
-    "sha256": "23c8a97633c11ad6bf6d36adc9af4511e1fde036189cc720e4fd04a434b2c124",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "9f27c5967fdbfa30155af379763cb01b73c5674dc36cacb62da9ef1ef6eeec84",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-korean": {
-    "sha256": "015ed372f1eb8b797a870d3a4143d7f6e186e45a6e2ccc6b2f752c21268db042",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "020d4c878e7b92b91d93434cb8ea36d84d47a7474397c0c454a8a0b83f3b8bbe",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-french": {
-    "sha256": "1d6196825b5db33ab0c870c29b2b6fd4ab22d2303054742838c98ca10de726c7",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "0f3c7ffd35335ca045862d6a1772a54e4f11676a39b26590cc364f23f77794b8",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-german": {
-    "sha256": "833b6caf2bef784ef8caf729f50ea38222764f69d0bb0b8bf017d24507ae4fe1",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "23bdfb5a9c77cf5a1a637b4455be6865398bdcdee0fffab15d715340ac768ed0",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-italian": {
-    "sha256": "a0a6882321e17d6a009cdb1ef166c1fd7e42004e91684c9680fa7bbe0b33dd47",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "39a516daa0410ea4420072a82e3839cfc733a2d7b7a1262b4558ac6c92c511f8",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-japanese": {
-    "sha256": "a5a6602eac11ecb705437938d6d8706855caac5efc64d09c37e3830cf7d08a29",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "99bc9ad06d6b569554452937330bb7120d49a8a2926bd0c01b28691377159b50",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-korean": {
-    "sha256": "5cde6219ad1fdca1a06e01c2ed9616a91da2ce645be771545e172da73e579476",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "9893ed589ccf9998cc1ed692a9e7b6a4d053ff374eafa6d2d8d1a6dfba48414d",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-french": {
-    "sha256": "26c062d7f0d1e056ce1c19fcefc5a41f08805490791230435967fad57a2d8519",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "246cd2d3c4c485392f140c73d4d6b4d544c4be736b33f65233512e9c2b71005a",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-german": {
-    "sha256": "866fd79054a8c982b42f5fc81a2e4d7fe9045c54b800db9f6e37cb98fd0e7293",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "7bc265435a19776e039cc7ef73ea8c2ad3b670ff0115ad902c20cec8da72668e",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-italian": {
-    "sha256": "ef199adf565a63428f5856089c1e2746ce9dba348abe46f0b22e7a90501a0113",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "f9a86f167adbdc72eda0c9208194ba27956a4c8749185056574c4772f8de9b97",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-japanese": {
-    "sha256": "db264c99130d9586eeef1dd7bd7d2cd132e9f0dc6fc1c4f460ea02be6cfda380",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "deea7d8f49ed3002bf55fcbe6750fee5095f7f330c5f3968af4eb4fcdc445397",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-korean": {
-    "sha256": "0e22ef2db9aea2730dced545114e7f90217b89fb629d3dcfc27d106805aba7bf",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "430b605dc845ffe49ea9bc31921e20a515e1e1e93d7c0790de82df0af13a2a10",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-pashto": {
-    "sha256": "5b6e3d805356a905507192ebbb35c10cf3dc2afeabc380a8da27cff9cc1cae31",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "995c658f69e24cca5177d7f670974da715aa6fd81c531b1c657ded968d5a21ba",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/contractor-pashto": {
-    "sha256": "8eff7d1f7da89a953b2ba4831b0fa3fb603e028e04f39bc07e6b94cab903398d",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "a0e2995c28e31f1b068a8b5c36f7a9b0fc48f79c2c615bcb36c2400af6ee7cd2",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/climbing-pashto": {
-    "sha256": "46180d8160534b31ab5bb0feef3a8643642bd82ded7c2254f2f412e2676983bb",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "0d2933ca5893a34cb6f15b80a75f14bd7aa4c971dcc53234df31d4139c83211b",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/missionary-pashto": {
-    "sha256": "0fc1bccedf43dae1ec08f0e3c747dcb8572da4d2d9bcb0da5a24ba4aa68d9629",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "c2964dcdc2574887594dbd68e289c3332a7e501dd3525a9a12ed000075fced1f",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/medical-terminology": {
-    "sha256": "a4f7f12426fd71be774ebe264b834035fcc7a882086b3ea87a48438aaae30854",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "bda48f0d3c949d00636bc387285e8054ddcbff2d4d9ba2de8eacd5e8b2d2738c",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/fishing": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/steps": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/medical": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/construction": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/missionary": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/sports": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/agriculture": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/education": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/hospitality": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/climbing": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/hunting": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/business": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   },
   "/module/kids": {
-    "sha256": "f3ec007143dcc79819b669db59fae2f9d95fd1357f2b15257487e501765f75a9",
-    "lastmod": "2026-11-01T19:45:27-07:00"
+    "sha256": "999dc25eb749488748ff9ab38ad883194eb5793b08463d9267f46c8414c78a04",
+    "lastmod": "2026-11-02T09:21:06-07:00"
   }
 }
