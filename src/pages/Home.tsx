@@ -1,6 +1,6 @@
 import PlanPricing from '../components/PlanPricing'
 import { WhyLearnTeaser } from '../components/why/WhyLearnContent'
-import { useRef, lazy, Suspense } from 'react'
+import { useEffect, useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { APP_URL } from '../constants'
 import { CATALOG_COUNTS, CATALOG_LANGUAGES } from '../data/catalogSummary'
@@ -123,6 +123,14 @@ function LanguageTicker() {
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollY } = useScroll()
+
+  useEffect(() => {
+    if (window.location.hash !== '#pricing') return
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById('pricing')?.scrollIntoView({ behavior: 'instant', block: 'start' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [])
 
   const heroY       = useTransform(scrollY, [0, 400], [0, -80])
   const heroOpacity = useTransform(scrollY, [0, 350], [1, 0])

@@ -1,27 +1,56 @@
 import { APP_URL, MISSIONARY_APP_URL } from '../constants'
 import './plan-pricing.css'
 
-const PLANS = [
+const INDIVIDUAL_FEATURES = [
+  'All published professional modules',
+  'Reading, listening and speaking practice',
+  'Your own learning progress',
+]
+
+const FAMILY_FEATURES = [
+  'Pro access for up to 6 family members',
+  'Junior Linguist for kids ages 4–12',
+  'Separate family profiles and progress',
+]
+
+const PLAN_GROUPS = [
   {
-    id: 'monthly', name: 'Individual monthly', price: '$19', period: '/month',
-    audience: 'One learner. Billed monthly.',
-    billing: '$19 charged each month. Renews monthly until canceled.',
-    features: ['All published professional modules', 'Reading, listening and speaking practice', 'Your own learning progress'],
-    cta: 'Choose $19/month',
+    title: 'Individual',
+    description: 'One learner. Every published module.',
+    plans: [
+      {
+        id: 'monthly', name: 'Monthly', price: '$19', period: '/month',
+        billing: '$19 charged each month after the trial. Renews monthly until canceled.',
+        features: INDIVIDUAL_FEATURES,
+        cta: 'Choose Individual monthly',
+      },
+      {
+        id: 'annual', name: 'Annual', price: '$149', period: '/year',
+        fullPrice: '$228', savings: 'Save $79 a year',
+        billing: '$149 charged once per year after the trial. About $12.42/month, billed annually.',
+        features: INDIVIDUAL_FEATURES,
+        cta: 'Choose Individual annual',
+      },
+    ],
   },
   {
-    id: 'family', name: 'Family annual', price: '$249', period: '/year',
-    audience: 'Up to 6 family profiles. One annual payment.',
-    billing: '$249 charged once per year. Equivalent to $20.75/month, billed annually.',
-    features: ['Pro access for up to 6 family members', 'Junior Linguist for kids ages 4–12', 'Separate family profiles and learning progress'],
-    cta: 'Choose family · $249/year',
-  },
-  {
-    id: 'annual', name: 'Individual annual', price: '$149', period: '/year',
-    audience: 'One learner. One annual payment.',
-    billing: '$149 charged once per year. About $12.42/month, billed annually.',
-    features: ['Everything in Individual monthly', 'Save $79 versus 12 monthly payments', 'Your own learning progress'],
-    cta: 'Choose $149/year',
+    title: 'Family',
+    description: 'Up to 6 profiles, including Junior Linguist.',
+    plans: [
+      {
+        id: 'family-monthly', name: 'Monthly', price: '$35', period: '/month',
+        billing: '$35 charged each month after the trial. Renews monthly until canceled.',
+        features: FAMILY_FEATURES,
+        cta: 'Choose Family monthly',
+      },
+      {
+        id: 'family', name: 'Annual', price: '$249', period: '/year',
+        fullPrice: '$420', savings: 'Save $171 a year',
+        billing: '$249 charged once per year after the trial. About $20.75/month, billed annually.',
+        features: FAMILY_FEATURES,
+        cta: 'Choose Family annual',
+      },
+    ],
   },
 ] as const
 
@@ -32,42 +61,47 @@ export default function PlanPricing({ includeTeam = false }: { includeTeam?: boo
         <header className="lt-plan-heading">
           <p className="lt-plan-eyebrow">Individual & family plans</p>
           <h2 id="plan-pricing-title">Choose your plan.<br />Know what you’ll pay.</h2>
-          <p>For one learner or the whole family.</p>
+          <p>Choose monthly flexibility or save with an annual plan.</p>
         </header>
-        <div className="lt-plan-upfront" aria-label="Monthly and family prices">
-          <a className="lt-plan-quick-price" href={`${APP_URL}/pricing?plan=monthly`}>
-            <span className="lt-plan-quick-label">Individual</span>
-            <span className="lt-plan-quick-amount"><strong>$19</strong><span>/month</span></span>
-            <span>1 learner · billed monthly</span>
-          </a>
-          <a className="lt-plan-quick-price lt-plan-quick-family" href={`${APP_URL}/pricing?plan=family`}>
-            <span className="lt-plan-quick-label">Family</span>
-            <span className="lt-plan-quick-amount"><strong>$249</strong><span>/year</span></span>
-            <span>Up to 6 profiles · billed annually</span>
-          </a>
-        </div>
-        <div className="lt-plan-trial">
+        <p className="lt-plan-trial">
           <strong>Start with a 7-day free trial.</strong>
-          <span>Then use the billing option you choose. Payment and renewal terms are shown in checkout.</span>
-          <a href={APP_URL}>Try the app →</a>
-        </div>
-        <div className="lt-plan-grid">
-          {PLANS.map(plan => (
-            <article key={plan.id} className={`lt-plan-card lt-plan-${plan.id}`} aria-labelledby={`plan-${plan.id}`}>
-              <h3 id={`plan-${plan.id}`}>{plan.name}</h3>
-              <p className="lt-plan-price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
-              <p className="lt-plan-audience">{plan.audience}</p>
-              <p className="lt-plan-billing">{plan.billing}</p>
-              <ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
-              <a className="lt-plan-button" href={`${APP_URL}/pricing?plan=${plan.id}`}>{plan.cta} →</a>
-              <p className="lt-plan-renewal">7-day trial · Review renewal terms in checkout</p>
-            </article>
-          ))}
-        </div>
+          <span> Your chosen price starts after the trial. Payment and renewal terms are shown in checkout.</span>
+        </p>
+        {PLAN_GROUPS.map(group => (
+          <div className="lt-plan-group" key={group.title}>
+            <div className="lt-plan-group-heading">
+              <h3>{group.title}</h3>
+              <p>{group.description}</p>
+            </div>
+            <div className="lt-plan-grid">
+              {group.plans.map(plan => (
+                <article key={plan.id} className={`lt-plan-card lt-plan-${plan.id}`} aria-labelledby={`plan-${plan.id}`}>
+                  <h4 id={`plan-${plan.id}`}>{plan.name}</h4>
+                  {'fullPrice' in plan && (
+                    <p className="lt-plan-savings">
+                      <span className="lt-plan-old-price">{plan.fullPrice}/year</span>
+                      <span className="lt-plan-comparison">12 monthly payments</span>
+                      <strong>{plan.savings}</strong>
+                    </p>
+                  )}
+                  <p className="lt-plan-price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
+                  <p className="lt-plan-billing">{plan.billing}</p>
+                  <ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
+                  <a className="lt-plan-button" href={`${APP_URL}/pricing?plan=${plan.id}`}>{plan.cta} →</a>
+                  <p className="lt-plan-renewal">7-day trial · Review renewal terms in checkout</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
         {includeTeam && (
           <aside className="lt-plan-team">
-            <div><h3>Learning with your team?</h3><p><strong>$99/month for 5 learner seats.</strong> Pricing adjusts as you add seats.</p></div>
-            <a href={`${APP_URL}/teams`}>See team pricing →</a>
+            <div>
+              <p className="lt-plan-team-eyebrow">For supervisors and owners</p>
+              <h3>Crew lead? Get what you need for your team.</h3>
+              <p>Train your crew with flexible seats and a plan that fits your team.</p>
+            </div>
+            <a href={`${APP_URL}/team`}>See team pricing →</a>
           </aside>
         )}
         <p className="lt-plan-free">Missionary Spanish remains free. <a href={MISSIONARY_APP_URL}>Open the free module →</a></p>

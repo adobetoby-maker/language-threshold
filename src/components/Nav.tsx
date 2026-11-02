@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type MouseEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { APP_URL } from '../constants'
 
@@ -38,6 +38,14 @@ export default function Nav() {
 
   const active = scrolled || menuOpen
 
+  const goToPricing = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== '/') return
+    event.preventDefault()
+    window.history.pushState(null, '', '/#pricing')
+    document.getElementById('pricing')?.scrollIntoView({ behavior: 'instant', block: 'start' })
+    setMenuOpen(false)
+  }
+
   return (
     <nav
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300"
@@ -47,15 +55,24 @@ export default function Nav() {
         borderBottom: active ? '1px solid rgba(201,168,76,0.07)' : 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3 sm:gap-6">
 
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 no-underline shrink-0 whitespace-nowrap">
-          <span style={{ color: GOLD, fontSize: '0.9rem' }}>✦</span>
-          <span className="font-serif text-[15px] font-semibold tracking-tight text-white/90">
-            Language Threshold
-          </span>
-        </Link>
+        {/* Brand and pricing */}
+        <div className="flex items-center gap-4 shrink-0">
+          <Link to="/" className="flex items-center gap-2 no-underline whitespace-nowrap">
+            <img src="/brand/open-door-mark-gold.svg" alt="" width="20" height="17" className="shrink-0" />
+            <span className="font-serif text-[13px] sm:text-[15px] font-semibold tracking-tight text-white/90">
+              Language Threshold
+            </span>
+          </Link>
+          <a
+            href="/#pricing"
+            onClick={goToPricing}
+            className="hidden lg:inline-flex min-h-9 items-center rounded-full border border-[#C9A84C]/40 px-3 font-mono text-[10px] uppercase tracking-[0.14em] text-[#DCC272] transition-colors hover:border-[#C9A84C] hover:text-white"
+          >
+            Pricing
+          </a>
+        </div>
 
         {/* Module links — desktop */}
         <div className="hidden lg:flex min-w-0 flex-1 items-center justify-center gap-4">
@@ -97,7 +114,7 @@ export default function Nav() {
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <Link
             to="/about"
             className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
@@ -116,18 +133,9 @@ export default function Nav() {
           >
             Founder
           </Link>
-          <Link
-            to="/missionary-portal"
-            className="hidden xl:block font-mono text-[10px] uppercase tracking-[0.18em] transition-colors"
-            style={{ color: pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = SKY }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = pathname === '/missionary-portal' ? SKY : 'rgba(255,255,255,0.35)' }}
-          >
-            Missionary Log In
-          </Link>
           <a
             href={APP_URL}
-            className="rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
+            className="hidden min-[360px]:inline-flex rounded-full px-3 sm:px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-black hover:opacity-90 transition-opacity"
             style={{ backgroundColor: GOLD }}
           >
             Start Free
@@ -135,7 +143,7 @@ export default function Nav() {
 
           {/* Mobile menu toggle */}
           <button
-            className="lg:hidden ml-2 flex flex-col justify-center items-center gap-1.5 w-9 h-9"
+            className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-9"
             onClick={() => setMenuOpen(o => !o)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -152,6 +160,9 @@ export default function Nav() {
           className="lg:hidden px-6 pb-6 grid grid-cols-2 gap-2"
           style={{ borderTop: '1px solid rgba(201,168,76,0.08)' }}
         >
+          <a href="/#pricing" onClick={goToPricing} className="col-span-2 flex min-h-11 items-center justify-center rounded-xl border border-[#C9A84C]/40 px-4 py-3 text-sm font-semibold text-[#DCC272]">
+            See pricing
+          </a>
           {MODULES.map(m => (
             <Link
               key={m.slug}
