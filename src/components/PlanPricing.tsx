@@ -54,8 +54,6 @@ const PLAN_GROUPS = [
   },
 ] as const
 
-const familyMonthlyCheckoutReady = import.meta.env.VITE_FAMILY_MONTHLY_CHECKOUT_READY === 'true'
-
 export default function PlanPricing({ includeTeam = false }: { includeTeam?: boolean }) {
   return (
     <section id="pricing" className="lt-plan-pricing" aria-labelledby="plan-pricing-title">
@@ -89,18 +87,8 @@ export default function PlanPricing({ includeTeam = false }: { includeTeam?: boo
                   <p className="lt-plan-price"><strong>{plan.price}</strong><span>{plan.period}</span></p>
                   <p className="lt-plan-billing">{plan.billing}</p>
                   <ul>{plan.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
-                  {plan.id === 'family-monthly' && !familyMonthlyCheckoutReady ? (
-                    <span className="lt-plan-button lt-plan-button-pending" aria-label="Family monthly checkout is being prepared">
-                      Checkout being prepared
-                    </span>
-                  ) : (
-                    <a className="lt-plan-button" href={`${APP_URL}/pricing?plan=${plan.id}`}>{plan.cta} →</a>
-                  )}
-                  <p className="lt-plan-renewal">
-                    {plan.id === 'family-monthly' && !familyMonthlyCheckoutReady
-                      ? 'Monthly pricing preview · Checkout is not available yet'
-                      : '7-day trial · Review renewal terms in checkout'}
-                  </p>
+                  <a className="lt-plan-button" href={`${APP_URL}/pricing?plan=${plan.id}`}>{plan.cta} →</a>
+                  <p className="lt-plan-renewal">7-day trial · Review renewal terms in checkout</p>
                 </article>
               ))}
             </div>

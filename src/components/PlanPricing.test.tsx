@@ -14,7 +14,7 @@ describe('plan pricing', () => {
     expect(html).toContain('Save $79 a year')
     expect(html).toContain('$420/year')
     expect(html).toContain('Save $171 a year')
-    expect(html).toContain('Family monthly checkout is being prepared')
+    expect(html).toContain('href="https://app.languagethreshold.com/pricing?plan=family-monthly"')
     expect(html).toContain('Crew lead? Get what you need for your team.')
     expect(html).toContain('href="https://app.languagethreshold.com/team"')
   })
