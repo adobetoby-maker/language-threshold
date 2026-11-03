@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:sanitizer && tsc -b && tsc -p tsconfig.blog.json && vite build",
+    "build": "node scripts/seo/generate-sitemap.mjs && npm run build:sanitizer && tsc -b && tsc -p tsconfig.blog.json && vite build",
     "lint": "eslint .",
     "test": "vitest run",
     "preview": "vite preview",
     "gen-cache": "node scripts/prebuild-word-cache.mjs",
     "build:sanitizer": "esbuild node_modules/sanitize-html/index.js --bundle --platform=node --format=cjs --outfile=server/sanitize.cjs",
-    "pretest": "npm run build:sanitizer"
+    "pretest": "npm run build:sanitizer",
+    "indexnow:publish": "node scripts/seo/indexnow.mjs"
   },
   "dependencies": {
     "@heycatch/sdk": "^0.8.3",

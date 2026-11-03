@@ -268,12 +268,12 @@ const STARTERS: Record<string, StarterData> = {
 
 function SlideButton({ href, label, size = 'lg' }: { href: string; label: string; size?: 'sm' | 'lg' }) {
   const base = size === 'lg'
-    ? 'group relative overflow-hidden rounded-full px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-black font-semibold hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] transition-all duration-300'
-    : 'group relative overflow-hidden rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,168,76,0.35)] transition-all duration-300'
+    ? 'group relative isolate inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-black font-semibold hover:shadow-[0_0_40px_rgba(201,168,76,0.4)] transition-all duration-300'
+    : 'group relative isolate inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-black font-semibold hover:shadow-[0_0_30px_rgba(201,168,76,0.35)] transition-all duration-300'
   return (
     <a href={href} className={base} style={{ backgroundColor: GOLD }}>
       <span className="relative z-10">{label}</span>
-      <span className="absolute inset-0 bg-amber-300 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+      <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] bg-amber-300 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300 motion-reduce:transition-none" />
     </a>
   )
 }
@@ -505,7 +505,7 @@ export default function ModuleStarter() {
             </motion.div>
 
           </section>
-        ) : <PlanPricing />}
+        ) : <PlanPricing includeTeam />}
 
         {/* ─── BOTTOM CTA ───────────────────────────────────── */}
         <section className="px-6 sm:px-10 py-20 max-w-2xl mx-auto text-center">

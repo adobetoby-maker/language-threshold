@@ -5,14 +5,14 @@ import { APP_URL, displayFont, serifFont, sansFont } from '../constants'
 function AboutHero() {
   return (
     <section className="relative pt-40 pb-24 px-6 overflow-hidden" style={{ backgroundColor: '#0D0D0D' }}>
-      <svg
-        className="absolute right-0 top-0 pointer-events-none select-none opacity-20"
-        width="500" height="600" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-      >
-        <path d="M100 600V260C100 116.406 191.634 20 300 20C408.366 20 500 116.406 500 260V600" stroke="#C9A84C" strokeWidth="1" />
-        <path d="M160 600V275C160 143.9 222.386 52 300 52C377.614 52 440 143.9 440 275V600" stroke="#C9A84C" strokeWidth="0.5" />
-        <line x1="300" y1="260" x2="300" y2="600" stroke="#C9A84C" strokeWidth="0.5" strokeDasharray="3 5" />
-      </svg>
+      <img
+        src="/brand/open-door-mark-gold.svg"
+        alt=""
+        aria-hidden="true"
+        width="600"
+        height="500"
+        className="absolute right-[-4rem] sm:right-0 top-20 w-[280px] sm:w-[420px] lg:w-[500px] h-auto pointer-events-none select-none opacity-[0.16]"
+      />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <p className="text-xs tracking-widest uppercase mb-6" style={{ ...sansFont, color: '#C9A84C', letterSpacing: '0.15em' }}>

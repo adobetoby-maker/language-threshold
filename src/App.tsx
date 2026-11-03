@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import NotFound from './pages/NotFound'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -49,7 +49,6 @@ const ContractorPashto   = lazy(() => import('./pages/ContractorPashto'))
 const ClimbingPashto     = lazy(() => import('./pages/ClimbingPashto'))
 const MissionaryPashto   = lazy(() => import('./pages/MissionaryPashto'))
 const MedicalTerminology = lazy(() => import('./pages/MedicalTerminology'))
-const LanguageLens = lazy(() => import('./pages/LanguageLens'))
 const AppHome = lazy(() => import('./pages/AppHome'))
 const SpeakingHome = lazy(() => import('./pages/SpeakingHome'))
 const SpeakingScenario = lazy(() => import('./pages/SpeakingScenario'))
@@ -140,7 +139,7 @@ function AppShell() {
             <Route path="/contractor-pashto"   element={<ErrorBoundary><ContractorPashto /></ErrorBoundary>} />
             <Route path="/climbing-pashto"     element={<ErrorBoundary><ClimbingPashto /></ErrorBoundary>} />
             <Route path="/missionary-pashto"   element={<ErrorBoundary><MissionaryPashto /></ErrorBoundary>} />
-            <Route path="/language-lens" element={<ErrorBoundary><LanguageLens /></ErrorBoundary>} />
+            <Route path="/language-lens" element={<Navigate to="/" replace />} />
             <Route path="/medical-terminology" element={<ErrorBoundary><MedicalTerminology /></ErrorBoundary>} />
             <Route path="/module/fishing" element={<ErrorBoundary><FishingModule /></ErrorBoundary>} />
             <Route path="/module/:slug" element={<ErrorBoundary><ModuleStarter /></ErrorBoundary>} />
