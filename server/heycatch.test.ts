@@ -87,7 +87,7 @@ async function render(query: Record<string, string>) {
   return res
 }
 
-describe('server pages and sitemap', () => {
+describe('server pages', () => {
   it('renders the complete article in initial HTML with SEO, language and no visible description', async () => {
     vi.stubGlobal('fetch', vi.fn(async (url: URL) => reply(url.pathname.endsWith('/articles') ? { total: 1, articles: [fixture] } : { article: { ...fixture, language: 'ar' } })))
     const res = await render({ slug: fixture.slug })
@@ -97,7 +97,8 @@ describe('server pages and sitemap', () => {
     expect(root.querySelector('article')?.getAttribute('dir')).toBe('rtl')
     expect(root.querySelector('article')?.textContent).not.toContain(fixture.meta_description)
     expect(root.querySelector('meta[name="description"]')?.getAttribute('content')).toBe(fixture.meta_description)
-    expect(root.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://languagethreshold.com/blog/workplace-spanish')
+    expect(root.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://app.languagethreshold.com/blog/workplace-spanish')
+    expect(root.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex,follow')
     expect(root.querySelector('article')?.textContent).toContain('Start here.')
     expect(root.querySelector('head script[type="application/ld+json"]')).not.toBeNull()
     expect(res.body).not.toContain('test-key')
@@ -115,11 +116,11 @@ describe('server pages and sitemap', () => {
     expect(res.body).toContain('No articles yet.')
     expect(res.body).not.toContain('href="/blog"')
   })
-  it('extends the existing sitemap and preserves every old URL', async () => {
+  it('shows published articles on the index with the app as canonical', async () => {
     vi.stubGlobal('fetch', vi.fn().mockResolvedValue(reply({ total: 1, articles: [fixture] })))
-    const res = await render({ mode: 'sitemap' })
-    expect(res.body).toContain('<loc>https://languagethreshold.com/module/medical</loc>')
-    expect(res.body).toContain('<loc>https://languagethreshold.com/blog/workplace-spanish</loc><lastmod>2026-10-31</lastmod>')
-    expect(res.headers['Content-Type']).toContain('application/xml')
+    const res = await render({})
+    expect(res.body).toContain('Spanish at work')
+    expect(res.body).toContain('https://app.languagethreshold.com/blog')
+    expect(res.body).toContain('noindex,follow')
   })
 })

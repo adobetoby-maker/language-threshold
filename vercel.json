@@ -17,10 +17,6 @@
       "destination": "/api/blog?slug=:slug"
     },
     {
-      "source": "/sitemap.xml",
-      "destination": "/api/blog?mode=sitemap"
-    },
-    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
@@ -39,7 +35,7 @@
   ],
   "functions": {
     "api/blog.ts": {
-      "includeFiles": "server/{sitemap-base.xml,sanitize.cjs}",
+      "includeFiles": "server/sanitize.cjs",
       "maxDuration": 30
     }
   }
