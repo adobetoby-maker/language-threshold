@@ -28,3 +28,4 @@ scripts/.med-terms-checkpoint.json
 
 # Generated server sanitizer bundle
 /server/sanitize.cjs
+/public/sitemap.xml
