@@ -8,9 +8,35 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/readers", "destination": "/readers/index.html" },
-    { "source": "/readers/(.*)", "destination": "/readers/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+    {
+      "source": "/blog",
+      "destination": "/api/blog"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/api/blog?slug=:slug"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/readers",
+      "destination": "/readers/index.html"
+    },
+    {
+      "source": "/readers/(.*)",
+      "destination": "/readers/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/blog.ts": {
+      "includeFiles": "server/sanitize.cjs",
+      "maxDuration": 30
+    }
+  }
 }

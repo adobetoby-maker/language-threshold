@@ -25,3 +25,8 @@ dist-ssr
 .vercel
 scripts/generate-med-terms.mjs
 scripts/.med-terms-checkpoint.json
+
+# Generated server sanitizer bundle
+/server/sanitize.cjs
+/public/sitemap.xml
+.env*

@@ -71,3 +71,28 @@ export default defineConfig([
   },
 ])
 ```
+
+
+## HeyCatch blog
+
+`/blog` and `/blog/{slug}` are rendered by `api/blog.ts` on Vercel. Articles
+come from HeyCatch at request time; there is no article database or build-time
+content snapshot. The API key is only read on the server.
+
+In the **language-threshold** Vercel project's Environment Variables settings,
+add `HEYCATCH_API_KEY` as a Secret for Production and Preview. Use the
+publishable blog key (`hck_lv_…`), not the analytics SDK key. Redeploy after
+adding or replacing the variable. Never commit its value. Local integration
+work can supply the variable through the process environment with `vercel dev`.
+
+The server caches successful API responses for 60 seconds, and Vercel caches
+responses for 60 seconds. A warm instance can reuse its last successful content
+on network failures. Revoked keys clear that cached result; missing keys show
+the empty state. Navigation hides Blog until HeyCatch has published articles.
+The sitemap dynamically preserves the original URLs in `server/sitemap-base.xml`
+and adds every published post. The service worker excludes blog navigation.
+
+`npm run build` checks the client and blog server types. `npm test` verifies
+pagination, caching, sanitization, TOC order, metadata, sitemap, empty states,
+rate limiting and real 404 responses. After production deployment, verify
+`https://languagethreshold.com/blog` and return to HeyCatch to click **I've done it**.
