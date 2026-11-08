@@ -1,6 +1,10 @@
 {
   "redirects": [
-    { "source": "/language-lens", "destination": "/", "permanent": true },
+    {
+      "source": "/language-lens",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/:l([a-z0-9])",
       "destination": "/?utm_source=heycatch&utm_campaign=:l",
@@ -27,6 +31,14 @@
     {
       "source": "/readers/(.*)",
       "destination": "/readers/$1"
+    },
+    {
+      "source": "/app-walkthrough",
+      "destination": "/app-walkthrough/index.html"
+    },
+    {
+      "source": "/app-walkthrough/(.*)",
+      "destination": "/app-walkthrough/$1"
     },
     {
       "source": "/(.*)",

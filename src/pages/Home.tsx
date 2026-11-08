@@ -1,3 +1,4 @@
+import AppWalkthroughPreview from '../components/AppWalkthroughPreview'
 import PlanPricing from '../components/PlanPricing'
 import { WhyLearnTeaser } from '../components/why/WhyLearnContent'
 import { useEffect, useRef, lazy, Suspense } from 'react'
@@ -236,6 +237,7 @@ export default function Home() {
 
         {/* Features */}
         <WhyLearnTeaser />
+        <AppWalkthroughPreview />
 
         <section className="relative py-24 px-6 sm:px-10 bg-gradient-to-b from-transparent via-[#02040f]/92 to-transparent">
           <div className="max-w-5xl mx-auto">

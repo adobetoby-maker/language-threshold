@@ -26,6 +26,7 @@ for(const m of source.matchAll(/<Route\s+path="([^"]+)"\s+element=\{<ErrorBounda
   if(m[1].startsWith('/app')||m[1].startsWith('/print')||m[1].includes(':')||!imports.has(m[2])) continue;
   pages.push({url:m[1],file:imports.get(m[2])});
 }
+pages.push({url:'/app-walkthrough/',file:'public/app-walkthrough/index.html'});
 const starters=readFileSync('src/pages/ModuleStarter.tsx','utf8');
 for(const m of starters.matchAll(/^  ([a-z-]+): \{/gm)) pages.push({url:`/module/${m[1]}`,file:'src/pages/ModuleStarter.tsx'});
 const escape=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
