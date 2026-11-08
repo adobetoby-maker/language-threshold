@@ -1,0 +1,4 @@
+import './app-walkthrough-preview.css'
+export default function AppWalkthroughPreview() {
+  return <section className="app-walkthrough-preview" aria-labelledby="app-walkthrough-heading"><div className="app-walkthrough-inner"><div><p className="app-walkthrough-eyebrow">A look inside the app</p><h2 id="app-walkthrough-heading">Learn the words.<br />Use them in your world.</h2><p>Explore lessons, bilingual reading, vocabulary cards, games, and speaking practice around the topics you need.</p><a href="/app-walkthrough/">Take the app walkthrough →</a><p className="app-walkthrough-note">Actual desktop app demonstration · Roofing Spanish example</p></div><a href="/app-walkthrough/" aria-label="Explore the app screenshot walkthrough"><img src="/app-walkthrough/screenshots/02-core30.png" alt="Roofing Spanish lesson path in the Language Threshold app" width="1440" height="900" loading="lazy" /></a></div></section>
+}
