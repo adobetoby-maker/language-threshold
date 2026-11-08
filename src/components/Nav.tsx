@@ -108,6 +108,8 @@ export default function Nav() {
               More <span aria-hidden="true">▾</span>
             </summary>
             <div className="absolute left-1/2 top-full mt-4 grid w-72 -translate-x-1/2 grid-cols-2 gap-1 rounded-xl border border-white/10 bg-[#02040f] p-3 shadow-2xl">
+              <a href={`${APP_URL}/scenarios`} className="col-span-2 min-h-11 rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/10">Scenarios & speaking levels</a>
+              <a href={`${APP_URL}/compare`} className="col-span-2 min-h-11 rounded-lg px-3 py-2 text-base font-semibold text-white hover:bg-white/10">Compare courses</a>
               {MORE_MODULES.map(m => (
                 <Link
                   key={m.slug}
@@ -176,7 +178,9 @@ export default function Nav() {
             See pricing
           </a>
           {hasBlog && <a href="/blog" className="rounded-xl border border-white/10 px-4 py-3 text-sm" style={{ color: GOLD }}>Blog</a>}
-          {MODULES.map(m => (
+          <a href={`${APP_URL}/scenarios`} className="block min-h-11 py-3 text-base font-semibold text-white">Scenarios & speaking levels</a>
+            <a href={`${APP_URL}/compare`} className="block min-h-11 py-3 text-base font-semibold text-white">Compare courses</a>
+            {MODULES.map(m => (
             <Link
               key={m.slug}
               to={`/module/${m.slug}`}

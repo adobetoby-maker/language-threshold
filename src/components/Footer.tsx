@@ -26,6 +26,8 @@ export default function Footer() {
               Construction Spanish
             </a>
             <Link to="/why-learn-with-us/" className="transition-opacity hover:opacity-80" style={{ color: '#C9A84C' }}>Why learn with us</Link>
+            <a href={`${APP_URL}/scenarios`} className="min-h-11 inline-flex items-center" style={{ color: '#C9A84C' }}>Scenarios & speaking levels</a>
+            <a href={`${APP_URL}/compare`} className="min-h-11 inline-flex items-center" style={{ color: '#C9A84C' }}>Compare courses</a>
             <Link to="/about" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               About
             </Link>

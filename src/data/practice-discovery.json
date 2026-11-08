@@ -1,0 +1,41 @@
+{
+  "language": "Spanish",
+  "nativeLanguage": "English",
+  "checked": "2026-11-07",
+  "groups": {
+    "Medical": {
+      "courses": 12,
+      "lessons": 690
+    },
+    "Trades": {
+      "courses": 12,
+      "lessons": 720
+    },
+    "Sports": {
+      "courses": 11,
+      "lessons": 660
+    }
+  },
+  "examples": [
+    {
+      "name": "Nursing & Patient Care",
+      "title": "Explain a new medication, its purpose, and its side effects to a patient",
+      "summary": "Bedside manner, medication administration, patient education, and shift handoffs for nurses and CNAs."
+    },
+    {
+      "name": "Roofing Supervisor",
+      "title": "Run a morning roofing briefing covering assignments, material staging, and fall hazards",
+      "summary": "Roofing materials, tear-off, installation calls, fall protection, quality checks, and crew closeout in Spanish or Spanish."
+    },
+    {
+      "name": "Soccer / F\u00fatbol",
+      "title": "Call for the ball from a teammate in an open position",
+      "summary": "On-field communication, coaching, fan culture, and match-day vocabulary in the world's most popular sport."
+    },
+    {
+      "name": "Core Speaking",
+      "title": "Introduce yourself",
+      "summary": "Give your name, where you are from, what you do, and one personal detail."
+    }
+  ]
+}

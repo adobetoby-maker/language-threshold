@@ -1,3 +1,4 @@
+import PracticeDiscovery from "../components/PracticeDiscovery"
 import PlanPricing from '../components/PlanPricing'
 import { WhyLearnTeaser } from '../components/why/WhyLearnContent'
 import { useEffect, useRef, lazy, Suspense } from 'react'
@@ -235,6 +236,7 @@ export default function Home() {
         <LanguageTicker />
 
         {/* Features */}
+        <PracticeDiscovery />
         <WhyLearnTeaser />
 
         <section className="relative py-24 px-6 sm:px-10 bg-gradient-to-b from-transparent via-[#02040f]/92 to-transparent">
