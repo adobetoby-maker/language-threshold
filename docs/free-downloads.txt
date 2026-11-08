@@ -26,11 +26,11 @@ should additionally use a platform/WAF persistent limit; do not describe the loc
 backstop as durable. Provider timeouts do not return false capture success.
 
 Download links are marketing gates, not DRM: existing publicly shared print pages
-and file URLs remain valid. Full paid workbooks are not converted into free books.
+and file URLs remain valid. Larger pilot workbooks remain outside this small-resource catalog.
 Use the free-downloads page for ad traffic; link to ?resource=<id> plus UTM tags.
-Source catalog: docs/free-downloads-catalog.json. Do not claim a print page is an
-already-generated PDF. The starter PDFs are two-page pilot references; print-page
-cards use browser Print / Save as PDF. The mission pack is standalone offline HTML.
+Source catalog: docs/free-downloads-catalog.json. The starter PDFs are two-page pilot references. The role-specific cards are
+exported as individual two-page PDFs from the existing printable content, with
+landscape sizing and no extra blank page. The mission pack is standalone offline HTML.
 
 Run npm run test:free-downloads and npm run build before deployment.
 Preview tests mock CRM and email APIs; production credentials remain production-only.

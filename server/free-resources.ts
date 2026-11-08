@@ -13,118 +13,118 @@ export const resources = [
     "id": "medical-cardiology",
     "title": "Cardiology Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#cardiology",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-cardiology.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-emergency",
     "title": "Emergency Medicine Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#emergency",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-emergency.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-family-medicine",
     "title": "Family Medicine Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#family-medicine",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-family-medicine.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-fmg",
     "title": "Foreign Medical Graduate Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#fmg",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-fmg.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-medical-receptionist",
     "title": "Medical Receptionist Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#medical-receptionist",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-medical-receptionist.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-nursing",
     "title": "Nursing Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#nursing",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-nursing.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-obgyn",
     "title": "OB/GYN Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#obgyn",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-obgyn.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-or-evs",
     "title": "OR / EVS Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#or-evs",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-or-evs.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-orthopedics",
     "title": "Orthopedics Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#orthopedics",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-orthopedics.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-pain-management",
     "title": "Pain Management Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#pain-management",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-pain-management.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-physical-therapy",
     "title": "Physical Therapy Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#physical-therapy",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-physical-therapy.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-social-work",
     "title": "Medical Social Work Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#social-work",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-social-work.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "medical-surgery",
     "title": "General Surgery Spanish trifold",
     "category": "medical",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/medical#surgery",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/medical-surgery.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-trifold",
@@ -139,82 +139,82 @@ export const resources = [
     "id": "construction-auto-mechanic",
     "title": "Auto Mechanic Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#auto-mechanic",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-auto-mechanic.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-drywall",
     "title": "Drywall Finisher Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#drywall",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-drywall.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-electrician",
     "title": "Electrician Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#electrician",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-electrician.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-foreman",
     "title": "Construction Foreman Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#foreman",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-foreman.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-framer",
     "title": "Framer Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#framer",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-framer.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-landscaper",
     "title": "Landscaper Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#landscaper",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-landscaper.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-plumber",
     "title": "Plumber Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#plumber",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-plumber.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-safety",
     "title": "Construction Safety Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#safety",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-safety.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "construction-truck-driver",
     "title": "Truck Driver Spanish trifold",
     "category": "construction",
-    "format": "Print page",
-    "url": "https://languagethreshold.com/print/trifold/construction#truck-driver",
+    "format": "PDF",
+    "url": "https://languagethreshold.com/assets/free-downloads/construction-truck-driver.pdf",
     "description": "A role-specific printable reference card with phrases and dialogue practice.",
-    "instructions": "This opens the printable card collection at your selected card. Use your browser’s Print / Save as PDF. Choose the two pages for this card, landscape, double-sided, short-edge flip."
+    "instructions": "This is a two-page reference card. Print in landscape, double-sided, flipping on the short edge. Fold into thirds. Use it for language practice."
   },
   {
     "id": "orthopedic-mission-pack",

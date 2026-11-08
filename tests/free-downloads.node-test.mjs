@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
-import {mkdtempSync,rmSync} from 'node:fs';
+import {mkdtempSync,rmSync,readFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -33,3 +33,5 @@ test('delivery emails use allowlisted URLs and escaped user input with idempoten
 test('delivery provider failure keeps the saved lead and immediate download',async()=>{const r=await request({}, {email:true,emailStatus:500,emailId:false});assert.equal(r.status,200);assert.equal(r.result.emailStatus,'unavailable');assert.ok(r.result.downloadUrl);assert.match(r.result.notice,/could not email/)});
 test('repeat requests are limited before external services are called',async()=>{const email='repeat@example.test';for(let n=0;n<3;n++)assert.equal((await request({email})).status,200);const r=await request({email});assert.equal(r.status,429);assert.equal(r.calls.length,0)});
 process.on('exit',()=>{globalThis.fetch=originalFetch;rmSync(folder,{recursive:true,force:true})});
+
+test('a selected role PDF is allowlisted, returned directly, and recorded in the CRM source',async()=>{const catalog=JSON.parse(readFileSync('docs/free-downloads-catalog.json','utf8'));const resource=catalog.find(x=>x.id!==x.category+'-trifold'&&x.format==='PDF');const r=await request({resourceId:resource.id});assert.equal(r.status,200);assert.equal(r.result.downloadUrl,resource.url);assert.equal(r.result.format,'PDF');assert.match(r.calls[0].body.source,new RegExp(resource.id));});

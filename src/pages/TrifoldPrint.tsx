@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { MEDICAL_BOOK_CHAPTERS, CONSTRUCTION_BOOK_CHAPTERS } from '../data/bookData'
 import type { BookChapter } from '../data/bookData'
@@ -288,6 +289,9 @@ function TrifoldModule({ chapter, specialty }: { chapter: BookChapter; specialty
 export default function TrifoldPrint({ specialty }: Props) {
   const chapters = specialty === 'medical' ? MEDICAL_BOOK_CHAPTERS : CONSTRUCTION_BOOK_CHAPTERS
   const baseModules = specialty === 'medical' ? MEDICAL_MODULES : CONSTRUCTION_MODULES
+  const [params] = useSearchParams()
+  const selectedChapter = chapters.find(chapter => chapter.id === params.get('module'))
+  const visibleChapters = selectedChapter ? [selectedChapter] : chapters
   const title = specialty === 'medical' ? 'Medical Spanish' : 'Construction Spanish'
   const accent = ACCENT[specialty]
 
@@ -299,12 +303,17 @@ export default function TrifoldPrint({ specialty }: Props) {
   }, [title])
 
   return (
-    <div style={{ background: '#e8e8e8', minHeight: '100vh' }}>
+    <div className="trifold-print" style={{ background: '#e8e8e8', minHeight: '100vh' }}>
       <style>{`
         @media print {
           nav, footer, .no-print { display: none !important; }
           body { background: white !important; margin: 0; padding: 0; }
           .trifold-page { page-break-after: always; margin: 0; }
+          .trifold-print { background: white !important; min-height: 0 !important; }
+          .trifold-preview { transform: none !important; margin: 0 !important; }
+          .trifold-collection { padding: 0 !important; }
+          .trifold-module { margin: 0 !important; }
+          .trifold-module:last-child .trifold-page:last-child { page-break-after: auto !important; break-after: auto !important; }
           @page { size: letter landscape; margin: 0.25in; }
         }
         .trifold-page { font-family: 'Source Sans 3', Arial, sans-serif; }
@@ -317,7 +326,7 @@ export default function TrifoldPrint({ specialty }: Props) {
             onClick={() => window.print()}
             style={{ background: accent, color: '#fff', border: 'none', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
           >
-            Print All {chapters.length} Cards
+            {selectedChapter ? `Print ${selectedChapter.title} Card` : `Print All ${chapters.length} Cards`}
           </button>
           <button
             onClick={() => history.back()}
@@ -336,7 +345,7 @@ export default function TrifoldPrint({ specialty }: Props) {
         {modulesWithChapters.map(m => (
           <a
             key={m.id}
-            href={`#${m.id}`}
+            href={`?module=${m.id}#${m.id}`}
             style={{ fontSize: 12, background: '#fff', border: '1px solid #ddd', borderRadius: 6, padding: '4px 10px', textDecoration: 'none', color: '#333', fontFamily: 'sans-serif' }}
           >
             {m.emoji} {m.title}
@@ -345,9 +354,9 @@ export default function TrifoldPrint({ specialty }: Props) {
       </div>
 
       {/* Trifolds */}
-      <div style={{ padding: '20px 40px 60px' }}>
-        {chapters.map(chapter => (
-          <div key={chapter.id} id={chapter.id} style={{ marginBottom: 48 }}>
+      <div className="trifold-collection" style={{ padding: '20px 40px 60px' }}>
+        {visibleChapters.map(chapter => (
+          <div className="trifold-module" key={chapter.id} id={chapter.id} style={{ marginBottom: 48 }}>
             {/* On-screen label */}
             <div className="no-print" style={{ fontFamily: 'sans-serif', fontSize: 13, fontWeight: 700, color: '#444', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 18 }}>{chapter.emoji}</span>
@@ -356,7 +365,7 @@ export default function TrifoldPrint({ specialty }: Props) {
             </div>
 
             {/* Trifold scaled for screen preview */}
-            <div style={{ transform: 'scale(0.72)', transformOrigin: 'top left', width: '10.5in', marginBottom: '-2.2in' }}>
+            <div className="trifold-preview" style={{ transform: 'scale(0.72)', transformOrigin: 'top left', width: '10.5in', marginBottom: '-2.2in' }}>
               <TrifoldModule chapter={chapter} specialty={specialty} />
             </div>
           </div>
