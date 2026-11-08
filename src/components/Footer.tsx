@@ -55,6 +55,6 @@ export default function Footer() {
           Anderton &amp; Associates Web Services
         </a>
       </div>
-</footer>
+<div className="text-center py-4"><a href="/free-downloads/">Free PDFs &amp; printable trifolds →</a></div></footer>
   )
 }

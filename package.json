@@ -12,7 +12,8 @@
     "gen-cache": "node scripts/prebuild-word-cache.mjs",
     "build:sanitizer": "esbuild node_modules/sanitize-html/index.js --bundle --platform=node --format=cjs --outfile=server/sanitize.cjs",
     "pretest": "npm run build:sanitizer",
-    "indexnow:publish": "node scripts/seo/indexnow.mjs"
+    "indexnow:publish": "node scripts/seo/indexnow.mjs",
+    "test:free-downloads": "node --test tests/free-downloads.node-test.mjs"
   },
   "dependencies": {
     "@heycatch/sdk": "^0.8.3",
