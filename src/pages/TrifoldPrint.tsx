@@ -26,7 +26,7 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
   const topPhrases = chapter.phrases.slice(0, 3)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D0D0D', color: '#F7F3EC' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D1B2A', color: '#F7F3EC' }}>
       {/* Color bar */}
       <div style={{ height: 8, background: accent, flexShrink: 0 }} />
 
@@ -58,8 +58,8 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
 
       {/* Footer */}
       <div style={{ padding: '10px 14px 12px', borderTop: '1px solid rgba(255,255,255,0.08)', flexShrink: 0 }}>
-        <div style={{ fontSize: 8, color: '#71717A' }}>languagethreshold.com</div>
-        <div style={{ fontSize: 8, color: '#71717A', marginTop: 2 }}>
+        <div style={{ fontSize: 8, color: '#AEB8C0' }}>languagethreshold.com</div>
+        <div style={{ fontSize: 8, color: '#AEB8C0', marginTop: 2 }}>
           {specialty === 'medical' ? 'medicalspanish.app' : 'constructionspanish.app'}
         </div>
       </div>
@@ -68,7 +68,7 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
 }
 
 function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   const label = specialty === 'medical' ? 'Exam questions' : 'Essential instructions'
   const sublabel = specialty === 'medical' ? 'Ask your patient →' : 'Tell your crew →'
   const phrases = chapter.phrases.slice(0, 8)
@@ -83,9 +83,9 @@ function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'm
       <div style={{ flex: 1, padding: '0 14px 12px', overflow: 'hidden' }}>
         {phrases.map((p, i) => (
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-            <div style={{ fontSize: 9, color: '#888', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
+            <div style={{ fontSize: 9, color: '#56616A', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
             <div style={{ fontSize: 10.5, color: '#111', fontWeight: 700, lineHeight: 1.4 }}>{p.es}</div>
-            {p.context && <div style={{ fontSize: 8, color: '#aaa', fontStyle: 'italic', marginTop: 1 }}>{p.context}</div>}
+            {p.context && <div style={{ fontSize: 9, color: '#56616A', fontStyle: 'normal', marginTop: 1 }}>{p.context}</div>}
           </div>
         ))}
       </div>
@@ -93,8 +93,8 @@ function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'm
   )
 }
 
-function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter; dialogues: TrifoldDialogue[]; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+function DialoguePanel({ dialogues, specialty }: { chapter: BookChapter; dialogues: TrifoldDialogue[]; specialty: 'medical' | 'construction' }) {
+  const accent = '#146E73'
   const theyLabel = specialty === 'medical' ? 'Patient says' : 'Worker asks'
   const youLabel = specialty === 'medical' ? 'You say' : 'You respond'
 
@@ -114,7 +114,7 @@ function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
             {/* They say */}
             <div style={{ display: 'flex', gap: 5, marginBottom: 3 }}>
-              <span style={{ fontSize: 8, fontWeight: 700, color: '#888', flexShrink: 0, paddingTop: 1 }}>THEY:</span>
+              <span style={{ fontSize: 8, fontWeight: 700, color: '#56616A', flexShrink: 0, paddingTop: 1 }}>THEY:</span>
               <div>
                 <div style={{ fontSize: 9, color: '#555', lineHeight: 1.3 }}>{d.they_en}</div>
                 <div style={{ fontSize: 10, color: '#333', fontWeight: 600, lineHeight: 1.3 }}>{d.they_es}</div>
@@ -136,7 +136,7 @@ function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter
 }
 
 function VocabPanel({ chapter }: { chapter: BookChapter }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   const vocab = chapter.extendedVocab.slice(0, 18)
 
   return (
@@ -159,7 +159,7 @@ function VocabPanel({ chapter }: { chapter: BookChapter }) {
 }
 
 function PhrasesBackPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   // Second half of phrases — the ones not on the front
   const backPhrases = chapter.phrases.slice(4, 12)
   const label = specialty === 'medical' ? 'Clinical commands' : 'Jobsite commands'
@@ -176,7 +176,7 @@ function PhrasesBackPanel({ chapter, specialty }: { chapter: BookChapter; specia
       <div style={{ flex: 1, padding: '0 14px 12px', overflow: 'hidden' }}>
         {backPhrases.map((p, i) => (
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-            <div style={{ fontSize: 9, color: '#888', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
+            <div style={{ fontSize: 9, color: '#56616A', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
             <div style={{ fontSize: 10.5, color: '#111', fontWeight: 700, lineHeight: 1.4 }}>{p.es}</div>
           </div>
         ))}
@@ -189,7 +189,7 @@ function GrammarCulturePanel({ chapter }: { chapter: BookChapter }) {
   const accent = chapter.color
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D0D0D', color: '#F7F3EC' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D1B2A', color: '#F7F3EC' }}>
       <div style={{ height: 8, background: accent, flexShrink: 0 }} />
 
       {/* Grammar */}
@@ -207,7 +207,7 @@ function GrammarCulturePanel({ chapter }: { chapter: BookChapter }) {
         )}
         {chapter.grammarFocus.examples.slice(0, 3).map((ex, i) => (
           <div key={i} style={{ marginBottom: 6, paddingBottom: 6, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ fontSize: 8.5, color: '#71717A' }}>{ex.en}</div>
+            <div style={{ fontSize: 8.5, color: '#AEB8C0' }}>{ex.en}</div>
             <div style={{ fontSize: 9.5, color: '#F7F3EC', fontWeight: 600 }}>{ex.es}</div>
           </div>
         ))}

@@ -10,6 +10,8 @@ describe('free resource card selection', () => {
   const html = render('medical', '/print/trifold/medical?module=nursing')
   expect((html.match(/class="trifold-page"/g) || []).length).toBe(2)
   expect(html).toContain('Print Nursing Card')
+  expect(html).not.toContain('Normal for you.')
+  expect(html).toContain('The care team will explain the reading.')
  })
  it('opens only the selected two-page construction safety card', () => {
   const html = render('construction', '/print/trifold/construction?module=safety')
