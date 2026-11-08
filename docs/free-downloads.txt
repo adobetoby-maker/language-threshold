@@ -1,0 +1,36 @@
+FREE DOWNLOADS — 2026-11-08
+
+Email capture is handled by api/email-capture.ts. Only server-allowlisted resources
+in server/free-resources.ts are returned. A successful Leader HQ signup response
+is required before the UI unlocks a resource. The CRM receives name/email, Learner
+type and a source identifier containing site, resource, and bounded UTM attribution.
+The signup-only LEADERCRM_FORM_KEY is a sensitive production environment variable;
+never expose it in client JavaScript. Existing contact keys or broad MCP credentials
+are not used. The former manage.worker-bee.app contact sync is replaced.
+
+Leader handles the optional email confirmation and subscription state. This change
+requests confirmation; it does not activate a welcome sequence, import historical
+customers, or claim that a provider acceptance means delivery. The form explicitly
+requests consent to save the email, send the resource and invite optional practice
+emails. The resource is immediately available without confirming a subscription.
+
+The requested resource is emailed through the site's existing production Resend
+configuration when available. A provider failure leaves the immediate resource link
+available and is clearly disclosed. The email has a recipient/resource/time-window
+idempotency key. The website's success response never includes a secret or email.
+
+A same-origin check, honeypot, request-size validation, allowlisted resource IDs,
+bounded in-process per-recipient backstop, and CRM 429 handling protect the form.
+The in-process limit is not a distributed rate limiter. Public traffic at scale
+should additionally use a platform/WAF persistent limit; do not describe the local
+backstop as durable. Provider timeouts do not return false capture success.
+
+Download links are marketing gates, not DRM: existing publicly shared print pages
+and file URLs remain valid. Larger pilot workbooks remain outside this small-resource catalog.
+Use the free-downloads page for ad traffic; link to ?resource=<id> plus UTM tags.
+Source catalog: docs/free-downloads-catalog.json. The starter PDFs are two-page pilot references. The role-specific cards are
+exported as individual two-page PDFs from the existing printable content, with
+landscape sizing and no extra blank page. The mission pack is standalone offline HTML.
+
+Run npm run test:free-downloads and npm run build before deployment.
+Preview tests mock CRM and email APIs; production credentials remain production-only.

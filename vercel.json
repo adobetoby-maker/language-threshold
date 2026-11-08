@@ -13,6 +13,18 @@
   ],
   "rewrites": [
     {
+      "source": "/free-downloads",
+      "destination": "/free-downloads/index.html"
+    },
+    {
+      "source": "/free-downloads/",
+      "destination": "/free-downloads/index.html"
+    },
+    {
+      "source": "/free-downloads/(.*)",
+      "destination": "/free-downloads/$1"
+    },
+    {
       "source": "/blog",
       "destination": "/api/blog"
     },

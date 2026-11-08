@@ -1,3 +1,4 @@
+import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { MEDICAL_BOOK_CHAPTERS, CONSTRUCTION_BOOK_CHAPTERS } from '../data/bookData'
 import type { BookChapter } from '../data/bookData'
@@ -25,7 +26,7 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
   const topPhrases = chapter.phrases.slice(0, 3)
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D0D0D', color: '#F7F3EC' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D1B2A', color: '#F7F3EC' }}>
       {/* Color bar */}
       <div style={{ height: 8, background: accent, flexShrink: 0 }} />
 
@@ -57,8 +58,8 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
 
       {/* Footer */}
       <div style={{ padding: '10px 14px 12px', borderTop: '1px solid rgba(255,255,255,0.08)', flexShrink: 0 }}>
-        <div style={{ fontSize: 8, color: '#71717A' }}>languagethreshold.com</div>
-        <div style={{ fontSize: 8, color: '#71717A', marginTop: 2 }}>
+        <div style={{ fontSize: 8, color: '#AEB8C0' }}>languagethreshold.com</div>
+        <div style={{ fontSize: 8, color: '#AEB8C0', marginTop: 2 }}>
           {specialty === 'medical' ? 'medicalspanish.app' : 'constructionspanish.app'}
         </div>
       </div>
@@ -67,7 +68,7 @@ function CoverPanel({ chapter, specialty }: { chapter: BookChapter; specialty: '
 }
 
 function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   const label = specialty === 'medical' ? 'Exam questions' : 'Essential instructions'
   const sublabel = specialty === 'medical' ? 'Ask your patient →' : 'Tell your crew →'
   const phrases = chapter.phrases.slice(0, 8)
@@ -82,9 +83,9 @@ function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'm
       <div style={{ flex: 1, padding: '0 14px 12px', overflow: 'hidden' }}>
         {phrases.map((p, i) => (
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-            <div style={{ fontSize: 9, color: '#888', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
+            <div style={{ fontSize: 9, color: '#56616A', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
             <div style={{ fontSize: 10.5, color: '#111', fontWeight: 700, lineHeight: 1.4 }}>{p.es}</div>
-            {p.context && <div style={{ fontSize: 8, color: '#aaa', fontStyle: 'italic', marginTop: 1 }}>{p.context}</div>}
+            {p.context && <div style={{ fontSize: 9, color: '#56616A', fontStyle: 'normal', marginTop: 1 }}>{p.context}</div>}
           </div>
         ))}
       </div>
@@ -92,8 +93,8 @@ function ExamPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'm
   )
 }
 
-function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter; dialogues: TrifoldDialogue[]; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+function DialoguePanel({ dialogues, specialty }: { chapter: BookChapter; dialogues: TrifoldDialogue[]; specialty: 'medical' | 'construction' }) {
+  const accent = '#146E73'
   const theyLabel = specialty === 'medical' ? 'Patient says' : 'Worker asks'
   const youLabel = specialty === 'medical' ? 'You say' : 'You respond'
 
@@ -113,7 +114,7 @@ function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
             {/* They say */}
             <div style={{ display: 'flex', gap: 5, marginBottom: 3 }}>
-              <span style={{ fontSize: 8, fontWeight: 700, color: '#888', flexShrink: 0, paddingTop: 1 }}>THEY:</span>
+              <span style={{ fontSize: 8, fontWeight: 700, color: '#56616A', flexShrink: 0, paddingTop: 1 }}>THEY:</span>
               <div>
                 <div style={{ fontSize: 9, color: '#555', lineHeight: 1.3 }}>{d.they_en}</div>
                 <div style={{ fontSize: 10, color: '#333', fontWeight: 600, lineHeight: 1.3 }}>{d.they_es}</div>
@@ -135,7 +136,7 @@ function DialoguePanel({ chapter, dialogues, specialty }: { chapter: BookChapter
 }
 
 function VocabPanel({ chapter }: { chapter: BookChapter }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   const vocab = chapter.extendedVocab.slice(0, 18)
 
   return (
@@ -158,7 +159,7 @@ function VocabPanel({ chapter }: { chapter: BookChapter }) {
 }
 
 function PhrasesBackPanel({ chapter, specialty }: { chapter: BookChapter; specialty: 'medical' | 'construction' }) {
-  const accent = chapter.color
+  const accent = '#146E73'
   // Second half of phrases — the ones not on the front
   const backPhrases = chapter.phrases.slice(4, 12)
   const label = specialty === 'medical' ? 'Clinical commands' : 'Jobsite commands'
@@ -175,7 +176,7 @@ function PhrasesBackPanel({ chapter, specialty }: { chapter: BookChapter; specia
       <div style={{ flex: 1, padding: '0 14px 12px', overflow: 'hidden' }}>
         {backPhrases.map((p, i) => (
           <div key={i} style={{ marginBottom: 8, paddingBottom: 8, borderBottom: '1px solid #f0f0f0' }}>
-            <div style={{ fontSize: 9, color: '#888', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
+            <div style={{ fontSize: 9, color: '#56616A', lineHeight: 1.3, marginBottom: 1 }}>{p.en}</div>
             <div style={{ fontSize: 10.5, color: '#111', fontWeight: 700, lineHeight: 1.4 }}>{p.es}</div>
           </div>
         ))}
@@ -188,7 +189,7 @@ function GrammarCulturePanel({ chapter }: { chapter: BookChapter }) {
   const accent = chapter.color
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D0D0D', color: '#F7F3EC' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#0D1B2A', color: '#F7F3EC' }}>
       <div style={{ height: 8, background: accent, flexShrink: 0 }} />
 
       {/* Grammar */}
@@ -206,7 +207,7 @@ function GrammarCulturePanel({ chapter }: { chapter: BookChapter }) {
         )}
         {chapter.grammarFocus.examples.slice(0, 3).map((ex, i) => (
           <div key={i} style={{ marginBottom: 6, paddingBottom: 6, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <div style={{ fontSize: 8.5, color: '#71717A' }}>{ex.en}</div>
+            <div style={{ fontSize: 8.5, color: '#AEB8C0' }}>{ex.en}</div>
             <div style={{ fontSize: 9.5, color: '#F7F3EC', fontWeight: 600 }}>{ex.es}</div>
           </div>
         ))}
@@ -288,6 +289,9 @@ function TrifoldModule({ chapter, specialty }: { chapter: BookChapter; specialty
 export default function TrifoldPrint({ specialty }: Props) {
   const chapters = specialty === 'medical' ? MEDICAL_BOOK_CHAPTERS : CONSTRUCTION_BOOK_CHAPTERS
   const baseModules = specialty === 'medical' ? MEDICAL_MODULES : CONSTRUCTION_MODULES
+  const [params] = useSearchParams()
+  const selectedChapter = chapters.find(chapter => chapter.id === params.get('module'))
+  const visibleChapters = selectedChapter ? [selectedChapter] : chapters
   const title = specialty === 'medical' ? 'Medical Spanish' : 'Construction Spanish'
   const accent = ACCENT[specialty]
 
@@ -299,12 +303,17 @@ export default function TrifoldPrint({ specialty }: Props) {
   }, [title])
 
   return (
-    <div style={{ background: '#e8e8e8', minHeight: '100vh' }}>
+    <div className="trifold-print" style={{ background: '#e8e8e8', minHeight: '100vh' }}>
       <style>{`
         @media print {
           nav, footer, .no-print { display: none !important; }
           body { background: white !important; margin: 0; padding: 0; }
           .trifold-page { page-break-after: always; margin: 0; }
+          .trifold-print { background: white !important; min-height: 0 !important; }
+          .trifold-preview { transform: none !important; margin: 0 !important; }
+          .trifold-collection { padding: 0 !important; }
+          .trifold-module { margin: 0 !important; }
+          .trifold-module:last-child .trifold-page:last-child { page-break-after: auto !important; break-after: auto !important; }
           @page { size: letter landscape; margin: 0.25in; }
         }
         .trifold-page { font-family: 'Source Sans 3', Arial, sans-serif; }
@@ -317,7 +326,7 @@ export default function TrifoldPrint({ specialty }: Props) {
             onClick={() => window.print()}
             style={{ background: accent, color: '#fff', border: 'none', borderRadius: 8, padding: '10px 20px', fontSize: 14, fontWeight: 700, cursor: 'pointer' }}
           >
-            Print All {chapters.length} Cards
+            {selectedChapter ? `Print ${selectedChapter.title} Card` : `Print All ${chapters.length} Cards`}
           </button>
           <button
             onClick={() => history.back()}
@@ -336,7 +345,7 @@ export default function TrifoldPrint({ specialty }: Props) {
         {modulesWithChapters.map(m => (
           <a
             key={m.id}
-            href={`#${m.id}`}
+            href={`?module=${m.id}#${m.id}`}
             style={{ fontSize: 12, background: '#fff', border: '1px solid #ddd', borderRadius: 6, padding: '4px 10px', textDecoration: 'none', color: '#333', fontFamily: 'sans-serif' }}
           >
             {m.emoji} {m.title}
@@ -345,9 +354,9 @@ export default function TrifoldPrint({ specialty }: Props) {
       </div>
 
       {/* Trifolds */}
-      <div style={{ padding: '20px 40px 60px' }}>
-        {chapters.map(chapter => (
-          <div key={chapter.id} id={chapter.id} style={{ marginBottom: 48 }}>
+      <div className="trifold-collection" style={{ padding: '20px 40px 60px' }}>
+        {visibleChapters.map(chapter => (
+          <div className="trifold-module" key={chapter.id} id={chapter.id} style={{ marginBottom: 48 }}>
             {/* On-screen label */}
             <div className="no-print" style={{ fontFamily: 'sans-serif', fontSize: 13, fontWeight: 700, color: '#444', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 18 }}>{chapter.emoji}</span>
@@ -356,7 +365,7 @@ export default function TrifoldPrint({ specialty }: Props) {
             </div>
 
             {/* Trifold scaled for screen preview */}
-            <div style={{ transform: 'scale(0.72)', transformOrigin: 'top left', width: '10.5in', marginBottom: '-2.2in' }}>
+            <div className="trifold-preview" style={{ transform: 'scale(0.72)', transformOrigin: 'top left', width: '10.5in', marginBottom: '-2.2in' }}>
               <TrifoldModule chapter={chapter} specialty={specialty} />
             </div>
           </div>

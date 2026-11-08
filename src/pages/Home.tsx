@@ -626,6 +626,14 @@ export default function Home() {
 
         <EnglishForTeams />
 
+        <section style={{ background:'#F6F2E9', color:'#102638', padding:'64px 24px' }} aria-labelledby="free-resources-title">
+          <div style={{ maxWidth:1100, margin:'0 auto' }}>
+            <p style={{ color:'#146E73', fontWeight:700, letterSpacing:'.12em', fontSize:13 }}>FREE PRINTABLES</p>
+            <h2 id="free-resources-title" style={{ fontFamily:'Georgia, serif', fontSize:'clamp(30px,5vw,48px)', lineHeight:1.2, margin:'16px 0' }}>Take a little Spanish with you.</h2>
+            <p style={{ maxWidth:680, fontSize:18, lineHeight:1.7 }}>Medical and construction starter PDFs, role-specific trifolds, and an orthopedic mission language pack. Choose a resource, enter your email, and open it right away.</p>
+            <a href="/free-downloads/" style={{ display:'inline-block', padding:'14px 24px', background:'#146E73', color:'white', borderRadius:8, fontWeight:700, marginTop:18 }}>Get my free resource →</a>
+          </div>
+        </section>
         <PlanPricing includeTeam />
 
         {/* CTA */}
