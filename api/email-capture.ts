@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { createHash } from 'node:crypto'
+import { createHash, createHmac } from 'node:crypto'
 import { resources, site } from '../server/free-resources.js'
 
 const recent = new Map<string, { count: number; until: number }>()
@@ -22,7 +22,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!resource) return res.status(400).json({ ok: false, error: 'Choose an available free resource.' })
   if (body.consent !== true) return res.status(400).json({ ok: false, error: 'Please confirm the email request.' })
   const key = process.env.LEADERCRM_FORM_KEY?.trim()
-  if (!key) return res.status(503).json({ ok: false, error: 'Free downloads are temporarily unavailable. Please try again shortly.' })
+  if (!key || !process.env.DOWNLOAD_LEAD_KEY?.trim()) return res.status(503).json({ ok: false, error: 'Free downloads are temporarily unavailable. Please try again shortly.' })
   // Local backstop; CRM rate-limit responses are also honored below.
   const now = Date.now()
   for (const [k, value] of recent) if (value.until < now) recent.delete(k)
@@ -47,6 +47,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!accepted) return res.status(limited ? 429 : 503).json({ ok: false, error: limited ? 'Please wait before requesting another email. Check your inbox first.' : 'We could not save your request. Please try again shortly.' })
   } catch {
     return res.status(503).json({ ok: false, error: 'We could not confirm your request. Please check your inbox before retrying.' })
+  }
+  // Record only CRM-accepted requests. Fail visibly rather than silently lose attribution.
+  const reportingKey = process.env.DOWNLOAD_LEAD_KEY?.trim()
+  if (!reportingKey) return res.status(503).json({ ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.' })
+  const cleanPath = (value: unknown) => {
+    const path = tidy(value, 160).split(/[?#]/)[0]
+    return /^\/[a-zA-Z0-9_./-]*$/.test(path) ? path : '/free-downloads/'
+  }
+  const cleanTag = (value: unknown) => tidy(value, 80).replace(/[^a-zA-Z0-9_./-]/g, '')
+  const event = {
+    event_id: createHash('sha256').update(`${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex'),
+    site: site.id, email, resource_id: resource.id, resource_title: resource.title,
+    signup_page: cleanPath(body.signup_page), landing_page: cleanPath(body.landing_page),
+    referrer_host: tidy(body.referrer_host, 160).replace(/[^a-zA-Z0-9.-]/g, ''),
+    utm_source: cleanTag(body.utm_source), utm_medium: cleanTag(body.utm_medium),
+    utm_campaign: cleanTag(body.utm_campaign), utm_content: cleanTag(body.utm_content),
+  }
+  const raw = JSON.stringify(event), stamp = String(Date.now())
+  const signature = createHmac('sha256', reportingKey).update(`${stamp}.${raw}`).digest('hex')
+  try {
+    const report = await fetch('https://app.languagethreshold.com/api/download-lead', {
+      method: 'POST', redirect: 'error', signal: AbortSignal.timeout(8000),
+      headers: {'Content-Type': 'application/json', 'X-Lead-Site': site.id, 'X-Lead-Time': stamp, 'X-Lead-Signature': signature},
+      body: raw,
+    })
+    const accepted = report.ok
+    await report.body?.cancel()
+    if (!accepted) throw Error('Reporting unavailable')
+  } catch {
+    return res.status(503).json({ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.'})
   }
   let emailStatus = 'unavailable'
   if (process.env.RESEND_API_KEY) {

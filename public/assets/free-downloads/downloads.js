@@ -5,6 +5,8 @@
   // Keep the campaign across same-site navigation without storing an email.
   try {
     const saved = JSON.parse(sessionStorage.getItem('lt.free-download-attribution') || '{}');
+    if (!saved.landing_page) saved.landing_page = location.pathname;
+    if (!saved.referrer_host && document.referrer) { try { saved.referrer_host = new URL(document.referrer).hostname; } catch {} }
     for (const k of allowedAttribution) if (query.get(k)) saved[k] = query.get(k).slice(0, 80);
     sessionStorage.setItem('lt.free-download-attribution', JSON.stringify(saved));
   } catch { /* Storage is optional. */ }
@@ -28,6 +30,8 @@
     payload.consent = form.elements.namedItem('consent').checked;
     try { Object.assign(payload, JSON.parse(sessionStorage.getItem('lt.free-download-attribution') || '{}')); } catch { /* optional */ }
     for (const k of allowedAttribution) if (query.get(k)) payload[k] = query.get(k).slice(0,80);
+    payload.signup_page = location.pathname;
+    payload.landing_page ||= location.pathname;
     try {
       const response = await fetch('/api/email-capture', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
       const data = await response.json();
