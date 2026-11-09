@@ -53,7 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!reportingKey) return res.status(503).json({ ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.' })
   const cleanPath = (value: unknown) => {
     const path = tidy(value, 160).split(/[?#]/)[0]
-    return /^\/[a-zA-Z0-9_./-]*$/.test(path) ? path : '/free-downloads/'
+    return /^\/[a-zA-Z0-9_./-]*$/.test(path) ? path : ''
   }
   const cleanTag = (value: unknown) => tidy(value, 80).replace(/[^a-zA-Z0-9_./-]/g, '')
   const event = {
