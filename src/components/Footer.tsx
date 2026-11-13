@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { APP_URL, sansFont } from '../constants'
+import { APP_URL, FREE_PLACEMENT_URL, sansFont } from '../constants'
 
 export default function Footer() {
   return (
@@ -19,6 +19,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm" style={{ ...sansFont }}>
+            <a href={FREE_PLACEMENT_URL} className="inline-flex min-h-11 items-center text-base font-semibold" style={{ color: '#F7F3EC' }}>Free Spanish placement test →</a>
             <a href="https://medicalspanish.app" target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80" style={{ color: '#A89F94' }}>
               Medical Spanish
             </a>
