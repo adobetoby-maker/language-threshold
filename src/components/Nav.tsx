@@ -1,6 +1,6 @@
 import { useState, useEffect, type MouseEvent } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { APP_URL } from '../constants'
+import { APP_URL, FREE_PLACEMENT_URL } from '../constants'
 
 const GOLD = '#C9A84C'
 const SKY = '#60A5FA'
@@ -108,6 +108,7 @@ export default function Nav() {
               More <span aria-hidden="true">▾</span>
             </summary>
             <div className="absolute left-1/2 top-full mt-4 grid w-72 -translate-x-1/2 grid-cols-2 gap-1 rounded-xl border border-white/10 bg-[#02040f] p-3 shadow-2xl">
+              <a href={FREE_PLACEMENT_URL} className="col-span-2 flex min-h-11 items-center rounded-lg border border-[#C9A84C]/40 px-3 py-2 text-base font-semibold text-white hover:bg-white/10">Free Spanish placement test →</a>
               {MORE_MODULES.map(m => (
                 <Link
                   key={m.slug}
@@ -176,6 +177,7 @@ export default function Nav() {
             See pricing
           </a>
           {hasBlog && <a href="/blog" className="rounded-xl border border-white/10 px-4 py-3 text-sm" style={{ color: GOLD }}>Blog</a>}
+          <a href={FREE_PLACEMENT_URL} className="col-span-2 flex min-h-11 items-center rounded-xl border border-[#C9A84C]/40 px-4 py-3 text-base font-semibold text-white">Free Spanish placement test →</a>
           {MODULES.map(m => (
             <Link
               key={m.slug}

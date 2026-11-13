@@ -3,7 +3,7 @@ import PlanPricing from '../components/PlanPricing'
 import { WhyLearnTeaser } from '../components/why/WhyLearnContent'
 import { useEffect, useRef, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { APP_URL } from '../constants'
+import { APP_URL, FREE_PLACEMENT_URL } from '../constants'
 import { CATALOG_COUNTS, CATALOG_LANGUAGES } from '../data/catalogSummary'
 import EnglishForTeams from '../components/EnglishForTeams'
 
@@ -196,7 +196,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.8 }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+              className="mt-10 flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center"
             >
               <a
                 href={APP_URL}
@@ -211,6 +211,9 @@ export default function Home() {
                 className="rounded-full border border-white/20 px-8 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-white/70 hover:border-white/40 hover:text-white transition-all duration-300"
               >
                 Explore Module Tracks ↓
+              </a>
+              <a href={FREE_PLACEMENT_URL} className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#C9A84C] px-6 py-3 text-base font-semibold text-white hover:bg-white/10">
+                Take a free Spanish placement test →
               </a>
             </motion.div>
           </motion.div>

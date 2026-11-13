@@ -1,5 +1,6 @@
 // Single source of truth for the app URL — update here when the domain is wired
 export const APP_URL = 'https://app.languagethreshold.com'
+export const FREE_PLACEMENT_URL = `${APP_URL}/exams?module=spanish-basics&target=Spanish&native=English&test=placement&utm_source=languagethreshold.com&utm_medium=referral&utm_campaign=free_spanish_placement`
 export const MISSIONARY_APP_URL = `${APP_URL}?module=lds-missionary`
 
 // Beta free period — all modules unlocked until this date
