@@ -1,37 +1,56 @@
 [
   {
-    "image": "screenshots/01-guide.png",
-    "title": "Language for the life you lead",
-    "caption": "Choose a topic that matters to you, then follow a learning path built around useful words and real situations."
+    "id": "see",
+    "label": "See it",
+    "title": "Meet a word in context.",
+    "caption": "See the Spanish alongside its meaning. In this Orthopedics lesson, a tendon connects a muscle to a bone. Start with the words, then work toward explaining the idea.",
+    "desktop": "screenshots/desktop-01-see.webp",
+    "iphone": "screenshots/iphone-01-see.webp",
+    "way": "see"
   },
   {
-    "image": "screenshots/02-core30.png",
-    "title": "Meet words in more ways",
-    "caption": "See it. Hear it. Say it. Type it. Handwrite it. Return to useful words through different kinds of practice."
+    "id": "recall",
+    "label": "Recall",
+    "title": "Bring it back from memory.",
+    "caption": "Try the meaning before revealing the answer. Revisit the words and phrases that need another pass, with short matching and verb activities to keep practice varied.",
+    "desktop": "screenshots/desktop-02-recall.webp",
+    "iphone": "screenshots/iphone-02-recall.webp",
+    "way": "recall"
   },
   {
-    "image": "screenshots/03-reader.png",
-    "title": "Give every word a context",
-    "caption": "Read Spanish alongside English. Explore words and examples as you go, and save vocabulary you want to practice again."
+    "id": "hear",
+    "label": "Hear",
+    "title": "Connect the sound to the meaning.",
+    "caption": "Listen to the Spanish, repeat it slowly, and choose what you heard. Practice the language of muscles, tendons and ligaments with your ears as well as your eyes.",
+    "desktop": "screenshots/desktop-03-hear.webp",
+    "iphone": "screenshots/iphone-03-hear.webp",
+    "way": "hear"
   },
   {
-    "image": "screenshots/04-flashcards.png",
-    "title": "Keep useful words close",
-    "caption": "Return to saved vocabulary and topic decks. Build familiarity with words connected to the subjects you want to learn."
+    "id": "write",
+    "label": "Write",
+    "title": "Make the spelling your own.",
+    "caption": "Copy the model by hand, then try it from memory. The writing pad gives you room to work with the spelling as well as the meaning.",
+    "desktop": "screenshots/desktop-04-write.webp",
+    "iphone": "screenshots/iphone-04-write.webp",
+    "way": "write"
   },
   {
-    "image": "screenshots/05-games.png",
-    "title": "Make practice part of your day",
-    "caption": "Choose a short challenge to revisit vocabulary, verb patterns, or listening. Find a practice mode that keeps you coming back."
+    "id": "say",
+    "label": "Say",
+    "title": "Use the lesson aloud.",
+    "caption": "Rehearse the words and explain the idea in Spanish: El tendón conecta el músculo al hueso. Get ready to use the lesson in a longer response.",
+    "desktop": "screenshots/desktop-05-say.webp",
+    "iphone": "screenshots/iphone-05-say.webp",
+    "way": "say"
   },
   {
-    "image": "screenshots/06-speak.png",
-    "title": "Turn practice into conversation",
-    "caption": "Choose a speaking activity or available scenario and put words to use. Start a conversation when you are ready to practice."
-  },
-  {
-    "image": "screenshots/07-dashboard.png",
-    "title": "Keep your next step in sight",
-    "caption": "Review your learning activity, return to your lesson path, and keep building language around the topics that matter to you."
+    "id": "speak",
+    "label": "Speak",
+    "title": "Turn the lesson into a conversation.",
+    "caption": "Choose Teacher or another speaking partner and use the lesson’s goal in your own words. Ask for a hint, simpler Spanish or a slower reply when you need one.",
+    "desktop": "screenshots/desktop-06-speak.webp",
+    "iphone": "screenshots/iphone-06-speak.webp",
+    "way": "say"
   }
 ]

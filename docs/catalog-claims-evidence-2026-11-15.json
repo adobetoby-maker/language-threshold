@@ -1,0 +1,2574 @@
+{
+  "asOf": "2026-11-15",
+  "sourceRepository": "adobetoby-maker/app.languagethreshold.com",
+  "sourceCommit": "1de396fdf4ca35a146908a5647a98e6615803572",
+  "method": "Import public MODULES and getCurriculum under Node 24, without fixtures. Count each module track ID once and sum its lesson array once; do not multiply by language options.",
+  "languages": [
+    "Spanish",
+    "French",
+    "German",
+    "Italian",
+    "Japanese",
+    "Chinese",
+    "Korean",
+    "Portuguese",
+    "Pashto",
+    "English"
+  ],
+  "moduleCount": 220,
+  "lessonCount": 4410,
+  "moduleTracksWithoutLessons": [],
+  "moduleTracks": [
+    {
+      "id": "place-directions",
+      "name": "Place & Directions · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-place-directions",
+      "name": "Place & Directions Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-place-directions",
+      "name": "Place & Directions Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "sound-like-a-native",
+      "name": "Sound Like a Native",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-sound-like-a-native",
+      "name": "Sound Like a Native Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-sound-like-a-native",
+      "name": "Sound Like a Native Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-cognates",
+      "name": "Spanish Cognates · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-cognates",
+      "name": "Spanish Cognates Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-cognates",
+      "name": "Spanish Cognates Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-usage-verbs",
+      "name": "Spanish Usage-First Verbs · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-usage-verbs",
+      "name": "Spanish Usage-First Verbs Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-usage-verbs",
+      "name": "Spanish Usage-First Verbs Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-common-patterns",
+      "name": "Spanish Common Grammar Patterns · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-common-patterns",
+      "name": "Spanish Common Grammar Patterns Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-common-patterns",
+      "name": "Spanish Common Grammar Patterns Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-102",
+      "name": "Spanish 102 · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-102",
+      "name": "Spanish 102 Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-102",
+      "name": "Spanish 102 Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-frequent-verbs",
+      "name": "Spanish Frequent Verbs · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-frequent-verbs",
+      "name": "Spanish Frequent Verbs Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-frequent-verbs",
+      "name": "Spanish Frequent Verbs Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-conjugation-patterns",
+      "name": "Spanish Conjugation Patterns · Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-conjugation-patterns",
+      "name": "Spanish Conjugation Patterns Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-conjugation-patterns",
+      "name": "Spanish Conjugation Patterns Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "spanish-basics",
+      "name": "Spanish 101 · General Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-spanish-basics",
+      "name": "Spanish 101 Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-spanish-basics",
+      "name": "Spanish 101 Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "japanese-basics",
+      "name": "Japanese 101 · General Core 60",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Japanese",
+        "native": "English"
+      },
+      "languages": [
+        "Japanese"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-japanese-basics",
+      "name": "Japanese 101 Foundation",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Japanese",
+        "native": "English"
+      },
+      "languages": [
+        "Japanese"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-japanese-basics",
+      "name": "Japanese 101 Master",
+      "category": "Core Basics",
+      "pair": {
+        "target": "Japanese",
+        "native": "English"
+      },
+      "languages": [
+        "Japanese"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "military",
+      "name": "Military English",
+      "category": "English for Work",
+      "pair": null,
+      "languages": [
+        "English"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-military",
+      "name": "Military English Foundation",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-military",
+      "name": "Military English Master",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "medical-mission-logistics",
+      "name": "Medical Mission Logistics",
+      "category": "Medical",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "lds-missionary",
+      "name": "LDS Missionary",
+      "category": "Faith",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-lds-missionary",
+      "name": "LDS Missionary Foundation",
+      "category": "Faith",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-lds-missionary",
+      "name": "LDS Missionary Master",
+      "category": "Faith",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "orthopedics",
+      "name": "Orthopedics",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-orthopedics",
+      "name": "Orthopedics Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-orthopedics",
+      "name": "Orthopedics Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-framer",
+      "name": "Framer Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-framer",
+      "name": "Framer Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "roofing",
+      "name": "Roofing Supervisor",
+      "category": "Trades",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-roofing",
+      "name": "Roofing Foundation",
+      "category": "Trades",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-roofing",
+      "name": "Roofing Master",
+      "category": "Trades",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "gutters",
+      "name": "Gutter Installation Supervisor",
+      "category": "Trades",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-gutters",
+      "name": "Gutters Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-gutters",
+      "name": "Gutters Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "siding",
+      "name": "Siding Installation Supervisor",
+      "category": "Trades",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-siding",
+      "name": "Siding Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-siding",
+      "name": "Siding Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "emergency-medicine",
+      "name": "Emergency Medicine",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-emergency-medicine",
+      "name": "Emergency Medicine Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-emergency-medicine",
+      "name": "Emergency Medicine Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "nursing",
+      "name": "Nursing & Patient Care",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-nursing",
+      "name": "Nursing & Patient Care Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-nursing",
+      "name": "Nursing & Patient Care Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "restaurant-hospitality",
+      "name": "Restaurant & Hospitality",
+      "category": "Service",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-restaurant-hospitality",
+      "name": "Restaurant & Hospitality Foundation",
+      "category": "Service",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-restaurant-hospitality",
+      "name": "Restaurant & Hospitality Master",
+      "category": "Service",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "construction-foreman",
+      "name": "Construction Foreman",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-construction-foreman",
+      "name": "Construction Foreman Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-construction-foreman",
+      "name": "Construction Foreman Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "legal-immigration",
+      "name": "Legal & Immigration",
+      "category": "Service",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-legal-immigration",
+      "name": "Legal & Immigration Foundation",
+      "category": "Service",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-legal-immigration",
+      "name": "Legal & Immigration Master",
+      "category": "Service",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "k12-teacher",
+      "name": "K–12 Classroom",
+      "category": "Education",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-k12-teacher",
+      "name": "K–12 Classroom Foundation",
+      "category": "Education",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-k12-teacher",
+      "name": "K–12 Classroom Master",
+      "category": "Education",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "plumber",
+      "name": "Plumber",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-plumber",
+      "name": "Plumber Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-plumber",
+      "name": "Plumber Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "drywall",
+      "name": "Drywall Finisher",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-drywall",
+      "name": "Drywall Finisher Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-drywall",
+      "name": "Drywall Finisher Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "electrician",
+      "name": "Electrician",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-electrician",
+      "name": "Electrician Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-electrician",
+      "name": "Electrician Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "landscaper",
+      "name": "Landscaper",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-landscaper",
+      "name": "Landscaper Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-landscaper",
+      "name": "Landscaper Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "auto-mechanic",
+      "name": "Auto Mechanic",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-auto-mechanic",
+      "name": "Auto Mechanic Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-auto-mechanic",
+      "name": "Auto Mechanic Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "truck-driver",
+      "name": "Truck Driver",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-truck-driver",
+      "name": "Truck Driver Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-truck-driver",
+      "name": "Truck Driver Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "dairy-farmer",
+      "name": "Dairy Farmer",
+      "category": "Agriculture",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-dairy-farmer",
+      "name": "Dairy Farmer Foundation",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-dairy-farmer",
+      "name": "Dairy Farmer Master",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "ranch-cowboy",
+      "name": "Ranch & Cowboy",
+      "category": "Agriculture",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-ranch-cowboy",
+      "name": "Ranch & Cowboy Foundation",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-ranch-cowboy",
+      "name": "Ranch & Cowboy Master",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "meatpacking-butcher",
+      "name": "Meatpacking & Butcher",
+      "category": "Agriculture",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-meatpacking-butcher",
+      "name": "Meatpacking & Butcher Foundation",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-meatpacking-butcher",
+      "name": "Meatpacking & Butcher Master",
+      "category": "Agriculture",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "international-travel",
+      "name": "International Travel",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-international-travel",
+      "name": "International Travel Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-international-travel",
+      "name": "International Travel Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-breakfast",
+      "name": "Breakfast & Cafés",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-breakfast",
+      "name": "Breakfast & Cafés Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-breakfast",
+      "name": "Breakfast & Cafés Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-lunch",
+      "name": "Lunch & Casual Dining",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-lunch",
+      "name": "Lunch & Casual Dining Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-lunch",
+      "name": "Lunch & Casual Dining Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-dinner",
+      "name": "Dinner & Special Meals",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-dinner",
+      "name": "Dinner & Special Meals Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-dinner",
+      "name": "Dinner & Special Meals Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-shopping-essentials",
+      "name": "Shopping & Essentials",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-shopping-essentials",
+      "name": "Shopping & Essentials Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-shopping-essentials",
+      "name": "Shopping & Essentials Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-daily-life-services",
+      "name": "Daily Life & Personal Services",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-daily-life-services",
+      "name": "Daily Life & Personal Services Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-daily-life-services",
+      "name": "Daily Life & Personal Services Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-markets-souvenirs",
+      "name": "Markets & Souvenirs",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-markets-souvenirs",
+      "name": "Markets & Souvenirs Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-markets-souvenirs",
+      "name": "Markets & Souvenirs Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-hotels-lodging",
+      "name": "Hotels & Lodging",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-hotels-lodging",
+      "name": "Hotels & Lodging Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-hotels-lodging",
+      "name": "Hotels & Lodging Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-taxi-rideshare",
+      "name": "Taxis & Rideshare",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-taxi-rideshare",
+      "name": "Taxis & Rideshare Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-taxi-rideshare",
+      "name": "Taxis & Rideshare Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-trains-transit",
+      "name": "Trains, Buses & Transit",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-trains-transit",
+      "name": "Trains, Buses & Transit Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-trains-transit",
+      "name": "Trains, Buses & Transit Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-scooter-car-rental",
+      "name": "Vespa, Scooter & Car Rental",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-scooter-car-rental",
+      "name": "Vespa, Scooter & Car Rental Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-scooter-car-rental",
+      "name": "Vespa, Scooter & Car Rental Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-roadside-mechanics",
+      "name": "Roadside Help & Mechanics",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-roadside-mechanics",
+      "name": "Roadside Help & Mechanics Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-roadside-mechanics",
+      "name": "Roadside Help & Mechanics Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-guides-attractions",
+      "name": "Guides, Tours & Attractions",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-guides-attractions",
+      "name": "Guides, Tours & Attractions Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-guides-attractions",
+      "name": "Guides, Tours & Attractions Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-airport-luggage",
+      "name": "Airports & Lost Luggage",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-airport-luggage",
+      "name": "Airports & Lost Luggage Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-airport-luggage",
+      "name": "Airports & Lost Luggage Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-pharmacy-health",
+      "name": "Pharmacy & Traveler Health",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-pharmacy-health",
+      "name": "Pharmacy & Traveler Health Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-pharmacy-health",
+      "name": "Pharmacy & Traveler Health Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-social-dating",
+      "name": "Social Life, Invitations & Dating",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-social-dating",
+      "name": "Social Life, Invitations & Dating Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-social-dating",
+      "name": "Social Life, Invitations & Dating Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "travel-problems-services",
+      "name": "Problems, Services & Recovery",
+      "category": "Travel",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-travel-problems-services",
+      "name": "Problems, Services & Recovery Foundation",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-travel-problems-services",
+      "name": "Problems, Services & Recovery Master",
+      "category": "Travel",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "family-medicine",
+      "name": "Family Medicine",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-family-medicine",
+      "name": "Family Medicine Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-family-medicine",
+      "name": "Family Medicine Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "ob-gyn",
+      "name": "OB/GYN",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-ob-gyn",
+      "name": "OB/GYN Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-ob-gyn",
+      "name": "OB/GYN Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "pain-management",
+      "name": "Pain Management",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-pain-management",
+      "name": "Pain Management Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-pain-management",
+      "name": "Pain Management Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "cardiology",
+      "name": "Cardiology",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-cardiology",
+      "name": "Cardiology Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-cardiology",
+      "name": "Cardiology Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "general-surgery",
+      "name": "General Surgery",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-general-surgery",
+      "name": "General Surgery Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-general-surgery",
+      "name": "General Surgery Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "soccer",
+      "name": "Soccer / Fútbol",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-soccer",
+      "name": "Soccer / Fútbol Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-soccer",
+      "name": "Soccer / Fútbol Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "hockey",
+      "name": "Hockey",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-hockey",
+      "name": "Hockey Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-hockey",
+      "name": "Hockey Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "baseball",
+      "name": "Baseball / Béisbol",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-baseball",
+      "name": "Baseball / Béisbol Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-baseball",
+      "name": "Baseball / Béisbol Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "tennis",
+      "name": "Tennis",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-tennis",
+      "name": "Tennis Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-tennis",
+      "name": "Tennis Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "bowling",
+      "name": "Bowling",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-bowling",
+      "name": "Bowling Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-bowling",
+      "name": "Bowling Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "american-football",
+      "name": "American Football",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-american-football",
+      "name": "American Football Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-american-football",
+      "name": "American Football Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "lacrosse",
+      "name": "Lacrosse",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-lacrosse",
+      "name": "Lacrosse Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-lacrosse",
+      "name": "Lacrosse Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "rugby",
+      "name": "Rugby",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-rugby",
+      "name": "Rugby Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-rugby",
+      "name": "Rugby Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "sports-hobbies",
+      "name": "Sports & Hobbies",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-sports-hobbies",
+      "name": "Sports & Hobbies Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-sports-hobbies",
+      "name": "Sports & Hobbies Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "physical-therapy",
+      "name": "Physical Therapy",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-physical-therapy",
+      "name": "Physical Therapy Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-physical-therapy",
+      "name": "Physical Therapy Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "medical-receptionist",
+      "name": "Medical Receptionist",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-medical-receptionist",
+      "name": "Medical Receptionist Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-medical-receptionist",
+      "name": "Medical Receptionist Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "social-work",
+      "name": "Social Work",
+      "category": "Medical",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-social-work",
+      "name": "Social Work Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-social-work",
+      "name": "Social Work Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "construction-safety",
+      "name": "Construction Safety",
+      "category": "Trades",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-construction-safety",
+      "name": "Construction Safety Foundation",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-construction-safety",
+      "name": "Construction Safety Master",
+      "category": "Trades",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "catholic-ministry",
+      "name": "Catholic Ministry",
+      "category": "Faith",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-catholic-ministry",
+      "name": "Catholic Ministry Foundation",
+      "category": "Faith",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-catholic-ministry",
+      "name": "Catholic Ministry Master",
+      "category": "Faith",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "or-cleaning",
+      "name": "OR Cleaning Crew · Spanish",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-or-cleaning",
+      "name": "OR Cleaning Crew · Spanish Foundation",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-or-cleaning",
+      "name": "OR Cleaning Crew · Spanish Master",
+      "category": "Medical",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "or-evs",
+      "name": "OR Environmental Services",
+      "category": "English for Work",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-or-evs",
+      "name": "OR Environmental Services Foundation",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-or-evs",
+      "name": "OR Environmental Services Master",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "fmg",
+      "name": "Medical English for FMGs",
+      "category": "English for Work",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-fmg",
+      "name": "Medical English for FMGs Foundation",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-fmg",
+      "name": "Medical English for FMGs Master",
+      "category": "English for Work",
+      "pair": {
+        "target": "English",
+        "native": "Spanish"
+      },
+      "languages": [
+        "English"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "rock-climbing",
+      "name": "Rock Climbing",
+      "category": "Sports",
+      "pair": null,
+      "languages": null,
+      "lessons": 30
+    },
+    {
+      "id": "foundation-rock-climbing",
+      "name": "Rock Climbing Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-rock-climbing",
+      "name": "Rock Climbing Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    },
+    {
+      "id": "sport-fishing",
+      "name": "Sport Fishing",
+      "category": "Sports",
+      "pair": null,
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 30
+    },
+    {
+      "id": "foundation-sport-fishing",
+      "name": "Sport Fishing Foundation",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 10
+    },
+    {
+      "id": "master-sport-fishing",
+      "name": "Sport Fishing Master",
+      "category": "Sports",
+      "pair": {
+        "target": "Spanish",
+        "native": "English"
+      },
+      "languages": [
+        "Spanish"
+      ],
+      "lessons": 20
+    }
+  ]
+}

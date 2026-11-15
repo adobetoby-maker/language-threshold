@@ -1,0 +1,66 @@
+{
+  "source": "Current native V4 reference snapshot, unchanged Swift app source",
+  "sourcePath": "/Users/drive/git-backups/lt-v4-current-reference-2026-11-14",
+  "simulator": "iPhone 17 Pro Max, iOS 26.5",
+  "deviceID": "E8008556-BAF3-45C1-9F1E-F4969D634982",
+  "test": "NativeFlowTests/testOrthopedicsTendonTour",
+  "resultBundle": "/Users/drive/git-backups/lt-orthopedics-tour-simulator-2026-11-15/OrthopedicsTour-3.xcresult",
+  "passed": true,
+  "module": "orthopedics",
+  "nativeLessonID": "orthopedics:working:5",
+  "webLessonNumber": 5,
+  "lessonTitle": "Muscles, Tendons & Ligaments",
+  "screenshots": [
+    {
+      "file": "iphone-06-speak.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "A222F3B1-3395-4AAF-8345-E99782ED6D06.png"
+    },
+    {
+      "file": "iphone-05-say.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "D73BEC2B-CD31-4393-8CDB-18BB64BCB969.png"
+    },
+    {
+      "file": "iphone-04-write.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "54833A85-A297-493F-8677-0A79C4E8E4D2.png"
+    },
+    {
+      "file": "iphone-03-hear.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "F5B40247-0A35-4283-9CF8-2B48A4E50D6E.png"
+    },
+    {
+      "file": "iphone-02-recall.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "C7765818-4A70-40F7-9C29-6833F14C7C03.png"
+    },
+    {
+      "file": "iphone-01-see.webp",
+      "size": [
+        1320,
+        2868
+      ],
+      "attachment": "E024A767-354B-4FD9-931E-2329B8E14AB6.png"
+    }
+  ],
+  "format": "Unedited simulator captures, encoded to WebP for delivery",
+  "webSource": "https://app.languagethreshold.com, main 1de396f",
+  "capturedAt": "2026-11-15"
+}

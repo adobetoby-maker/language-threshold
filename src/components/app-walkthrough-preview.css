@@ -1,1 +1,16 @@
-.app-walkthrough-preview{background:#f2f3ee;padding:88px 24px;color:#17263a}.app-walkthrough-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}.app-walkthrough-eyebrow{color:#50623b;font-size:14px;font-weight:700}.app-walkthrough-preview h2{font:clamp(32px,4vw,50px)/1.12 Georgia,serif;margin:18px 0}.app-walkthrough-preview p{line-height:1.7}.app-walkthrough-preview a{color:#285b24;font-weight:700}.app-walkthrough-preview img{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 20px 45px #17263a20}.app-walkthrough-note{font-size:13px;color:#42513c;margin-top:20px}@media(max-width:800px){.app-walkthrough-inner{grid-template-columns:1fr}.app-walkthrough-preview{padding:56px 20px}}
+.app-walkthrough-preview{background:#09111a;padding:88px 24px;color:#f5f3ed;border-block:1px solid #263340}
+.app-walkthrough-inner{max-width:1240px;margin:auto;display:grid;grid-template-columns:.85fr 1.3fr;gap:44px;align-items:center}
+.app-walkthrough-eyebrow{color:#e8bd69;font-size:15px;font-weight:600}
+.app-walkthrough-preview h2{font:clamp(32px,4vw,50px)/1.12 Georgia,serif;margin:18px 0}
+.app-walkthrough-preview p{font-size:17px;line-height:1.7}
+.app-walkthrough-pattern{color:#e8bd69}
+.app-walkthrough-link{display:inline-flex;align-items:center;min-height:48px;margin-top:12px;padding:10px 20px;border-radius:12px;background:#e8bd69;color:#09111a;font-weight:700;text-decoration:none}
+.app-walkthrough-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,.37fr);gap:20px;align-items:center;color:#b8c5d1;text-decoration:none}
+.app-walkthrough-pair figure{margin:0;min-width:0}
+.app-walkthrough-pair img{display:block;width:100%;height:auto;border:1px solid #394552;box-shadow:0 16px 40px #0004}
+.app-walkthrough-desktop img{border-radius:12px}
+.app-walkthrough-phone img{border-radius:24px}
+.app-walkthrough-pair figcaption{font-size:14px;text-align:center;margin-top:12px}
+.app-walkthrough-link:focus-visible,.app-walkthrough-pair:focus-visible{outline:3px solid #fff;outline-offset:6px}
+@media(max-width:950px){.app-walkthrough-inner{grid-template-columns:1fr;gap:32px}.app-walkthrough-copy{max-width:650px}.app-walkthrough-pair{max-width:760px;width:100%;margin:auto}}
+@media(max-width:520px){.app-walkthrough-preview{padding:56px 20px}.app-walkthrough-pair{grid-template-columns:minmax(0,1fr) minmax(105px,.6fr);gap:12px}.app-walkthrough-preview p{font-size:16px}.app-walkthrough-pattern{max-width:290px}.app-walkthrough-phone img{border-radius:14px}}

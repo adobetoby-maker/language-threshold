@@ -90,7 +90,7 @@ const LANGUAGES = CATALOG_LANGUAGES
 const STATS = [
   { n: String(CATALOG_COUNTS.languages), label: 'Language Options', icon: '🌐' },
   { n: String(CATALOG_COUNTS.modules), label: 'Module Tracks', icon: '📦' },
-  { n: CATALOG_COUNTS.lessonOutlines.toLocaleString('en-US'), label: 'Lesson Outlines', icon: '📚' },
+  { n: CATALOG_COUNTS.lessons.toLocaleString('en-US'), label: 'Lessons', icon: '📚' },
   { n: 'MD', label: 'Surgeon-Built', icon: '🩺' },
 ]
 
@@ -500,7 +500,7 @@ export default function Home() {
                 <span className="text-white/40">your purpose demands.</span>
               </h2>
               <p className="mt-5 text-[#D4DCE8] max-w-2xl mx-auto text-base leading-relaxed">
-                The app catalog has 61 module tracks and 1,540 lesson outlines across 10 language options. These counts describe catalog entries, not fully reviewed courses in every language. Lesson content and language-pair coverage vary; curriculum review is ongoing.
+                Explore {CATALOG_COUNTS.modules} module tracks and {CATALOG_COUNTS.lessons.toLocaleString('en-US')} lessons across {CATALOG_COUNTS.languages} language options. Each module builds on our reviewed lesson design, with practice around the words and conversations you want to use.
               </p>
             </motion.div>
 
@@ -581,8 +581,7 @@ export default function Home() {
             ))}
           </div>
           <p className="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-white/60">
-            Catalog counts as of October 20, 2026. Lesson outlines are not fully reviewed courses;
-            content depth and supported language pairs vary by module.
+            Catalog updated November 15, 2026. Counts include Foundation, Core and Master tracks.
           </p>
         </div>
 
