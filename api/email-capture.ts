@@ -78,6 +78,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch {
     return res.status(503).json({ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.'})
   }
+  // The owner report above is the durable source. The marketing feed is an
+  // independent signed fan-out; its outage must not hold a requested resource hostage.
+  let marketingSynced = false
+  for (let attempt = 0; attempt < 2 && !marketingSynced; attempt++) {
+    try {
+      const delivered = await fetch('https://myaimarketing.worker-bee.app/api/webhooks?provider=leads', {
+        method: 'POST', redirect: 'error', signal: AbortSignal.timeout(3000),
+        headers: {'Content-Type': 'application/json', 'X-Lead-Site': site.id, 'X-Lead-Time': stamp, 'X-Lead-Signature': signature},
+        body: raw,
+      })
+      marketingSynced = delivered.ok
+      await delivered.body?.cancel()
+    } catch { /* Retry once; the owner lead record is already saved. */ }
+  }
+  if (!marketingSynced) console.warn('Marketing event delivery failed; authoritative owner lead report was saved.')
   let emailStatus = 'unavailable'
   if (process.env.RESEND_API_KEY) {
     try {
@@ -86,6 +101,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         method: 'POST', signal: AbortSignal.timeout(8000),
         headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
         body: JSON.stringify({ from: site.sender, to: [email], subject: `Your free ${resource.title}`,
+          tags: [{name: 'project_id', value: ({'languagethreshold.com':'language-threshold','medicalspanish.app':'medical-spanish','constructionspanish.app':'construction-spanish'} as Record<string,string>)[site.id]}, {name:'resource_id',value:resource.id}],
           text: `Hi ${name || 'there'},\n\nHere is the free resource you requested:\n${resource.title}\n${resource.url}\n\n${resource.instructions}\n\nYou may receive a separate confirmation for optional Language Threshold practice emails. Only confirm if you want those emails. Your download does not require a subscription.\n\nLanguage Threshold\nhttps://languagethreshold.com`,
           html: `<div style="max-width:580px;margin:auto;padding:28px;font:16px/1.7 Arial,sans-serif;color:#102638;background:#fffdfa"><p>LANGUAGE THRESHOLD</p><h1 style="font-size:26px">Your free resource is ready.</h1><p>Hi ${escape(name || 'there')},</p><p>${escape(resource.title)}</p><p><a href="${escape(resource.url)}" style="display:inline-block;padding:14px 22px;background:#146e73;color:white;border-radius:8px">Open your free resource →</a></p><p>${escape(resource.instructions)}</p><p style="font-size:13px">You may receive a separate confirmation for optional practice emails. Only confirm if you want those emails. Your download does not require a subscription.</p><p><a href="https://languagethreshold.com">Language Threshold</a></p></div>`,
         }),
