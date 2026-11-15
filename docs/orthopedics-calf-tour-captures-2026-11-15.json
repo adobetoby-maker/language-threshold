@@ -1,0 +1,84 @@
+{
+  "source": "Current native V4 reference; unchanged Swift app source",
+  "module": "orthopedics",
+  "nativeLessonID": "orthopedics:working:5",
+  "webLessonNumber": 5,
+  "focus": {
+    "target": "pantorrilla",
+    "native": "calf"
+  },
+  "simulator": "iPhone 17 Pro Max, iOS 26.5",
+  "deviceID": "FCCF3303-7885-4EC8-AA75-BF74EE6A3F7D",
+  "test": "NativeFlowTests/testOrthopedicsCalfTour",
+  "result": "OrthopedicsCalfTour-2.xcresult",
+  "passed": true,
+  "format": "Actual unedited captures, WebP encoding preserves dimensions",
+  "screenshots": [
+    {
+      "file": "iphone-calf-06-speak.webp",
+      "attachment": "B02D5763-8EB0-45FE-883E-53B22D3AB697.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    },
+    {
+      "file": "iphone-calf-05-say.webp",
+      "attachment": "577C8A38-AB4C-4065-833F-EA9774FAF028.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    },
+    {
+      "file": "iphone-calf-04-write.webp",
+      "attachment": "E83F0BE6-86FA-407C-AF0D-680E0C21C414.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    },
+    {
+      "file": "iphone-calf-03-hear.webp",
+      "attachment": "6EFD3D28-72BE-4FA3-B6B6-506EC7485B86.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    },
+    {
+      "file": "iphone-calf-02-recall.webp",
+      "attachment": "BFE21F86-BAF6-497B-87B2-B22FED157282.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    },
+    {
+      "file": "iphone-calf-01-see.webp",
+      "attachment": "F038EA3A-137F-47D9-8C1A-77A276F1244E.png",
+      "dimensions": [
+        1320,
+        2868
+      ]
+    }
+  ],
+  "webSource": {
+    "site": "https://app.languagethreshold.com",
+    "mainCommit": "1de396fdf4ca35a146908a5647a98e6615803572",
+    "screenshots": 6,
+    "dimensions": [
+      1440,
+      1000
+    ],
+    "errors": []
+  },
+  "notes": [
+    "See it shows the real lesson phrase containing pantorrilla and calf.",
+    "Recall shows the standalone pantorrilla card.",
+    "Hear shows a correct answer selected through the real UI.",
+    "Write shows the blank calf writing prompt.",
+    "Say opens the real word bank at pantorrilla. Speak is actual lesson setup.",
+    "No screenshot text was composited or edited."
+  ]
+}
