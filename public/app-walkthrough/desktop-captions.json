@@ -1,0 +1,37 @@
+[
+  {
+    "image": "screenshots/01-guide.png",
+    "title": "Language for the life you lead",
+    "caption": "Choose a topic that matters to you, then follow a learning path built around useful words and real situations."
+  },
+  {
+    "image": "screenshots/02-core30.png",
+    "title": "Meet words in more ways",
+    "caption": "See it. Hear it. Say it. Type it. Handwrite it. Return to useful words through different kinds of practice."
+  },
+  {
+    "image": "screenshots/03-reader.png",
+    "title": "Give every word a context",
+    "caption": "Read Spanish alongside English. Explore words and examples as you go, and save vocabulary you want to practice again."
+  },
+  {
+    "image": "screenshots/04-flashcards.png",
+    "title": "Keep useful words close",
+    "caption": "Return to saved vocabulary and topic decks. Build familiarity with words connected to the subjects you want to learn."
+  },
+  {
+    "image": "screenshots/05-games.png",
+    "title": "Make practice part of your day",
+    "caption": "Choose a short challenge to revisit vocabulary, verb patterns, or listening. Find a practice mode that keeps you coming back."
+  },
+  {
+    "image": "screenshots/06-speak.png",
+    "title": "Turn practice into conversation",
+    "caption": "Choose a speaking activity or available scenario and put words to use. Start a conversation when you are ready to practice."
+  },
+  {
+    "image": "screenshots/07-dashboard.png",
+    "title": "Keep your next step in sight",
+    "caption": "Review your learning activity, return to your lesson path, and keep building language around the topics that matter to you."
+  }
+]
