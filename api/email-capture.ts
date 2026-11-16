@@ -129,7 +129,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }),
       })
       const result = await response.json().catch(() => null)
-      emailStatus = response.ok && result?.id ? 'accepted' : 'unavailable'
+      emailStatus = response.ok && result !== null && typeof result === 'object' && 'id' in result && typeof result.id === 'string' && result.id.length > 0 ? 'accepted' : 'unavailable'
     } catch { /* Lead is already saved. Keep the immediate resource available. */ }
   }
   return res.status(200).json({ ok: true, resourceId: resource.id, downloadUrl: resource.url, title: resource.title, format: resource.format, instructions: resource.instructions, emailStatus,

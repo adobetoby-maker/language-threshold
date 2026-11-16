@@ -24,7 +24,7 @@ The source explicitly pins the existing email-capture function to60seconds, matc
 
 ## Verification
 
-27 producer contract tests pass with all transports synthetic, including original CRM/resource behavior, strict owner report schema, native HMAC proof, one invitation owner, preserved immediate email, bot failure/hostname/action denial, durable quota, and identical transport retries. Explicit NodeNext API type check and full production build pass. The existing marketing form verifier was reused against actual 390px HTML/served JS with an entirely intercepted widget/API: new tokens are required after failure/success, unavailable/malformed config keeps submission disabled, zero page errors and zero external/recipient actions. Catalog/PDF/HTML preservation is checked against the exact base. No real CAPTCHA, opt-in or Resend delivery is claimed by these synthetic checks.
+28 producer contract tests pass with all transports synthetic, including original CRM/resource behavior, strict owner report schema, native HMAC proof, one invitation owner, preserved immediate email, bot failure/hostname/action denial, durable quota, and identical transport retries. Exact Node-only API configuration type check (unknown JSON responses narrowed before use) and full production build pass. The existing marketing form verifier was reused against actual 390px HTML/served JS with an entirely intercepted widget/API: new tokens are required after failure/success, unavailable/malformed config keeps submission disabled, zero page errors and zero external/recipient actions. Catalog/PDF/HTML preservation is checked against the exact base. No real CAPTCHA, opt-in or Resend delivery is claimed by these synthetic checks.
 
 ## Rollback
 
