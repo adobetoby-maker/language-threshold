@@ -39,12 +39,16 @@
       ]
     },
     {
-      "file": "iphone-calf-03-hear.webp",
-      "attachment": "6EFD3D28-72BE-4FA3-B6B6-506EC7485B86.png",
+      "file": "iphone-calf-03-hear-v2.webp",
+      "attachment": "4409329C-F100-44B7-95AF-D13D9F113CAF.png",
       "dimensions": [
         1320,
         2868
-      ]
+      ],
+      "deviceID": "E9CE0A65-7F48-4C13-B644-7481A821B7BD",
+      "test": "NativeFlowTests/testOrthopedicsCalfHearScreen",
+      "result": "OrthopedicsCalfHearFix.xcresult",
+      "sha256": "5f3c8427e4637dd490ed1e92e66be48c4bb5935507c7abcc0788bc9234c2f000"
     },
     {
       "file": "iphone-calf-02-recall.webp",
@@ -80,5 +84,16 @@
     "Write shows the blank calf writing prompt.",
     "Say opens the real word bank at pantorrilla. Speak is actual lesson setup.",
     "No screenshot text was composited or edited."
-  ]
+  ],
+  "hearCorrection": {
+    "reason": "Previous image captured Recall it during the mode transition",
+    "verified": [
+      "Hear it tab is selected",
+      "Listening play prompt exists",
+      "Calf answer choice exists",
+      "Recall reveal and correct controls are absent",
+      "Screenshot visually inspected"
+    ],
+    "passed": true
+  }
 }
