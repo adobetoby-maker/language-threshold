@@ -10,6 +10,8 @@ With no activation epoch, Leader remains the single invitation owner. After a de
 
 No resource request grants follow-up or weekly consent. No prior contact is invited by installing this code. Consumer ownership, fresh request age/capture authorization, contact/campaign match, suppression/CRM checks and one invitation per current enrollment remain mandatory. A separate explicit confirmation POST grants scoped three-email permission; scanner GETs do not. Different resource/product reenrollment is not silently substituted into another campaign.
 
+The source explicitly pins the existing email-capture function to60seconds, matching Medical. Hosted inspection exposed only the blog30second setting, not a concrete capture duration; every other Vercel configuration key is preserved.
+
 ## Required runtime configuration and source proof
 
 - Existing per-site `DOWNLOAD_LEAD_KEY` must match the existing owner's signed-report and marketing consumer key. Never rotate it or copy another brand's key as part of this rollout. The exact existing consumer key continuity check remains required.
