@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "purpose": "Fixed synthetic protocol test data; no production credentials",
+  "vectors": [
+    {
+      "site": "medicalspanish.app",
+      "email": " Learner@Example.TEST ",
+      "resourceId": "medical-trifold",
+      "bucket": 2991177,
+      "key": "synthetic-native-proof-vector-key-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "expected": "3f226852acef84a691f915903e69223fe06f0ccb5e89290a4ea2550a7975321d"
+    },
+    {
+      "site": "medicalspanish.app",
+      "email": "person@example.test",
+      "resourceId": "medical-trifold",
+      "bucket": 0,
+      "key": "synthetic-native-proof-vector-key-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "expected": "cac118228c67ee4abacbe4e2559e7f71a9c325b571a6353adbfd4e130f0206aa"
+    },
+    {
+      "site": "medicalspanish.app",
+      "email": "person@example.test",
+      "resourceId": "medical-trifold",
+      "bucket": 2991178,
+      "key": "synthetic-native-proof-vector-key-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "expected": "cfd27510d9a4fd4695cd80885ca141d260745f3a9f7f9c0f3a19a6577a4456c4"
+    },
+    {
+      "site": "languagethreshold.com",
+      "email": "learner@example.test",
+      "resourceId": "general-spanish",
+      "bucket": 2991177,
+      "key": "synthetic-native-proof-vector-key-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "expected": "05e826df8d1ae66f0e01ff7afe0791d1e3ae68521663539bf25757eee180f714"
+    },
+    {
+      "site": "constructionspanish.app",
+      "email": "learner@example.test",
+      "resourceId": "construction-cards",
+      "bucket": 2991177,
+      "key": "synthetic-native-proof-vector-key-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "expected": "1cbcd202d754d48a19c34c01deccfa35b0659f8a1ebcadeb620ea0118e68d5db"
+    }
+  ]
+}

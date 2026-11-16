@@ -1,6 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { createHash, createHmac } from 'node:crypto'
 import { resources, site } from '../server/free-resources.js'
+import { nativeDownloadId } from '../server/native-download-id.js'
+import { captureProtection, authorizeCapture } from '../server/capture-protection.js'
 
 const recent = new Map<string, { count: number; until: number }>()
 const tidy = (value: unknown, max = 80) => typeof value === 'string' ? value.trim().slice(0, max) : ''
@@ -8,6 +10,15 @@ const escape = (value: string) => value.replace(/[&<>"']/g, c => ({ '&': '&amp;'
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Cache-Control', 'no-store')
+  const now = Date.now()
+  const nativeFrom = process.env.NATIVE_CONFIRMATION_FROM?.trim()
+  const nativeActivated = !!nativeFrom && Number.isFinite(Date.parse(nativeFrom)) && now >= Date.parse(nativeFrom)
+  if (req.method === 'GET' && new URL(req.url || '/', 'https://languagethreshold.com').searchParams.get('status') === 'confirmation') {
+    return res.status(200).json({site: site.id, owner: nativeActivated ? 'native' : 'leader', nativeFrom: nativeFrom || null, policyVersion: 'lt-practice-separate-v1', sourceDeployment: process.env.VERCEL_DEPLOYMENT_ID || null, captureProtection: {version:1, ready:captureProtection().ready}})
+  }
+  if (req.method === 'GET' && new URL(req.url || '/', 'https://languagethreshold.com').searchParams.get('status') === 'protection') {
+    return res.status(200).json({...captureProtection(), required:nativeActivated || !!process.env.TURNSTILE_SECRET})
+  }
   if (req.method !== 'POST') return res.status(405).json({ ok: false, error: 'Use the download form to request your resource.' })
   const origin = req.headers.origin
   const host = req.headers.host
@@ -22,9 +33,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!resource) return res.status(400).json({ ok: false, error: 'Choose an available free resource.' })
   if (body.consent !== true) return res.status(400).json({ ok: false, error: 'Please confirm the email request.' })
   const key = process.env.LEADERCRM_FORM_KEY?.trim()
-  if (!key || !process.env.DOWNLOAD_LEAD_KEY?.trim()) return res.status(503).json({ ok: false, error: 'Free downloads are temporarily unavailable. Please try again shortly.' })
+  if ((!nativeActivated && !key) || !process.env.DOWNLOAD_LEAD_KEY?.trim()) return res.status(503).json({ ok: false, error: 'Free downloads are temporarily unavailable. Please try again shortly.' })
+  const reportingKey = process.env.DOWNLOAD_LEAD_KEY!.trim()
+  const eventId = nativeActivated
+    ? nativeDownloadId(site.id, email, resource.id, Math.floor(now / 600_000), reportingKey)
+    : createHash('sha256').update(`${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex')
+  if (!eventId) return res.status(503).json({ok:false,error:'Downloads are temporarily unavailable. Please try again shortly.'})
+  if (nativeActivated || process.env.TURNSTILE_SECRET) {
+    const protection = await authorizeCapture(body['cf-turnstile-response'], origin, email, eventId)
+    if (!protection.allowed) return res.status(protection.status).json({ok:false,error: protection.status === 429 ? 'Please wait before requesting another email. Check your inbox first.' : 'Please complete the bot check and try again shortly.'})
+  }
   // Local backstop; CRM rate-limit responses are also honored below.
-  const now = Date.now()
   for (const [k, value] of recent) if (value.until < now) recent.delete(k)
   if (recent.size >= 10000) return res.status(429).json({ ok: false, error: 'Please try again shortly.' })
   const rateKey = createHash('sha256').update(email).digest('hex')
@@ -35,8 +54,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     .map(k => [k.replace('utm_', ''), tidy(body[k], 36).replace(/[^a-zA-Z0-9_./-]/g, '')])
     .filter(([,v]) => v).map(([k,v]) => `${k}=${v}`).join('|')
   const source = `${site.id}:free:${resource.id}${attribution ? '|' + attribution : ''}`.slice(0, 255)
-  // Do not unlock on a lost CRM request: an email send alone is not lead capture.
-  try {
+  // One invitation owner. After the coordinated switch, the signed owner
+  // report is durable capture and My AI Marketing owns optional invitations.
+  if (!nativeActivated && key) try {
     const crm = await fetch('https://toby.leaderhq.io/api/public/signup', {
       method: 'POST', redirect: 'error', signal: AbortSignal.timeout(8000),
       headers: { 'Content-Type': 'application/json', 'X-Form-Key': key },
@@ -48,16 +68,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch {
     return res.status(503).json({ ok: false, error: 'We could not confirm your request. Please check your inbox before retrying.' })
   }
-  // Record only CRM-accepted requests. Fail visibly rather than silently lose attribution.
-  const reportingKey = process.env.DOWNLOAD_LEAD_KEY?.trim()
-  if (!reportingKey) return res.status(503).json({ ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.' })
+  // Persist the owner download report before unlocking, in either mode.
+  if (!reportingKey || (nativeActivated && reportingKey.length < 32)) return res.status(503).json({ ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.' })
   const cleanPath = (value: unknown) => {
     const path = tidy(value, 160).split(/[?#]/)[0]
     return /^\/[a-zA-Z0-9_./-]*$/.test(path) ? path : ''
   }
   const cleanTag = (value: unknown) => tidy(value, 80).replace(/[^a-zA-Z0-9_./-]/g, '')
   const event = {
-    event_id: createHash('sha256').update(`${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex'),
+    event_id: eventId,
     site: site.id, email, resource_id: resource.id, resource_title: resource.title,
     signup_page: cleanPath(body.signup_page), landing_page: cleanPath(body.landing_page),
     referrer_host: tidy(body.referrer_host, 160).replace(/[^a-zA-Z0-9.-]/g, ''),
@@ -78,6 +97,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch {
     return res.status(503).json({ok: false, error: 'Your email request was saved, but your download could not be prepared. Please try again shortly.'})
   }
+  // Preserve the strict owner-report schema. The separately signed marketing
+  // feed adds occurrence time and ownership. Its outage never blocks a resource
+  // whose authoritative owner report is saved; cloud recovery repairs intake.
+  const marketingRaw = JSON.stringify({...event, created_at: new Date(now).toISOString(), invitation_owner: nativeActivated ? 'native' : 'leader'})
+  const marketingSignature = createHmac('sha256', reportingKey).update(`${stamp}.${marketingRaw}`).digest('hex')
+  let marketingSynced = false
+  for (let attempt = 0; attempt < 2 && !marketingSynced; attempt++) {
+    try {
+      const delivered = await fetch('https://myaimarketing.worker-bee.app/api/webhooks?provider=leads', {
+        method: 'POST', redirect: 'error', signal: AbortSignal.timeout(3000),
+        headers: {'Content-Type': 'application/json', 'X-Lead-Site': site.id, 'X-Lead-Time': stamp, 'X-Lead-Signature': marketingSignature},
+        body: marketingRaw,
+      })
+      marketingSynced = delivered.ok
+      await delivered.body?.cancel()
+    } catch { /* The owner record is durable; retry once, then cloud recovery. */ }
+  }
+  if (!marketingSynced) console.warn('Marketing callback unavailable; the owner download report was saved for recovery.')
   let emailStatus = 'unavailable'
   if (process.env.RESEND_API_KEY) {
     try {
@@ -86,12 +123,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         method: 'POST', signal: AbortSignal.timeout(8000),
         headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
         body: JSON.stringify({ from: site.sender, to: [email], subject: `Your free ${resource.title}`,
+          tags: [{name: 'project_id', value: 'language-threshold'}, {name: 'resource_id', value: resource.id}],
           text: `Hi ${name || 'there'},\n\nHere is the free resource you requested:\n${resource.title}\n${resource.url}\n\n${resource.instructions}\n\nYou may receive a separate confirmation for optional Language Threshold practice emails. Only confirm if you want those emails. Your download does not require a subscription.\n\nLanguage Threshold\nhttps://languagethreshold.com`,
           html: `<div style="max-width:580px;margin:auto;padding:28px;font:16px/1.7 Arial,sans-serif;color:#102638;background:#fffdfa"><p>LANGUAGE THRESHOLD</p><h1 style="font-size:26px">Your free resource is ready.</h1><p>Hi ${escape(name || 'there')},</p><p>${escape(resource.title)}</p><p><a href="${escape(resource.url)}" style="display:inline-block;padding:14px 22px;background:#146e73;color:white;border-radius:8px">Open your free resource →</a></p><p>${escape(resource.instructions)}</p><p style="font-size:13px">You may receive a separate confirmation for optional practice emails. Only confirm if you want those emails. Your download does not require a subscription.</p><p><a href="https://languagethreshold.com">Language Threshold</a></p></div>`,
         }),
       })
       const result = await response.json().catch(() => null)
-      emailStatus = response.ok && result?.id ? 'accepted' : 'unavailable'
+      emailStatus = response.ok && result !== null && typeof result === 'object' && 'id' in result && typeof result.id === 'string' && result.id.length > 0 ? 'accepted' : 'unavailable'
     } catch { /* Lead is already saved. Keep the immediate resource available. */ }
   }
   return res.status(200).json({ ok: true, resourceId: resource.id, downloadUrl: resource.url, title: resource.title, format: resource.format, instructions: resource.instructions, emailStatus,
