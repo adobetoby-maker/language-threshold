@@ -41,12 +41,20 @@
     script.async = true;
     script.onerror = () => {status.textContent = 'Bot check could not load. Please reload shortly.';};
     script.onload = () => {
-      window.turnstile.ready(() => {widgetId = window.turnstile.render(check, {
-        sitekey:config.sitekey, action:config.action,
-        callback:() => {protectionReady = true; submit.disabled = false; status.textContent = '';},
-        'expired-callback':() => {protectionReady = false; submit.disabled = true; window.turnstile.reset(widgetId);},
-        'error-callback':() => {protectionReady = false; submit.disabled = true; status.textContent = 'Please retry the bot check or reload the page.';}
-      });});
+      // An asynchronously loaded API must render directly after load. Calling
+      // turnstile.ready() here is rejected by the real SDK before a widget starts.
+      try {
+        if (typeof window.turnstile?.render !== 'function') throw Error('Bot SDK unavailable');
+        widgetId = window.turnstile.render(check, {
+          sitekey:config.sitekey, action:config.action,
+          callback:() => {protectionReady = true; submit.disabled = false; status.textContent = '';},
+          'expired-callback':() => {protectionReady = false; submit.disabled = true; window.turnstile.reset(widgetId);},
+          'error-callback':() => {protectionReady = false; submit.disabled = true; status.textContent = 'Please retry the bot check or reload the page.'}
+        });
+      } catch {
+        protectionReady = false; submit.disabled = true;
+        status.textContent = 'Bot check could not start. Please reload the page or try again shortly.';
+      }
     };
     document.head.append(script);
   }).catch(error => {status.textContent = error.message;});
