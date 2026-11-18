@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { createHash, createHmac } from 'node:crypto'
 import { resources, site } from '../server/free-resources.js'
-import { nativeDownloadId } from '../server/native-download-id.js'
+import { nativeDownloadId, productMarketingId, PRODUCT_MARKETING_VERSION, PRODUCT_MARKETING_COPY, marketingGateState } from '../server/native-download-id.js'
 import { captureProtection, authorizeCapture } from '../server/capture-protection.js'
 
 const recent = new Map<string, { count: number; until: number }>()
@@ -13,6 +13,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const now = Date.now()
   const nativeFrom = process.env.NATIVE_CONFIRMATION_FROM?.trim()
   const nativeActivated = !!nativeFrom && Number.isFinite(Date.parse(nativeFrom)) && now >= Date.parse(nativeFrom)
+  if (req.method === 'GET' && new URL(req.url || '/', 'https://'+site.id).searchParams.get('status') === 'marketing') {
+    const state=await marketingGateState(site.id)
+    return res.status(200).json({site:site.id,supportsDirectMarketing:true,ready:nativeActivated && captureProtection().ready,enabled:state.enabled,policyVersion:PRODUCT_MARKETING_VERSION,copy:PRODUCT_MARKETING_COPY,sourceDeployment:process.env.VERCEL_DEPLOYMENT_ID || null})
+  }
   if (req.method === 'GET' && new URL(req.url || '/', 'https://languagethreshold.com').searchParams.get('status') === 'confirmation') {
     return res.status(200).json({site: site.id, owner: nativeActivated ? 'native' : 'leader', nativeFrom: nativeFrom || null, policyVersion: 'lt-practice-separate-v1', sourceDeployment: process.env.VERCEL_DEPLOYMENT_ID || null, captureProtection: {version:1, ready:captureProtection().ready}})
   }
@@ -32,10 +36,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, error: 'Enter a valid email address.' })
   if (!resource) return res.status(400).json({ ok: false, error: 'Choose an available free resource.' })
   if (body.consent !== true) return res.status(400).json({ ok: false, error: 'Please confirm the email request.' })
+  if (body.policyVersion && ![PRODUCT_MARKETING_VERSION,'lt-practice-separate-v1'].includes(body.policyVersion)) return res.status(400).json({ok:false,error:'Please reload the download form before accepting its email policy.'})
+  const directMarketing=body.policyVersion===PRODUCT_MARKETING_VERSION
+  if (directMarketing && !nativeActivated) return res.status(503).json({ok:false,error:'Please reload the download form shortly.'})
   const key = process.env.LEADERCRM_FORM_KEY?.trim()
   if ((!nativeActivated && !key) || !process.env.DOWNLOAD_LEAD_KEY?.trim()) return res.status(503).json({ ok: false, error: 'Free downloads are temporarily unavailable. Please try again shortly.' })
   const reportingKey = process.env.DOWNLOAD_LEAD_KEY!.trim()
-  const eventId = nativeActivated
+  const eventId = directMarketing ? productMarketingId(site.id,email,resource.id,Math.floor(now/600_000),reportingKey) : nativeActivated
     ? nativeDownloadId(site.id, email, resource.id, Math.floor(now / 600_000), reportingKey)
     : createHash('sha256').update(`${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex')
   if (!eventId) return res.status(503).json({ok:false,error:'Downloads are temporarily unavailable. Please try again shortly.'})
@@ -100,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Preserve the strict owner-report schema. The separately signed marketing
   // feed adds occurrence time and ownership. Its outage never blocks a resource
   // whose authoritative owner report is saved; cloud recovery repairs intake.
-  const marketingRaw = JSON.stringify({...event, created_at: new Date(now).toISOString(), invitation_owner: nativeActivated ? 'native' : 'leader'})
+  const marketingRaw = JSON.stringify({...event, created_at: new Date(now).toISOString(), invitation_owner: directMarketing ? 'marketing_gate' : nativeActivated ? 'native' : 'leader'})
   const marketingSignature = createHmac('sha256', reportingKey).update(`${stamp}.${marketingRaw}`).digest('hex')
   let marketingSynced = false
   for (let attempt = 0; attempt < 2 && !marketingSynced; attempt++) {
@@ -115,23 +122,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     } catch { /* The owner record is durable; retry once, then cloud recovery. */ }
   }
   if (!marketingSynced) console.warn('Marketing callback unavailable; the owner download report was saved for recovery.')
+  const permissionNotice = directMarketing ? 'You requested this resource and Language Threshold practice and product emails. You can change preferences or unsubscribe using the link in a practice email. Your download does not require a paid subscription.' : 'You may receive a separate confirmation for optional Language Threshold practice emails. Only confirm if you want those emails. Your download does not require a subscription.'
   let emailStatus = 'unavailable'
   if (process.env.RESEND_API_KEY) {
     try {
-      const idempotencyKey = createHash('sha256').update(`${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex')
+      const idempotencyKey = createHash('sha256').update(directMarketing ? 'product-resource-delivery:v1:'+eventId : `${site.id}:${email}:${resource.id}:${Math.floor(now / 600_000)}`).digest('hex')
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST', signal: AbortSignal.timeout(8000),
         headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json', 'Idempotency-Key': idempotencyKey },
         body: JSON.stringify({ from: site.sender, to: [email], subject: `Your free ${resource.title}`,
           tags: [{name: 'project_id', value: 'language-threshold'}, {name: 'resource_id', value: resource.id}],
-          text: `Hi ${name || 'there'},\n\nHere is the free resource you requested:\n${resource.title}\n${resource.url}\n\n${resource.instructions}\n\nYou may receive a separate confirmation for optional Language Threshold practice emails. Only confirm if you want those emails. Your download does not require a subscription.\n\nLanguage Threshold\nhttps://languagethreshold.com`,
-          html: `<div style="max-width:580px;margin:auto;padding:28px;font:16px/1.7 Arial,sans-serif;color:#102638;background:#fffdfa"><p>LANGUAGE THRESHOLD</p><h1 style="font-size:26px">Your free resource is ready.</h1><p>Hi ${escape(name || 'there')},</p><p>${escape(resource.title)}</p><p><a href="${escape(resource.url)}" style="display:inline-block;padding:14px 22px;background:#146e73;color:white;border-radius:8px">Open your free resource →</a></p><p>${escape(resource.instructions)}</p><p style="font-size:13px">You may receive a separate confirmation for optional practice emails. Only confirm if you want those emails. Your download does not require a subscription.</p><p><a href="https://languagethreshold.com">Language Threshold</a></p></div>`,
+          text: `Hi ${name || 'there'},\n\nHere is the free resource you requested:\n${resource.title}\n${resource.url}\n\n${resource.instructions}\n\n${permissionNotice}\n\nLanguage Threshold\nhttps://languagethreshold.com`,
+          html: `<div style="max-width:580px;margin:auto;padding:28px;font:16px/1.7 Arial,sans-serif;color:#102638;background:#fffdfa"><p>LANGUAGE THRESHOLD</p><h1 style="font-size:26px">Your free resource is ready.</h1><p>Hi ${escape(name || 'there')},</p><p>${escape(resource.title)}</p><p><a href="${escape(resource.url)}" style="display:inline-block;padding:14px 22px;background:#146e73;color:white;border-radius:8px">Open your free resource →</a></p><p>${escape(resource.instructions)}</p><p style="font-size:13px">${escape(permissionNotice)}</p><p><a href="https://languagethreshold.com">Language Threshold</a></p></div>`,
         }),
       })
       const result = await response.json().catch(() => null)
       emailStatus = response.ok && result !== null && typeof result === 'object' && 'id' in result && typeof result.id === 'string' && result.id.length > 0 ? 'accepted' : 'unavailable'
     } catch { /* Lead is already saved. Keep the immediate resource available. */ }
   }
-  return res.status(200).json({ ok: true, resourceId: resource.id, downloadUrl: resource.url, title: resource.title, format: resource.format, instructions: resource.instructions, emailStatus,
+  return res.status(200).json({ marketingAccepted: directMarketing, ok: true, resourceId: resource.id, downloadUrl: resource.url, title: resource.title, format: resource.format, instructions: resource.instructions, emailStatus,
     notice: emailStatus === 'accepted' ? 'Your download is ready. An email copy was accepted for sending; check your inbox or spam folder.' : 'Your download is ready below. We could not email a copy right now—save this link for later.' })
 }

@@ -6,7 +6,7 @@ import {mkdtempSync,rmSync,readFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {pathToFileURL} from 'node:url';
-import {nativeDownloadId} from '../server/native-download-id.js';
+import {nativeDownloadId,productMarketingId,PRODUCT_MARKETING_VERSION} from '../server/native-download-id.js';
 const proofVectors=JSON.parse(readFileSync(new URL('./fixtures/native-download-vectors.json',import.meta.url),'utf8')).vectors;
 test('actual source event-ID helper matches the shared fixed vectors',()=>{
  for(const v of proofVectors)assert.equal(nativeDownloadId(v.site,v.email,v.resourceId,v.bucket,v.key),v.expected);
@@ -96,3 +96,16 @@ test('quota outage retries identical signed bytes then fails closed before recip
 });
 
 test('malformed delivery acknowledgement never claims accepted but preserves immediate resource',async()=>{const r=await request({}, {email:true,emailBody:{id:123}});assert.equal(r.status,200);assert.equal(r.result.emailStatus,'unavailable');assert.ok(r.result.downloadUrl);});
+
+test('new product acceptance namespace has a fixed cross-system wire vector',()=>{const v={"site": "medicalspanish.app", "email": "PERSON@language-demo.com", "resourceId": "medical-nursing", "bucket": 2991672, "key": "synthetic-vector-key-0123456789abcdef"};assert.equal(productMarketingId(v.site,v.email,v.resourceId,v.bucket,v.key),'2e1c31fd1748c22e974d88f5ab5dca6d2a7a3bd3e093c9676552d778a7048f14');assert.notEqual(nativeDownloadId(v.site,v.email,v.resourceId,v.bucket,v.key),'2e1c31fd1748c22e974d88f5ab5dca6d2a7a3bd3e093c9676552d778a7048f14')});
+
+test('explicit new-policy acceptance signs a durable recoverable grant while old form submissions retain invitation ownership',async()=>{
+ const r=await request({policyVersion:PRODUCT_MARKETING_VERSION},{nativeFrom:'2026-01-01T00:00:00Z',noKey:true,email:true});assert.equal(r.status,200);assert.equal(r.result.marketingAccepted,true);
+ const report=r.calls.find(c=>c.url.includes('/api/download-lead')), marketing=r.calls.find(c=>c.url.includes('/api/webhooks')),delivery=r.calls.find(c=>c.url==='https://api.resend.com/emails');assert.ok(report);assert.ok(marketing);assert.equal(marketing.body.invitation_owner,'marketing_gate');assert.equal(report.body.event_id,marketing.body.event_id);
+ assert.equal(productMarketingId(marketing.body.site,marketing.body.email,marketing.body.resource_id,Math.floor(Date.parse(marketing.body.created_at)/600000),process.env.DOWNLOAD_LEAD_KEY),report.body.event_id);assert.match(delivery.body.text,/practice and product emails/);assert.doesNotMatch(delivery.body.text,/Only confirm/);
+ const old=await request({policyVersion:'lt-practice-separate-v1'},{nativeFrom:'2026-01-01T00:00:00Z',noKey:true});assert.equal(old.status,200);assert.equal(old.result.marketingAccepted,false);assert.equal(old.calls.find(c=>c.url.includes('/api/webhooks')).body.invitation_owner,'native');
+});
+test('unknown policy or an unprovisioned direct source cannot create a grant or send a resource',async()=>{
+ const unknown=await request({policyVersion:'forged-policy'});assert.equal(unknown.status,400);assert.equal(unknown.calls.length,0);
+ const inactive=await request({policyVersion:PRODUCT_MARKETING_VERSION});assert.equal(inactive.status,503);assert.equal(inactive.calls.length,0);
+});
